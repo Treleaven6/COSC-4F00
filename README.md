@@ -14,7 +14,7 @@
   - [Information - README](https://github.com/Treleaven6/COSC-4F00/tree/master/information#information)
 
 ## Server
- - The server which will run the comparison
+ - [Server - README](https://github.com/Treleaven6/COSC-4F00/tree/master/server#server)
  
 ## WebPortal
- - A site which can be customized and hosted for each school
+ - [WebPortal - README](https://github.com/Treleaven6/COSC-4F00/tree/master/webportal#web-portal)
