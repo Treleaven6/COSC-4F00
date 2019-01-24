@@ -1,5 +1,5 @@
-# COSC-4F00 
-## Group 3: Dr. Java
+# COSC-4F00  -  Group 3:  Dr.Java
+## Project Name
 
 ### Information
   - [Specification - Rough Draft](https://docs.google.com/document/d/1_Ttea0a2wcxuSylJji-r-oEF-sLirkif9crcvvojsXg/edit?fbclid=IwAR1zTzqX2cMkm0sNaFJT_DC6EyD97vERKlqAUhh3xYyUykdpAiD5oGdicjw)
@@ -11,7 +11,7 @@
 ### WebPortal
  - [WebPortal - README](https://github.com/Treleaven6/COSC-4F00/tree/master/webportal#web-portal)
 
-### Contact Information
+## Contact Information
 Name                   | E-Mail 
 ---------------------- | ------------------
 Liam Marcassa          | lm15us@brocku.ca
