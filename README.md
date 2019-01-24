@@ -10,6 +10,7 @@
 | Jesse Treleaven | jt15il@brocku.ca |
 
 ## Information
+  - [Specification - Rough Draft](https://docs.google.com/document/d/1_Ttea0a2wcxuSylJji-r-oEF-sLirkif9crcvvojsXg/edit?fbclid=IwAR1zTzqX2cMkm0sNaFJT_DC6EyD97vERKlqAUhh3xYyUykdpAiD5oGdicjw)
   - A place to consolidate notes
 
 ## Server
