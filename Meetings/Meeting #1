@@ -1,0 +1,44 @@
+Meeting #1 - 3:00pm. Jan 10, 2019. 
+
+Absent - Juan due to sickness.
+
+Goals of the meeting:
+  - Role finalization.
+  - Documentation and coding management.
+  - Review template and how to approach it.
+  - Talk about project and additional functionalities. 
+  
+Summary of meeting:
+  Role finalization -
+    - Tina and Liam will oversee the Requirement Specification Document. The team will work on the template together.
+    - Jesse, Jensen, Juan and Ji will start on researching and planning certain steps of the project necessary for coding.
+    
+  Documentation and coding management -
+    - Make Github to store and track all progress, use other sources as well to document. ie. (Google Docs, Microsoft events).
+    - We can try GitKraken - Helps with planning and has many tools to facilitate our project.
+    - Things to load into Github
+        - Log Book
+        - Template - Google Docs, Latex
+        - Photos
+    
+  Review template and how to approach it -
+    - Start on template with bullet points. Everyone will update from the same document and see each other's changes.
+    - After our bullet points are finalized, we will turn them into sentences and paragraphs.
+    
+  Talk about project and additional functionalities -
+    - Language decisions - Java, HTML, React, Python? Probably going to use Java for back-end.
+    - Create a student front-end with login information to a database. Can use database to strip before sending.
+    - Create a teacher front-end with creating new classes, verficiation of students and prior year files to a database.
+    - All information will be stored school side similar to Brock.
+    - Students will be required to sign up with first name, last name, student id and email.
+    - Drag and drop submission into classes they are enrolled in.
+    - Trio panels required when sending information back. Two panels for comparisons. Third panel for all other students.
+    - Include exclusion file from teacher.
+    - Panels will also include strictness levels such as comments.
+    
+Meeting conclusion:
+  - Github to be made and ready by tonight Jan 10,2019.
+  - Google Docs created for rough draft of template completed by tonight Jan 10,2019.
+  - Meetings are set every week during COSC 4F00 Wednesday lecture in the same room. Can be cancelled if not necessary.
+  - Rough draft of template with all bullet points completed by Jan 20, 2019.
+- Final draft of template with all sentences and paragraphs completed by Feb 1,2019.
