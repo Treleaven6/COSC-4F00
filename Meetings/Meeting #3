@@ -1,0 +1,50 @@
+Meeting #3 - 2:00pm. Jan 23, 2019. 
+
+Absent - 
+
+Goals of the meeting:
+  - Finalize rough draft of the template.
+  - Create hard-copy sketches of the system to gain feedback.
+  - UML
+  - System and algorithm plan.
+  - Database
+  - Submission
+  
+Summary of meeting:
+  Finalize rough draft of the template -
+    - Software requirement specification document rough draft pretty much complete.
+    - Create another new final draft of template to show progress.
+    - Start to convert rough draft to final draft.
+    
+  Create hard-copy sketches of the system to gain feedback -
+    - Juan has created sketches of potential system UI.
+    - Can use sketches to receive feedback from teachers/potential users.
+    - This can be very useful before implementation in case of design changes.
+    
+  UML -
+    - Ask other professors for "better" UML options. Robson?
+  
+  System and algorithm plan -
+    - System features
+        - Script/Button submission? Both?
+        - Allow gradient selection. % plagiarized, include comments and disclude folder.
+    - Putty vs Browser
+    - Handle browser return documents.
+    
+  Database - 
+    - Need 3 tables - Account, course, ID.
+    - Access to database for student-course-teacher.
+    - Can use database for scrubbing.
+     
+  Submission -
+    - Ability to overwrite past documents. Only 1 submission.
+    - At the time of submission, copy all current files in the storage and send to teacher server.
+    - No submission means blank document (no document?).
+        - May need to solve multiple blanks being flagged as 100% plagiarized.
+    
+Meeting conclusion:
+  - Final draft of software requirement specification document started.
+  - Use Juan's designs and obtain feedback.
+  - Look for potential UML software.
+  - More implementation of system including submission ideas, more teacher controls and file handling.
+  - Database and submission specifics finalized.
