@@ -15,8 +15,8 @@
 Name                   | E-Mail 
 ---------------------- | ------------------
 Liam Marcassa          | lm15us@brocku.ca
-Jaun Manuel Vallecilla | jv12lj@brocku.ca 
-Jenson Hung            | jh11eh@brocku.ca 
+Juan Manuel Vallecilla | jv12lj@brocku.ca 
+Jensen Hung            | jh11eh@brocku.ca 
 Jesse Treleaven        | jt15il@brocku.ca
 Ji Wang                | jw17tl@brocku.ca
 Tina Pazaj             | tp13cl@brocku.ca
