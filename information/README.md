@@ -6,3 +6,6 @@
   - [InVision - For Prototyping a mobile layout](https://www.invisionapp.com/)
   
   - [CSS Tricks - Drag'n'Drop Upload](https://css-tricks.com/drag-and-drop-file-uploading/)
+  
+  - [Web Diagram - Example](https://www.edrawsoft.com/images/web%20diagram/sitemap.png)
+  
