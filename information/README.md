@@ -7,5 +7,7 @@
   
   - [CSS Tricks - Drag'n'Drop Upload](https://css-tricks.com/drag-and-drop-file-uploading/)
   
-  - [Web Diagram - Example](https://www.edrawsoft.com/images/web%20diagram/sitemap.png)
   
+  - [Web Diagram - Example](https://www.edrawsoft.com/images/web%20diagram/sitemap.png)
+  - [Decision Tree - Example](https://d2slcw3kip6qmk.cloudfront.net/marketing/techblog/6-sins-of-gapps-development/GappsAuthLifecycle.png)
+  - [Activity Diagram - Example](https://www.openoffice.org/udk/common/man/draft/scripting/DesignDoc/Source-Edit.png)
