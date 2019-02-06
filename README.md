@@ -12,11 +12,11 @@
  - [WebPortal - README](https://github.com/Treleaven6/COSC-4F00/tree/master/webportal#web-portal)
 
 ## Contact Information
-Name                   | E-Mail 
----------------------- | ------------------
-Liam Marcassa          | lm15us@brocku.ca
-Juan Manuel Vallecilla | jv12lj@brocku.ca 
-Jensen Hung            | jh11eh@brocku.ca 
-Jesse Treleaven        | jt15il@brocku.ca
-Ji Wang                | jw17tl@brocku.ca
-Tina Pazaj             | tp13cl@brocku.ca
+Name                   | E-Mail             | SID 
+---------------------- | ------------------ | ------------------
+Liam Marcassa          | lm15us@brocku.ca   | 5893474
+Juan Manuel Vallecilla | jv12lj@brocku.ca   | 5249875
+Jensen Hung            | jh11eh@brocku.ca   | 4991048
+Jesse Treleaven        | jt15il@brocku.ca   | 5903851
+Ji Wang                | jw17tl@brocku.ca   | 6354666
+Tina Pazaj             | tp13cl@brocku.ca   | 5550827
