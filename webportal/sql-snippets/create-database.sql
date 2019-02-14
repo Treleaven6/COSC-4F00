@@ -1,4 +1,14 @@
--- TODO
+app.get("/username/:username", function(req, res) {
+  var q = 
+    "SELECT A.username " +
+    "FROM Account A " +
+    "WHERE A.username = '" + req.params.username + "'";
+  pool.query(q, function (error, results, fields) {
+    if (error)
+      res.json(error);
+    res.json(results);
+  });
+})-- TODO
 --	- default database name (default_database_name)
 --  - password encryption algorithm -> setup table for credential (depends on columns)
 --  - primary key for accounts table
@@ -80,10 +90,8 @@ CREATE TABLE Assignment (
 	name		VARCHAR(45) NOT NULL,
 	pdf			VARCHAR(255) NOT NULL,
 	template	VARCHAR(255) NOT NULL,
-	instructor	VARCHAR(12) NOT NULL,
 	PRIMARY KEY (id),
 	FOREIGN KEY (course) REFERENCES Course (id)
-	FOREIGN KEY (instructor) REFERENCES Account (id)
 );
 
 CREATE TABLE Submission (
