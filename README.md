@@ -22,3 +22,7 @@ Jensen Hung            | jh11eh@brocku.ca   | 4991048
 Jesse Treleaven        | jt15il@brocku.ca   | 5903851
 Ji Wang                | jw17tl@brocku.ca   | 6354666
 Tina Pazaj             | tp13cl@brocku.ca   | 5550827
+
+### Group sandcastle credentials
+username: c4f00g03
+password: j4g6x7b3
