@@ -24,5 +24,5 @@ Ji Wang                | jw17tl@brocku.ca   | 6354666
 Tina Pazaj             | tp13cl@brocku.ca   | 5550827
 
 ### Group sandcastle credentials
-username: c4f00g03
+username: c4f00g03    
 password: j4g6x7b3
