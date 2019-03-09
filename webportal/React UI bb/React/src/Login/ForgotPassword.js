@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+'use strict';
 
-export class ForgotPassword extends Component {
+export default class ForgotPassword extends React.Component {
     constructor(props) {
       super(props);
       this.state = {

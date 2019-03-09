@@ -1,13 +1,10 @@
-import React, { Component } from "react";
-/*mport logo from './logo.svg';*/
-import { Login } from "./Login/Login";
-import { Teacher } from "./Landing/Teacher";
-import { Student } from "./Landing/Student";
-import "./App.css";
+'use strict';
 
-// https://reactjs.org/docs/add-react-to-a-website.html
+import Login from "./Login/Login.js";
+import Teacher from "./Landing/Teacher.js";
+import Student from "./Landing/Student.js";
 
-class App extends Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.loginHandler = this.loginHandler.bind(this);
@@ -25,22 +22,6 @@ class App extends Component {
     };
   }
 
-  /*
-  // https://medium.freecodecamp.org/how-to-make-create-react-app-work-with-a-node-backend-api-7c5c48acb1b0
-  componentDidMount() {
-     this.callApi()
-     .then(res => this.setState({ response: res }))
-     .catch(err => console.log(err));
-  }
-  callApi = async () => {
-    const response = await fetch('/teachingList/123456');
-    const body = await response.json();
-    if (response.status !== 200) throw Error(body.message);
-    return body;
-  }
-  */
-
-  // res[0].id, res[0].firstname, res[0].email, res[0].title
   loginHandler(id, firstname, email, title) {
     this.setState({
       id: id,
@@ -48,7 +29,6 @@ class App extends Component {
       email: email,
       roll: title
     });
-
     if (title === "student") {
       this.setState({
         isVisible: {
@@ -104,26 +84,13 @@ class App extends Component {
     }
 
     return (
-      <div className="App">
+      <div>
         {display}
-        {/*
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header> */}
       </div>
     );
   }
+
 }
 
-export default App;
+let domContainer = document.querySelector('#react_goes_here');
+ReactDOM.render(<App />, domContainer);

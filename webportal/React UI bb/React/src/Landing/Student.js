@@ -1,10 +1,11 @@
-import React, { Component } from "react";
-import { ListSchedule } from "./ListSchedule";
-import { Course } from "../Student/Course";
-import { Assignment } from "../Student/Assignment";
+'use strict';
+
+import ListSchedule from "./ListSchedule.js";
+import Course from "../Student/Course.js";
+import Assignment from "../Student/Assignment.js";
 
 // almost exactly the same as teacher save a few strings, boolean isTeacher, and imports
-export class Student extends Component {
+export default class Student extends React.Component {
   constructor(props) {
     super(props);
     this.courseHandler = this.courseHandler.bind(this);
@@ -89,6 +90,10 @@ export class Student extends Component {
     });
   }
 
+  onEnroll(e) {
+    console.log("enroll in a course");
+  }
+
   render() {
     let course =
       this.state.cid === "" || this.state.cid === 0
@@ -120,7 +125,7 @@ export class Student extends Component {
     return (
       <div>
         <p>a Student account</p>
-        <button>enroll in a course</button>
+        <button onClick={e => this.onEnroll(e)}>enroll in a course</button>
         <button onClick={e => this.onLogout(e)}>Logout</button>
         <ListSchedule
           onCourses={this.courseHandler}

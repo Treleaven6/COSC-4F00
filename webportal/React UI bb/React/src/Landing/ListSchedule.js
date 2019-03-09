@@ -1,8 +1,9 @@
-import React, { Component } from "react";
-import { SubListSchedule } from "./SubListSchedule";
+'use strict';
+
+import SubListSchedule from "./SubListSchedule.js";
 
 // get courses and assignmnets
-export class ListSchedule extends Component {
+export default class ListSchedule extends React.Component {
   constructor(props) {
     super(props);
     // anti-pattern? just use props throughout?
@@ -46,10 +47,10 @@ export class ListSchedule extends Component {
     }
   }
 
-  callClassApi = async () => {
+  async callClassApi() {
     const response = await fetch(
-      "/" +
-        (this.state.isTeacher ? "teachingList" : "enrolledList") +
+      "http://localhost:8081/api.php/" +
+        (this.state.isTeacher ? "teaching" : "enrolled") +
         "/" +
         this.state.id
     );
@@ -58,8 +59,8 @@ export class ListSchedule extends Component {
     return body;
   };
 
-  callAssApi = async cid => {
-    const response = await fetch("/assigned/" + cid);
+  async callAssApi(cid) {
+    const response = await fetch("http://localhost:8081/api.php/assigned/" + cid);
     const body = await response.json();
     if (response.status !== 200) throw Error(body.message);
     return body;

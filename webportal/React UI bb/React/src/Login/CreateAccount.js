@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+'use strict';
 
-export class CreateAccount extends Component {
+export default class CreateAccount extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -28,7 +28,7 @@ export class CreateAccount extends Component {
   onRequest(e) {
     e.preventDefault();
     // sanitize / check database
-    // if good, send to parent
+    // if good, send to parent? Or email? idk
     if (this.state.email === '' || this.state.first_name === '' || this.state.last_name === '' || this.state.username === '' || this.state.sid === '') {
         return;
     }
@@ -47,8 +47,9 @@ export class CreateAccount extends Component {
         ", " +
         this.state.is_teacher
     );
+
     this.props.goBack();
-    // if bad, display a little message
+    // if bad, don't go back, display a little message
   }
 
   onBack(e) {

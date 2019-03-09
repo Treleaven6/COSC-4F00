@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+'use strict';
 
-export class SubListSchedule extends Component {
+export default class SubListSchedule extends React.Component {
   render() {
     let assList = null;
     if (typeof this.props.course["assignments"] !== "undefined") {

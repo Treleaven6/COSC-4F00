@@ -1,13 +1,16 @@
-import React, { Component } from "react";
-import { ListSchedule } from "./ListSchedule";
-import { Course } from '../Teacher/Course';
-import { Assignment } from '../Teacher/Assignment';
+'use strict';
 
-export class Teacher extends Component {
+import ListSchedule from "./ListSchedule.js";
+import Course from '../Teacher/Course.js';
+import Assignment from '../Teacher/Assignment.js';
+import CreateCourse from '../Teacher/CreateCourse.js';
+
+export default class Teacher extends React.Component {
   constructor(props) {
     super(props);
     this.courseHandler = this.courseHandler.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleCancelCreateCourse = this.handleCancelCreateCourse.bind(this);
     this.state = {
       courses: "",
       cid: "",
@@ -15,28 +18,22 @@ export class Teacher extends Component {
       isVisible: {
         default: true,
         course: false,
-        assignment: false
+        assignment: false,
+        create_new_course: false
       }
     };
   }
 
-  /*
-Common to both:
-- list of classes
-- list of assignments (per class)
-- calender
-
-Student:
-- request enrollment
-- submit an assignment
-
-Teacher:
-- create a class
-- enroll students
-- create an assignment
-- check assignmnet for plagiarism
-- review plagiarism
-   */
+  onCreateNewCourse(evt) {
+    this.setState({
+      isVisible: {
+        default: false,
+        course: false,
+        assignment: false,
+        create_new_course: true,
+      }
+    });
+  }
 
   onLogout(evt) {
     this.props.handleLogout();
@@ -45,6 +42,17 @@ Teacher:
   courseHandler(obj) {
     this.setState({
       courses: obj
+    });
+  }
+
+  handleCancelCreateCourse() {
+    this.setState({
+      isVisible: {
+        default: true,
+        course: false,
+        assignment: false,
+        create_new_course: false,
+      }
     });
   }
 
@@ -61,7 +69,8 @@ Teacher:
         isVisible: {
           default: false,
           course: true,
-          assignment: false
+          assignment: false,
+          create_new_course: false,
         }
       });
     } else if (type === "assignment") {
@@ -69,7 +78,8 @@ Teacher:
         isVisible: {
           default: false,
           course: false,
-          assignment: true
+          assignment: true,
+          create_new_course: false,
         }
       });
     }
@@ -85,6 +95,8 @@ Teacher:
     } else if (this.state.isVisible["assignment"]) {
       // <Assignment course={course} assignmnet={assignment} />;
       mainPage = <Assignment course={course} assignment={assignment} />;
+    } else if (this.state.isVisible["create_new_course"]) {
+      mainPage = <CreateCourse onCancel={this.handleCancelCreateCourse}/>;
     } else {
       // default
       // put some announcements or a calender or something
@@ -93,7 +105,7 @@ Teacher:
     return (
       <div>
         <p>a Teacher account</p>
-        <button>Create new course</button>
+        <button onClick={e => this.onCreateNewCourse(e)}>Create new course</button>
         <button onClick={e => this.onLogout(e)}>Logout</button>
         <ListSchedule
           onCourses={this.courseHandler}

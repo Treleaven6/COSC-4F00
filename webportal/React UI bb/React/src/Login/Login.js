@@ -1,8 +1,9 @@
-import React, { Component } from "react";
-import { CreateAccount } from "./ CreateAccount";
-import { ForgotPassword } from "./ForgotPassword";
+'use strict';
 
-export class Login extends Component {
+import CreateAccount from "./CreateAccount.js";
+import ForgotPassword from "./ForgotPassword.js";
+
+export default class Login extends React.Component {
   constructor(props) {
     super(props);
     this.onBack = this.onBack.bind(this);
@@ -18,7 +19,7 @@ export class Login extends Component {
       warning: ""
     };
   }
-
+  
   updateUsername(e) {
     this.setState({
       username: e.target.value
@@ -42,15 +43,10 @@ export class Login extends Component {
       encodeURI(this.state.password.trim())
     )
       .then(res => {
-        if (Object.keys(res).length === 0) {
-          // do nothing? display a little warning?
-        } else if (Object.keys(res).length > 1) {
-          console.log(
-            "ERROR: duplicate credentials: " +
-              this.state.username +
-              ", " +
-              this.state.password
-          );
+        if (res.length === 0) {
+          console.log("bad login");
+        } else if (res.length > 1) {
+          throw Error("Duplicate keys!");
         } else {
           this.props.handleLogin(
             res[0].id,
@@ -63,10 +59,12 @@ export class Login extends Component {
       .catch(err => console.log(err));
   }
 
-  callApi = async (username, password) => {
-    const response = await fetch("/login/" + username + "/" + password);
+  async callApi (username, password) {
+    const response = await fetch("http://localhost:8081/api.php/login/" + username + "/" + password);
+     if (response.status === 500) throw Error("500, check php configuration");
+    if (response.status !== 200) throw Error(response.status + ", " + response.statusText);
     const body = await response.json();
-    if (response.status !== 200) throw Error(body.message);
+    if (!Array.isArray(body)) throw Error("bad response, check DB configuration");
     return body;
   };
 
@@ -107,6 +105,7 @@ export class Login extends Component {
 
   render() {
     let display;
+    
     if (this.state.isVisible["forgotPassword"]) {
       display = <ForgotPassword goBack={this.onBack} />;
     } else if (this.state.isVisible["createAccount"]) {
@@ -142,7 +141,7 @@ export class Login extends Component {
         </form>
       );
     }
-
+    
     return (
       <div>
         <h1>MOCD</h1>

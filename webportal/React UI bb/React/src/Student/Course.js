@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+'use strict';
 
-export class Course extends Component {
-  callPersonApi = async () => {
-    const response = await fetch("/person/" + this.props.course.instructor);
+export default class Course extends React.Component {
+  async callPersonApi() {
+    const response = await fetch("http://localhost:8081/api.php/person/" + this.props.course.instructor);
     const body = await response.json();
     if (response.status !== 200) throw Error(body.message);
     return body;

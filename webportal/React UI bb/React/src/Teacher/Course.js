@@ -1,6 +1,32 @@
-import React, { Component } from "react";
+'use strict';
 
-export class Course extends Component {
+export default class Course extends React.Component {
+
+  onEditInfo(e) {
+    // another component, with fields for all the values
+    console.log("edit info");
+  }
+
+  onEnrollStudents(e) {
+    // another component, with a search bar or maybe a file upload
+    console.log("enroll students");
+  }
+
+  onCreateNewAssignment(e) {
+    // another component, with fields and file uploads
+    console.log("create new assignment");
+  }
+
+  onReviewPlagiarism(e) {
+    // another component, have to search for reports and then display
+    console.log("review plagiarism");
+  }
+
+  onDeleteCourse(e) {
+    // dialogue box, asking if sure, and then a lot of databse stuff
+    console.log("delete course");
+  }
+
   render() {
     // need to know:
     // what plagiarism reports are available
@@ -12,11 +38,11 @@ export class Course extends Component {
     return (
       <div>
         <p>a Course</p>
-        <button>Edit info</button>
-        <button>Enroll Students</button>
-        <button>Create new assignment</button>
-        <button>Review plagiarism reports (for the entire course)</button>
-        <button>Delete course</button>
+        <button onClick={e => this.onEditInfo(e)}>Edit info</button>
+        <button onClick={e => this.onEnrollStudents(e)}>Enroll Students</button>
+        <button onClick={e => this.onCreateNewAssignment(e)}>Create new assignment</button>
+        <button onClick={e => this.onReviewPlagiarism(e)}>Review plagiarism reports (for the entire course)</button>
+        <button onClick={e => this.onDeleteCourse(e)}>Delete course</button>
         <p>id: {this.props.course.id}</p>
         <p>code: {this.props.course.code}</p>
         <p>name: {this.props.course.name}</p>
