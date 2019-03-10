@@ -117,7 +117,8 @@ elif cmd[0] == 'submitted' and cmd[1] == 'assignment':
     		 "FROM Submission S " +
     		 "WHERE S.assignment = '" + cmd[2] + "'")
 
-print(json.dumps(exec_and_parse(query)))
+if query:
+	print(json.dumps(exec_and_parse(query)))
 cnx.close()
 
 

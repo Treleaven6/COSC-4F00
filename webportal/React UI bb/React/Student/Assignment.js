@@ -6,6 +6,8 @@ export default class Assignment extends React.Component {
   constructor(props) {
     super(props);
     this.handleFileSelect = this.handleFileSelect.bind(this);
+    this.getBase64 = this.getBase64.bind(this);
+    this.getDate = this.getDate.bind(this);
     this.state = {
       default: true,
       submitting: false,
@@ -79,7 +81,7 @@ export default class Assignment extends React.Component {
     */
 
     /*
-    // select one file of any type, will zip it
+    // select one file, will zip it
     // check encodeURIcomponent
     let file = this.state.file[0];
     let reader = new FileReader();
@@ -105,8 +107,27 @@ export default class Assignment extends React.Component {
       axios.post(path, encodeURIComponent(result)).then(res => {
         //console.log(res);
         console.log(res.data);
+        // hackily update previously submitted time
+        let strtime = this.getDate();
+        this.props.onSubmitTime(strtime, this.props.assignment.id, this.props.course.id);
       });
     });
+  }
+
+  getDate() {
+    let date = new Date();
+    let month = date.getMonth() + 1;
+    month = month < 10 ? "0" + month : month;
+    let day = date.getDate();
+    day = day < 10 ? "0" + day : day;
+    let hours = date.getHours();
+    hours = hours < 10 ? "0" + hours : hours;
+    let minutes = date.getMinutes();
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    let seconds = date.getSeconds();
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+    let strtime = date.getFullYear() + "-" + month + "-" + day + " " + hours + ":" + minutes + ":" + seconds;
+    return strtime;
   }
 
   getBase64(file, cb) {
