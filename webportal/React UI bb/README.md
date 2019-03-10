@@ -1,9 +1,16 @@
 # Setup
+
+## Software
+- Python 2.7
+- PHP 7
+- NodeJS 10
+- MySQL 8
+- optional: VS Code as the IDE
+
 ## MySQL
 - user: root, password: BoatsnHoes, using default port 3306
 - run "create-databse.sql" and then "populate-db.sql"
 - I also had to execute "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'BoatsnHoes'" in order to talk to NodeJS
-- tested on 8.0.14
 
 ## React / Babel / php / py
 - in the React folder, run "sudo npm i" to install all the dependencies that React and Babel need
