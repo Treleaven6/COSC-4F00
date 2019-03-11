@@ -1,8 +1,33 @@
 'use strict';
 
+import DetectAssignment from "./Plagiarism/DetectAssignment.js";
+
 export default class Assignment extends React.Component {
-  // need to know:
-  // who has submitted so far
+  constructor(props) {
+    super(props);
+    this.onBack = this.onBack.bind(this);
+    this.state = {
+      aid: this.props.assignment.id,
+      isVisible: {
+        default: true,
+        delete: false,
+        detect: false,
+        review: false,
+      }
+    };
+  }
+
+  onBack() {
+    this.props.unspotlight();
+    this.setState({
+      isVisible: {
+        default: true,
+        delete: false,
+        detect: false,
+        review: false,
+      }
+    });
+  }
 
   onEditInfo(e) {
     // another component, with fields for every value
@@ -15,8 +40,15 @@ export default class Assignment extends React.Component {
   }
   
   onDetectPlagiarism(e) {
-    // another component, with ?
-    console.log("detect plagiarism");
+    this.props.spotlight();    
+    this.setState({
+      isVisible: {
+        default: false,
+        delete: false,
+        detect: true,
+        review: false,
+      }
+    });
   }
 
   onReviewPlagiarism(e) {
@@ -25,8 +57,10 @@ export default class Assignment extends React.Component {
   }
 
   render() {
-    return (
-      <div>
+    let display;
+
+    if (this.state.isVisible['default']) {
+      display = (<div>
         <p>an Assignment</p>
         <button onClick={e => this.onEditInfo(e)}>Edit info</button>
         <button onClick={e => this.onDeleteAssignment(e)}>Delete Assignment</button>
@@ -41,6 +75,14 @@ export default class Assignment extends React.Component {
         <p>name: {this.props.course.name}</p>
         <p>year: {this.props.course.year}</p>
         <p>semester: {this.props.course.semester}</p>
+      </div>);
+    } else if (this.state.isVisible['detect']) {
+      display = <DetectAssignment goBack={this.onBack} assignment={this.props.assignment} />;
+    }
+
+    return (
+      <div>
+        {display}
       </div>
     );
   }

@@ -1,8 +1,13 @@
 import sys
 import json
+import urllib
 import mysql.connector
 from mysql.connector import errorcode
 from mysql.connector import FieldType
+
+# this is pretty awful, as there is no caching and it
+# opens a new connection to the database on every api
+# call, but it's what we got
 
 # run "mkdir bin"
 # 
@@ -25,25 +30,28 @@ from mysql.connector import FieldType
 
 cmd = sys.argv
 if len(cmd) < 2:
-	print("Error: no argument")
+	print(json.dumps("no argument"))
 	quit()
 
 cmd = cmd[1].split(".php/")
 if not len(cmd) == 2:
-	print("Error: URI is too short") 
+	print(json.dumps("URI is too short"))
 	quit()
 
-cmd = cmd[1].split("/");
+cmd = urllib.unquote(cmd[1])
+cmd = cmd.split("/")
 
 try:
 	cnx = mysql.connector.connect(user='root', password='BoatsnHoes', host='localhost', database='University')
 except mysql.connector.Error as err:
   if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-    print("bad username / password")
+    print(json.dumps("bad username / password"))
   elif err.errno == errorcode.ER_BAD_DB_ERROR:
-    print("bad database")
+    print(json.dumps("bad database"))
   else:
-    print(err)
+  	print(json.dumps("check DB connection"))
+  	#print(err)
+  quit()
 
 # not sure if necessary
 cnx.autocommit = True
@@ -65,7 +73,13 @@ def exec_and_parse(query):
 		out.append(tmp)
 	return(out)
 
-if cmd[0] == 'person':
+if cmd[0] == 'email':
+	# get email if exists
+	# used when forgot password
+	query = ("SELECT A.email " +
+    		 "FROM Account A " +
+    		 "WHERE A.email = '" + cmd[1] + "'")
+elif cmd[0] == 'person':
 	# get firstname, lastname associated with id
 	# used to get the professors name when a student goes to a course page
 	query = ("SELECT A.firstname, A.lastname " +
@@ -113,9 +127,9 @@ elif cmd[0] == 'submitted' and cmd[1] == 'assignment':
 	# get all submissions to an assignment
 	# used when a teacher is going to check for plagiarism
 	# also join to get student name?
-	query = ("SELECT S.id, S.zip " +
-    		 "FROM Submission S " +
-    		 "WHERE S.assignment = '" + cmd[2] + "'")
+	query = ("SELECT S.id, S.zip, A.firstname, A.lastname " +
+    		 "FROM Submission S, Account A " +
+    		 "WHERE S.assignment = '" + cmd[2] + "' AND S.id = A.id")
 
 if query:
 	print(json.dumps(exec_and_parse(query)))

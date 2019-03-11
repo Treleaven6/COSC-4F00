@@ -122,6 +122,8 @@ export default class Student extends React.Component {
       // put some announcements or a calender or something
     }
 
+    let sublist = true;
+
     return (
       <div>
         <p>a Student account</p>
@@ -132,6 +134,7 @@ export default class Student extends React.Component {
           onClick={this.handleClick}
           id={this.props.id}
           isTeacher="false"
+          sublist={sublist}
         />
         <div>{mainPage}</div>
       </div>

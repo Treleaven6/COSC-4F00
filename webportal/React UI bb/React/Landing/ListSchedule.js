@@ -8,6 +8,7 @@ import SubListSchedule from "./SubListSchedule.js";
 export default class ListSchedule extends React.Component {
   constructor(props) {
     super(props);
+    this.doNothing = this.doNothing.bind(this);
     // anti-pattern? just use props throughout?
     this.state = {
       id: this.props.id,
@@ -65,9 +66,17 @@ export default class ListSchedule extends React.Component {
     })();
   }
 
+  // when sublist (assignments) is disabled, this is their click action
+  doNothing() {}
+
   render() {
     let courseList = null;
     if (this.state.courses !== "") {
+      let clickAction = this.props.onClick;
+      if (!this.props.sublist) {
+        clickAction = this.doNothing;
+      }
+
       courseList = this.state.courses.map(course => React.createElement(
         "li",
         { key: course.id },
@@ -76,7 +85,7 @@ export default class ListSchedule extends React.Component {
           { onClick: () => this.props.onClick("course", course.id, 0) },
           "code: " + course.code + ", " + "year: " + course.year + ", " + "semester: " + course.semester
         ),
-        React.createElement(SubListSchedule, { onClick: this.props.onClick, course: course })
+        React.createElement(SubListSchedule, { onClick: clickAction, course: course })
       ));
     }
     return React.createElement(

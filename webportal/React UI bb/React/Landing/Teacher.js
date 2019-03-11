@@ -11,10 +11,13 @@ export default class Teacher extends React.Component {
     this.courseHandler = this.courseHandler.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleCancelCreateCourse = this.handleCancelCreateCourse.bind(this);
+    this.disableAssignments = this.disableAssignments.bind(this);
+    this.enableAssignments = this.enableAssignments.bind(this);
     this.state = {
       courses: "",
       cid: "",
       aid: "",
+      sublist: true,
       isVisible: {
         default: true,
         course: false,
@@ -56,6 +59,18 @@ export default class Teacher extends React.Component {
     });
   }
 
+  disableAssignments() {
+    this.setState({
+      sublist: false
+    });
+  }
+
+  enableAssignments() {
+    this.setState({
+      sublist: true
+    });
+  }
+
   handleClick(type, cid, aid) {
     //let course = this.state.courses.filter((c) => c.id === cid)[0];
     //let assignment = null;
@@ -94,7 +109,7 @@ export default class Teacher extends React.Component {
       mainPage = React.createElement(Course, { course: course });
     } else if (this.state.isVisible["assignment"]) {
       // <Assignment course={course} assignmnet={assignment} />;
-      mainPage = React.createElement(Assignment, { course: course, assignment: assignment });
+      mainPage = React.createElement(Assignment, { course: course, assignment: assignment, spotlight: this.disableAssignments, unspotlight: this.enableAssignments });
     } else if (this.state.isVisible["create_new_course"]) {
       mainPage = React.createElement(CreateCourse, { onCancel: this.handleCancelCreateCourse });
     } else {
@@ -124,7 +139,8 @@ export default class Teacher extends React.Component {
         onCourses: this.courseHandler,
         onClick: this.handleClick,
         id: this.props.id,
-        isTeacher: 'true'
+        isTeacher: 'true',
+        sublist: this.state.sublist
       }),
       React.createElement(
         'div',

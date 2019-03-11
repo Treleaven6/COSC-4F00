@@ -59,3 +59,6 @@ VALUES (2, 'Batmobile assignment', 'more pdf', 'holy template');
 
 INSERT INTO Submission (id, course, assignment, zip, submit_time)
 VALUES ('999888', 1, 1, "it out and zip it up", CURRENT_TIMESTAMP);
+
+INSERT INTO Submission (id, course, assignment, zip, submit_time)
+VALUES ('987987', 1, 2, "doesnt exist", CURRENT_TIMESTAMP);

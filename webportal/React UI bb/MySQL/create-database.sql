@@ -18,6 +18,8 @@ DROP TABLE IF EXISTS Course;
 DROP TABLE IF EXISTS Enrollment;
 DROP TABLE IF EXISTS Assignment;
 DROP TABLE IF EXISTS Submission;
+DROP TABLE IF EXISTS ReportRequest;
+DROP TABLE IF EXISTS ReportReturn;
 
 SET FOREIGN_KEY_CHECKS = 1;
 
@@ -92,5 +94,28 @@ CREATE TABLE Submission (
 	submit_time	TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY (id, course, assignment),
 	FOREIGN KEY (id) REFERENCES Account (id),
+	FOREIGN KEY (course) REFERENCES Course (id),
 	FOREIGN KEY (assignment) REFERENCES Assignment (id)
+);
+
+DROP TABLE IF EXISTS ReportRequest;
+DROP TABLE IF EXISTS ReportReturn;
+
+CREATE TABLE ReportRequest (
+	id 			INT UNSIGNED AUTO_INCREMENT,
+	course		INT UNSIGNED NOT NULL, -- course id
+	assignment	INT UNSIGNED, -- assignment id
+	submit_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY (id),
+	FOREIGN KEY (course) REFERENCES Course (id)
+);
+
+CREATE TABLE ReportReturn (
+	id 			INT UNSIGNED AUTO_INCREMENT,
+	rid			INT UNSIGNED NOT NULL, -- request id
+	course		INT UNSIGNED NOT NULL, -- course id
+	assignment	INT UNSIGNED, -- assignment id
+	submit_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY (id),
+	FOREIGN KEY (rid) REFERENCES ReportRequest (id)
 );

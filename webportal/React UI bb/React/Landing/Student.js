@@ -112,6 +112,8 @@ export default class Student extends React.Component {
       // put some announcements or a calender or something
     }
 
+    let sublist = true;
+
     return React.createElement(
       "div",
       null,
@@ -134,7 +136,8 @@ export default class Student extends React.Component {
         onCourses: this.courseHandler,
         onClick: this.handleClick,
         id: this.props.id,
-        isTeacher: "false"
+        isTeacher: "false",
+        sublist: sublist
       }),
       React.createElement(
         "div",

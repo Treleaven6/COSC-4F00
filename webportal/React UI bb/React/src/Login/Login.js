@@ -7,6 +7,7 @@ export default class Login extends React.Component {
   constructor(props) {
     super(props);
     this.onBack = this.onBack.bind(this);
+    this.setWarning = this.setWarning.bind(this);
     this.state = {
       username: "",
       password: "",
@@ -61,10 +62,9 @@ export default class Login extends React.Component {
 
   async callApi (username, password) {
     const response = await fetch("http://localhost:8081/api.php/login/" + username + "/" + password);
-     if (response.status === 500) throw Error("500, check php configuration");
     if (response.status !== 200) throw Error(response.status + ", " + response.statusText);
     const body = await response.json();
-    if (!Array.isArray(body)) throw Error("bad response, check DB configuration");
+    if (!Array.isArray(body)) throw Error("bad response: " + body);
     return body;
   };
 
@@ -79,6 +79,8 @@ export default class Login extends React.Component {
     });
   }
 
+
+
   onForgotPassword(e) {
     e.preventDefault();
     this.setState({
@@ -89,6 +91,12 @@ export default class Login extends React.Component {
         createAccount: false
       }
     });
+  }
+
+  setWarning(str) {
+    this.setState({
+      warning: str,
+    })
   }
 
   onCreateAccount(e) {
