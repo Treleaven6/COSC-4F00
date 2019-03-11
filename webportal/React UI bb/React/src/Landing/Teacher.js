@@ -72,8 +72,6 @@ export default class Teacher extends React.Component {
   }
 
   handleClick(type, cid, aid) {
-    //let course = this.state.courses.filter((c) => c.id === cid)[0];
-    //let assignment = null;
     this.setState({
       cid: cid,
       aid: aid
@@ -98,6 +96,8 @@ export default class Teacher extends React.Component {
         }
       });
     }
+
+    this.enableAssignments();
     //console.log(type + ", " + cid + ", " + aid);
   }
 

@@ -13,7 +13,6 @@ export default class SubmittedList extends React.Component {
 
     componentDidMount() {
         this.getUploaded().then(res => {
-            console.log(res);
             this.setState({
                 gotFiles: true,
                 files: res
