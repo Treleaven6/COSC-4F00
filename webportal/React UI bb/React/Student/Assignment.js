@@ -27,6 +27,7 @@ export default class Assignment extends React.Component {
   }
 
   handleSubmit(e) {
+    this.props.spotlight();
     this.setState({
       default: false,
       submitting: true
@@ -142,6 +143,7 @@ export default class Assignment extends React.Component {
   }
 
   handleCancelSubmit(e) {
+    this.props.unspotlight();
     this.setState({
       default: true,
       submitting: false
@@ -245,19 +247,29 @@ export default class Assignment extends React.Component {
     } else {
       // https://stackoverflow.com/questions/46119987/upload-and-read-a-file-in-react
       mainpage = React.createElement(
-        "span",
+        "div",
         null,
-        React.createElement("input", { type: "file", name: "myFile", onChange: this.handleFileSelect, accept: ".zip" }),
-        React.createElement("input", {
-          type: "button",
-          value: "Upload",
-          onClick: e => this.handleUpload(e)
-        }),
-        React.createElement("input", {
-          type: "button",
-          value: "Cancel",
-          onClick: e => this.handleCancelSubmit(e)
-        })
+        React.createElement(
+          "p",
+          null,
+          "Upload a zip file for assignment: ",
+          this.props.assignment.name
+        ),
+        React.createElement(
+          "span",
+          null,
+          React.createElement("input", { type: "file", name: "myFile", onChange: this.handleFileSelect, accept: ".zip" }),
+          React.createElement("input", {
+            type: "button",
+            value: "Upload",
+            onClick: e => this.handleUpload(e)
+          }),
+          React.createElement("input", {
+            type: "button",
+            value: "Cancel",
+            onClick: e => this.handleCancelSubmit(e)
+          })
+        )
       );
       //
     }

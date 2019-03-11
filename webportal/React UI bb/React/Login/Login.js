@@ -9,6 +9,7 @@ export default class Login extends React.Component {
   constructor(props) {
     super(props);
     this.onBack = this.onBack.bind(this);
+    this.setWarning = this.setWarning.bind(this);
     this.state = {
       username: "",
       password: "",
@@ -54,10 +55,9 @@ export default class Login extends React.Component {
   callApi(username, password) {
     return _asyncToGenerator(function* () {
       const response = yield fetch("http://localhost:8081/api.php/login/" + username + "/" + password);
-      if (response.status === 500) throw Error("500, check php configuration");
       if (response.status !== 200) throw Error(response.status + ", " + response.statusText);
       const body = yield response.json();
-      if (!Array.isArray(body)) throw Error("bad response, check DB configuration");
+      if (!Array.isArray(body)) throw Error("bad response: " + body);
       return body;
     })();
   }
@@ -82,6 +82,12 @@ export default class Login extends React.Component {
         forgotPassword: true,
         createAccount: false
       }
+    });
+  }
+
+  setWarning(str) {
+    this.setState({
+      warning: str
     });
   }
 

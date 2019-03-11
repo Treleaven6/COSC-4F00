@@ -6,16 +6,20 @@ import Assignment from "../Student/Assignment.js";
 
 // almost exactly the same as teacher save a few strings, boolean isTeacher, and imports
 export default class Student extends React.Component {
+
   constructor(props) {
     super(props);
     this.courseHandler = this.courseHandler.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleInstructor = this.handleInstructor.bind(this);
     this.handleSubmitTime = this.handleSubmitTime.bind(this);
+    this.disableAssignments = this.disableAssignments.bind(this);
+    this.enableAssignments = this.enableAssignments.bind(this);
     this.state = {
       courses: "",
       cid: "",
       aid: "",
+      sublist: true,
       isVisible: {
         default: true,
         course: false,
@@ -31,6 +35,18 @@ export default class Student extends React.Component {
   courseHandler(obj) {
     this.setState({
       courses: obj
+    });
+  }
+
+  disableAssignments() {
+    this.setState({
+      sublist: false,
+    });
+  }
+
+  enableAssignments() {
+    this.setState({
+      sublist: true,
     });
   }
 
@@ -57,6 +73,8 @@ export default class Student extends React.Component {
         }
       });
     }
+
+    this.enableAssignments();
   }
 
   handleInstructor(course) {
@@ -115,6 +133,8 @@ export default class Student extends React.Component {
           course={course}
           assignment={assignment}
           onSubmitTime={this.handleSubmitTime}
+          spotlight={this.disableAssignments}
+          unspotlight={this.enableAssignments}
         />
       );
     } else {
@@ -134,7 +154,7 @@ export default class Student extends React.Component {
           onClick={this.handleClick}
           id={this.props.id}
           isTeacher="false"
-          sublist={sublist}
+          sublist={this.state.sublist}
         />
         <div>{mainPage}</div>
       </div>
