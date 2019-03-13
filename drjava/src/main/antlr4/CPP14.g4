@@ -22,6 +22,13 @@
  * SOFTWARE.
  ******************************************************************************/
 grammar CPP14;
+
+options
+{
+    output=AST;
+    ASTLabelType=CommonTree; // type of $stat.tree ref etc...
+}
+
 /*Basic concepts*/
 
 

@@ -29,11 +29,11 @@
  */
 
 /**
- * A Java 8 grammar for ANTLR 4 derived from the Java Language Specification
+ * A java 8 grammar for ANTLR 4 derived from the java Language Specification
  * chapter 19.
  *
  * NOTE: This grammar results in a generated parser that is much slower
- *       than the Java 7 grammar in the grammars-v4/java directory. This
+ *       than the java 7 grammar in the grammars-v4/java directory. This
  *     one is, however, extremely close to the spec.
  *
  * You can test with
@@ -52,6 +52,13 @@
 Total lexer+parser time 30844ms.
  */
 grammar Java8;
+
+options
+{
+    language=Java8
+    output=AST;
+    ASTLabelType=CommonTree; // type of $stat.tree ref etc...
+}
 
 /*
  * Productions from §3 (Lexical Structure)
