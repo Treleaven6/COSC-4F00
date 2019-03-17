@@ -5,34 +5,34 @@
 
 
 -- Create Database & Tables if they don't exist
-CREATE DATABASE IF NOT EXISTS University;
-USE University;
+-- CREATE DATABASE IF NOT EXISTS University;
+-- USE University;
 
 -- Delete all tables if they exist
-SET FOREIGN_KEY_CHECKS = 0;
+-- SET FOREIGN_KEY_CHECKS = 0;
 
-DROP TABLE IF EXISTS Permission;
-DROP TABLE IF EXISTS Account;
-DROP TABLE IF EXISTS Subject;
-DROP TABLE IF EXISTS Course;
-DROP TABLE IF EXISTS Enrollment;
-DROP TABLE IF EXISTS Assignment;
-DROP TABLE IF EXISTS Submission;
-DROP TABLE IF EXISTS ReportRequest;
-DROP TABLE IF EXISTS ReportReturn;
+DROP TABLE IF EXISTS Permission CASCADE;
+DROP TABLE IF EXISTS Account CASCADE;
+DROP TABLE IF EXISTS Subject CASCADE;
+DROP TABLE IF EXISTS Course CASCADE;
+DROP TABLE IF EXISTS Enrollment CASCADE;
+DROP TABLE IF EXISTS Assignment CASCADE;
+DROP TABLE IF EXISTS Submission CASCADE;
+DROP TABLE IF EXISTS ReportRequest CASCADE;
+DROP TABLE IF EXISTS ReportReturn CASCADE;
 
-SET FOREIGN_KEY_CHECKS = 1;
+-- SET FOREIGN_KEY_CHECKS = 1;
 
 -- Create Tables
 CREATE TABLE Permission (
-	id 			INT UNSIGNED NOT NULL,
+	id 			INT NOT NULL,
 	title		VARCHAR(32) NOT NULL,
 	PRIMARY KEY (id)
 );
 
 CREATE TABLE Account (
 	id			VARCHAR(12) NOT NULL,
-	permission	INT UNSIGNED NOT NULL,
+	permission	INT NOT NULL,
 	firstname   VARCHAR(32) NOT NULL,		
 	lastname	VARCHAR(32) NOT NULL,
 	username    VARCHAR(255) NOT NULL UNIQUE,	
@@ -51,11 +51,11 @@ CREATE TABLE Subject (
 );
 
 CREATE TABLE Course (
-	id			INT UNSIGNED AUTO_INCREMENT,
+	id			SERIAL,
 	code		VARCHAR(12) NOT NULL,
 	instructor	VARCHAR(12) NOT NULL,
 	directory	VARCHAR(255) NOT NULL,
-	year 		YEAR NOT NULL,
+	year 		INTEGER NOT NULL,
 	semester 	VARCHAR(12) NOT NULL,
 
 	-- Should we section? or start & end dates?
@@ -67,7 +67,7 @@ CREATE TABLE Course (
 
 CREATE TABLE Enrollment (
 	sid			VARCHAR(12) NOT NULL,
-	course		INT UNSIGNED NOT NULL,
+	course		INT NOT NULL,
 
 	-- Enrollment date?
 	
@@ -77,21 +77,22 @@ CREATE TABLE Enrollment (
 );
 
 CREATE TABLE Assignment (
-	id			INT UNSIGNED AUTO_INCREMENT,
-	course		INT UNSIGNED NOT NULL,
-	name		VARCHAR(45) NOT NULL,
-	pdf			VARCHAR(255) NOT NULL,
-	template	VARCHAR(255) NOT NULL,
+	id			SERIAL,
+	course		INT NOT NULL,
+	name		VARCHAR(64) NOT NULL,
+	pdf			VARCHAR(128),
+	template 	VARCHAR(128),
+	closing		TIMESTAMP,
 	PRIMARY KEY (id),
 	FOREIGN KEY (course) REFERENCES Course (id)
 );
 
 CREATE TABLE Submission (
 	id			VARCHAR(12) NOT NULL, -- student id
-	course		INT UNSIGNED NOT NULL, -- course id
-	assignment	INT UNSIGNED NOT NULL, -- assignment id
+	course		INT NOT NULL, -- course id
+	assignment	INT NOT NULL, -- assignment id
 	zip			VARCHAR(255) NOT NULL,
-	submit_time	TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	submit_time	TIMESTAMP DEFAULT CURRENT_TIMESTAMP(0),
 	PRIMARY KEY (id, course, assignment),
 	FOREIGN KEY (id) REFERENCES Account (id),
 	FOREIGN KEY (course) REFERENCES Course (id),
@@ -102,20 +103,30 @@ DROP TABLE IF EXISTS ReportRequest;
 DROP TABLE IF EXISTS ReportReturn;
 
 CREATE TABLE ReportRequest (
-	id 			INT UNSIGNED AUTO_INCREMENT,
-	course		INT UNSIGNED NOT NULL, -- course id
-	assignment	INT UNSIGNED, -- assignment id
-	submit_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	id 			SERIAL,
+	course		INT NOT NULL, -- course id
+	assignment	INT, -- assignment id
+	submit_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP(0),
 	PRIMARY KEY (id),
 	FOREIGN KEY (course) REFERENCES Course (id)
 );
 
 CREATE TABLE ReportReturn (
-	id 			INT UNSIGNED AUTO_INCREMENT,
-	rid			INT UNSIGNED NOT NULL, -- request id
-	course		INT UNSIGNED NOT NULL, -- course id
-	assignment	INT UNSIGNED, -- assignment id
-	submit_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	id 			SERIAL,
+	rid			INT NOT NULL, -- request id
+	course		INT NOT NULL, -- course id
+	assignment	INT, -- assignment id
+	submit_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP(0),
 	PRIMARY KEY (id),
 	FOREIGN KEY (rid) REFERENCES ReportRequest (id)
 );
+
+GRANT ALL PRIVILEGES ON TABLE Permission TO c4f00g03;
+GRANT ALL PRIVILEGES ON TABLE Account TO c4f00g03;
+GRANT ALL PRIVILEGES ON TABLE Subject TO c4f00g03;
+GRANT ALL PRIVILEGES ON TABLE Course TO c4f00g03;
+GRANT ALL PRIVILEGES ON TABLE Enrollment TO c4f00g03;
+GRANT ALL PRIVILEGES ON TABLE Assignment TO c4f00g03;
+GRANT ALL PRIVILEGES ON TABLE Submission TO c4f00g03;
+GRANT ALL PRIVILEGES ON TABLE ReportRequest TO c4f00g03;
+GRANT ALL PRIVILEGES ON TABLE ReportReturn TO c4f00g03;

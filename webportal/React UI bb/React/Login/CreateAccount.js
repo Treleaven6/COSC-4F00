@@ -1,4 +1,6 @@
-'use strict';
+"use strict";
+
+// Allow user to request an account
 
 export default class CreateAccount extends React.Component {
   constructor(props) {
@@ -29,7 +31,7 @@ export default class CreateAccount extends React.Component {
     e.preventDefault();
     // sanitize / check database
     // if good, send to parent? Or email? idk
-    if (this.state.email === '' || this.state.first_name === '' || this.state.last_name === '' || this.state.username === '' || this.state.sid === '') {
+    if (this.state.email === "" || this.state.first_name === "" || this.state.last_name === "" || this.state.username === "" || this.state.sid === "") {
       return;
     }
 

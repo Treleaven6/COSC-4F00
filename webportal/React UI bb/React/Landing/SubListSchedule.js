@@ -1,4 +1,6 @@
-'use strict';
+"use strict";
+
+// Called for each course, returns a list of assignments
 
 export default class SubListSchedule extends React.Component {
   render() {

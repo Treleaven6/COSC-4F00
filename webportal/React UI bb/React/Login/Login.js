@@ -1,10 +1,11 @@
-'use strict';
+"use strict";
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 import CreateAccount from "./CreateAccount.js";
 import ForgotPassword from "./ForgotPassword.js";
 
+// the Login screen
 export default class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -54,7 +55,7 @@ export default class Login extends React.Component {
 
   callApi(username, password) {
     return _asyncToGenerator(function* () {
-      const response = yield fetch("http://localhost:8081/api.php/login/" + username + "/" + password);
+      const response = yield fetch("./api.php/login/" + username + "/" + password);
       if (response.status !== 200) throw Error(response.status + ", " + response.statusText);
       const body = yield response.json();
       if (!Array.isArray(body)) throw Error("bad response: " + body);

@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 export default class Assignment extends React.Component {
   constructor(props) {
@@ -6,16 +6,25 @@ export default class Assignment extends React.Component {
     this.handleFileSelect = this.handleFileSelect.bind(this);
     this.getBase64 = this.getBase64.bind(this);
     this.getDate = this.getDate.bind(this);
+    this.resetVisible = this.resetVisible.bind(this);
     this.state = {
       default: true,
       submitting: false,
       file: null
     };
+    this.props.setReset(this.resetVisible);
+  }
+
+  resetVisible() {
+    this.setState({
+      default: true,
+      submitting: false
+    });
   }
 
   async callSingleAssignmentApi() {
     const response = await fetch(
-      "http://localhost:8081/api.php/submitted/student/" +
+      "./api.php/submitted/student/" +
         this.props.sid +
         "/assignment/" +
         this.props.assignment.id
@@ -23,10 +32,9 @@ export default class Assignment extends React.Component {
     const body = await response.json();
     if (response.status !== 200) throw Error(body.message);
     return body;
-  };
+  }
 
   handleSubmit(e) {
-    this.props.spotlight();
     this.setState({
       default: false,
       submitting: true
@@ -47,7 +55,17 @@ export default class Assignment extends React.Component {
 
   // this entire function is sketchy AF and could explode at any minute
   handleUpload(e) {
-    const path = "http://localhost:8081/api.php/upload/" + this.props.course.id + "/" + this.props.assignment.id + "/" + this.props.sid;
+    if (this.state.file === null) {
+      return;
+    }
+
+    const path =
+      "./api.php/upload/" +
+      this.props.course.id +
+      "/" +
+      this.props.assignment.id +
+      "/" +
+      this.props.sid;
     //let zip = new JSZip();
 
     // convert to drag-and-drop?!
@@ -80,7 +98,7 @@ export default class Assignment extends React.Component {
       });
     });
     */
-    
+
     /*
     // select one file, will zip it
     // check encodeURIcomponent
@@ -103,10 +121,8 @@ export default class Assignment extends React.Component {
 
     // assuming a single, zipped file was selected
     // sanitize / use "accept" to make sure .zip extension?
-    this.getBase64(this.state.file[0], (result) => {
-      //result = encodeURI(result);
+    this.getBase64(this.state.file[0], result => {
       axios.post(path, encodeURIComponent(result)).then(res => {
-        //console.log(res);
         console.log(res.data);
         // hackily update previously submitted time
         let strtime = this.getDate();
@@ -121,33 +137,43 @@ export default class Assignment extends React.Component {
 
   getDate() {
     let date = new Date();
-    let month = date.getMonth()+1;
-    month = (month < 10) ? "0" + month : month;
+    let month = date.getMonth() + 1;
+    month = month < 10 ? "0" + month : month;
     let day = date.getDate();
-    day = (day < 10) ? "0" + day : day;
+    day = day < 10 ? "0" + day : day;
     let hours = date.getHours();
-    hours = (hours < 10) ? "0" + hours : hours;
+    hours = hours < 10 ? "0" + hours : hours;
     let minutes = date.getMinutes();
-    minutes = (minutes < 10) ? "0" + minutes : minutes;
+    minutes = minutes < 10 ? "0" + minutes : minutes;
     let seconds = date.getSeconds();
-    seconds = (seconds < 10) ? "0" + seconds : seconds;
-    let strtime = date.getFullYear() + "-" + month + "-" + day + " " + hours + ":" + minutes + ":" + seconds;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+    let strtime =
+      date.getFullYear() +
+      "-" +
+      month +
+      "-" +
+      day +
+      " " +
+      hours +
+      ":" +
+      minutes +
+      ":" +
+      seconds;
     return strtime;
   }
 
   getBase64(file, cb) {
     let reader = new FileReader();
     reader.readAsDataURL(file);
-    reader.onload = function () {
-        cb(reader.result)
+    reader.onload = function() {
+      cb(reader.result);
     };
-    reader.onerror = function (error) {
-        console.log('Error: ', error);
+    reader.onerror = function(error) {
+      console.log("Error: ", error);
     };
   }
 
   handleCancelSubmit(e) {
-    this.props.unspotlight();
     this.setState({
       default: true,
       submitting: false
@@ -207,7 +233,7 @@ export default class Assignment extends React.Component {
         <div>
           <p>Upload a zip file for assignment: {this.props.assignment.name}</p>
           <span>
-            <input type="file" name="myFile" onChange={this.handleFileSelect} accept=".zip"/>
+            <input type="file" onChange={this.handleFileSelect} accept=".zip" />
             <input
               type="button"
               value="Upload"

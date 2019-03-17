@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 export default class CreateCourse extends React.Component {
   // subject code (MATH3P03, COSC4F00, etc)
@@ -16,21 +16,21 @@ export default class CreateCourse extends React.Component {
 
   handleInputChange(event) {
     this.setState({
-      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.value
     });
   }
 
   onCancel(e) {
-      e.preventDefault();
-      this.props.onCancel();
+    e.preventDefault();
+    this.props.onCancel();
   }
 
   onCreate(e) {
-      console.log("create course");
+    console.log("create course");
   }
 
   onSearch(e) {
-      console.log("search");
+    console.log("search");
   }
 
   render() {
@@ -60,7 +60,7 @@ export default class CreateCourse extends React.Component {
             onChange={e => this.handleInputChange(e)}
           />
           <input type="button" value="Create" onClick={e => this.onCreate(e)} />
-          <input type="button" value="Cancel" onClick={e => this.onCancel(e)}/>
+          <input type="button" value="Cancel" onClick={e => this.onCancel(e)} />
         </form>
       </div>
     );

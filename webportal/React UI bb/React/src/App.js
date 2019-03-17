@@ -4,6 +4,9 @@ import Login from "./Login/Login.js";
 import Teacher from "./Landing/Teacher.js";
 import Student from "./Landing/Student.js";
 
+// Entry point of the website, decides whether to
+// display the login page, a teacher account, or 
+// a student account
 class App extends React.Component {
   constructor(props) {
     super(props);

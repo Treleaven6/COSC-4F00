@@ -1,27 +1,44 @@
-'use strict';
+"use strict";
 
 import DetectAssignment from "./Plagiarism/DetectAssignment.js";
+import EditAssignmentInfo from "./EditAssignmentInfo.js";
+import DeleteAssignment from "./DeleteAssignment.js";
 
 export default class Assignment extends React.Component {
   constructor(props) {
     super(props);
     this.onBack = this.onBack.bind(this);
+    this.resetVisible = this.resetVisible.bind(this);
     this.state = {
       aid: this.props.assignment.id,
       isVisible: {
         default: true,
+        editInfo: false,
         delete: false,
         detect: false,
         review: false
       }
     };
+    this.props.setReset(this.resetVisible);
   }
 
-  onBack() {
-    this.props.unspotlight();
+  resetVisible() {
     this.setState({
       isVisible: {
         default: true,
+        editInfo: false,
+        delete: false,
+        detect: false,
+        review: false
+      }
+    });
+  }
+
+  onBack() {
+    this.setState({
+      isVisible: {
+        default: true,
+        editInfo: false,
         delete: false,
         detect: false,
         review: false
@@ -31,19 +48,34 @@ export default class Assignment extends React.Component {
 
   onEditInfo(e) {
     // another component, with fields for every value
-    console.log("edit info");
-  }
-
-  onDeleteAssignment(e) {
-    // dialogue box asking if sure, and then a lot of database stuff
-    console.log("delete assignment");
-  }
-
-  onDetectPlagiarism(e) {
-    this.props.spotlight();
     this.setState({
       isVisible: {
         default: false,
+        editInfo: true,
+        delete: false,
+        detect: false,
+        review: false
+      }
+    });
+  }
+
+  onDeleteAssignment(e) {
+    this.setState({
+      isVisible: {
+        default: false,
+        editInfo: false,
+        delete: true,
+        detect: false,
+        review: false
+      }
+    });
+  }
+
+  onDetectPlagiarism(e) {
+    this.setState({
+      isVisible: {
+        default: false,
+        editInfo: false,
         delete: false,
         detect: true,
         review: false
@@ -59,7 +91,7 @@ export default class Assignment extends React.Component {
   render() {
     let display;
 
-    if (this.state.isVisible['default']) {
+    if (this.state.isVisible["default"]) {
       display = React.createElement(
         "div",
         null,
@@ -121,6 +153,13 @@ export default class Assignment extends React.Component {
         React.createElement(
           "p",
           null,
+          "closing: ",
+          this.props.assignment.closing,
+          " "
+        ),
+        React.createElement(
+          "p",
+          null,
           "From course"
         ),
         React.createElement(
@@ -142,8 +181,28 @@ export default class Assignment extends React.Component {
           this.props.course.semester
         )
       );
-    } else if (this.state.isVisible['detect']) {
-      display = React.createElement(DetectAssignment, { goBack: this.onBack, assignment: this.props.assignment });
+    } else if (this.state.isVisible["editInfo"]) {
+      display = React.createElement(EditAssignmentInfo, {
+        updateParent: this.props.updateInfo,
+        id: this.props.assignment.id,
+        name: this.props.assignment.name,
+        closing: this.props.assignment.closing,
+        goBack: this.onBack
+      });
+    } else if (this.state.isVisible["delete"]) {
+      display = React.createElement(DeleteAssignment, {
+        goBack: this.onBack,
+        name: this.props.assignment.name,
+        id: this.props.assignment.id,
+        refreshList: this.props.refreshList
+      });
+    } else if (this.state.isVisible["detect"]) {
+      display = React.createElement(DetectAssignment, {
+        goBack: this.onBack,
+        assignment: this.props.assignment,
+        course: this.props.course,
+        assignme: this.props.assignment
+      });
     }
 
     return React.createElement(

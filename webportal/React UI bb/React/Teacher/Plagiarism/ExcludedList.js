@@ -6,42 +6,48 @@ export default class SubmittedList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      gotFiles: false,
-      files: null
+      excluded: []
     };
   }
 
   componentDidMount() {
-    this.getUploaded().then(res => {
+    this.getCluded().then(res => {
+      // excluded: Array.from(res.exclude),
       this.setState({
-        gotFiles: true,
-        files: res
+        excluded: res
       });
     }).catch(err => console.log(err));
   }
 
-  getUploaded() {
+  getCluded() {
     var _this = this;
 
     return _asyncToGenerator(function* () {
-      const response = yield fetch("./api.php/submitted/assignment/" + _this.props.aid);
+      //console.log("get cluded");
+      const response = yield fetch("./api.php/excluded/" + _this.props.cid + "/" + _this.props.aid);
       if (response.status !== 200) throw Error(response.status + ", " + response.statusText);
       const body = yield response.json();
-      if (!Array.isArray(body)) throw Error("bad response: " + body);
       return body;
     })();
   }
 
   render() {
-    let display_blurb = "0 people have submitted files";
-    let display = "";
-
-    if (this.state.gotFiles) {
-      display_blurb = this.state.files.length + " people have submitted files";
-      display = this.state.files.map(f => React.createElement(
+    let excluded_blurb = "No files to exclude";
+    let excluded = this.state.excluded;
+    let jsx = "";
+    if (excluded) {
+      if (this.props.deleteAll) {
+        excluded.length = 0;
+      } else if (this.props.addFile) {
+        if (!excluded.includes(this.props.addFile)) {
+          excluded.push(this.props.addFile);
+        }
+      }
+      excluded_blurb = excluded.length + " excluded files";
+      jsx = excluded.map(n => React.createElement(
         "li",
-        { key: f.id },
-        "id: " + f.id + ", firstname: " + f.firstname + ", lastname: " + f.lastname
+        { key: n },
+        n
       ));
     }
 
@@ -51,12 +57,12 @@ export default class SubmittedList extends React.Component {
       React.createElement(
         "p",
         null,
-        display_blurb
+        excluded_blurb
       ),
       React.createElement(
         "ul",
         null,
-        display
+        jsx
       )
     );
   }

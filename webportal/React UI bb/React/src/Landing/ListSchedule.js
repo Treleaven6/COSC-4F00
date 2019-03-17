@@ -1,18 +1,22 @@
-'use strict';
+"use strict";
 
 import SubListSchedule from "./SubListSchedule.js";
 
-// get courses and assignmnets
+// Returns a list of courses, calls SubListSchedule for assignments
+// in each course. This is the main navigational method from a
+// landing page
 export default class ListSchedule extends React.Component {
   constructor(props) {
     super(props);
-    this.doNothing = this.doNothing.bind(this);
     // anti-pattern? just use props throughout?
     this.state = {
       id: this.props.id,
       isTeacher: this.props.isTeacher === "true",
       courses: ""
     };
+
+    this.classesDidMount = this.classesDidMount.bind(this);
+    this.props.setRefresh(this.classesDidMount);
   }
 
   componentDidMount() {
@@ -50,7 +54,7 @@ export default class ListSchedule extends React.Component {
 
   async callClassApi() {
     const response = await fetch(
-      "http://localhost:8081/api.php/" +
+      "./api.php/" +
         (this.state.isTeacher ? "teaching" : "enrolled") +
         "/" +
         this.state.id
@@ -58,26 +62,18 @@ export default class ListSchedule extends React.Component {
     const body = await response.json();
     if (response.status !== 200) throw Error(body.message);
     return body;
-  };
+  }
 
   async callAssApi(cid) {
-    const response = await fetch("http://localhost:8081/api.php/assigned/" + cid);
+    const response = await fetch("./api.php/assigned/" + cid);
     const body = await response.json();
     if (response.status !== 200) throw Error(body.message);
     return body;
-  };
-
-  // when sublist (assignments) is disabled, this is their click action
-  doNothing() { }
+  }
 
   render() {
     let courseList = null;
     if (this.state.courses !== "") {
-      let clickAction = this.props.onClick;
-      if (!this.props.sublist) {
-        clickAction = this.doNothing;
-      }
-
       courseList = this.state.courses.map(course => (
         <li key={course.id}>
           <span onClick={() => this.props.onClick("course", course.id, 0)}>
@@ -90,7 +86,7 @@ export default class ListSchedule extends React.Component {
               "semester: " +
               course.semester}
           </span>
-          <SubListSchedule onClick={clickAction} course={course} />
+          <SubListSchedule onClick={this.props.onClick} course={course} />
         </li>
       ));
     }

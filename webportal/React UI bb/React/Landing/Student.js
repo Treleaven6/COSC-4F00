@@ -1,31 +1,35 @@
-'use strict';
+"use strict";
 
 import ListSchedule from "./ListSchedule.js";
 import Course from "../Student/Course.js";
 import Assignment from "../Student/Assignment.js";
 
-// almost exactly the same as teacher save a few strings, boolean isTeacher, and imports
+// What a student will see when they first sign in
 export default class Student extends React.Component {
-
   constructor(props) {
     super(props);
     this.courseHandler = this.courseHandler.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleInstructor = this.handleInstructor.bind(this);
     this.handleSubmitTime = this.handleSubmitTime.bind(this);
-    this.disableAssignments = this.disableAssignments.bind(this);
-    this.enableAssignments = this.enableAssignments.bind(this);
+    this.setResetAssignments = this.setResetAssignments.bind(this);
     this.state = {
       courses: "",
       cid: "",
       aid: "",
-      sublist: true,
+      resetAssignments: null,
       isVisible: {
         default: true,
         course: false,
         assignment: false
       }
     };
+  }
+
+  setResetAssignments(f) {
+    this.setState({
+      resetAssignments: f
+    });
   }
 
   onLogout(evt) {
@@ -35,18 +39,6 @@ export default class Student extends React.Component {
   courseHandler(obj) {
     this.setState({
       courses: obj
-    });
-  }
-
-  disableAssignments() {
-    this.setState({
-      sublist: false
-    });
-  }
-
-  enableAssignments() {
-    this.setState({
-      sublist: true
     });
   }
 
@@ -65,6 +57,9 @@ export default class Student extends React.Component {
         }
       });
     } else if (type === "assignment") {
+      if (this.state.assignment && this.state.resetAssignments !== null) {
+        this.state.resetAssignments();
+      }
       this.setState({
         isVisible: {
           default: false,
@@ -73,8 +68,6 @@ export default class Student extends React.Component {
         }
       });
     }
-
-    this.enableAssignments();
   }
 
   handleInstructor(course) {
@@ -124,15 +117,12 @@ export default class Student extends React.Component {
         course: course,
         assignment: assignment,
         onSubmitTime: this.handleSubmitTime,
-        spotlight: this.disableAssignments,
-        unspotlight: this.enableAssignments
+        setReset: this.setResetAssignments
       });
     } else {
       // default
       // put some announcements or a calender or something
     }
-
-    let sublist = true;
 
     return React.createElement(
       "div",
@@ -157,7 +147,7 @@ export default class Student extends React.Component {
         onClick: this.handleClick,
         id: this.props.id,
         isTeacher: "false",
-        sublist: this.state.sublist
+        setRefresh: this.setResetAssignments
       }),
       React.createElement(
         "div",

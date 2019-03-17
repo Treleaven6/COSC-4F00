@@ -6,42 +6,47 @@ export default class SubmittedList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      gotFiles: false,
-      files: null
+      included: null
     };
   }
 
   componentDidMount() {
-    this.getUploaded().then(res => {
+    this.getCluded().then(res => {
       this.setState({
-        gotFiles: true,
-        files: res
+        included: res
       });
     }).catch(err => console.log(err));
   }
 
-  getUploaded() {
+  getCluded() {
     var _this = this;
 
     return _asyncToGenerator(function* () {
-      const response = yield fetch("./api.php/submitted/assignment/" + _this.props.aid);
+      //console.log("get cluded");
+      const response = yield fetch("./api.php/included/" + _this.props.cid + "/" + _this.props.aid);
       if (response.status !== 200) throw Error(response.status + ", " + response.statusText);
       const body = yield response.json();
-      if (!Array.isArray(body)) throw Error("bad response: " + body);
       return body;
     })();
   }
 
   render() {
-    let display_blurb = "0 people have submitted files";
-    let display = "";
-
-    if (this.state.gotFiles) {
-      display_blurb = this.state.files.length + " people have submitted files";
-      display = this.state.files.map(f => React.createElement(
+    let included_blurb = "No files to include";
+    let included = this.state.included;
+    let jsx = "";
+    if (included) {
+      if (this.props.deleteAll) {
+        included.length = 0;
+      } else if (this.props.addFile) {
+        if (!included.includes(this.props.addFile)) {
+          included.push(this.props.addFile);
+        }
+      }
+      included_blurb = included.length + " included files";
+      jsx = included.map(n => React.createElement(
         "li",
-        { key: f.id },
-        "id: " + f.id + ", firstname: " + f.firstname + ", lastname: " + f.lastname
+        { key: n },
+        n
       ));
     }
 
@@ -51,12 +56,12 @@ export default class SubmittedList extends React.Component {
       React.createElement(
         "p",
         null,
-        display_blurb
+        included_blurb
       ),
       React.createElement(
         "ul",
         null,
-        display
+        jsx
       )
     );
   }

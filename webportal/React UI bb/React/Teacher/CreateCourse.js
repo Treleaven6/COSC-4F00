@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 export default class CreateCourse extends React.Component {
   // subject code (MATH3P03, COSC4F00, etc)

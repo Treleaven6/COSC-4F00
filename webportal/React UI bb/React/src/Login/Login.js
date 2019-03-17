@@ -1,8 +1,9 @@
-'use strict';
+"use strict";
 
 import CreateAccount from "./CreateAccount.js";
 import ForgotPassword from "./ForgotPassword.js";
 
+// the Login screen
 export default class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -20,7 +21,7 @@ export default class Login extends React.Component {
       warning: ""
     };
   }
-  
+
   updateUsername(e) {
     this.setState({
       username: e.target.value
@@ -60,13 +61,16 @@ export default class Login extends React.Component {
       .catch(err => console.log(err));
   }
 
-  async callApi (username, password) {
-    const response = await fetch("http://localhost:8081/api.php/login/" + username + "/" + password);
-    if (response.status !== 200) throw Error(response.status + ", " + response.statusText);
+  async callApi(username, password) {
+    const response = await fetch(
+      "./api.php/login/" + username + "/" + password
+    );
+    if (response.status !== 200)
+      throw Error(response.status + ", " + response.statusText);
     const body = await response.json();
     if (!Array.isArray(body)) throw Error("bad response: " + body);
     return body;
-  };
+  }
 
   onBack() {
     this.setState({
@@ -78,8 +82,6 @@ export default class Login extends React.Component {
       }
     });
   }
-
-
 
   onForgotPassword(e) {
     e.preventDefault();
@@ -95,8 +97,8 @@ export default class Login extends React.Component {
 
   setWarning(str) {
     this.setState({
-      warning: str,
-    })
+      warning: str
+    });
   }
 
   onCreateAccount(e) {
@@ -113,7 +115,7 @@ export default class Login extends React.Component {
 
   render() {
     let display;
-    
+
     if (this.state.isVisible["forgotPassword"]) {
       display = <ForgotPassword goBack={this.onBack} />;
     } else if (this.state.isVisible["createAccount"]) {
@@ -149,7 +151,7 @@ export default class Login extends React.Component {
         </form>
       );
     }
-    
+
     return (
       <div>
         <h1>MOCD</h1>

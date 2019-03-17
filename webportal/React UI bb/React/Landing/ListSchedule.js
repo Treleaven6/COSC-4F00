@@ -1,20 +1,24 @@
-'use strict';
+"use strict";
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 import SubListSchedule from "./SubListSchedule.js";
 
-// get courses and assignmnets
+// Returns a list of courses, calls SubListSchedule for assignments
+// in each course. This is the main navigational method from a
+// landing page
 export default class ListSchedule extends React.Component {
   constructor(props) {
     super(props);
-    this.doNothing = this.doNothing.bind(this);
     // anti-pattern? just use props throughout?
     this.state = {
       id: this.props.id,
       isTeacher: this.props.isTeacher === "true",
       courses: ""
     };
+
+    this.classesDidMount = this.classesDidMount.bind(this);
+    this.props.setRefresh(this.classesDidMount);
   }
 
   componentDidMount() {
@@ -50,7 +54,7 @@ export default class ListSchedule extends React.Component {
     var _this = this;
 
     return _asyncToGenerator(function* () {
-      const response = yield fetch("http://localhost:8081/api.php/" + (_this.state.isTeacher ? "teaching" : "enrolled") + "/" + _this.state.id);
+      const response = yield fetch("./api.php/" + (_this.state.isTeacher ? "teaching" : "enrolled") + "/" + _this.state.id);
       const body = yield response.json();
       if (response.status !== 200) throw Error(body.message);
       return body;
@@ -59,24 +63,16 @@ export default class ListSchedule extends React.Component {
 
   callAssApi(cid) {
     return _asyncToGenerator(function* () {
-      const response = yield fetch("http://localhost:8081/api.php/assigned/" + cid);
+      const response = yield fetch("./api.php/assigned/" + cid);
       const body = yield response.json();
       if (response.status !== 200) throw Error(body.message);
       return body;
     })();
   }
 
-  // when sublist (assignments) is disabled, this is their click action
-  doNothing() {}
-
   render() {
     let courseList = null;
     if (this.state.courses !== "") {
-      let clickAction = this.props.onClick;
-      if (!this.props.sublist) {
-        clickAction = this.doNothing;
-      }
-
       courseList = this.state.courses.map(course => React.createElement(
         "li",
         { key: course.id },
@@ -85,7 +81,7 @@ export default class ListSchedule extends React.Component {
           { onClick: () => this.props.onClick("course", course.id, 0) },
           "code: " + course.code + ", " + "year: " + course.year + ", " + "semester: " + course.semester
         ),
-        React.createElement(SubListSchedule, { onClick: clickAction, course: course })
+        React.createElement(SubListSchedule, { onClick: this.props.onClick, course: course })
       ));
     }
     return React.createElement(

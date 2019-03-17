@@ -1,23 +1,30 @@
-'use strict';
+"use strict";
 
 import ListSchedule from "./ListSchedule.js";
-import Course from '../Teacher/Course.js';
-import Assignment from '../Teacher/Assignment.js';
-import CreateCourse from '../Teacher/CreateCourse.js';
+import Course from "../Teacher/Course.js";
+import Assignment from "../Teacher/Assignment.js";
+import CreateCourse from "../Teacher/CreateCourse.js";
 
+// What a teacher will see when they first sign in
 export default class Teacher extends React.Component {
   constructor(props) {
     super(props);
     this.courseHandler = this.courseHandler.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleCancelCreateCourse = this.handleCancelCreateCourse.bind(this);
-    this.disableAssignments = this.disableAssignments.bind(this);
-    this.enableAssignments = this.enableAssignments.bind(this);
+    this.setResetCourses = this.setResetCourses.bind(this);
+    this.setResetAssignments = this.setResetAssignments.bind(this);
+    this.updateAssignmentInfo = this.updateAssignmentInfo.bind(this);
+    this.setResetListSchedule = this.setResetListSchedule.bind(this);
+    this.updateAssignmentList = this.updateAssignmentList.bind(this);
     this.state = {
       courses: "",
       cid: "",
       aid: "",
       sublist: true,
+      resetCourses: null,
+      resetAssignments: null,
+      resetListSchedule: null,
       isVisible: {
         default: true,
         course: false,
@@ -27,13 +34,58 @@ export default class Teacher extends React.Component {
     };
   }
 
+  setResetListSchedule(f) {
+    this.setState({
+      resetListSchedule: f
+    });
+  }
+
+  updateAssignmentList() {
+    this.state.resetListSchedule();
+    if (this.state.isVisible["assignment"]) {
+      this.setState({
+        isVisible: {
+          default: true,
+          course: false,
+          assignment: false,
+          create_new_course: false
+        }
+      });
+    }
+  }
+
+  updateAssignmentInfo(name, closing) {
+    let course =
+      this.state.cid === "" || this.state.cid === 0
+        ? null
+        : this.state.courses.filter(c => c.id === this.state.cid)[0];
+    let assignment =
+      this.state.aid === "" || this.state.aid === 0
+        ? null
+        : course.assignments.filter(a => a.id === this.state.aid)[0];
+    assignment.name = name;
+    assignment.closing = closing;
+  }
+
+  setResetCourses(f) {
+    this.setState({
+      resetCourses: f
+    });
+  }
+
+  setResetAssignments(f) {
+    this.setState({
+      resetAssignments: f
+    });
+  }
+
   onCreateNewCourse(evt) {
     this.setState({
       isVisible: {
         default: false,
         course: false,
         assignment: false,
-        create_new_course: true,
+        create_new_course: true
       }
     });
   }
@@ -54,20 +106,8 @@ export default class Teacher extends React.Component {
         default: true,
         course: false,
         assignment: false,
-        create_new_course: false,
+        create_new_course: false
       }
-    });
-  }
-
-  disableAssignments() {
-    this.setState({
-      sublist: false,
-    });
-  }
-
-  enableAssignments() {
-    this.setState({
-      sublist: true,
     });
   }
 
@@ -78,40 +118,67 @@ export default class Teacher extends React.Component {
     });
 
     if (type === "course") {
+      if (this.state.isVisible["course"] && this.state.resetCourses !== null) {
+        this.state.resetCourses();
+      }
       this.setState({
         isVisible: {
           default: false,
           course: true,
           assignment: false,
-          create_new_course: false,
+          create_new_course: false
         }
       });
     } else if (type === "assignment") {
+      if (
+        this.state.isVisible["assignment"] &&
+        this.state.resetAssignments !== null
+      ) {
+        this.state.resetAssignments();
+      }
       this.setState({
         isVisible: {
           default: false,
           course: false,
           assignment: true,
-          create_new_course: false,
+          create_new_course: false
         }
       });
     }
 
-    this.enableAssignments();
     //console.log(type + ", " + cid + ", " + aid);
   }
 
   render() {
-    let course = (this.state.cid === "" || this.state.cid === 0) ? null : this.state.courses.filter((c) => c.id === this.state.cid)[0];
-    let assignment = (this.state.aid === "" || this.state.aid === 0) ? null : course.assignments.filter((a) => a.id === this.state.aid)[0];
+    let course =
+      this.state.cid === "" || this.state.cid === 0
+        ? null
+        : this.state.courses.filter(c => c.id === this.state.cid)[0];
+    let assignment =
+      this.state.aid === "" || this.state.aid === 0
+        ? null
+        : course.assignments.filter(a => a.id === this.state.aid)[0];
     let mainPage = null;
     if (this.state.isVisible["course"]) {
-      mainPage = <Course course={course}/>;
+      mainPage = (
+        <Course
+          course={course}
+          setReset={this.setResetCourses}
+          refreshList={this.updateAssignmentList}
+        />
+      );
     } else if (this.state.isVisible["assignment"]) {
-      // <Assignment course={course} assignmnet={assignment} />;
-      mainPage = <Assignment course={course} assignment={assignment} spotlight={this.disableAssignments} unspotlight={this.enableAssignments} />;
+      mainPage = (
+        <Assignment
+          course={course}
+          assignment={assignment}
+          setReset={this.setResetAssignments}
+          updateInfo={this.updateAssignmentInfo}
+          refreshList={this.updateAssignmentList}
+        />
+      );
     } else if (this.state.isVisible["create_new_course"]) {
-      mainPage = <CreateCourse onCancel={this.handleCancelCreateCourse}/>;
+      mainPage = <CreateCourse onCancel={this.handleCancelCreateCourse} />;
     } else {
       // default
       // put some announcements or a calender or something
@@ -120,14 +187,16 @@ export default class Teacher extends React.Component {
     return (
       <div>
         <p>a Teacher account</p>
-        <button onClick={e => this.onCreateNewCourse(e)}>Create new course</button>
+        <button onClick={e => this.onCreateNewCourse(e)}>
+          Create new course
+        </button>
         <button onClick={e => this.onLogout(e)}>Logout</button>
         <ListSchedule
           onCourses={this.courseHandler}
           onClick={this.handleClick}
           id={this.props.id}
           isTeacher="true"
-          sublist={this.state.sublist}
+          setRefresh={this.setResetListSchedule}
         />
         <div>{mainPage}</div>
       </div>
