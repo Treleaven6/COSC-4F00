@@ -6,6 +6,7 @@ import os
 import shutil
 import urllib
 import psycopg2
+import datetime
 
 #import mysql.connector
 #from mysql.connector import errorcode
@@ -44,6 +45,7 @@ cursor = cnx.cursor()
 # execute query, format response into an array of dictionaries
 def exec_and_parse(query):
 	cursor.execute(query)
+	cnx.commit()
 	out = []
 	while True:
 		row = cursor.fetchone()
@@ -87,9 +89,17 @@ elif cmd[0] == 'send':
 		    "'" + cmd[1] + "', " +
 		    "'" + cmd[2] + "')")
 elif cmd[0] == 'upass':
+	# api.php/upass/<assignment id>/<updated assignment name>/<updated assignment closing date>
+	# updates an assignment name and / or closing date
 	query = ("UPDATE Assignment SET name = '" + cmd[2] + "', closing = '" + cmd[3] + "' WHERE id = " + cmd[1])
 elif cmd[0] == 'delass':
+	# api.php/delass/<assignment id>
+	# deletes an assignment
 	query = ("DELETE FROM Assignment WHERE id = " + cmd[1])
+elif cmd[0] == 'password':
+	# api.php/password/<account id>/<new password>
+	# updates a password
+	query = ("UPDATE Account SET password = '" + cmd[2] + "' WHERE id = '" + cmd[1] + "'")
 	
 if query:
 	print(json.dumps(exec_and_parse(query)))

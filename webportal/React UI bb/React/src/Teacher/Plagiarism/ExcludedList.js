@@ -1,6 +1,6 @@
 "use strict";
 
-export default class SubmittedList extends React.Component {
+export default class ExcludedList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

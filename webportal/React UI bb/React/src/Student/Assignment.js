@@ -205,18 +205,46 @@ export default class Assignment extends React.Component {
       }
     }
 
+    let submit_warning = null;
+    let submitButton = null;
+    if (this.props.assignment.closing !== null) {
+      if (Date.parse(this.props.assignment.closing) < Date.now()) {
+        submit_warning = " submissions are closed";
+          submitButton = (
+            <button disabled="disabled">
+              {submit_button_text}
+            </button>
+          );
+      } else {
+        // https://stackoverflow.com/questions/3224834/get-difference-between-2-dates-in-javascript
+        let diffDays = Math.floor(parseInt(Date.parse(this.props.assignment.closing) - Date.now()) / (1000 * 60 * 60 * 24))
+        submit_warning = " " + diffDays + (diffDays === 1 ? " day until deadline" : " days until deadline");
+        submitButton = (
+          <button onClick={e => this.handleSubmit(e)}>
+            {submit_button_text}
+          </button>
+        );
+      }
+    } else {
+      submitButton = (
+        <button onClick={e => this.handleSubmit(e)}>
+          {submit_button_text}
+        </button>
+      );
+    }
+
     let mainpage;
     if (this.state.default) {
       mainpage = (
         <div>
           <p>an Assignment</p>
-          <button onClick={e => this.handleSubmit(e)}>
-            {submit_button_text}
-          </button>
+          {submitButton}
+          {submit_warning}
           <p>
             previously submitted at time: {this.props.assignment.submit_time}
           </p>
           <p>assignment id: {this.props.assignment.id}</p>
+          <p>closing: {this.props.assignment.closing}</p>
           <p>course id: {this.props.assignment.course}</p>
           <p>name: {this.props.assignment.name}</p>
           <p>pdf: {this.props.assignment.pdf}</p>

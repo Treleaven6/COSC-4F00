@@ -3,6 +3,7 @@ import json
 import urllib
 import os
 import psycopg2
+import datetime
 #import mysql.connector
 #from mysql.connector import errorcode
 #from mysql.connector import FieldType
@@ -42,6 +43,7 @@ cursor = cnx.cursor()
 # execute query, format response into an array of dictionaries
 def exec_and_parse(query):
 	cursor.execute(query)
+	cnx.commit()
 	out = []
 	while True:
 		row = cursor.fetchone()

@@ -54,11 +54,8 @@ CREATE TABLE Course (
 	id			SERIAL,
 	code		VARCHAR(12) NOT NULL,
 	instructor	VARCHAR(12) NOT NULL,
-	directory	VARCHAR(255) NOT NULL,
 	year 		INTEGER NOT NULL,
 	semester 	VARCHAR(12) NOT NULL,
-
-	-- Should we section? or start & end dates?
 	
 	PRIMARY KEY (id),
 	FOREIGN KEY (code) REFERENCES Subject (code),
@@ -68,8 +65,6 @@ CREATE TABLE Course (
 CREATE TABLE Enrollment (
 	sid			VARCHAR(12) NOT NULL,
 	course		INT NOT NULL,
-
-	-- Enrollment date?
 	
 	PRIMARY KEY (sid, course),
 	FOREIGN KEY (sid) REFERENCES Account (id),
@@ -98,9 +93,6 @@ CREATE TABLE Submission (
 	FOREIGN KEY (course) REFERENCES Course (id),
 	FOREIGN KEY (assignment) REFERENCES Assignment (id)
 );
-
-DROP TABLE IF EXISTS ReportRequest;
-DROP TABLE IF EXISTS ReportReturn;
 
 CREATE TABLE ReportRequest (
 	id 			SERIAL,

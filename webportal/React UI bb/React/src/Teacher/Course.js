@@ -4,6 +4,7 @@ import CreateAssignment from "./CreateAssignment.js";
 import EditCourseInfo from "./EditCourseInfo.js";
 import EnrollStudents from "./EnrollStudents.js";
 import DeleteCourse from "./DeleteCourse.js";
+import EnrolledList from "./EnrolledList.js";
 
 export default class Course extends React.Component {
   constructor(props) {
@@ -120,10 +121,11 @@ export default class Course extends React.Component {
           <button onClick={e => this.onDeleteCourse(e)}>Delete course</button>
           <p>id: {this.props.course.id}</p>
           <p>description: {this.props.course.description}</p>
-          <p>directory: {this.props.course.directory}</p>
           <p>year: {this.props.course.year}</p>
           <p>semester: {this.props.course.semester}</p>
           <ul>{assList}</ul>
+          <p>List of Enrolled students</p>
+          <EnrolledList course={this.props.course} updateEnrolled={this.props.updateEnrolled}/>
         </div>
       );
     } else if (this.state.isVisible["createAssignment"]) {

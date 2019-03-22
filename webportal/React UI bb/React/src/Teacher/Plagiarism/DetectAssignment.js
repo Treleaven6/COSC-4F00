@@ -183,9 +183,7 @@ export default class DetectAssignment extends React.Component {
         </button>
       );
     }
-
-    /* REFRESH OR UPDATE EXCLUDE AND INCLUDE LISTS ON UPLOADS */
-
+    
     return (
       <div>
         <p>Package and Submit all Files for an Assignment</p>
@@ -234,6 +232,8 @@ export default class DetectAssignment extends React.Component {
         <SubmittedList
           cid={this.props.course.id}
           aid={this.props.assignment.id}
+          course={this.props.course}
+          updateEnrolled={this.props.updateEnrolled}
         />
       </div>
     );

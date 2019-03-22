@@ -165,8 +165,6 @@ export default class DetectAssignment extends React.Component {
       );
     }
 
-    /* REFRESH OR UPDATE EXCLUDE AND INCLUDE LISTS ON UPLOADS */
-
     return React.createElement(
       "div",
       null,
@@ -256,7 +254,9 @@ export default class DetectAssignment extends React.Component {
       ),
       React.createElement(SubmittedList, {
         cid: this.props.course.id,
-        aid: this.props.assignment.id
+        aid: this.props.assignment.id,
+        course: this.props.course,
+        updateEnrolled: this.props.updateEnrolled
       })
     );
   }

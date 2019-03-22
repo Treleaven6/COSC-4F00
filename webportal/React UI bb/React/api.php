@@ -1,5 +1,7 @@
 
 <?php
+// look at the mail() function for password changes
+
 // put #!/usr/bin/php-cgi at top (very top, before opening <?php) before uploading to Sandcastle
 // can start server locally by running "php -S localhost:8081"
 // have to visit the website through this address!!!

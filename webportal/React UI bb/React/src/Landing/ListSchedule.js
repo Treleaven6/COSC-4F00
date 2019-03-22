@@ -55,7 +55,7 @@ export default class ListSchedule extends React.Component {
   async callClassApi() {
     const response = await fetch(
       "./api.php/" +
-        (this.state.isTeacher ? "teaching" : "enrolled") +
+        (this.state.isTeacher ? "teaching" : "taking") +
         "/" +
         this.state.id
     );

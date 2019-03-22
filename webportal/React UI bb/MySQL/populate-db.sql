@@ -30,14 +30,14 @@ VALUES ('MATH2P98', 'Applied Statistics', 'We do math.');
 INSERT INTO Subject (code, name, description)
 VALUES ('COSC4F00', 'Project Engineering', 'We plan shit.');
 
-INSERT INTO Course (code, instructor, directory, year, semester)
-VALUES ('MATH2P98', '123456', 'math', 2019, 'winter');
+INSERT INTO Course (code, instructor, year, semester)
+VALUES ('MATH2P98', '123456', 2019, 'winter');
 
-INSERT INTO Course (code, instructor, directory, year, semester)
-VALUES ('MATH2P98', '123456', 'math18', 2018, 'fall');
+INSERT INTO Course (code, instructor, year, semester)
+VALUES ('MATH2P98', '123456', 2018, 'fall');
 
-INSERT INTO Course (code, instructor, directory, year, semester)
-VALUES ('COSC4F00', '121212', 'cosc', 2019, 'winter');
+INSERT INTO Course (code, instructor, year, semester)
+VALUES ('COSC4F00', '121212', 2019, 'winter');
 
 INSERT INTO Enrollment (sid, course)
 VALUES ('999888', 1);
@@ -53,6 +53,12 @@ VALUES (1, 'First assignment');
 
 INSERT INTO Assignment (course, name)
 VALUES (1, 'Second assignment');
+
+INSERT INTO Assignment (course, name, closing)
+VALUES (1, 'Third assignment', CURRENT_TIMESTAMP(0));
+
+INSERT INTO Assignment (course, name, closing)
+VALUES (1, 'Fourth Assignment', '2021-03-15 17:13:40');
 
 INSERT INTO Assignment (course, name)
 VALUES (2, 'Batmobile assignment');

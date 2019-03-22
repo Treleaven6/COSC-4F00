@@ -4,6 +4,7 @@ import ListSchedule from "./ListSchedule.js";
 import Course from "../Teacher/Course.js";
 import Assignment from "../Teacher/Assignment.js";
 import CreateCourse from "../Teacher/CreateCourse.js";
+import ChangePassword from "../Teacher/ChangePassword.js";
 
 // What a teacher will see when they first sign in
 export default class Teacher extends React.Component {
@@ -17,6 +18,7 @@ export default class Teacher extends React.Component {
     this.updateAssignmentInfo = this.updateAssignmentInfo.bind(this);
     this.setResetListSchedule = this.setResetListSchedule.bind(this);
     this.updateAssignmentList = this.updateAssignmentList.bind(this);
+    this.updateEnrolled = this.updateEnrolled.bind(this);
     this.state = {
       courses: "",
       cid: "",
@@ -29,7 +31,8 @@ export default class Teacher extends React.Component {
         default: true,
         course: false,
         assignment: false,
-        create_new_course: false
+        create_new_course: false,
+        change_password: false
       }
     };
   }
@@ -48,10 +51,16 @@ export default class Teacher extends React.Component {
           default: true,
           course: false,
           assignment: false,
-          create_new_course: false
+          create_new_course: false,
+          change_password: false
         }
       });
     }
+  }
+
+  updateEnrolled(enrolledList) {
+    let course = this.state.courses.filter(c => c.id === this.state.cid)[0];
+    course["enrolledList"] = enrolledList;
   }
 
   updateAssignmentInfo(name, closing) {
@@ -79,7 +88,8 @@ export default class Teacher extends React.Component {
         default: false,
         course: false,
         assignment: false,
-        create_new_course: true
+        create_new_course: true,
+        change_password: false
       }
     });
   }
@@ -100,7 +110,20 @@ export default class Teacher extends React.Component {
         default: true,
         course: false,
         assignment: false,
-        create_new_course: false
+        create_new_course: false,
+        change_password: false
+      }
+    });
+  }
+
+  onChangePassword(e) {
+    this.setState({
+      isVisible: {
+        default: true,
+        course: false,
+        assignment: false,
+        create_new_course: false,
+        change_password: true
       }
     });
   }
@@ -143,12 +166,21 @@ export default class Teacher extends React.Component {
   render() {
     let course = this.state.cid === "" || this.state.cid === 0 ? null : this.state.courses.filter(c => c.id === this.state.cid)[0];
     let assignment = this.state.aid === "" || this.state.aid === 0 ? null : course.assignments.filter(a => a.id === this.state.aid)[0];
+
+    /*        
+        let enrolledList =
+        course !== null && "enrolled" in course
+        ? course["enrolled"]
+        : null
+    */
+
     let mainPage = null;
     if (this.state.isVisible["course"]) {
       mainPage = React.createElement(Course, {
         course: course,
         setReset: this.setResetCourses,
-        refreshList: this.updateAssignmentList
+        refreshList: this.updateAssignmentList,
+        updateEnrolled: this.updateEnrolled
       });
     } else if (this.state.isVisible["assignment"]) {
       mainPage = React.createElement(Assignment, {
@@ -156,10 +188,16 @@ export default class Teacher extends React.Component {
         assignment: assignment,
         setReset: this.setResetAssignments,
         updateInfo: this.updateAssignmentInfo,
-        refreshList: this.updateAssignmentList
+        refreshList: this.updateAssignmentList,
+        updateEnrolled: this.updateEnrolled
       });
     } else if (this.state.isVisible["create_new_course"]) {
       mainPage = React.createElement(CreateCourse, { onCancel: this.handleCancelCreateCourse });
+    } else if (this.state.isVisible["change_password"]) {
+      mainPage = React.createElement(ChangePassword, {
+        tid: this.props.id,
+        goBack: this.handleCancelCreateCourse
+      });
     } else {
       // default
       // put some announcements or a calender or something
@@ -177,6 +215,11 @@ export default class Teacher extends React.Component {
         "button",
         { onClick: e => this.onCreateNewCourse(e) },
         "Create new course"
+      ),
+      React.createElement(
+        "button",
+        { onClick: e => this.onChangePassword(e) },
+        "change password"
       ),
       React.createElement(
         "button",

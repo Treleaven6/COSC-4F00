@@ -3,6 +3,7 @@
 import ListSchedule from "./ListSchedule.js";
 import Course from "../Student/Course.js";
 import Assignment from "../Student/Assignment.js";
+import ChangePassword from "../Student/ChangePassword.js";
 
 // What a student will see when they first sign in
 export default class Student extends React.Component {
@@ -13,6 +14,7 @@ export default class Student extends React.Component {
     this.handleInstructor = this.handleInstructor.bind(this);
     this.handleSubmitTime = this.handleSubmitTime.bind(this);
     this.setResetAssignments = this.setResetAssignments.bind(this);
+    this.handleBack = this.handleBack.bind(this);
     this.state = {
       courses: "",
       cid: "",
@@ -21,7 +23,8 @@ export default class Student extends React.Component {
       isVisible: {
         default: true,
         course: false,
-        assignment: false
+        assignment: false,
+        changePassword: false
       }
     };
   }
@@ -42,6 +45,17 @@ export default class Student extends React.Component {
     });
   }
 
+  handleBack() {
+    this.setState({
+      isVisible: {
+        default: true,
+        course: false,
+        assignment: false,
+        changePassword: false
+      }
+    });
+  }
+
   handleClick(type, cid, aid) {
     this.setState({
       cid: cid,
@@ -53,7 +67,8 @@ export default class Student extends React.Component {
         isVisible: {
           default: false,
           course: true,
-          assignment: false
+          assignment: false,
+          changePassword: false
         }
       });
     } else if (type === "assignment") {
@@ -64,7 +79,8 @@ export default class Student extends React.Component {
         isVisible: {
           default: false,
           course: false,
-          assignment: true
+          assignment: true,
+          changePassword: false
         }
       });
     }
@@ -105,6 +121,17 @@ export default class Student extends React.Component {
     console.log("enroll in a course");
   }
 
+  onChangePassword(e) {
+    this.setState({
+      isVisible: {
+        default: false,
+        course: false,
+        assignment: false,
+        changePassword: true
+      }
+    });
+  }
+
   render() {
     let course =
       this.state.cid === "" || this.state.cid === 0
@@ -129,6 +156,13 @@ export default class Student extends React.Component {
           setReset={this.setResetAssignments}
         />
       );
+    } else if (this.state.isVisible["changePassword"]) {
+      mainPage = (
+        <ChangePassword
+          sid={this.props.id}
+          goBack={this.handleBack}
+        />
+      )
     } else {
       // default
       // put some announcements or a calender or something
@@ -138,6 +172,7 @@ export default class Student extends React.Component {
       <div>
         <p>a Student account</p>
         <button onClick={e => this.onEnroll(e)}>enroll in a course</button>
+        <button onClick={e => this.onChangePassword(e)}>change password</button>
         <button onClick={e => this.onLogout(e)}>Logout</button>
         <ListSchedule
           onCourses={this.courseHandler}

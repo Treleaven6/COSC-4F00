@@ -54,7 +54,7 @@ export default class ListSchedule extends React.Component {
     var _this = this;
 
     return _asyncToGenerator(function* () {
-      const response = yield fetch("./api.php/" + (_this.state.isTeacher ? "teaching" : "enrolled") + "/" + _this.state.id);
+      const response = yield fetch("./api.php/" + (_this.state.isTeacher ? "teaching" : "taking") + "/" + _this.state.id);
       const body = yield response.json();
       if (response.status !== 200) throw Error(body.message);
       return body;

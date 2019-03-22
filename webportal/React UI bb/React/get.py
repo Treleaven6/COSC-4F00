@@ -5,6 +5,8 @@ import os
 import datetime
 import psycopg2
 
+# TODO: scripts for creating accounts, creating courses, and enrolling
+
 # psql
 
 # this is pretty awful, as there is no caching and it
@@ -107,19 +109,25 @@ elif cmd[0] == 'teaching':
 	# api.php/teaching/<account id>
 	# get a list of courses that a professor is teaching
 	# used as soon as a teacher logs in
-	query = ("SELECT C.id, S.code, S.name, S.description, C.directory, C.year, C.semester " +
+	query = ("SELECT C.id, S.code, S.name, S.description, C.year, C.semester " +
     		 "FROM Course C " +
     		 "JOIN Subject S ON C.code = S.code " + 
     		 "WHERE C.instructor = '" + cmd[1] + "'")
-elif cmd[0] == 'enrolled':
-	# api.php/enrolled/<account id>
+elif cmd[0] == 'taking':
+	# api.php/taking/<account id>
 	# get a list of courses that a student is enrolled in
 	# used as soon as a student logs in
-	query = ("SELECT C.id, S.code, S.name, S.description, C.instructor, C.directory, C.year, C.semester " +
+	query = ("SELECT C.id, S.code, S.name, S.description, C.instructor, C.year, C.semester " +
     		 "FROM Enrollment E " +
     		 "JOIN Course C ON E.course = C.id " +
     		 "JOIN Subject S ON C.code = S.code " + 
     		 "WHERE sid = '" + cmd[1] + "'")
+elif cmd[0] == 'enrolled':
+	# api.php/enrolled/<course id>
+	# return a list of students that are enrolled in a course
+	query = ("SELECT A.id, A.firstname, A.lastname " +
+			 "FROM Account A, Enrollment E " +
+			 "WHERE E.sid = A.id AND E.course = " + cmd[1])
 elif cmd[0] == 'assigned':
 	# api.php/assigned/<course id>
 	# get all assigned assignments per course
@@ -140,7 +148,6 @@ elif cmd[0] == 'submitted' and cmd[1] == 'assignment':
 	# api.php/submitted/assignment/<assignment id>
 	# get all submissions to an assignment
 	# used when a teacher is going to check for plagiarism
-	# also join to get student name?
 	query = ("SELECT S.id, S.zip, A.firstname, A.lastname " +
     		 "FROM Submission S, Account A " +
     		 "WHERE S.assignment = '" + cmd[2] + "' AND S.id = A.id")

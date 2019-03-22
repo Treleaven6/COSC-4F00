@@ -201,7 +201,8 @@ export default class Assignment extends React.Component {
         goBack: this.onBack,
         assignment: this.props.assignment,
         course: this.props.course,
-        assignme: this.props.assignment
+        assignment: this.props.assignment,
+        updateEnrolled: this.props.updateEnrolled
       });
     }
 

@@ -18,6 +18,21 @@ export default class SubmittedList extends React.Component {
         });
       })
       .catch(err => console.log(err));
+    if (!("enrolledList" in this.props.course)) {
+      this.callEnrolledApi()
+        .then(res => {
+          this.props.updateEnrolled(res);
+          this.forceUpdate();
+        })
+        .catch(err => console.log(err));
+    }
+  }
+
+  async callEnrolledApi() {
+    const response = await fetch("./api.php/enrolled/" + this.props.course.id);
+    const body = await response.json();
+    if (response.status !== 200) throw Error(body.message);
+    return body;
   }
 
   async getUploaded() {
@@ -34,9 +49,15 @@ export default class SubmittedList extends React.Component {
   render() {
     let display_blurb = "0 people have submitted files";
     let display = "";
+    let notSubmitted_blurb = "";
+    let notSubmitted = null;
 
     if (this.state.gotFiles) {
-      display_blurb = this.state.files.length + " people have submitted files";
+      display_blurb =
+        this.state.files.length +
+        (this.state.files.length === 1
+          ? " person has submitted files"
+          : " people have submitted files");
       display = this.state.files.map(f => (
         <li key={f.id}>
           {"id: " +
@@ -47,12 +68,39 @@ export default class SubmittedList extends React.Component {
             f.lastname}
         </li>
       ));
+
+      if ("enrolledList" in this.props.course) {
+        let leftOut = [];
+        let submitted;
+        for (let i in this.props.course["enrolledList"]) {
+          submitted = false;
+          for (let j in this.state.files) {
+            if (this.props.course["enrolledList"][i].id === this.state.files[j].id) {
+              submitted = true;
+              break;
+            }
+          }
+          if (submitted === false) {
+            leftOut.push(this.props.course["enrolledList"][i]);
+          }
+        }
+
+        notSubmitted = leftOut.map(stud => (
+          <li key={stud.id}>
+            <span>{"id: " + stud.id + ", firstname: " + stud.firstname + ", lastname: " + stud.lastname}</span>
+          </li>
+        ));
+
+        notSubmitted_blurb = leftOut.length + (leftOut.length === 1 ? " person has yet to submit" : " people have yet to submit");
+      }
     }
 
     return (
       <div>
         <p>{display_blurb}</p>
         <ul>{display}</ul>
+        <p>{notSubmitted_blurb}</p>
+        <ul>{notSubmitted}</ul>
       </div>
     );
   }

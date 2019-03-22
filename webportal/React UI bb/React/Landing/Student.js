@@ -3,6 +3,7 @@
 import ListSchedule from "./ListSchedule.js";
 import Course from "../Student/Course.js";
 import Assignment from "../Student/Assignment.js";
+import ChangePassword from "../Student/ChangePassword.js";
 
 // What a student will see when they first sign in
 export default class Student extends React.Component {
@@ -13,6 +14,7 @@ export default class Student extends React.Component {
     this.handleInstructor = this.handleInstructor.bind(this);
     this.handleSubmitTime = this.handleSubmitTime.bind(this);
     this.setResetAssignments = this.setResetAssignments.bind(this);
+    this.handleBack = this.handleBack.bind(this);
     this.state = {
       courses: "",
       cid: "",
@@ -21,7 +23,8 @@ export default class Student extends React.Component {
       isVisible: {
         default: true,
         course: false,
-        assignment: false
+        assignment: false,
+        changePassword: false
       }
     };
   }
@@ -42,6 +45,17 @@ export default class Student extends React.Component {
     });
   }
 
+  handleBack() {
+    this.setState({
+      isVisible: {
+        default: true,
+        course: false,
+        assignment: false,
+        changePassword: false
+      }
+    });
+  }
+
   handleClick(type, cid, aid) {
     this.setState({
       cid: cid,
@@ -53,7 +67,8 @@ export default class Student extends React.Component {
         isVisible: {
           default: false,
           course: true,
-          assignment: false
+          assignment: false,
+          changePassword: false
         }
       });
     } else if (type === "assignment") {
@@ -64,7 +79,8 @@ export default class Student extends React.Component {
         isVisible: {
           default: false,
           course: false,
-          assignment: true
+          assignment: true,
+          changePassword: false
         }
       });
     }
@@ -105,6 +121,17 @@ export default class Student extends React.Component {
     console.log("enroll in a course");
   }
 
+  onChangePassword(e) {
+    this.setState({
+      isVisible: {
+        default: false,
+        course: false,
+        assignment: false,
+        changePassword: true
+      }
+    });
+  }
+
   render() {
     let course = this.state.cid === "" || this.state.cid === 0 ? null : this.state.courses.filter(c => c.id === this.state.cid)[0];
     let assignment = this.state.aid === "" || this.state.aid === 0 ? null : course.assignments.filter(a => a.id === this.state.aid)[0];
@@ -118,6 +145,11 @@ export default class Student extends React.Component {
         assignment: assignment,
         onSubmitTime: this.handleSubmitTime,
         setReset: this.setResetAssignments
+      });
+    } else if (this.state.isVisible["changePassword"]) {
+      mainPage = React.createElement(ChangePassword, {
+        sid: this.props.id,
+        goBack: this.handleBack
       });
     } else {
       // default
@@ -136,6 +168,11 @@ export default class Student extends React.Component {
         "button",
         { onClick: e => this.onEnroll(e) },
         "enroll in a course"
+      ),
+      React.createElement(
+        "button",
+        { onClick: e => this.onChangePassword(e) },
+        "change password"
       ),
       React.createElement(
         "button",

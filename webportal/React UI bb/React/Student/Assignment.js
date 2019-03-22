@@ -178,6 +178,34 @@ export default class Assignment extends React.Component {
       }
     }
 
+    let submit_warning = null;
+    let submitButton = null;
+    if (this.props.assignment.closing !== null) {
+      if (Date.parse(this.props.assignment.closing) < Date.now()) {
+        submit_warning = " submissions are closed";
+        submitButton = React.createElement(
+          "button",
+          { disabled: "disabled" },
+          submit_button_text
+        );
+      } else {
+        // https://stackoverflow.com/questions/3224834/get-difference-between-2-dates-in-javascript
+        let diffDays = Math.floor(parseInt(Date.parse(this.props.assignment.closing) - Date.now()) / (1000 * 60 * 60 * 24));
+        submit_warning = " " + diffDays + (diffDays === 1 ? " day until deadline" : " days until deadline");
+        submitButton = React.createElement(
+          "button",
+          { onClick: e => this.handleSubmit(e) },
+          submit_button_text
+        );
+      }
+    } else {
+      submitButton = React.createElement(
+        "button",
+        { onClick: e => this.handleSubmit(e) },
+        submit_button_text
+      );
+    }
+
     let mainpage;
     if (this.state.default) {
       mainpage = React.createElement(
@@ -188,11 +216,8 @@ export default class Assignment extends React.Component {
           null,
           "an Assignment"
         ),
-        React.createElement(
-          "button",
-          { onClick: e => this.handleSubmit(e) },
-          submit_button_text
-        ),
+        submitButton,
+        submit_warning,
         React.createElement(
           "p",
           null,
@@ -204,6 +229,12 @@ export default class Assignment extends React.Component {
           null,
           "assignment id: ",
           this.props.assignment.id
+        ),
+        React.createElement(
+          "p",
+          null,
+          "closing: ",
+          this.props.assignment.closing
         ),
         React.createElement(
           "p",

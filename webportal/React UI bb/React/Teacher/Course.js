@@ -4,6 +4,7 @@ import CreateAssignment from "./CreateAssignment.js";
 import EditCourseInfo from "./EditCourseInfo.js";
 import EnrollStudents from "./EnrollStudents.js";
 import DeleteCourse from "./DeleteCourse.js";
+import EnrolledList from "./EnrolledList.js";
 
 export default class Course extends React.Component {
   constructor(props) {
@@ -162,7 +163,13 @@ export default class Course extends React.Component {
           "ul",
           null,
           assList
-        )
+        ),
+        React.createElement(
+          "p",
+          null,
+          "List of Enrolled students"
+        ),
+        React.createElement(EnrolledList, { course: this.props.course, updateEnrolled: this.props.updateEnrolled })
       );
     } else if (this.state.isVisible["createAssignment"]) {
       display = React.createElement(CreateAssignment, {
