@@ -7,6 +7,7 @@ import shutil
 import urllib
 import psycopg2
 import datetime
+import db
 
 #import mysql.connector
 #from mysql.connector import errorcode
@@ -29,37 +30,14 @@ cnx = None
 try:
   #cnx = mysql.connector.connect(user='root', password='BoatsnHoes', host='localhost', database='University')
   cnx = psycopg2.connect(host="localhost", database="c4f00g03", user="c4f00g03", password="j4g6x7b3")
-except mysql.connector.Error as err:
-  if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-    print(json.dumps("bad username / password"))
-  elif err.errno == errorcode.ER_BAD_DB_ERROR:
-    print(json.dumps("bad database"))
-  else:
-  	print(json.dumps("check DB connection"))
+except psycopg2.OperationalError as err:
+  print(json.dumps("check DB connection"))
   if cnx is not None:
     cnx.close()
   quit() 
 
+cnx = db.get_connection()
 cursor = cnx.cursor()
-
-# execute query, format response into an array of dictionaries
-def exec_and_parse(query):
-	cursor.execute(query)
-	cnx.commit()
-	out = []
-	while True:
-		row = cursor.fetchone()
-		if not row:
-			break
-		tmp = {}
-		for (desc, val) in zip(cursor.description, row):
-			if isinstance(val, datetime.datetime):
-				val = str(val)
-			tmp[desc[0]] = val
-		out.append(tmp)
-	return(out)
-
-# teachers need the option to upload pdf instructions, code templates (to be excluded), and other code to include in plagiarism
 
 query = False
 if cmd[0] == 'upload':
@@ -74,7 +52,7 @@ if cmd[0] == 'upload':
 		    "'" + zip_file + "', " +
 		    "'" + now + "'" +
 		    ") " +
-		    "ON DUPLICATE KEY UPDATE " +
+		    "ON CONFLICT (id, course, assignment) DO UPDATE SET " +
 		    "zip = '" + zip_file + "', " +
 		    "submit_time = '" + now + "'")
 elif cmd[0] == 'send':
@@ -102,7 +80,7 @@ elif cmd[0] == 'password':
 	query = ("UPDATE Account SET password = '" + cmd[2] + "' WHERE id = '" + cmd[1] + "'")
 	
 if query:
-	print(json.dumps(exec_and_parse(query)))
+	print(json.dumps(db.exec_and_parse(cursor, cnx, query)))
 cnx.close()
 
 if cmd[0] == 'upload':
@@ -117,7 +95,6 @@ if cmd[0] == 'upload':
 	# remove pesky macos folders
 	if os.path.isdir(folder + "/" + "__MACOSX"):
 		shutil.rmtree(folder + "/" + "__MACOSX")
-	# remove hidden files and folders?
 elif cmd[0] == 'send':
 	# send zip to algo server
 	fake = 1

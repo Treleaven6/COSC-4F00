@@ -64,6 +64,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 	    // call a python script to handle updating mysql
 	    shell_exec('python post.py ' . $_SERVER['REQUEST_URI']);
 
+	    // call a python script to anonymize the files
+	    shell_exec('python strip_files.py ' . $_SERVER['REQUEST_URI']);
+
 	    // return to React
 	    echo(true);
 	} else if ($params[2] === "include") {
