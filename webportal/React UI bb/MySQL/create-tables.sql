@@ -126,3 +126,12 @@ GRANT ALL PRIVILEGES ON TABLE ReportReturn TO c4f00g03;
 GRANT USAGE, SELECT ON SEQUENCE course_id_seq TO c4f00g03;
 GRANT USAGE, SELECT ON SEQUENCE assignment_id_seq TO c4f00g03;
 GRANT USAGE, SELECT ON SEQUENCE reportrequest_id_seq TO c4f00g03;
+
+INSERT INTO Permission (id, title)
+VALUES (0, 'admin');
+
+INSERT INTO Permission (id, title)
+VALUES (1, 'teacher');
+
+INSERT INTO Permission (id, title)
+VALUES (2, 'student');

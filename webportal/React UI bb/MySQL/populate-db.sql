@@ -3,15 +3,6 @@
 -- a bunch of dummy data for testing
 -- can use login/password t/t for teacher and s/s for student
 
-INSERT INTO Permission (id, title)
-VALUES (0, 'admin');
-
-INSERT INTO Permission (id, title)
-VALUES (1, 'teacher');
-
-INSERT INTO Permission (id, title)
-VALUES (2, 'student');
-
 INSERT INTO Account (id, permission, firstname, lastname, username, email, password, salt)
 VALUES ('123456', 1, 'Indiana', 'Jones', 't', 'ijones@brocku.ca', 't', 'arabian');
 
