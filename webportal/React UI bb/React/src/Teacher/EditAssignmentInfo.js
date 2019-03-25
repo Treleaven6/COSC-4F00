@@ -45,6 +45,7 @@ export default class EditAssignmentInfo extends React.Component {
         "/";
       axios.post(path).then(res => {
         this.props.updateParent(this.state.name, "");
+        this.props.refreshList();
         this.props.goBack();
       });
     } else if (/\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$/.test(dt)) {
@@ -57,6 +58,7 @@ export default class EditAssignmentInfo extends React.Component {
         encodeURIComponent(dt);
       axios.post(path).then(res => {
         this.props.updateParent(this.state.name, dt);
+        this.props.refreshList();
         this.props.goBack();
       });
     } else {

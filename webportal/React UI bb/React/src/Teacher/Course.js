@@ -91,16 +91,7 @@ export default class Course extends React.Component {
     // what plagiarism reports are available
     let assList = this.props.course["assignments"].map(assignment => (
       <li key={assignment.id}>
-        <span>
-          {"id: " +
-            assignment.id +
-            ", name: " +
-            assignment.name +
-            ", pdf: " +
-            assignment.pdf +
-            ", template: " +
-            assignment.template}
-        </span>
+        <span>{"id: " + assignment.id + ", name: " + assignment.name}</span>
       </li>
     ));
 
@@ -125,7 +116,10 @@ export default class Course extends React.Component {
           <p>semester: {this.props.course.semester}</p>
           <ul>{assList}</ul>
           <p>List of Enrolled students</p>
-          <EnrolledList course={this.props.course} updateEnrolled={this.props.updateEnrolled}/>
+          <EnrolledList
+            course={this.props.course}
+            updateEnrolled={this.props.updateEnrolled}
+          />
         </div>
       );
     } else if (this.state.isVisible["createAssignment"]) {

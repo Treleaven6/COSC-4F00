@@ -65,7 +65,9 @@ export default class SubmittedList extends React.Component {
             ", firstname: " +
             f.firstname +
             ", lastname: " +
-            f.lastname}
+            f.lastname +
+            ", time: " +
+            f.submit_time}
         </li>
       ));
 
@@ -75,7 +77,9 @@ export default class SubmittedList extends React.Component {
         for (let i in this.props.course["enrolledList"]) {
           submitted = false;
           for (let j in this.state.files) {
-            if (this.props.course["enrolledList"][i].id === this.state.files[j].id) {
+            if (
+              this.props.course["enrolledList"][i].id === this.state.files[j].id
+            ) {
               submitted = true;
               break;
             }
@@ -87,11 +91,22 @@ export default class SubmittedList extends React.Component {
 
         notSubmitted = leftOut.map(stud => (
           <li key={stud.id}>
-            <span>{"id: " + stud.id + ", firstname: " + stud.firstname + ", lastname: " + stud.lastname}</span>
+            <span>
+              {"id: " +
+                stud.id +
+                ", firstname: " +
+                stud.firstname +
+                ", lastname: " +
+                stud.lastname}
+            </span>
           </li>
         ));
 
-        notSubmitted_blurb = leftOut.length + (leftOut.length === 1 ? " person has yet to submit" : " people have yet to submit");
+        notSubmitted_blurb =
+          leftOut.length +
+          (leftOut.length === 1
+            ? " person has yet to submit"
+            : " people have yet to submit");
       }
     }
 

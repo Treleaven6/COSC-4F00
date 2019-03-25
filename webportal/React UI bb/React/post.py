@@ -69,7 +69,10 @@ elif cmd[0] == 'send':
 elif cmd[0] == 'upass':
 	# api.php/upass/<assignment id>/<updated assignment name>/<updated assignment closing date>
 	# updates an assignment name and / or closing date
-	query = ("UPDATE Assignment SET name = '" + cmd[2] + "', closing = '" + cmd[3] + "' WHERE id = " + cmd[1])
+	if cmd[3] == "":
+		query = ("UPDATE Assignment SET name = '" + cmd[2] + "', closing = NULL WHERE id = " + cmd[1])
+	else:
+		query = ("UPDATE Assignment SET name = '" + cmd[2] + "', closing = '" + cmd[3] + "' WHERE id = " + cmd[1])
 elif cmd[0] == 'delass':
 	# api.php/delass/<assignment id>
 	# deletes an assignment

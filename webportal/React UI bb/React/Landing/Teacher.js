@@ -27,6 +27,7 @@ export default class Teacher extends React.Component {
       resetCourses: null,
       resetAssignments: null,
       resetListSchedule: null,
+      visibleOverride: false,
       isVisible: {
         default: true,
         course: false,
@@ -45,7 +46,7 @@ export default class Teacher extends React.Component {
 
   updateAssignmentList() {
     this.state.resetListSchedule();
-    if (this.state.isVisible["assignment"]) {
+    if (!this.state.visibleOverride && this.state.isVisible["assignment"]) {
       this.setState({
         isVisible: {
           default: true,
@@ -54,6 +55,10 @@ export default class Teacher extends React.Component {
           create_new_course: false,
           change_password: false
         }
+      });
+    } else {
+      this.setState({
+        visibleOverride: false
       });
     }
   }
@@ -68,6 +73,9 @@ export default class Teacher extends React.Component {
     let assignment = this.state.aid === "" || this.state.aid === 0 ? null : course.assignments.filter(a => a.id === this.state.aid)[0];
     assignment.name = name;
     assignment.closing = closing;
+    this.setState({
+      visibleOverride: true
+    });
   }
 
   setResetCourses(f) {

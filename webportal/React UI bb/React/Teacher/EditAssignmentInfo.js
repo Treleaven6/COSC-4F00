@@ -40,12 +40,14 @@ export default class EditAssignmentInfo extends React.Component {
       let path = "./api.php/upass/" + this.props.id + "/" + encodeURIComponent(this.state.name) + "/";
       axios.post(path).then(res => {
         this.props.updateParent(this.state.name, "");
+        this.props.refreshList();
         this.props.goBack();
       });
     } else if (/\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$/.test(dt)) {
       let path = "./api.php/upass/" + this.props.id + "/" + encodeURIComponent(this.state.name) + "/" + encodeURIComponent(dt);
       axios.post(path).then(res => {
         this.props.updateParent(this.state.name, dt);
+        this.props.refreshList();
         this.props.goBack();
       });
     } else {

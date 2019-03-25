@@ -57,11 +57,11 @@ VALUES (1, 'Second assignment');
 INSERT INTO Assignment (course, name, closing)
 VALUES (1, 'Third assignment', CURRENT_TIMESTAMP(0));
 
-INSERT INTO Assignment (course, name, closing)
-VALUES (1, 'Fourth Assignment', '2021-03-15 17:13:40');
-
 INSERT INTO Assignment (course, name)
 VALUES (2, 'Batmobile assignment');
+
+INSERT INTO Assignment (course, name, closing)
+VALUES (1, 'Fourth Assignment', '2021-03-15 17:13:40');
 
 INSERT INTO Submission (id, course, assignment, zip, submit_time)
 VALUES ('999888', 1, 1, 'it out and zip it up', CURRENT_TIMESTAMP(0));

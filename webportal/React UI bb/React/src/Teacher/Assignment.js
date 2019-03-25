@@ -108,8 +108,6 @@ export default class Assignment extends React.Component {
           <p>assignment id: {this.props.assignment.id}</p>
           <p>course id: {this.props.assignment.course}</p>
           <p>name: {this.props.assignment.name}</p>
-          <p>pdf: {this.props.assignment.pdf}</p>
-          <p>template: {this.props.assignment.template}</p>
           <p>closing: {this.props.assignment.closing} </p>
           <p>From course</p>
           <p>name: {this.props.course.name}</p>
@@ -125,6 +123,7 @@ export default class Assignment extends React.Component {
           name={this.props.assignment.name}
           closing={this.props.assignment.closing}
           goBack={this.onBack}
+          refreshList={this.props.refreshList}
         />
       );
     } else if (this.state.isVisible["delete"]) {

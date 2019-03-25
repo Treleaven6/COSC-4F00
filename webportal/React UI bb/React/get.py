@@ -117,7 +117,7 @@ elif cmd[0] == 'submitted' and cmd[1] == 'assignment':
 	# api.php/submitted/assignment/<assignment id>
 	# get all submissions to an assignment
 	# used when a teacher is going to check for plagiarism
-	query = ("SELECT S.id, S.zip, A.firstname, A.lastname " +
+	query = ("SELECT S.id, S.submit_time, A.firstname, A.lastname " +
     		 "FROM Submission S, Account A " +
     		 "WHERE S.assignment = '" + cmd[2] + "' AND S.id = A.id")
 elif cmd[0] == 'excluded':

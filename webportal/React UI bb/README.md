@@ -21,18 +21,16 @@
 	- go to localhost:8081 to interact with the website, otherwise you'll get cross origin errors
 
 # Updates
-- now using React on the web. Should work on Sandcastle
-- Node is out. With a bit of work, Python can be called by a PHP script and will talk to the database on Sandcastle
-- MySQL is out, Postgres is in
+- Uploads are anonymized
+- teachers and students can upload files
+- a zip package is ready to be sent offsite
 
 # Major TODOs
-- anonymize uploads
 - add comments :)
 - make it pretty (google "free react themes")
 - encrypt passwords
 - use https
-- figure out enrollment
-- create scripts for easy enrollment, course creation, and account creation?
+- create scripts for easy enrollment, course creation, and account creation
 - get email working for account and password request
 - display results from Algo nicely (write some json to a file, update database, get it from React, parse it?)
 

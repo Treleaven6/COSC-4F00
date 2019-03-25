@@ -60,7 +60,7 @@ export default class SubmittedList extends React.Component {
       display = this.state.files.map(f => React.createElement(
         "li",
         { key: f.id },
-        "id: " + f.id + ", firstname: " + f.firstname + ", lastname: " + f.lastname
+        "id: " + f.id + ", firstname: " + f.firstname + ", lastname: " + f.lastname + ", time: " + f.submit_time
       ));
 
       if ("enrolledList" in this.props.course) {

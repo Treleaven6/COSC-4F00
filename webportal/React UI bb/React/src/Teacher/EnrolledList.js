@@ -22,11 +22,18 @@ export default class EnrolledList extends React.Component {
   render() {
     let enrolledList = null;
     if ("enrolledList" in this.props.course) {
-        enrolledList = this.props.course["enrolledList"].map(stud => (
-            <li key={stud.id}>
-                <span>{"id: " + stud.id + ", firstname: " + stud.firstname + ", lastname: " + stud.lastname}</span>
-            </li>
-        ));
+      enrolledList = this.props.course["enrolledList"].map(stud => (
+        <li key={stud.id}>
+          <span>
+            {"id: " +
+              stud.id +
+              ", firstname: " +
+              stud.firstname +
+              ", lastname: " +
+              stud.lastname}
+          </span>
+        </li>
+      ));
     }
     return <ul>{enrolledList}</ul>;
   }

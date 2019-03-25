@@ -1,0 +1,11 @@
+Prerequisites
+- A Unix-like operating system running Apache version 2.2.15 or better
+- PHP version 5.3.3 or better
+- Python version 2.6.6 up to 2.7.x
+- PostgreSQL version 8.4.20 or better, including a database called "c4f00g03" with user "c4f00g03" and password "j4g6x7b3"
+
+Installation
+- in PostgreSQL, run the script "create-tables.sql"
+- unzip Archive.zip in the directory that will host the landing page
+- create user accounts via the _ script
+- enter your email address somewhere?

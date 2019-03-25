@@ -72,7 +72,7 @@ export default class Student extends React.Component {
         }
       });
     } else if (type === "assignment") {
-      if (this.state.assignment && this.state.resetAssignments !== null) {
+      if (this.state.isVisible["assignment"] && this.state.resetAssignments !== null) {
         this.state.resetAssignments();
       }
       this.setState({
@@ -158,11 +158,8 @@ export default class Student extends React.Component {
       );
     } else if (this.state.isVisible["changePassword"]) {
       mainPage = (
-        <ChangePassword
-          sid={this.props.id}
-          goBack={this.handleBack}
-        />
-      )
+        <ChangePassword sid={this.props.id} goBack={this.handleBack} />
+      );
     } else {
       // default
       // put some announcements or a calender or something

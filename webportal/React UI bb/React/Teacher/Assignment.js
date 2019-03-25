@@ -141,18 +141,6 @@ export default class Assignment extends React.Component {
         React.createElement(
           "p",
           null,
-          "pdf: ",
-          this.props.assignment.pdf
-        ),
-        React.createElement(
-          "p",
-          null,
-          "template: ",
-          this.props.assignment.template
-        ),
-        React.createElement(
-          "p",
-          null,
           "closing: ",
           this.props.assignment.closing,
           " "
@@ -187,7 +175,8 @@ export default class Assignment extends React.Component {
         id: this.props.assignment.id,
         name: this.props.assignment.name,
         closing: this.props.assignment.closing,
-        goBack: this.onBack
+        goBack: this.onBack,
+        refreshList: this.props.refreshList
       });
     } else if (this.state.isVisible["delete"]) {
       display = React.createElement(DeleteAssignment, {

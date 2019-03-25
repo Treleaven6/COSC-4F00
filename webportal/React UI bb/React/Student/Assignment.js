@@ -121,6 +121,10 @@ export default class Assignment extends React.Component {
         // hackily update previously submitted time
         let strtime = this.getDate();
         this.props.onSubmitTime(strtime, this.props.assignment.id, this.props.course.id);
+        this.setState({
+          default: true,
+          submitting: false
+        });
       });
     });
   }
@@ -247,18 +251,6 @@ export default class Assignment extends React.Component {
           null,
           "name: ",
           this.props.assignment.name
-        ),
-        React.createElement(
-          "p",
-          null,
-          "pdf: ",
-          this.props.assignment.pdf
-        ),
-        React.createElement(
-          "p",
-          null,
-          "template: ",
-          this.props.assignment.template
         ),
         React.createElement(
           "p",

@@ -95,7 +95,7 @@ export default class Course extends React.Component {
       React.createElement(
         "span",
         null,
-        "id: " + assignment.id + ", name: " + assignment.name + ", pdf: " + assignment.pdf + ", template: " + assignment.template
+        "id: " + assignment.id + ", name: " + assignment.name
       )
     ));
 
@@ -144,12 +144,6 @@ export default class Course extends React.Component {
         React.createElement(
           "p",
           null,
-          "directory: ",
-          this.props.course.directory
-        ),
-        React.createElement(
-          "p",
-          null,
           "year: ",
           this.props.course.year
         ),
@@ -169,7 +163,10 @@ export default class Course extends React.Component {
           null,
           "List of Enrolled students"
         ),
-        React.createElement(EnrolledList, { course: this.props.course, updateEnrolled: this.props.updateEnrolled })
+        React.createElement(EnrolledList, {
+          course: this.props.course,
+          updateEnrolled: this.props.updateEnrolled
+        })
       );
     } else if (this.state.isVisible["createAssignment"]) {
       display = React.createElement(CreateAssignment, {
