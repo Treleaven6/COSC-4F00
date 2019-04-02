@@ -2,70 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="57ca67ae-013a-442f-b5c8-f3bff4af06ee" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/antlr_4_7_2_complete.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/BusRoute.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/HelloWorld.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/HelloWorld.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/HelloWorld.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Source1/Set.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Source1/topo_sort.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Source1/topo_sort2.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Source1/u_topo_sort.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Variable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/temp/Grammar.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/temp/Java8Vistor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/temp/MethodSignature.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/temp/ParsedFileContainer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/temp/SyntaxTree.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/temp/gui/MultiTreeFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/temp/gui/TreeFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/temp/io/FileParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/temp/io/SourceFile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/temp/main/BaseTree.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/temp/main/FirstPass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/temp/main/Java8ListenerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/temp/main/Java8VisitorTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/temp/main/LogTreeNodes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/temp/main/MyTree.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/temp/main/ParseTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/temp/main/TreeBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/temp/main/VariableTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/drjava/gui/DisplayFileAsTree.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/drjava/gui/DisplayTree.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/drjava/parser/FileParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/drjava/parser/Grammar.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/drjava/test/Java8TestListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/drjava/test/KGram.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/drjava/test/MainTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/drjava/tree/TreeNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/drjava/tree/TreeWriter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../drjava/src/main/java/AST.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../drjava/src/main/java/ListenerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drjava/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../drjava/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drjava/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../drjava/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drjava/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../drjava/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drjava/src/main/antlr4/C.g4" beforeDir="false" afterPath="$PROJECT_DIR$/../drjava/src/main/antlr4/C.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drjava/src/main/antlr4/CPP14.g4" beforeDir="false" afterPath="$PROJECT_DIR$/../drjava/src/main/antlr4/CPP14.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drjava/src/main/antlr4/Java8.g4" beforeDir="false" afterPath="$PROJECT_DIR$/../drjava/src/main/antlr4/Java8.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drjava/src/main/java/ParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../drjava/src/main/java/ParserTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drjava/src/main/resources/HelloWorld.java" beforeDir="false" afterPath="$PROJECT_DIR$/../drjava/src/main/resources/HelloWorld.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drjava/target/classes/HelloWorld.java" beforeDir="false" afterPath="$PROJECT_DIR$/../drjava/target/classes/HelloWorld.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drjava/target/generated-sources/antlr4/CBaseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../drjava/target/generated-sources/antlr4/CBaseListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drjava/target/generated-sources/antlr4/CLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../drjava/target/generated-sources/antlr4/CLexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drjava/target/generated-sources/antlr4/CListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../drjava/target/generated-sources/antlr4/CListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drjava/target/generated-sources/antlr4/CPP14BaseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../drjava/target/generated-sources/antlr4/CPP14BaseListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drjava/target/generated-sources/antlr4/CPP14Lexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../drjava/target/generated-sources/antlr4/CPP14Lexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drjava/target/generated-sources/antlr4/CPP14Listener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../drjava/target/generated-sources/antlr4/CPP14Listener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drjava/target/generated-sources/antlr4/CPP14Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../drjava/target/generated-sources/antlr4/CPP14Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drjava/target/generated-sources/antlr4/CParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../drjava/target/generated-sources/antlr4/CParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drjava/target/generated-sources/antlr4/Java8BaseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../drjava/target/generated-sources/antlr4/Java8BaseListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drjava/target/generated-sources/antlr4/Java8Lexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../drjava/target/generated-sources/antlr4/Java8Lexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drjava/target/generated-sources/antlr4/Java8Listener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../drjava/target/generated-sources/antlr4/Java8Listener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drjava/target/generated-sources/antlr4/Java8Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../drjava/target/generated-sources/antlr4/Java8Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drjava/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../drjava/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drjava/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../drjava/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/drjava/parser/KGram.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/drjava/test/KGramTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/drjava/test/KGram.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -77,48 +17,34 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/temp.java">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/src/drjava/test/KGramTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="61" column="58" selection-start-line="61" selection-start-column="57" selection-end-line="61" selection-end-column="58" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/drjava/parser/Grammar.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="549">
+              <caret line="57" column="25" selection-start-line="57" selection-start-column="18" selection-end-line="57" selection-end-column="25" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/drjava/test/KGram.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="73" column="47" lean-forward="true" selection-start-line="73" selection-start-column="47" selection-end-line="73" selection-end-column="47" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#602#603#0" expanded="true" />
-                <element signature="e#635#636#0" expanded="true" />
-                <element signature="e#663#664#0" expanded="true" />
-                <element signature="e#690#691#0" expanded="true" />
-                <element signature="e#717#718#0" expanded="true" />
-                <element signature="e#743#744#0" expanded="true" />
-                <element signature="e#858#859#0" expanded="true" />
-                <element signature="e#889#890#0" expanded="true" />
-                <marker date="1554165338118" expanded="false" signature="2438:3438" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/drjava/test/Java8TestListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/drjava/parser/FileParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-153">
-              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+            <state relative-caret-position="425">
+              <caret line="55" column="19" selection-start-line="55" selection-start-column="18" selection-end-line="55" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#489#490#0" expanded="true" />
@@ -131,10 +57,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/drjava/tree/TreeWriter.java">
+        <entry file="file://$PROJECT_DIR$/src/drjava/parser/KGram.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="28" column="14" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
+            <state relative-caret-position="595">
+              <caret line="43" selection-start-line="43" selection-end-line="45" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -203,10 +129,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/drjava/ParsedFileContainer.java" />
-        <option value="$PROJECT_DIR$/src/drjava/ParseTest.java" />
-        <option value="$PROJECT_DIR$/src/Variable.java" />
-        <option value="$PROJECT_DIR$/src/drjava/main/ParseTest.java" />
         <option value="$PROJECT_DIR$/src/drjava/gui/TreeFrame.java" />
         <option value="$PROJECT_DIR$/src/drjava/main/VariableTest.java" />
         <option value="$PROJECT_DIR$/src/drjava/io/SourceFile.java" />
@@ -253,7 +175,11 @@
         <option value="$PROJECT_DIR$/src/drjava/tree/TreeWriter.java" />
         <option value="$PROJECT_DIR$/src/drjava/test/NGramTest.java" />
         <option value="$PROJECT_DIR$/temp.java" />
+        <option value="$PROJECT_DIR$/src/drjava/FileManager.java" />
+        <option value="$PROJECT_DIR$/src/drjava/Main.java" />
         <option value="$PROJECT_DIR$/src/drjava/test/KGram.java" />
+        <option value="$PROJECT_DIR$/src/drjava/test/KGramTest.java" />
+        <option value="$PROJECT_DIR$/src/drjava/parser/KGram.java" />
       </list>
     </option>
   </component>
@@ -263,10 +189,11 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="953" />
-    <option name="width" value="974" />
-    <option name="height" value="1047" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-9" />
+    <option name="y" value="38" />
+    <option name="width" value="1920" />
+    <option name="height" value="1011" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -285,6 +212,11 @@
               <item name="Algorithm" type="b2602c69:ProjectViewProjectNode" />
               <item name="Algorithm" type="462c0819:PsiDirectoryNode" />
               <item name="libs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Algorithm" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Algorithm" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Algorithm" type="b2602c69:ProjectViewProjectNode" />
@@ -326,14 +258,14 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554165375681" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554237961825" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -379,7 +311,7 @@
       <module name="Algorithm" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="drjava.test.*" />
+          <option name="PATTERN" value="drjava.parser.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -388,11 +320,11 @@
       </method>
     </configuration>
     <configuration name="KGram" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="drjava.test.KGram" />
+      <option name="MAIN_CLASS_NAME" value="drjava.parser.KGram" />
       <module name="Algorithm" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="drjava.test.*" />
+          <option name="PATTERN" value="drjava.parser.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -418,7 +350,7 @@
       <module name="Algorithm" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="drjava.test.*" />
+          <option name="PATTERN" value="drjava.parser.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -460,18 +392,19 @@
       <workItem from="1553646781414" duration="33970000" />
       <workItem from="1553782536586" duration="1098000" />
       <workItem from="1553909257013" duration="41000" />
-      <workItem from="1554008887601" duration="15506000" />
+      <workItem from="1554008887601" duration="22786000" />
+      <workItem from="1554238944927" duration="473000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="116959000" />
+    <option name="totallyTimeSpent" value="124712000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="953" y="0" width="974" height="1047" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.496208" visible="true" weight="0.26258206" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.496208" visible="true" weight="0.12899786" />
       <window_info id="Structure" order="1" sideWeight="0.503792" side_tool="true" weight="0.17004265" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -481,7 +414,7 @@
       <window_info id="Learn" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32932165" />
-      <window_info active="true" anchor="bottom" x="9" y="59" width="929" height="396" id="Run" maximized="true" order="2" visible="true" weight="0.23960613" />
+      <window_info anchor="bottom" x="9" y="59" width="929" height="396" id="Run" maximized="true" order="2" weight="0.23726977" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39934355" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -548,38 +481,6 @@
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.tokens" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/drjava/antlr4/java8/Java8Visitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="35" column="7" selection-start-line="35" selection-start-column="7" selection-end-line="35" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/temp/io/FileParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="577">
-          <caret line="100" column="63" selection-start-line="100" selection-start-column="63" selection-end-line="100" selection-end-column="63" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2680#2681#0" expanded="true" />
-            <element signature="e#2707#2708#0" expanded="true" />
-            <element signature="e#2742#2743#0" expanded="true" />
-            <element signature="e#2772#2773#0" expanded="true" />
-            <element signature="e#2803#2804#0" expanded="true" />
-            <element signature="e#2831#2832#0" expanded="true" />
-            <element signature="e#2869#2870#0" expanded="true" />
-            <element signature="e#2898#2899#0" expanded="true" />
-            <element signature="e#2931#2932#0" expanded="true" />
-            <element signature="e#2960#2961#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/drjava/antlr4/java8/Java8.interp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4176" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/drjava/antlr4/java8/Java8.tokens">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -875,13 +776,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/drjava/HashManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/drjava/HashManager.java" />
     <entry file="file://$PROJECT_DIR$/src/drjava/gui/DisplayFileAsTree.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -902,40 +797,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/drjava/test/Java8TestListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/drjava/parser/Grammar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/drjava/parser/FileParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-153">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#489#490#0" expanded="true" />
-            <element signature="e#521#522#0" expanded="true" />
-            <element signature="e#981#982#0" expanded="true" />
-            <element signature="e#1051#1052#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/drjava/test/MainTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-336">
@@ -946,9 +807,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/drjava/FileManager.java" />
+    <entry file="file://$PROJECT_DIR$/temp.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/drjava/Main.java" />
+    <entry file="file://$PROJECT_DIR$/src/drjava/test/Java8TestListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/drjava/tree/TreeWriter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
+        <state relative-caret-position="476">
           <caret line="28" column="14" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -956,24 +832,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/temp.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/drjava/test/KGram.java">
+    <entry file="file://$PROJECT_DIR$/src/drjava/test/KGramTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="73" column="47" lean-forward="true" selection-start-line="73" selection-start-column="47" selection-end-line="73" selection-end-column="47" />
+        <state relative-caret-position="17">
+          <caret line="61" column="58" selection-start-line="61" selection-start-column="57" selection-end-line="61" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#602#603#0" expanded="true" />
-            <element signature="e#635#636#0" expanded="true" />
-            <element signature="e#663#664#0" expanded="true" />
-            <element signature="e#690#691#0" expanded="true" />
-            <element signature="e#717#718#0" expanded="true" />
-            <element signature="e#743#744#0" expanded="true" />
-            <element signature="e#858#859#0" expanded="true" />
-            <element signature="e#889#890#0" expanded="true" />
-            <marker date="1554165338118" expanded="false" signature="2438:3438" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/drjava/parser/KGram.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="43" selection-start-line="43" selection-end-line="45" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/drjava/parser/Grammar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="549">
+          <caret line="57" column="25" selection-start-line="57" selection-start-column="18" selection-end-line="57" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/drjava/parser/FileParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="55" column="19" selection-start-line="55" selection-start-column="18" selection-end-line="55" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#489#490#0" expanded="true" />
+            <element signature="e#521#522#0" expanded="true" />
+            <element signature="e#981#982#0" expanded="true" />
+            <element signature="e#1051#1052#0" expanded="true" />
           </folding>
         </state>
       </provider>
