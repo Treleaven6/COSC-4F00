@@ -1,4 +1,4 @@
-// Generated from CPP14.g4 by ANTLR 4.7.1
+// Generated from CPP14.g4 by ANTLR 4.7.2
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class CPP14Parser extends Parser {
-	static { RuntimeMetaData.checkVersion("4.7.1", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.7.2", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -110,104 +110,115 @@ public class CPP14Parser extends Parser {
 		RULE_typeidlist = 193, RULE_noexceptspecification = 194, RULE_theoperator = 195, 
 		RULE_literal = 196, RULE_booleanliteral = 197, RULE_pointerliteral = 198, 
 		RULE_userdefinedliteral = 199;
-	public static final String[] ruleNames = {
-		"translationunit", "primaryexpression", "idexpression", "unqualifiedid", 
-		"qualifiedid", "nestednamespecifier", "lambdaexpression", "lambdaintroducer", 
-		"lambdacapture", "capturedefault", "capturelist", "capture", "simplecapture", 
-		"initcapture", "lambdadeclarator", "postfixexpression", "typeidofexpr", 
-		"typeidofthetypeid", "expressionlist", "pseudodestructorname", "unaryexpression", 
-		"unaryoperator", "newexpression", "newplacement", "newtypeid", "newdeclarator", 
-		"noptrnewdeclarator", "newinitializer", "deleteexpression", "noexceptexpression", 
-		"castexpression", "pmexpression", "multiplicativeexpression", "additiveexpression", 
-		"shiftexpression", "shiftoperator", "relationalexpression", "equalityexpression", 
-		"andexpression", "exclusiveorexpression", "inclusiveorexpression", "logicalandexpression", 
-		"logicalorexpression", "conditionalexpression", "assignmentexpression", 
-		"assignmentoperator", "expression", "constantexpression", "statement", 
-		"labeledstatement", "expressionstatement", "compoundstatement", "statementseq", 
-		"selectionstatement", "condition", "iterationstatement", "forinitstatement", 
-		"forrangedeclaration", "forrangeinitializer", "jumpstatement", "declarationstatement", 
-		"declarationseq", "declaration", "blockdeclaration", "aliasdeclaration", 
-		"simpledeclaration", "static_assertdeclaration", "emptydeclaration", "attributedeclaration", 
-		"declspecifier", "declspecifierseq", "storageclassspecifier", "functionspecifier", 
-		"typedefname", "typespecifier", "trailingtypespecifier", "typespecifierseq", 
-		"trailingtypespecifierseq", "simpletypespecifier", "thetypename", "decltypespecifier", 
-		"elaboratedtypespecifier", "enumname", "enumspecifier", "enumhead", "opaqueenumdeclaration", 
-		"enumkey", "enumbase", "enumeratorlist", "enumeratordefinition", "enumerator", 
-		"namespacename", "originalnamespacename", "namespacedefinition", "namednamespacedefinition", 
-		"originalnamespacedefinition", "extensionnamespacedefinition", "unnamednamespacedefinition", 
-		"namespacebody", "namespacealias", "namespacealiasdefinition", "qualifiednamespacespecifier", 
-		"usingdeclaration", "usingdirective", "asmdefinition", "linkagespecification", 
-		"attributespecifierseq", "attributespecifier", "alignmentspecifier", "attributelist", 
-		"attribute", "attributetoken", "attributescopedtoken", "attributenamespace", 
-		"attributeargumentclause", "balancedtokenseq", "balancedtoken", "initdeclaratorlist", 
-		"initdeclarator", "declarator", "ptrdeclarator", "noptrdeclarator", "parametersandqualifiers", 
-		"trailingreturntype", "ptroperator", "cvqualifierseq", "cvqualifier", 
-		"refqualifier", "declaratorid", "thetypeid", "abstractdeclarator", "ptrabstractdeclarator", 
-		"noptrabstractdeclarator", "abstractpackdeclarator", "noptrabstractpackdeclarator", 
-		"parameterdeclarationclause", "parameterdeclarationlist", "parameterdeclaration", 
-		"functiondefinition", "functionbody", "initializer", "braceorequalinitializer", 
-		"initializerclause", "initializerlist", "bracedinitlist", "classname", 
-		"classspecifier", "classhead", "classheadname", "classvirtspecifier", 
-		"classkey", "memberspecification", "memberdeclaration", "memberdeclaratorlist", 
-		"memberdeclarator", "virtspecifierseq", "virtspecifier", "purespecifier", 
-		"baseclause", "basespecifierlist", "basespecifier", "classordecltype", 
-		"basetypespecifier", "accessspecifier", "conversionfunctionid", "conversiontypeid", 
-		"conversiondeclarator", "ctorinitializer", "meminitializerlist", "meminitializer", 
-		"meminitializerid", "operatorfunctionid", "literaloperatorid", "templatedeclaration", 
-		"templateparameterlist", "templateparameter", "typeparameter", "simpletemplateid", 
-		"templateid", "templatename", "templateargumentlist", "templateargument", 
-		"typenamespecifier", "explicitinstantiation", "explicitspecialization", 
-		"tryblock", "functiontryblock", "handlerseq", "handler", "exceptiondeclaration", 
-		"throwexpression", "exceptionspecification", "dynamicexceptionspecification", 
-		"typeidlist", "noexceptspecification", "theoperator", "literal", "booleanliteral", 
-		"pointerliteral", "userdefinedliteral"
-	};
+	private static String[] makeRuleNames() {
+		return new String[] {
+			"translationunit", "primaryexpression", "idexpression", "unqualifiedid", 
+			"qualifiedid", "nestednamespecifier", "lambdaexpression", "lambdaintroducer", 
+			"lambdacapture", "capturedefault", "capturelist", "capture", "simplecapture", 
+			"initcapture", "lambdadeclarator", "postfixexpression", "typeidofexpr", 
+			"typeidofthetypeid", "expressionlist", "pseudodestructorname", "unaryexpression", 
+			"unaryoperator", "newexpression", "newplacement", "newtypeid", "newdeclarator", 
+			"noptrnewdeclarator", "newinitializer", "deleteexpression", "noexceptexpression", 
+			"castexpression", "pmexpression", "multiplicativeexpression", "additiveexpression", 
+			"shiftexpression", "shiftoperator", "relationalexpression", "equalityexpression", 
+			"andexpression", "exclusiveorexpression", "inclusiveorexpression", "logicalandexpression", 
+			"logicalorexpression", "conditionalexpression", "assignmentexpression", 
+			"assignmentoperator", "expression", "constantexpression", "statement", 
+			"labeledstatement", "expressionstatement", "compoundstatement", "statementseq", 
+			"selectionstatement", "condition", "iterationstatement", "forinitstatement", 
+			"forrangedeclaration", "forrangeinitializer", "jumpstatement", "declarationstatement", 
+			"declarationseq", "declaration", "blockdeclaration", "aliasdeclaration", 
+			"simpledeclaration", "static_assertdeclaration", "emptydeclaration", 
+			"attributedeclaration", "declspecifier", "declspecifierseq", "storageclassspecifier", 
+			"functionspecifier", "typedefname", "typespecifier", "trailingtypespecifier", 
+			"typespecifierseq", "trailingtypespecifierseq", "simpletypespecifier", 
+			"thetypename", "decltypespecifier", "elaboratedtypespecifier", "enumname", 
+			"enumspecifier", "enumhead", "opaqueenumdeclaration", "enumkey", "enumbase", 
+			"enumeratorlist", "enumeratordefinition", "enumerator", "namespacename", 
+			"originalnamespacename", "namespacedefinition", "namednamespacedefinition", 
+			"originalnamespacedefinition", "extensionnamespacedefinition", "unnamednamespacedefinition", 
+			"namespacebody", "namespacealias", "namespacealiasdefinition", "qualifiednamespacespecifier", 
+			"usingdeclaration", "usingdirective", "asmdefinition", "linkagespecification", 
+			"attributespecifierseq", "attributespecifier", "alignmentspecifier", 
+			"attributelist", "attribute", "attributetoken", "attributescopedtoken", 
+			"attributenamespace", "attributeargumentclause", "balancedtokenseq", 
+			"balancedtoken", "initdeclaratorlist", "initdeclarator", "declarator", 
+			"ptrdeclarator", "noptrdeclarator", "parametersandqualifiers", "trailingreturntype", 
+			"ptroperator", "cvqualifierseq", "cvqualifier", "refqualifier", "declaratorid", 
+			"thetypeid", "abstractdeclarator", "ptrabstractdeclarator", "noptrabstractdeclarator", 
+			"abstractpackdeclarator", "noptrabstractpackdeclarator", "parameterdeclarationclause", 
+			"parameterdeclarationlist", "parameterdeclaration", "functiondefinition", 
+			"functionbody", "initializer", "braceorequalinitializer", "initializerclause", 
+			"initializerlist", "bracedinitlist", "classname", "classspecifier", "classhead", 
+			"classheadname", "classvirtspecifier", "classkey", "memberspecification", 
+			"memberdeclaration", "memberdeclaratorlist", "memberdeclarator", "virtspecifierseq", 
+			"virtspecifier", "purespecifier", "baseclause", "basespecifierlist", 
+			"basespecifier", "classordecltype", "basetypespecifier", "accessspecifier", 
+			"conversionfunctionid", "conversiontypeid", "conversiondeclarator", "ctorinitializer", 
+			"meminitializerlist", "meminitializer", "meminitializerid", "operatorfunctionid", 
+			"literaloperatorid", "templatedeclaration", "templateparameterlist", 
+			"templateparameter", "typeparameter", "simpletemplateid", "templateid", 
+			"templatename", "templateargumentlist", "templateargument", "typenamespecifier", 
+			"explicitinstantiation", "explicitspecialization", "tryblock", "functiontryblock", 
+			"handlerseq", "handler", "exceptiondeclaration", "throwexpression", "exceptionspecification", 
+			"dynamicexceptionspecification", "typeidlist", "noexceptspecification", 
+			"theoperator", "literal", "booleanliteral", "pointerliteral", "userdefinedliteral"
+		};
+	}
+	public static final String[] ruleNames = makeRuleNames();
 
-	private static final String[] _LITERAL_NAMES = {
-		null, null, null, "'alignas'", "'alignof'", "'asm'", "'auto'", "'bool'", 
-		"'break'", "'case'", "'catch'", "'char'", "'char16_t'", "'char32_t'", 
-		"'class'", "'const'", "'constexpr'", "'const_cast'", "'continue'", "'decltype'", 
-		"'default'", "'delete'", "'do'", "'double'", "'dynamic_cast'", "'else'", 
-		"'enum'", "'explicit'", "'export'", "'extern'", "'false'", "'final'", 
-		"'float'", "'for'", "'friend'", "'goto'", "'if'", "'inline'", "'int'", 
-		"'long'", "'mutable'", "'namespace'", "'new'", "'noexcept'", "'nullptr'", 
-		"'operator'", "'override'", "'private'", "'protected'", "'public'", "'register'", 
-		"'reinterpret_cast'", "'return'", "'short'", "'signed'", "'sizeof'", "'static'", 
-		"'static_assert'", "'static_cast'", "'struct'", "'switch'", "'template'", 
-		"'this'", "'thread_local'", "'throw'", "'true'", "'try'", "'typedef'", 
-		"'typeid'", "'typename'", "'union'", "'unsigned'", "'using'", "'virtual'", 
-		"'void'", "'volatile'", "'wchar_t'", "'while'", "'('", "')'", "'['", "']'", 
-		"'{'", "'}'", "'+'", "'-'", "'*'", "'/'", "'%'", "'^'", "'&'", "'|'", 
-		"'~'", "'!'", "'='", "'<'", "'>'", "'+='", "'-='", "'*='", "'/='", "'%='", 
-		"'^='", "'&='", "'|='", "'<<'", "'>>'", "'<<='", "'>>='", "'=='", "'!='", 
-		"'<='", "'>='", "'&&'", "'||'", "'++'", "'--'", "','", "'->*'", "'->'", 
-		"'?'", "':'", "'::'", "';'", "'.'", "'.*'", "'...'"
-	};
-	private static final String[] _SYMBOLIC_NAMES = {
-		null, "MultiLineMacro", "Directive", "Alignas", "Alignof", "Asm", "Auto", 
-		"Bool", "Break", "Case", "Catch", "Char", "Char16", "Char32", "Class", 
-		"Const", "Constexpr", "Const_cast", "Continue", "Decltype", "Default", 
-		"Delete", "Do", "Double", "Dynamic_cast", "Else", "Enum", "Explicit", 
-		"Export", "Extern", "False", "Final", "Float", "For", "Friend", "Goto", 
-		"If", "Inline", "Int", "Long", "Mutable", "Namespace", "New", "Noexcept", 
-		"Nullptr", "Operator", "Override", "Private", "Protected", "Public", "Register", 
-		"Reinterpret_cast", "Return", "Short", "Signed", "Sizeof", "Static", "Static_assert", 
-		"Static_cast", "Struct", "Switch", "Template", "This", "Thread_local", 
-		"Throw", "True", "Try", "Typedef", "Typeid_", "Typename_", "Union", "Unsigned", 
-		"Using", "Virtual", "Void", "Volatile", "Wchar", "While", "LeftParen", 
-		"RightParen", "LeftBracket", "RightBracket", "LeftBrace", "RightBrace", 
-		"Plus", "Minus", "Star", "Div", "Mod", "Caret", "And", "Or", "Tilde", 
-		"Not", "Assign", "Less", "Greater", "PlusAssign", "MinusAssign", "StarAssign", 
-		"DivAssign", "ModAssign", "XorAssign", "AndAssign", "OrAssign", "LeftShift", 
-		"RightShift", "LeftShiftAssign", "RightShiftAssign", "Equal", "NotEqual", 
-		"LessEqual", "GreaterEqual", "AndAnd", "OrOr", "PlusPlus", "MinusMinus", 
-		"Comma", "ArrowStar", "Arrow", "Question", "Colon", "Doublecolon", "Semi", 
-		"Dot", "DotStar", "Ellipsis", "Identifier", "Integerliteral", "Decimalliteral", 
-		"Octalliteral", "Hexadecimalliteral", "Binaryliteral", "Integersuffix", 
-		"Characterliteral", "Floatingliteral", "Stringliteral", "Userdefinedintegerliteral", 
-		"Userdefinedfloatingliteral", "Userdefinedstringliteral", "Userdefinedcharacterliteral", 
-		"Whitespace", "Newline", "BlockComment", "LineComment"
-	};
+	private static String[] makeLiteralNames() {
+		return new String[] {
+			null, null, null, "'alignas'", "'alignof'", "'asm'", "'auto'", "'bool'", 
+			"'break'", "'case'", "'catch'", "'char'", "'char16_t'", "'char32_t'", 
+			"'class'", "'const'", "'constexpr'", "'const_cast'", "'continue'", "'decltype'", 
+			"'default'", "'delete'", "'do'", "'double'", "'dynamic_cast'", "'else'", 
+			"'enum'", "'explicit'", "'export'", "'extern'", "'false'", "'final'", 
+			"'float'", "'for'", "'friend'", "'goto'", "'if'", "'inline'", "'int'", 
+			"'long'", "'mutable'", "'namespace'", "'new'", "'noexcept'", "'nullptr'", 
+			"'operator'", "'override'", "'private'", "'protected'", "'public'", "'register'", 
+			"'reinterpret_cast'", "'return'", "'short'", "'signed'", "'sizeof'", 
+			"'static'", "'static_assert'", "'static_cast'", "'struct'", "'switch'", 
+			"'template'", "'this'", "'thread_local'", "'throw'", "'true'", "'try'", 
+			"'typedef'", "'typeid'", "'typename'", "'union'", "'unsigned'", "'using'", 
+			"'virtual'", "'void'", "'volatile'", "'wchar_t'", "'while'", "'('", "')'", 
+			"'['", "']'", "'{'", "'}'", "'+'", "'-'", "'*'", "'/'", "'%'", "'^'", 
+			"'&'", "'|'", "'~'", "'!'", "'='", "'<'", "'>'", "'+='", "'-='", "'*='", 
+			"'/='", "'%='", "'^='", "'&='", "'|='", "'<<'", "'>>'", "'<<='", "'>>='", 
+			"'=='", "'!='", "'<='", "'>='", "'&&'", "'||'", "'++'", "'--'", "','", 
+			"'->*'", "'->'", "'?'", "':'", "'::'", "';'", "'.'", "'.*'", "'...'"
+		};
+	}
+	private static final String[] _LITERAL_NAMES = makeLiteralNames();
+	private static String[] makeSymbolicNames() {
+		return new String[] {
+			null, "MultiLineMacro", "Directive", "Alignas", "Alignof", "Asm", "Auto", 
+			"Bool", "Break", "Case", "Catch", "Char", "Char16", "Char32", "Class", 
+			"Const", "Constexpr", "Const_cast", "Continue", "Decltype", "Default", 
+			"Delete", "Do", "Double", "Dynamic_cast", "Else", "Enum", "Explicit", 
+			"Export", "Extern", "False", "Final", "Float", "For", "Friend", "Goto", 
+			"If", "Inline", "Int", "Long", "Mutable", "Namespace", "New", "Noexcept", 
+			"Nullptr", "Operator", "Override", "Private", "Protected", "Public", 
+			"Register", "Reinterpret_cast", "Return", "Short", "Signed", "Sizeof", 
+			"Static", "Static_assert", "Static_cast", "Struct", "Switch", "Template", 
+			"This", "Thread_local", "Throw", "True", "Try", "Typedef", "Typeid_", 
+			"Typename_", "Union", "Unsigned", "Using", "Virtual", "Void", "Volatile", 
+			"Wchar", "While", "LeftParen", "RightParen", "LeftBracket", "RightBracket", 
+			"LeftBrace", "RightBrace", "Plus", "Minus", "Star", "Div", "Mod", "Caret", 
+			"And", "Or", "Tilde", "Not", "Assign", "Less", "Greater", "PlusAssign", 
+			"MinusAssign", "StarAssign", "DivAssign", "ModAssign", "XorAssign", "AndAssign", 
+			"OrAssign", "LeftShift", "RightShift", "LeftShiftAssign", "RightShiftAssign", 
+			"Equal", "NotEqual", "LessEqual", "GreaterEqual", "AndAnd", "OrOr", "PlusPlus", 
+			"MinusMinus", "Comma", "ArrowStar", "Arrow", "Question", "Colon", "Doublecolon", 
+			"Semi", "Dot", "DotStar", "Ellipsis", "Identifier", "Integerliteral", 
+			"Decimalliteral", "Octalliteral", "Hexadecimalliteral", "Binaryliteral", 
+			"Integersuffix", "Characterliteral", "Floatingliteral", "Stringliteral", 
+			"Userdefinedintegerliteral", "Userdefinedfloatingliteral", "Userdefinedstringliteral", 
+			"Userdefinedcharacterliteral", "Whitespace", "Newline", "BlockComment", 
+			"LineComment"
+		};
+	}
+	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
 	/**
@@ -257,6 +268,7 @@ public class CPP14Parser extends Parser {
 		super(input);
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
+
 	public static class TranslationunitContext extends ParserRuleContext {
 		public TerminalNode EOF() { return getToken(CPP14Parser.EOF, 0); }
 		public DeclarationseqContext declarationseq() {
@@ -313,9 +325,11 @@ public class CPP14Parser extends Parser {
 			return getRuleContext(LiteralContext.class,0);
 		}
 		public TerminalNode This() { return getToken(CPP14Parser.This, 0); }
+		public TerminalNode LeftParen() { return getToken(CPP14Parser.LeftParen, 0); }
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
+		public TerminalNode RightParen() { return getToken(CPP14Parser.RightParen, 0); }
 		public IdexpressionContext idexpression() {
 			return getRuleContext(IdexpressionContext.class,0);
 		}
@@ -477,6 +491,7 @@ public class CPP14Parser extends Parser {
 		public LiteraloperatoridContext literaloperatorid() {
 			return getRuleContext(LiteraloperatoridContext.class,0);
 		}
+		public TerminalNode Tilde() { return getToken(CPP14Parser.Tilde, 0); }
 		public ClassnameContext classname() {
 			return getRuleContext(ClassnameContext.class,0);
 		}
@@ -630,6 +645,7 @@ public class CPP14Parser extends Parser {
 	}
 
 	public static class NestednamespecifierContext extends ParserRuleContext {
+		public TerminalNode Doublecolon() { return getToken(CPP14Parser.Doublecolon, 0); }
 		public ThetypenameContext thetypename() {
 			return getRuleContext(ThetypenameContext.class,0);
 		}
@@ -836,6 +852,8 @@ public class CPP14Parser extends Parser {
 	}
 
 	public static class LambdaintroducerContext extends ParserRuleContext {
+		public TerminalNode LeftBracket() { return getToken(CPP14Parser.LeftBracket, 0); }
+		public TerminalNode RightBracket() { return getToken(CPP14Parser.RightBracket, 0); }
 		public LambdacaptureContext lambdacapture() {
 			return getRuleContext(LambdacaptureContext.class,0);
 		}
@@ -894,6 +912,7 @@ public class CPP14Parser extends Parser {
 		public CapturelistContext capturelist() {
 			return getRuleContext(CapturelistContext.class,0);
 		}
+		public TerminalNode Comma() { return getToken(CPP14Parser.Comma, 0); }
 		public LambdacaptureContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -954,6 +973,8 @@ public class CPP14Parser extends Parser {
 	}
 
 	public static class CapturedefaultContext extends ParserRuleContext {
+		public TerminalNode And() { return getToken(CPP14Parser.And, 0); }
+		public TerminalNode Assign() { return getToken(CPP14Parser.Assign, 0); }
 		public CapturedefaultContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1002,9 +1023,11 @@ public class CPP14Parser extends Parser {
 		public CaptureContext capture() {
 			return getRuleContext(CaptureContext.class,0);
 		}
+		public TerminalNode Ellipsis() { return getToken(CPP14Parser.Ellipsis, 0); }
 		public CapturelistContext capturelist() {
 			return getRuleContext(CapturelistContext.class,0);
 		}
+		public TerminalNode Comma() { return getToken(CPP14Parser.Comma, 0); }
 		public CapturelistContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1153,6 +1176,7 @@ public class CPP14Parser extends Parser {
 
 	public static class SimplecaptureContext extends ParserRuleContext {
 		public TerminalNode Identifier() { return getToken(CPP14Parser.Identifier, 0); }
+		public TerminalNode And() { return getToken(CPP14Parser.And, 0); }
 		public TerminalNode This() { return getToken(CPP14Parser.This, 0); }
 		public SimplecaptureContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -1218,6 +1242,7 @@ public class CPP14Parser extends Parser {
 		public InitializerContext initializer() {
 			return getRuleContext(InitializerContext.class,0);
 		}
+		public TerminalNode And() { return getToken(CPP14Parser.And, 0); }
 		public InitcaptureContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1275,9 +1300,11 @@ public class CPP14Parser extends Parser {
 	}
 
 	public static class LambdadeclaratorContext extends ParserRuleContext {
+		public TerminalNode LeftParen() { return getToken(CPP14Parser.LeftParen, 0); }
 		public ParameterdeclarationclauseContext parameterdeclarationclause() {
 			return getRuleContext(ParameterdeclarationclauseContext.class,0);
 		}
+		public TerminalNode RightParen() { return getToken(CPP14Parser.RightParen, 0); }
 		public TerminalNode Mutable() { return getToken(CPP14Parser.Mutable, 0); }
 		public ExceptionspecificationContext exceptionspecification() {
 			return getRuleContext(ExceptionspecificationContext.class,0);
@@ -1375,6 +1402,8 @@ public class CPP14Parser extends Parser {
 		public SimpletypespecifierContext simpletypespecifier() {
 			return getRuleContext(SimpletypespecifierContext.class,0);
 		}
+		public TerminalNode LeftParen() { return getToken(CPP14Parser.LeftParen, 0); }
+		public TerminalNode RightParen() { return getToken(CPP14Parser.RightParen, 0); }
 		public ExpressionlistContext expressionlist() {
 			return getRuleContext(ExpressionlistContext.class,0);
 		}
@@ -1385,9 +1414,11 @@ public class CPP14Parser extends Parser {
 			return getRuleContext(BracedinitlistContext.class,0);
 		}
 		public TerminalNode Dynamic_cast() { return getToken(CPP14Parser.Dynamic_cast, 0); }
+		public TerminalNode Less() { return getToken(CPP14Parser.Less, 0); }
 		public ThetypeidContext thetypeid() {
 			return getRuleContext(ThetypeidContext.class,0);
 		}
+		public TerminalNode Greater() { return getToken(CPP14Parser.Greater, 0); }
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
@@ -1400,13 +1431,19 @@ public class CPP14Parser extends Parser {
 		public PostfixexpressionContext postfixexpression() {
 			return getRuleContext(PostfixexpressionContext.class,0);
 		}
+		public TerminalNode LeftBracket() { return getToken(CPP14Parser.LeftBracket, 0); }
+		public TerminalNode RightBracket() { return getToken(CPP14Parser.RightBracket, 0); }
+		public TerminalNode Dot() { return getToken(CPP14Parser.Dot, 0); }
 		public IdexpressionContext idexpression() {
 			return getRuleContext(IdexpressionContext.class,0);
 		}
 		public TerminalNode Template() { return getToken(CPP14Parser.Template, 0); }
+		public TerminalNode Arrow() { return getToken(CPP14Parser.Arrow, 0); }
 		public PseudodestructornameContext pseudodestructorname() {
 			return getRuleContext(PseudodestructornameContext.class,0);
 		}
+		public TerminalNode PlusPlus() { return getToken(CPP14Parser.PlusPlus, 0); }
+		public TerminalNode MinusMinus() { return getToken(CPP14Parser.MinusMinus, 0); }
 		public PostfixexpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1889,6 +1926,8 @@ public class CPP14Parser extends Parser {
 		public ThetypenameContext thetypename(int i) {
 			return getRuleContext(ThetypenameContext.class,i);
 		}
+		public TerminalNode Doublecolon() { return getToken(CPP14Parser.Doublecolon, 0); }
+		public TerminalNode Tilde() { return getToken(CPP14Parser.Tilde, 0); }
 		public NestednamespecifierContext nestednamespecifier() {
 			return getRuleContext(NestednamespecifierContext.class,0);
 		}
@@ -2006,9 +2045,11 @@ public class CPP14Parser extends Parser {
 		public PostfixexpressionContext postfixexpression() {
 			return getRuleContext(PostfixexpressionContext.class,0);
 		}
+		public TerminalNode PlusPlus() { return getToken(CPP14Parser.PlusPlus, 0); }
 		public CastexpressionContext castexpression() {
 			return getRuleContext(CastexpressionContext.class,0);
 		}
+		public TerminalNode MinusMinus() { return getToken(CPP14Parser.MinusMinus, 0); }
 		public UnaryoperatorContext unaryoperator() {
 			return getRuleContext(UnaryoperatorContext.class,0);
 		}
@@ -2016,9 +2057,12 @@ public class CPP14Parser extends Parser {
 		public UnaryexpressionContext unaryexpression() {
 			return getRuleContext(UnaryexpressionContext.class,0);
 		}
+		public TerminalNode LeftParen() { return getToken(CPP14Parser.LeftParen, 0); }
 		public ThetypeidContext thetypeid() {
 			return getRuleContext(ThetypeidContext.class,0);
 		}
+		public TerminalNode RightParen() { return getToken(CPP14Parser.RightParen, 0); }
+		public TerminalNode Ellipsis() { return getToken(CPP14Parser.Ellipsis, 0); }
 		public TerminalNode Identifier() { return getToken(CPP14Parser.Identifier, 0); }
 		public TerminalNode Alignof() { return getToken(CPP14Parser.Alignof, 0); }
 		public NoexceptexpressionContext noexceptexpression() {
@@ -2170,6 +2214,13 @@ public class CPP14Parser extends Parser {
 	}
 
 	public static class UnaryoperatorContext extends ParserRuleContext {
+		public TerminalNode Or() { return getToken(CPP14Parser.Or, 0); }
+		public TerminalNode Star() { return getToken(CPP14Parser.Star, 0); }
+		public TerminalNode And() { return getToken(CPP14Parser.And, 0); }
+		public TerminalNode Plus() { return getToken(CPP14Parser.Plus, 0); }
+		public TerminalNode Not() { return getToken(CPP14Parser.Not, 0); }
+		public TerminalNode Tilde() { return getToken(CPP14Parser.Tilde, 0); }
+		public TerminalNode Minus() { return getToken(CPP14Parser.Minus, 0); }
 		public UnaryoperatorContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -2219,15 +2270,18 @@ public class CPP14Parser extends Parser {
 		public NewtypeidContext newtypeid() {
 			return getRuleContext(NewtypeidContext.class,0);
 		}
+		public TerminalNode Doublecolon() { return getToken(CPP14Parser.Doublecolon, 0); }
 		public NewplacementContext newplacement() {
 			return getRuleContext(NewplacementContext.class,0);
 		}
 		public NewinitializerContext newinitializer() {
 			return getRuleContext(NewinitializerContext.class,0);
 		}
+		public TerminalNode LeftParen() { return getToken(CPP14Parser.LeftParen, 0); }
 		public ThetypeidContext thetypeid() {
 			return getRuleContext(ThetypeidContext.class,0);
 		}
+		public TerminalNode RightParen() { return getToken(CPP14Parser.RightParen, 0); }
 		public NewexpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -2346,9 +2400,11 @@ public class CPP14Parser extends Parser {
 	}
 
 	public static class NewplacementContext extends ParserRuleContext {
+		public TerminalNode LeftParen() { return getToken(CPP14Parser.LeftParen, 0); }
 		public ExpressionlistContext expressionlist() {
 			return getRuleContext(ExpressionlistContext.class,0);
 		}
+		public TerminalNode RightParen() { return getToken(CPP14Parser.RightParen, 0); }
 		public NewplacementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -2516,9 +2572,11 @@ public class CPP14Parser extends Parser {
 	}
 
 	public static class NoptrnewdeclaratorContext extends ParserRuleContext {
+		public TerminalNode LeftBracket() { return getToken(CPP14Parser.LeftBracket, 0); }
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
+		public TerminalNode RightBracket() { return getToken(CPP14Parser.RightBracket, 0); }
 		public AttributespecifierseqContext attributespecifierseq() {
 			return getRuleContext(AttributespecifierseqContext.class,0);
 		}
@@ -2626,6 +2684,8 @@ public class CPP14Parser extends Parser {
 	}
 
 	public static class NewinitializerContext extends ParserRuleContext {
+		public TerminalNode LeftParen() { return getToken(CPP14Parser.LeftParen, 0); }
+		public TerminalNode RightParen() { return getToken(CPP14Parser.RightParen, 0); }
 		public ExpressionlistContext expressionlist() {
 			return getRuleContext(ExpressionlistContext.class,0);
 		}
@@ -2700,6 +2760,9 @@ public class CPP14Parser extends Parser {
 		public CastexpressionContext castexpression() {
 			return getRuleContext(CastexpressionContext.class,0);
 		}
+		public TerminalNode Doublecolon() { return getToken(CPP14Parser.Doublecolon, 0); }
+		public TerminalNode LeftBracket() { return getToken(CPP14Parser.LeftBracket, 0); }
+		public TerminalNode RightBracket() { return getToken(CPP14Parser.RightBracket, 0); }
 		public DeleteexpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -2779,9 +2842,11 @@ public class CPP14Parser extends Parser {
 
 	public static class NoexceptexpressionContext extends ParserRuleContext {
 		public TerminalNode Noexcept() { return getToken(CPP14Parser.Noexcept, 0); }
+		public TerminalNode LeftParen() { return getToken(CPP14Parser.LeftParen, 0); }
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
+		public TerminalNode RightParen() { return getToken(CPP14Parser.RightParen, 0); }
 		public NoexceptexpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -2827,9 +2892,11 @@ public class CPP14Parser extends Parser {
 		public UnaryexpressionContext unaryexpression() {
 			return getRuleContext(UnaryexpressionContext.class,0);
 		}
+		public TerminalNode LeftParen() { return getToken(CPP14Parser.LeftParen, 0); }
 		public ThetypeidContext thetypeid() {
 			return getRuleContext(ThetypeidContext.class,0);
 		}
+		public TerminalNode RightParen() { return getToken(CPP14Parser.RightParen, 0); }
 		public CastexpressionContext castexpression() {
 			return getRuleContext(CastexpressionContext.class,0);
 		}
@@ -2894,6 +2961,8 @@ public class CPP14Parser extends Parser {
 		public PmexpressionContext pmexpression() {
 			return getRuleContext(PmexpressionContext.class,0);
 		}
+		public TerminalNode DotStar() { return getToken(CPP14Parser.DotStar, 0); }
+		public TerminalNode ArrowStar() { return getToken(CPP14Parser.ArrowStar, 0); }
 		public PmexpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -2990,6 +3059,9 @@ public class CPP14Parser extends Parser {
 		public MultiplicativeexpressionContext multiplicativeexpression() {
 			return getRuleContext(MultiplicativeexpressionContext.class,0);
 		}
+		public TerminalNode Star() { return getToken(CPP14Parser.Star, 0); }
+		public TerminalNode Div() { return getToken(CPP14Parser.Div, 0); }
+		public TerminalNode Mod() { return getToken(CPP14Parser.Mod, 0); }
 		public MultiplicativeexpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -3098,6 +3170,8 @@ public class CPP14Parser extends Parser {
 		public AdditiveexpressionContext additiveexpression() {
 			return getRuleContext(AdditiveexpressionContext.class,0);
 		}
+		public TerminalNode Plus() { return getToken(CPP14Parser.Plus, 0); }
+		public TerminalNode Minus() { return getToken(CPP14Parser.Minus, 0); }
 		public AdditiveexpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -3322,6 +3396,10 @@ public class CPP14Parser extends Parser {
 		public RelationalexpressionContext relationalexpression() {
 			return getRuleContext(RelationalexpressionContext.class,0);
 		}
+		public TerminalNode Less() { return getToken(CPP14Parser.Less, 0); }
+		public TerminalNode Greater() { return getToken(CPP14Parser.Greater, 0); }
+		public TerminalNode LessEqual() { return getToken(CPP14Parser.LessEqual, 0); }
+		public TerminalNode GreaterEqual() { return getToken(CPP14Parser.GreaterEqual, 0); }
 		public RelationalexpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -3442,6 +3520,8 @@ public class CPP14Parser extends Parser {
 		public EqualityexpressionContext equalityexpression() {
 			return getRuleContext(EqualityexpressionContext.class,0);
 		}
+		public TerminalNode Equal() { return getToken(CPP14Parser.Equal, 0); }
+		public TerminalNode NotEqual() { return getToken(CPP14Parser.NotEqual, 0); }
 		public EqualityexpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -3538,6 +3618,7 @@ public class CPP14Parser extends Parser {
 		public AndexpressionContext andexpression() {
 			return getRuleContext(AndexpressionContext.class,0);
 		}
+		public TerminalNode And() { return getToken(CPP14Parser.And, 0); }
 		public AndexpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -3616,6 +3697,7 @@ public class CPP14Parser extends Parser {
 		public ExclusiveorexpressionContext exclusiveorexpression() {
 			return getRuleContext(ExclusiveorexpressionContext.class,0);
 		}
+		public TerminalNode Caret() { return getToken(CPP14Parser.Caret, 0); }
 		public ExclusiveorexpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -3694,6 +3776,7 @@ public class CPP14Parser extends Parser {
 		public InclusiveorexpressionContext inclusiveorexpression() {
 			return getRuleContext(InclusiveorexpressionContext.class,0);
 		}
+		public TerminalNode Or() { return getToken(CPP14Parser.Or, 0); }
 		public InclusiveorexpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -3772,6 +3855,7 @@ public class CPP14Parser extends Parser {
 		public LogicalandexpressionContext logicalandexpression() {
 			return getRuleContext(LogicalandexpressionContext.class,0);
 		}
+		public TerminalNode AndAnd() { return getToken(CPP14Parser.AndAnd, 0); }
 		public LogicalandexpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -3850,6 +3934,7 @@ public class CPP14Parser extends Parser {
 		public LogicalorexpressionContext logicalorexpression() {
 			return getRuleContext(LogicalorexpressionContext.class,0);
 		}
+		public TerminalNode OrOr() { return getToken(CPP14Parser.OrOr, 0); }
 		public LogicalorexpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -3925,9 +4010,11 @@ public class CPP14Parser extends Parser {
 		public LogicalorexpressionContext logicalorexpression() {
 			return getRuleContext(LogicalorexpressionContext.class,0);
 		}
+		public TerminalNode Question() { return getToken(CPP14Parser.Question, 0); }
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
+		public TerminalNode Colon() { return getToken(CPP14Parser.Colon, 0); }
 		public AssignmentexpressionContext assignmentexpression() {
 			return getRuleContext(AssignmentexpressionContext.class,0);
 		}
@@ -4063,8 +4150,17 @@ public class CPP14Parser extends Parser {
 	}
 
 	public static class AssignmentoperatorContext extends ParserRuleContext {
+		public TerminalNode Assign() { return getToken(CPP14Parser.Assign, 0); }
+		public TerminalNode StarAssign() { return getToken(CPP14Parser.StarAssign, 0); }
+		public TerminalNode DivAssign() { return getToken(CPP14Parser.DivAssign, 0); }
+		public TerminalNode ModAssign() { return getToken(CPP14Parser.ModAssign, 0); }
+		public TerminalNode PlusAssign() { return getToken(CPP14Parser.PlusAssign, 0); }
+		public TerminalNode MinusAssign() { return getToken(CPP14Parser.MinusAssign, 0); }
 		public TerminalNode RightShiftAssign() { return getToken(CPP14Parser.RightShiftAssign, 0); }
 		public TerminalNode LeftShiftAssign() { return getToken(CPP14Parser.LeftShiftAssign, 0); }
+		public TerminalNode AndAssign() { return getToken(CPP14Parser.AndAssign, 0); }
+		public TerminalNode XorAssign() { return getToken(CPP14Parser.XorAssign, 0); }
+		public TerminalNode OrAssign() { return getToken(CPP14Parser.OrAssign, 0); }
 		public AssignmentoperatorContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -4116,6 +4212,7 @@ public class CPP14Parser extends Parser {
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
+		public TerminalNode Comma() { return getToken(CPP14Parser.Comma, 0); }
 		public ExpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -4407,6 +4504,7 @@ public class CPP14Parser extends Parser {
 
 	public static class LabeledstatementContext extends ParserRuleContext {
 		public TerminalNode Identifier() { return getToken(CPP14Parser.Identifier, 0); }
+		public TerminalNode Colon() { return getToken(CPP14Parser.Colon, 0); }
 		public StatementContext statement() {
 			return getRuleContext(StatementContext.class,0);
 		}
@@ -4519,6 +4617,7 @@ public class CPP14Parser extends Parser {
 	}
 
 	public static class ExpressionstatementContext extends ParserRuleContext {
+		public TerminalNode Semi() { return getToken(CPP14Parser.Semi, 0); }
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
@@ -4569,6 +4668,8 @@ public class CPP14Parser extends Parser {
 	}
 
 	public static class CompoundstatementContext extends ParserRuleContext {
+		public TerminalNode LeftBrace() { return getToken(CPP14Parser.LeftBrace, 0); }
+		public TerminalNode RightBrace() { return getToken(CPP14Parser.RightBrace, 0); }
 		public StatementseqContext statementseq() {
 			return getRuleContext(StatementseqContext.class,0);
 		}
@@ -4698,9 +4799,11 @@ public class CPP14Parser extends Parser {
 
 	public static class SelectionstatementContext extends ParserRuleContext {
 		public TerminalNode If() { return getToken(CPP14Parser.If, 0); }
+		public TerminalNode LeftParen() { return getToken(CPP14Parser.LeftParen, 0); }
 		public ConditionContext condition() {
 			return getRuleContext(ConditionContext.class,0);
 		}
+		public TerminalNode RightParen() { return getToken(CPP14Parser.RightParen, 0); }
 		public List<StatementContext> statement() {
 			return getRuleContexts(StatementContext.class);
 		}
@@ -4802,6 +4905,7 @@ public class CPP14Parser extends Parser {
 		public DeclaratorContext declarator() {
 			return getRuleContext(DeclaratorContext.class,0);
 		}
+		public TerminalNode Assign() { return getToken(CPP14Parser.Assign, 0); }
 		public InitializerclauseContext initializerclause() {
 			return getRuleContext(InitializerclauseContext.class,0);
 		}
@@ -4899,9 +5003,11 @@ public class CPP14Parser extends Parser {
 
 	public static class IterationstatementContext extends ParserRuleContext {
 		public TerminalNode While() { return getToken(CPP14Parser.While, 0); }
+		public TerminalNode LeftParen() { return getToken(CPP14Parser.LeftParen, 0); }
 		public ConditionContext condition() {
 			return getRuleContext(ConditionContext.class,0);
 		}
+		public TerminalNode RightParen() { return getToken(CPP14Parser.RightParen, 0); }
 		public StatementContext statement() {
 			return getRuleContext(StatementContext.class,0);
 		}
@@ -4909,6 +5015,7 @@ public class CPP14Parser extends Parser {
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
+		public TerminalNode Semi() { return getToken(CPP14Parser.Semi, 0); }
 		public TerminalNode For() { return getToken(CPP14Parser.For, 0); }
 		public ForinitstatementContext forinitstatement() {
 			return getRuleContext(ForinitstatementContext.class,0);
@@ -4916,6 +5023,7 @@ public class CPP14Parser extends Parser {
 		public ForrangedeclarationContext forrangedeclaration() {
 			return getRuleContext(ForrangedeclarationContext.class,0);
 		}
+		public TerminalNode Colon() { return getToken(CPP14Parser.Colon, 0); }
 		public ForrangeinitializerContext forrangeinitializer() {
 			return getRuleContext(ForrangeinitializerContext.class,0);
 		}
@@ -5268,6 +5376,7 @@ public class CPP14Parser extends Parser {
 
 	public static class JumpstatementContext extends ParserRuleContext {
 		public TerminalNode Break() { return getToken(CPP14Parser.Break, 0); }
+		public TerminalNode Semi() { return getToken(CPP14Parser.Semi, 0); }
 		public TerminalNode Continue() { return getToken(CPP14Parser.Continue, 0); }
 		public TerminalNode Return() { return getToken(CPP14Parser.Return, 0); }
 		public ExpressionContext expression() {
@@ -5730,9 +5839,11 @@ public class CPP14Parser extends Parser {
 	public static class AliasdeclarationContext extends ParserRuleContext {
 		public TerminalNode Using() { return getToken(CPP14Parser.Using, 0); }
 		public TerminalNode Identifier() { return getToken(CPP14Parser.Identifier, 0); }
+		public TerminalNode Assign() { return getToken(CPP14Parser.Assign, 0); }
 		public ThetypeidContext thetypeid() {
 			return getRuleContext(ThetypeidContext.class,0);
 		}
+		public TerminalNode Semi() { return getToken(CPP14Parser.Semi, 0); }
 		public AttributespecifierseqContext attributespecifierseq() {
 			return getRuleContext(AttributespecifierseqContext.class,0);
 		}
@@ -5791,6 +5902,7 @@ public class CPP14Parser extends Parser {
 	}
 
 	public static class SimpledeclarationContext extends ParserRuleContext {
+		public TerminalNode Semi() { return getToken(CPP14Parser.Semi, 0); }
 		public DeclspecifierseqContext declspecifierseq() {
 			return getRuleContext(DeclspecifierseqContext.class,0);
 		}
@@ -5930,10 +6042,14 @@ public class CPP14Parser extends Parser {
 
 	public static class Static_assertdeclarationContext extends ParserRuleContext {
 		public TerminalNode Static_assert() { return getToken(CPP14Parser.Static_assert, 0); }
+		public TerminalNode LeftParen() { return getToken(CPP14Parser.LeftParen, 0); }
 		public ConstantexpressionContext constantexpression() {
 			return getRuleContext(ConstantexpressionContext.class,0);
 		}
+		public TerminalNode Comma() { return getToken(CPP14Parser.Comma, 0); }
 		public TerminalNode Stringliteral() { return getToken(CPP14Parser.Stringliteral, 0); }
+		public TerminalNode RightParen() { return getToken(CPP14Parser.RightParen, 0); }
+		public TerminalNode Semi() { return getToken(CPP14Parser.Semi, 0); }
 		public Static_assertdeclarationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -5982,6 +6098,7 @@ public class CPP14Parser extends Parser {
 	}
 
 	public static class EmptydeclarationContext extends ParserRuleContext {
+		public TerminalNode Semi() { return getToken(CPP14Parser.Semi, 0); }
 		public EmptydeclarationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -6021,6 +6138,7 @@ public class CPP14Parser extends Parser {
 		public AttributespecifierseqContext attributespecifierseq() {
 			return getRuleContext(AttributespecifierseqContext.class,0);
 		}
+		public TerminalNode Semi() { return getToken(CPP14Parser.Semi, 0); }
 		public AttributedeclarationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -6957,9 +7075,11 @@ public class CPP14Parser extends Parser {
 
 	public static class DecltypespecifierContext extends ParserRuleContext {
 		public TerminalNode Decltype() { return getToken(CPP14Parser.Decltype, 0); }
+		public TerminalNode LeftParen() { return getToken(CPP14Parser.LeftParen, 0); }
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
+		public TerminalNode RightParen() { return getToken(CPP14Parser.RightParen, 0); }
 		public TerminalNode Auto() { return getToken(CPP14Parser.Auto, 0); }
 		public DecltypespecifierContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -7191,9 +7311,12 @@ public class CPP14Parser extends Parser {
 		public EnumheadContext enumhead() {
 			return getRuleContext(EnumheadContext.class,0);
 		}
+		public TerminalNode LeftBrace() { return getToken(CPP14Parser.LeftBrace, 0); }
+		public TerminalNode RightBrace() { return getToken(CPP14Parser.RightBrace, 0); }
 		public EnumeratorlistContext enumeratorlist() {
 			return getRuleContext(EnumeratorlistContext.class,0);
 		}
+		public TerminalNode Comma() { return getToken(CPP14Parser.Comma, 0); }
 		public EnumspecifierContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -7387,6 +7510,7 @@ public class CPP14Parser extends Parser {
 			return getRuleContext(EnumkeyContext.class,0);
 		}
 		public TerminalNode Identifier() { return getToken(CPP14Parser.Identifier, 0); }
+		public TerminalNode Semi() { return getToken(CPP14Parser.Semi, 0); }
 		public AttributespecifierseqContext attributespecifierseq() {
 			return getRuleContext(AttributespecifierseqContext.class,0);
 		}
@@ -7517,6 +7641,7 @@ public class CPP14Parser extends Parser {
 	}
 
 	public static class EnumbaseContext extends ParserRuleContext {
+		public TerminalNode Colon() { return getToken(CPP14Parser.Colon, 0); }
 		public TypespecifierseqContext typespecifierseq() {
 			return getRuleContext(TypespecifierseqContext.class,0);
 		}
@@ -7564,6 +7689,7 @@ public class CPP14Parser extends Parser {
 		public EnumeratorlistContext enumeratorlist() {
 			return getRuleContext(EnumeratorlistContext.class,0);
 		}
+		public TerminalNode Comma() { return getToken(CPP14Parser.Comma, 0); }
 		public EnumeratorlistContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -7639,6 +7765,7 @@ public class CPP14Parser extends Parser {
 		public EnumeratorContext enumerator() {
 			return getRuleContext(EnumeratorContext.class,0);
 		}
+		public TerminalNode Assign() { return getToken(CPP14Parser.Assign, 0); }
 		public ConstantexpressionContext constantexpression() {
 			return getRuleContext(ConstantexpressionContext.class,0);
 		}
@@ -7936,9 +8063,11 @@ public class CPP14Parser extends Parser {
 	public static class OriginalnamespacedefinitionContext extends ParserRuleContext {
 		public TerminalNode Namespace() { return getToken(CPP14Parser.Namespace, 0); }
 		public TerminalNode Identifier() { return getToken(CPP14Parser.Identifier, 0); }
+		public TerminalNode LeftBrace() { return getToken(CPP14Parser.LeftBrace, 0); }
 		public NamespacebodyContext namespacebody() {
 			return getRuleContext(NamespacebodyContext.class,0);
 		}
+		public TerminalNode RightBrace() { return getToken(CPP14Parser.RightBrace, 0); }
 		public TerminalNode Inline() { return getToken(CPP14Parser.Inline, 0); }
 		public OriginalnamespacedefinitionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -7999,9 +8128,11 @@ public class CPP14Parser extends Parser {
 		public OriginalnamespacenameContext originalnamespacename() {
 			return getRuleContext(OriginalnamespacenameContext.class,0);
 		}
+		public TerminalNode LeftBrace() { return getToken(CPP14Parser.LeftBrace, 0); }
 		public NamespacebodyContext namespacebody() {
 			return getRuleContext(NamespacebodyContext.class,0);
 		}
+		public TerminalNode RightBrace() { return getToken(CPP14Parser.RightBrace, 0); }
 		public TerminalNode Inline() { return getToken(CPP14Parser.Inline, 0); }
 		public ExtensionnamespacedefinitionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -8059,9 +8190,11 @@ public class CPP14Parser extends Parser {
 
 	public static class UnnamednamespacedefinitionContext extends ParserRuleContext {
 		public TerminalNode Namespace() { return getToken(CPP14Parser.Namespace, 0); }
+		public TerminalNode LeftBrace() { return getToken(CPP14Parser.LeftBrace, 0); }
 		public NamespacebodyContext namespacebody() {
 			return getRuleContext(NamespacebodyContext.class,0);
 		}
+		public TerminalNode RightBrace() { return getToken(CPP14Parser.RightBrace, 0); }
 		public TerminalNode Inline() { return getToken(CPP14Parser.Inline, 0); }
 		public UnnamednamespacedefinitionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -8203,9 +8336,11 @@ public class CPP14Parser extends Parser {
 	public static class NamespacealiasdefinitionContext extends ParserRuleContext {
 		public TerminalNode Namespace() { return getToken(CPP14Parser.Namespace, 0); }
 		public TerminalNode Identifier() { return getToken(CPP14Parser.Identifier, 0); }
+		public TerminalNode Assign() { return getToken(CPP14Parser.Assign, 0); }
 		public QualifiednamespacespecifierContext qualifiednamespacespecifier() {
 			return getRuleContext(QualifiednamespacespecifierContext.class,0);
 		}
+		public TerminalNode Semi() { return getToken(CPP14Parser.Semi, 0); }
 		public NamespacealiasdefinitionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -8309,7 +8444,9 @@ public class CPP14Parser extends Parser {
 		public UnqualifiedidContext unqualifiedid() {
 			return getRuleContext(UnqualifiedidContext.class,0);
 		}
+		public TerminalNode Semi() { return getToken(CPP14Parser.Semi, 0); }
 		public TerminalNode Typename_() { return getToken(CPP14Parser.Typename_, 0); }
+		public TerminalNode Doublecolon() { return getToken(CPP14Parser.Doublecolon, 0); }
 		public UsingdeclarationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -8387,6 +8524,7 @@ public class CPP14Parser extends Parser {
 		public NamespacenameContext namespacename() {
 			return getRuleContext(NamespacenameContext.class,0);
 		}
+		public TerminalNode Semi() { return getToken(CPP14Parser.Semi, 0); }
 		public AttributespecifierseqContext attributespecifierseq() {
 			return getRuleContext(AttributespecifierseqContext.class,0);
 		}
@@ -8457,7 +8595,10 @@ public class CPP14Parser extends Parser {
 
 	public static class AsmdefinitionContext extends ParserRuleContext {
 		public TerminalNode Asm() { return getToken(CPP14Parser.Asm, 0); }
+		public TerminalNode LeftParen() { return getToken(CPP14Parser.LeftParen, 0); }
 		public TerminalNode Stringliteral() { return getToken(CPP14Parser.Stringliteral, 0); }
+		public TerminalNode RightParen() { return getToken(CPP14Parser.RightParen, 0); }
+		public TerminalNode Semi() { return getToken(CPP14Parser.Semi, 0); }
 		public AsmdefinitionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -8504,6 +8645,8 @@ public class CPP14Parser extends Parser {
 	public static class LinkagespecificationContext extends ParserRuleContext {
 		public TerminalNode Extern() { return getToken(CPP14Parser.Extern, 0); }
 		public TerminalNode Stringliteral() { return getToken(CPP14Parser.Stringliteral, 0); }
+		public TerminalNode LeftBrace() { return getToken(CPP14Parser.LeftBrace, 0); }
+		public TerminalNode RightBrace() { return getToken(CPP14Parser.RightBrace, 0); }
 		public DeclarationseqContext declarationseq() {
 			return getRuleContext(DeclarationseqContext.class,0);
 		}
@@ -8656,8 +8799,16 @@ public class CPP14Parser extends Parser {
 	}
 
 	public static class AttributespecifierContext extends ParserRuleContext {
+		public List<TerminalNode> LeftBracket() { return getTokens(CPP14Parser.LeftBracket); }
+		public TerminalNode LeftBracket(int i) {
+			return getToken(CPP14Parser.LeftBracket, i);
+		}
 		public AttributelistContext attributelist() {
 			return getRuleContext(AttributelistContext.class,0);
+		}
+		public List<TerminalNode> RightBracket() { return getTokens(CPP14Parser.RightBracket); }
+		public TerminalNode RightBracket(int i) {
+			return getToken(CPP14Parser.RightBracket, i);
 		}
 		public AlignmentspecifierContext alignmentspecifier() {
 			return getRuleContext(AlignmentspecifierContext.class,0);
@@ -8722,9 +8873,12 @@ public class CPP14Parser extends Parser {
 
 	public static class AlignmentspecifierContext extends ParserRuleContext {
 		public TerminalNode Alignas() { return getToken(CPP14Parser.Alignas, 0); }
+		public TerminalNode LeftParen() { return getToken(CPP14Parser.LeftParen, 0); }
 		public ThetypeidContext thetypeid() {
 			return getRuleContext(ThetypeidContext.class,0);
 		}
+		public TerminalNode RightParen() { return getToken(CPP14Parser.RightParen, 0); }
+		public TerminalNode Ellipsis() { return getToken(CPP14Parser.Ellipsis, 0); }
 		public ConstantexpressionContext constantexpression() {
 			return getRuleContext(ConstantexpressionContext.class,0);
 		}
@@ -8813,9 +8967,11 @@ public class CPP14Parser extends Parser {
 		public AttributeContext attribute() {
 			return getRuleContext(AttributeContext.class,0);
 		}
+		public TerminalNode Ellipsis() { return getToken(CPP14Parser.Ellipsis, 0); }
 		public AttributelistContext attributelist() {
 			return getRuleContext(AttributelistContext.class,0);
 		}
+		public TerminalNode Comma() { return getToken(CPP14Parser.Comma, 0); }
 		public AttributelistContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -9046,6 +9202,7 @@ public class CPP14Parser extends Parser {
 		public AttributenamespaceContext attributenamespace() {
 			return getRuleContext(AttributenamespaceContext.class,0);
 		}
+		public TerminalNode Doublecolon() { return getToken(CPP14Parser.Doublecolon, 0); }
 		public TerminalNode Identifier() { return getToken(CPP14Parser.Identifier, 0); }
 		public AttributescopedtokenContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -9124,9 +9281,11 @@ public class CPP14Parser extends Parser {
 	}
 
 	public static class AttributeargumentclauseContext extends ParserRuleContext {
+		public TerminalNode LeftParen() { return getToken(CPP14Parser.LeftParen, 0); }
 		public BalancedtokenseqContext balancedtokenseq() {
 			return getRuleContext(BalancedtokenseqContext.class,0);
 		}
+		public TerminalNode RightParen() { return getToken(CPP14Parser.RightParen, 0); }
 		public AttributeargumentclauseContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -9251,9 +9410,15 @@ public class CPP14Parser extends Parser {
 	}
 
 	public static class BalancedtokenContext extends ParserRuleContext {
+		public TerminalNode LeftParen() { return getToken(CPP14Parser.LeftParen, 0); }
 		public BalancedtokenseqContext balancedtokenseq() {
 			return getRuleContext(BalancedtokenseqContext.class,0);
 		}
+		public TerminalNode RightParen() { return getToken(CPP14Parser.RightParen, 0); }
+		public TerminalNode LeftBracket() { return getToken(CPP14Parser.LeftBracket, 0); }
+		public TerminalNode RightBracket() { return getToken(CPP14Parser.RightBracket, 0); }
+		public TerminalNode LeftBrace() { return getToken(CPP14Parser.LeftBrace, 0); }
+		public TerminalNode RightBrace() { return getToken(CPP14Parser.RightBrace, 0); }
 		public BalancedtokenContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -9330,6 +9495,7 @@ public class CPP14Parser extends Parser {
 		public InitdeclaratorlistContext initdeclaratorlist() {
 			return getRuleContext(InitdeclaratorlistContext.class,0);
 		}
+		public TerminalNode Comma() { return getToken(CPP14Parser.Comma, 0); }
 		public InitdeclaratorlistContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -9585,15 +9751,19 @@ public class CPP14Parser extends Parser {
 		public AttributespecifierseqContext attributespecifierseq() {
 			return getRuleContext(AttributespecifierseqContext.class,0);
 		}
+		public TerminalNode LeftParen() { return getToken(CPP14Parser.LeftParen, 0); }
 		public PtrdeclaratorContext ptrdeclarator() {
 			return getRuleContext(PtrdeclaratorContext.class,0);
 		}
+		public TerminalNode RightParen() { return getToken(CPP14Parser.RightParen, 0); }
 		public NoptrdeclaratorContext noptrdeclarator() {
 			return getRuleContext(NoptrdeclaratorContext.class,0);
 		}
 		public ParametersandqualifiersContext parametersandqualifiers() {
 			return getRuleContext(ParametersandqualifiersContext.class,0);
 		}
+		public TerminalNode LeftBracket() { return getToken(CPP14Parser.LeftBracket, 0); }
+		public TerminalNode RightBracket() { return getToken(CPP14Parser.RightBracket, 0); }
 		public ConstantexpressionContext constantexpression() {
 			return getRuleContext(ConstantexpressionContext.class,0);
 		}
@@ -9739,9 +9909,11 @@ public class CPP14Parser extends Parser {
 	}
 
 	public static class ParametersandqualifiersContext extends ParserRuleContext {
+		public TerminalNode LeftParen() { return getToken(CPP14Parser.LeftParen, 0); }
 		public ParameterdeclarationclauseContext parameterdeclarationclause() {
 			return getRuleContext(ParameterdeclarationclauseContext.class,0);
 		}
+		public TerminalNode RightParen() { return getToken(CPP14Parser.RightParen, 0); }
 		public CvqualifierseqContext cvqualifierseq() {
 			return getRuleContext(CvqualifierseqContext.class,0);
 		}
@@ -9834,6 +10006,7 @@ public class CPP14Parser extends Parser {
 	}
 
 	public static class TrailingreturntypeContext extends ParserRuleContext {
+		public TerminalNode Arrow() { return getToken(CPP14Parser.Arrow, 0); }
 		public TrailingtypespecifierseqContext trailingtypespecifierseq() {
 			return getRuleContext(TrailingtypespecifierseqContext.class,0);
 		}
@@ -9888,12 +10061,15 @@ public class CPP14Parser extends Parser {
 	}
 
 	public static class PtroperatorContext extends ParserRuleContext {
+		public TerminalNode Star() { return getToken(CPP14Parser.Star, 0); }
 		public AttributespecifierseqContext attributespecifierseq() {
 			return getRuleContext(AttributespecifierseqContext.class,0);
 		}
 		public CvqualifierseqContext cvqualifierseq() {
 			return getRuleContext(CvqualifierseqContext.class,0);
 		}
+		public TerminalNode And() { return getToken(CPP14Parser.And, 0); }
+		public TerminalNode AndAnd() { return getToken(CPP14Parser.AndAnd, 0); }
 		public NestednamespecifierContext nestednamespecifier() {
 			return getRuleContext(NestednamespecifierContext.class,0);
 		}
@@ -10125,6 +10301,8 @@ public class CPP14Parser extends Parser {
 	}
 
 	public static class RefqualifierContext extends ParserRuleContext {
+		public TerminalNode And() { return getToken(CPP14Parser.And, 0); }
+		public TerminalNode AndAnd() { return getToken(CPP14Parser.AndAnd, 0); }
 		public RefqualifierContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -10173,6 +10351,7 @@ public class CPP14Parser extends Parser {
 		public IdexpressionContext idexpression() {
 			return getRuleContext(IdexpressionContext.class,0);
 		}
+		public TerminalNode Ellipsis() { return getToken(CPP14Parser.Ellipsis, 0); }
 		public DeclaratoridContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -10434,15 +10613,19 @@ public class CPP14Parser extends Parser {
 		public ParametersandqualifiersContext parametersandqualifiers() {
 			return getRuleContext(ParametersandqualifiersContext.class,0);
 		}
+		public TerminalNode LeftBracket() { return getToken(CPP14Parser.LeftBracket, 0); }
+		public TerminalNode RightBracket() { return getToken(CPP14Parser.RightBracket, 0); }
 		public ConstantexpressionContext constantexpression() {
 			return getRuleContext(ConstantexpressionContext.class,0);
 		}
 		public AttributespecifierseqContext attributespecifierseq() {
 			return getRuleContext(AttributespecifierseqContext.class,0);
 		}
+		public TerminalNode LeftParen() { return getToken(CPP14Parser.LeftParen, 0); }
 		public PtrabstractdeclaratorContext ptrabstractdeclarator() {
 			return getRuleContext(PtrabstractdeclaratorContext.class,0);
 		}
+		public TerminalNode RightParen() { return getToken(CPP14Parser.RightParen, 0); }
 		public NoptrabstractdeclaratorContext noptrabstractdeclarator() {
 			return getRuleContext(NoptrabstractdeclaratorContext.class,0);
 		}
@@ -10666,12 +10849,15 @@ public class CPP14Parser extends Parser {
 	}
 
 	public static class NoptrabstractpackdeclaratorContext extends ParserRuleContext {
+		public TerminalNode Ellipsis() { return getToken(CPP14Parser.Ellipsis, 0); }
 		public NoptrabstractpackdeclaratorContext noptrabstractpackdeclarator() {
 			return getRuleContext(NoptrabstractpackdeclaratorContext.class,0);
 		}
 		public ParametersandqualifiersContext parametersandqualifiers() {
 			return getRuleContext(ParametersandqualifiersContext.class,0);
 		}
+		public TerminalNode LeftBracket() { return getToken(CPP14Parser.LeftBracket, 0); }
+		public TerminalNode RightBracket() { return getToken(CPP14Parser.RightBracket, 0); }
 		public ConstantexpressionContext constantexpression() {
 			return getRuleContext(ConstantexpressionContext.class,0);
 		}
@@ -10790,6 +10976,8 @@ public class CPP14Parser extends Parser {
 		public ParameterdeclarationlistContext parameterdeclarationlist() {
 			return getRuleContext(ParameterdeclarationlistContext.class,0);
 		}
+		public TerminalNode Ellipsis() { return getToken(CPP14Parser.Ellipsis, 0); }
+		public TerminalNode Comma() { return getToken(CPP14Parser.Comma, 0); }
 		public ParameterdeclarationclauseContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -10868,6 +11056,7 @@ public class CPP14Parser extends Parser {
 		public ParameterdeclarationlistContext parameterdeclarationlist() {
 			return getRuleContext(ParameterdeclarationlistContext.class,0);
 		}
+		public TerminalNode Comma() { return getToken(CPP14Parser.Comma, 0); }
 		public ParameterdeclarationlistContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -10949,6 +11138,7 @@ public class CPP14Parser extends Parser {
 		public AttributespecifierseqContext attributespecifierseq() {
 			return getRuleContext(AttributespecifierseqContext.class,0);
 		}
+		public TerminalNode Assign() { return getToken(CPP14Parser.Assign, 0); }
 		public InitializerclauseContext initializerclause() {
 			return getRuleContext(InitializerclauseContext.class,0);
 		}
@@ -11184,7 +11374,9 @@ public class CPP14Parser extends Parser {
 		public FunctiontryblockContext functiontryblock() {
 			return getRuleContext(FunctiontryblockContext.class,0);
 		}
+		public TerminalNode Assign() { return getToken(CPP14Parser.Assign, 0); }
 		public TerminalNode Default() { return getToken(CPP14Parser.Default, 0); }
+		public TerminalNode Semi() { return getToken(CPP14Parser.Semi, 0); }
 		public TerminalNode Delete() { return getToken(CPP14Parser.Delete, 0); }
 		public FunctionbodyContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -11271,9 +11463,11 @@ public class CPP14Parser extends Parser {
 		public BraceorequalinitializerContext braceorequalinitializer() {
 			return getRuleContext(BraceorequalinitializerContext.class,0);
 		}
+		public TerminalNode LeftParen() { return getToken(CPP14Parser.LeftParen, 0); }
 		public ExpressionlistContext expressionlist() {
 			return getRuleContext(ExpressionlistContext.class,0);
 		}
+		public TerminalNode RightParen() { return getToken(CPP14Parser.RightParen, 0); }
 		public InitializerContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -11330,6 +11524,7 @@ public class CPP14Parser extends Parser {
 	}
 
 	public static class BraceorequalinitializerContext extends ParserRuleContext {
+		public TerminalNode Assign() { return getToken(CPP14Parser.Assign, 0); }
 		public InitializerclauseContext initializerclause() {
 			return getRuleContext(InitializerclauseContext.class,0);
 		}
@@ -11501,9 +11696,11 @@ public class CPP14Parser extends Parser {
 		public InitializerclauseContext initializerclause() {
 			return getRuleContext(InitializerclauseContext.class,0);
 		}
+		public TerminalNode Ellipsis() { return getToken(CPP14Parser.Ellipsis, 0); }
 		public InitializerlistContext initializerlist() {
 			return getRuleContext(InitializerlistContext.class,0);
 		}
+		public TerminalNode Comma() { return getToken(CPP14Parser.Comma, 0); }
 		public InitializerlistContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -11596,9 +11793,12 @@ public class CPP14Parser extends Parser {
 	}
 
 	public static class BracedinitlistContext extends ParserRuleContext {
+		public TerminalNode LeftBrace() { return getToken(CPP14Parser.LeftBrace, 0); }
 		public InitializerlistContext initializerlist() {
 			return getRuleContext(InitializerlistContext.class,0);
 		}
+		public TerminalNode RightBrace() { return getToken(CPP14Parser.RightBrace, 0); }
+		public TerminalNode Comma() { return getToken(CPP14Parser.Comma, 0); }
 		public BracedinitlistContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -11721,6 +11921,8 @@ public class CPP14Parser extends Parser {
 		public ClassheadContext classhead() {
 			return getRuleContext(ClassheadContext.class,0);
 		}
+		public TerminalNode LeftBrace() { return getToken(CPP14Parser.LeftBrace, 0); }
+		public TerminalNode RightBrace() { return getToken(CPP14Parser.RightBrace, 0); }
 		public MemberspecificationContext memberspecification() {
 			return getRuleContext(MemberspecificationContext.class,0);
 		}
@@ -12038,6 +12240,7 @@ public class CPP14Parser extends Parser {
 		public AccessspecifierContext accessspecifier() {
 			return getRuleContext(AccessspecifierContext.class,0);
 		}
+		public TerminalNode Colon() { return getToken(CPP14Parser.Colon, 0); }
 		public MemberspecificationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -12162,6 +12365,7 @@ public class CPP14Parser extends Parser {
 	}
 
 	public static class MemberdeclarationContext extends ParserRuleContext {
+		public TerminalNode Semi() { return getToken(CPP14Parser.Semi, 0); }
 		public AttributespecifierseqContext attributespecifierseq() {
 			return getRuleContext(AttributespecifierseqContext.class,0);
 		}
@@ -12310,6 +12514,7 @@ public class CPP14Parser extends Parser {
 		public MemberdeclaratorlistContext memberdeclaratorlist() {
 			return getRuleContext(MemberdeclaratorlistContext.class,0);
 		}
+		public TerminalNode Comma() { return getToken(CPP14Parser.Comma, 0); }
 		public MemberdeclaratorlistContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -12394,6 +12599,7 @@ public class CPP14Parser extends Parser {
 		public BraceorequalinitializerContext braceorequalinitializer() {
 			return getRuleContext(BraceorequalinitializerContext.class,0);
 		}
+		public TerminalNode Colon() { return getToken(CPP14Parser.Colon, 0); }
 		public ConstantexpressionContext constantexpression() {
 			return getRuleContext(ConstantexpressionContext.class,0);
 		}
@@ -12675,6 +12881,7 @@ public class CPP14Parser extends Parser {
 	}
 
 	public static class BaseclauseContext extends ParserRuleContext {
+		public TerminalNode Colon() { return getToken(CPP14Parser.Colon, 0); }
 		public BasespecifierlistContext basespecifierlist() {
 			return getRuleContext(BasespecifierlistContext.class,0);
 		}
@@ -12719,9 +12926,11 @@ public class CPP14Parser extends Parser {
 		public BasespecifierContext basespecifier() {
 			return getRuleContext(BasespecifierContext.class,0);
 		}
+		public TerminalNode Ellipsis() { return getToken(CPP14Parser.Ellipsis, 0); }
 		public BasespecifierlistContext basespecifierlist() {
 			return getRuleContext(BasespecifierlistContext.class,0);
 		}
+		public TerminalNode Comma() { return getToken(CPP14Parser.Comma, 0); }
 		public BasespecifierlistContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -13236,6 +13445,7 @@ public class CPP14Parser extends Parser {
 	}
 
 	public static class CtorinitializerContext extends ParserRuleContext {
+		public TerminalNode Colon() { return getToken(CPP14Parser.Colon, 0); }
 		public MeminitializerlistContext meminitializerlist() {
 			return getRuleContext(MeminitializerlistContext.class,0);
 		}
@@ -13280,6 +13490,8 @@ public class CPP14Parser extends Parser {
 		public MeminitializerContext meminitializer() {
 			return getRuleContext(MeminitializerContext.class,0);
 		}
+		public TerminalNode Ellipsis() { return getToken(CPP14Parser.Ellipsis, 0); }
+		public TerminalNode Comma() { return getToken(CPP14Parser.Comma, 0); }
 		public MeminitializerlistContext meminitializerlist() {
 			return getRuleContext(MeminitializerlistContext.class,0);
 		}
@@ -13360,6 +13572,8 @@ public class CPP14Parser extends Parser {
 		public MeminitializeridContext meminitializerid() {
 			return getRuleContext(MeminitializeridContext.class,0);
 		}
+		public TerminalNode LeftParen() { return getToken(CPP14Parser.LeftParen, 0); }
+		public TerminalNode RightParen() { return getToken(CPP14Parser.RightParen, 0); }
 		public ExpressionlistContext expressionlist() {
 			return getRuleContext(ExpressionlistContext.class,0);
 		}
@@ -13587,9 +13801,11 @@ public class CPP14Parser extends Parser {
 
 	public static class TemplatedeclarationContext extends ParserRuleContext {
 		public TerminalNode Template() { return getToken(CPP14Parser.Template, 0); }
+		public TerminalNode Less() { return getToken(CPP14Parser.Less, 0); }
 		public TemplateparameterlistContext templateparameterlist() {
 			return getRuleContext(TemplateparameterlistContext.class,0);
 		}
+		public TerminalNode Greater() { return getToken(CPP14Parser.Greater, 0); }
 		public DeclarationContext declaration() {
 			return getRuleContext(DeclarationContext.class,0);
 		}
@@ -13643,6 +13859,7 @@ public class CPP14Parser extends Parser {
 		public TemplateparameterlistContext templateparameterlist() {
 			return getRuleContext(TemplateparameterlistContext.class,0);
 		}
+		public TerminalNode Comma() { return getToken(CPP14Parser.Comma, 0); }
 		public TemplateparameterlistContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -13771,15 +13988,19 @@ public class CPP14Parser extends Parser {
 
 	public static class TypeparameterContext extends ParserRuleContext {
 		public TerminalNode Class() { return getToken(CPP14Parser.Class, 0); }
+		public TerminalNode Ellipsis() { return getToken(CPP14Parser.Ellipsis, 0); }
 		public TerminalNode Identifier() { return getToken(CPP14Parser.Identifier, 0); }
+		public TerminalNode Assign() { return getToken(CPP14Parser.Assign, 0); }
 		public ThetypeidContext thetypeid() {
 			return getRuleContext(ThetypeidContext.class,0);
 		}
 		public TerminalNode Typename_() { return getToken(CPP14Parser.Typename_, 0); }
 		public TerminalNode Template() { return getToken(CPP14Parser.Template, 0); }
+		public TerminalNode Less() { return getToken(CPP14Parser.Less, 0); }
 		public TemplateparameterlistContext templateparameterlist() {
 			return getRuleContext(TemplateparameterlistContext.class,0);
 		}
+		public TerminalNode Greater() { return getToken(CPP14Parser.Greater, 0); }
 		public IdexpressionContext idexpression() {
 			return getRuleContext(IdexpressionContext.class,0);
 		}
@@ -13982,6 +14203,8 @@ public class CPP14Parser extends Parser {
 		public TemplatenameContext templatename() {
 			return getRuleContext(TemplatenameContext.class,0);
 		}
+		public TerminalNode Less() { return getToken(CPP14Parser.Less, 0); }
+		public TerminalNode Greater() { return getToken(CPP14Parser.Greater, 0); }
 		public TemplateargumentlistContext templateargumentlist() {
 			return getRuleContext(TemplateargumentlistContext.class,0);
 		}
@@ -14042,6 +14265,8 @@ public class CPP14Parser extends Parser {
 		public OperatorfunctionidContext operatorfunctionid() {
 			return getRuleContext(OperatorfunctionidContext.class,0);
 		}
+		public TerminalNode Less() { return getToken(CPP14Parser.Less, 0); }
+		public TerminalNode Greater() { return getToken(CPP14Parser.Greater, 0); }
 		public TemplateargumentlistContext templateargumentlist() {
 			return getRuleContext(TemplateargumentlistContext.class,0);
 		}
@@ -14173,9 +14398,11 @@ public class CPP14Parser extends Parser {
 		public TemplateargumentContext templateargument() {
 			return getRuleContext(TemplateargumentContext.class,0);
 		}
+		public TerminalNode Ellipsis() { return getToken(CPP14Parser.Ellipsis, 0); }
 		public TemplateargumentlistContext templateargumentlist() {
 			return getRuleContext(TemplateargumentlistContext.class,0);
 		}
+		public TerminalNode Comma() { return getToken(CPP14Parser.Comma, 0); }
 		public TemplateargumentlistContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -14465,6 +14692,8 @@ public class CPP14Parser extends Parser {
 
 	public static class ExplicitspecializationContext extends ParserRuleContext {
 		public TerminalNode Template() { return getToken(CPP14Parser.Template, 0); }
+		public TerminalNode Less() { return getToken(CPP14Parser.Less, 0); }
+		public TerminalNode Greater() { return getToken(CPP14Parser.Greater, 0); }
 		public DeclarationContext declaration() {
 			return getRuleContext(DeclarationContext.class,0);
 		}
@@ -14671,9 +14900,11 @@ public class CPP14Parser extends Parser {
 
 	public static class HandlerContext extends ParserRuleContext {
 		public TerminalNode Catch() { return getToken(CPP14Parser.Catch, 0); }
+		public TerminalNode LeftParen() { return getToken(CPP14Parser.LeftParen, 0); }
 		public ExceptiondeclarationContext exceptiondeclaration() {
 			return getRuleContext(ExceptiondeclarationContext.class,0);
 		}
+		public TerminalNode RightParen() { return getToken(CPP14Parser.RightParen, 0); }
 		public CompoundstatementContext compoundstatement() {
 			return getRuleContext(CompoundstatementContext.class,0);
 		}
@@ -14733,6 +14964,7 @@ public class CPP14Parser extends Parser {
 		public AbstractdeclaratorContext abstractdeclarator() {
 			return getRuleContext(AbstractdeclaratorContext.class,0);
 		}
+		public TerminalNode Ellipsis() { return getToken(CPP14Parser.Ellipsis, 0); }
 		public ExceptiondeclarationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -14930,6 +15162,8 @@ public class CPP14Parser extends Parser {
 
 	public static class DynamicexceptionspecificationContext extends ParserRuleContext {
 		public TerminalNode Throw() { return getToken(CPP14Parser.Throw, 0); }
+		public TerminalNode LeftParen() { return getToken(CPP14Parser.LeftParen, 0); }
+		public TerminalNode RightParen() { return getToken(CPP14Parser.RightParen, 0); }
 		public TypeidlistContext typeidlist() {
 			return getRuleContext(TypeidlistContext.class,0);
 		}
@@ -14987,9 +15221,11 @@ public class CPP14Parser extends Parser {
 		public ThetypeidContext thetypeid() {
 			return getRuleContext(ThetypeidContext.class,0);
 		}
+		public TerminalNode Ellipsis() { return getToken(CPP14Parser.Ellipsis, 0); }
 		public TypeidlistContext typeidlist() {
 			return getRuleContext(TypeidlistContext.class,0);
 		}
+		public TerminalNode Comma() { return getToken(CPP14Parser.Comma, 0); }
 		public TypeidlistContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -15083,9 +15319,11 @@ public class CPP14Parser extends Parser {
 
 	public static class NoexceptspecificationContext extends ParserRuleContext {
 		public TerminalNode Noexcept() { return getToken(CPP14Parser.Noexcept, 0); }
+		public TerminalNode LeftParen() { return getToken(CPP14Parser.LeftParen, 0); }
 		public ConstantexpressionContext constantexpression() {
 			return getRuleContext(ConstantexpressionContext.class,0);
 		}
+		public TerminalNode RightParen() { return getToken(CPP14Parser.RightParen, 0); }
 		public NoexceptspecificationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -15143,10 +15381,46 @@ public class CPP14Parser extends Parser {
 	public static class TheoperatorContext extends ParserRuleContext {
 		public TerminalNode New() { return getToken(CPP14Parser.New, 0); }
 		public TerminalNode Delete() { return getToken(CPP14Parser.Delete, 0); }
+		public TerminalNode LeftBracket() { return getToken(CPP14Parser.LeftBracket, 0); }
+		public TerminalNode RightBracket() { return getToken(CPP14Parser.RightBracket, 0); }
+		public TerminalNode Plus() { return getToken(CPP14Parser.Plus, 0); }
+		public TerminalNode Minus() { return getToken(CPP14Parser.Minus, 0); }
+		public TerminalNode Star() { return getToken(CPP14Parser.Star, 0); }
+		public TerminalNode Div() { return getToken(CPP14Parser.Div, 0); }
+		public TerminalNode Mod() { return getToken(CPP14Parser.Mod, 0); }
+		public TerminalNode Caret() { return getToken(CPP14Parser.Caret, 0); }
+		public TerminalNode And() { return getToken(CPP14Parser.And, 0); }
+		public TerminalNode Or() { return getToken(CPP14Parser.Or, 0); }
+		public TerminalNode Tilde() { return getToken(CPP14Parser.Tilde, 0); }
+		public TerminalNode Not() { return getToken(CPP14Parser.Not, 0); }
+		public TerminalNode Assign() { return getToken(CPP14Parser.Assign, 0); }
+		public TerminalNode Less() { return getToken(CPP14Parser.Less, 0); }
+		public TerminalNode Greater() { return getToken(CPP14Parser.Greater, 0); }
+		public TerminalNode PlusAssign() { return getToken(CPP14Parser.PlusAssign, 0); }
+		public TerminalNode MinusAssign() { return getToken(CPP14Parser.MinusAssign, 0); }
+		public TerminalNode StarAssign() { return getToken(CPP14Parser.StarAssign, 0); }
+		public TerminalNode DivAssign() { return getToken(CPP14Parser.DivAssign, 0); }
+		public TerminalNode ModAssign() { return getToken(CPP14Parser.ModAssign, 0); }
+		public TerminalNode XorAssign() { return getToken(CPP14Parser.XorAssign, 0); }
+		public TerminalNode AndAssign() { return getToken(CPP14Parser.AndAssign, 0); }
+		public TerminalNode OrAssign() { return getToken(CPP14Parser.OrAssign, 0); }
 		public TerminalNode LeftShift() { return getToken(CPP14Parser.LeftShift, 0); }
 		public TerminalNode RightShift() { return getToken(CPP14Parser.RightShift, 0); }
 		public TerminalNode RightShiftAssign() { return getToken(CPP14Parser.RightShiftAssign, 0); }
 		public TerminalNode LeftShiftAssign() { return getToken(CPP14Parser.LeftShiftAssign, 0); }
+		public TerminalNode Equal() { return getToken(CPP14Parser.Equal, 0); }
+		public TerminalNode NotEqual() { return getToken(CPP14Parser.NotEqual, 0); }
+		public TerminalNode LessEqual() { return getToken(CPP14Parser.LessEqual, 0); }
+		public TerminalNode GreaterEqual() { return getToken(CPP14Parser.GreaterEqual, 0); }
+		public TerminalNode AndAnd() { return getToken(CPP14Parser.AndAnd, 0); }
+		public TerminalNode OrOr() { return getToken(CPP14Parser.OrOr, 0); }
+		public TerminalNode PlusPlus() { return getToken(CPP14Parser.PlusPlus, 0); }
+		public TerminalNode MinusMinus() { return getToken(CPP14Parser.MinusMinus, 0); }
+		public TerminalNode Comma() { return getToken(CPP14Parser.Comma, 0); }
+		public TerminalNode ArrowStar() { return getToken(CPP14Parser.ArrowStar, 0); }
+		public TerminalNode Arrow() { return getToken(CPP14Parser.Arrow, 0); }
+		public TerminalNode LeftParen() { return getToken(CPP14Parser.LeftParen, 0); }
+		public TerminalNode RightParen() { return getToken(CPP14Parser.RightParen, 0); }
 		public TheoperatorContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}

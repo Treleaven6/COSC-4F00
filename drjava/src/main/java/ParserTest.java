@@ -1,7 +1,7 @@
 import org.antlr.v4.gui.TreeViewer;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.ParseTree;
-import org.antlr.runtime.tree.CommonTree;
+import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 import java.awt.*;
 import java.io.File;
@@ -17,21 +17,43 @@ public class ParserTest {
 
     public ParserTest() throws IOException {
 
+        // input Files
         File cTestFile, cppTestFile, javaTestFile;
-        Parser cParser, cppParser, javaParser;
-        ParseTree cParseTree, cppParseTree, javaParseTree;
 
         cTestFile = new File("C:\\Users\\jesse\\OneDrive\\WorkSpace\\COSC-4F00\\drjava\\src\\main\\resources\\HelloWorld.c");
         cppTestFile = new File("C:\\Users\\jesse\\OneDrive\\WorkSpace\\COSC-4F00\\drjava\\src\\main\\resources\\HelloWorld.cpp");
         javaTestFile = new File("C:\\Users\\jesse\\OneDrive\\WorkSpace\\COSC-4F00\\drjava\\src\\main\\resources\\HelloWorld.java");
 
-        cParser = getParser(CharStreams.fromPath(cTestFile.toPath()), Grammar.C11);
-        cppParser = getParser(CharStreams.fromPath(cppTestFile.toPath()), Grammar.CPP14);
-        javaParser = getParser(CharStreams.fromPath(javaTestFile.toPath()), Grammar.Java8);
+        // CharStreams from Files
+        CharStream cCharStream, cppCharStream, javaCharStream;
 
-        cParseTree = ((CParser) cParser).translationUnit();
-        cppParseTree = ((CPP14Parser) cppParser).translationunit();
-        javaParseTree = ((Java8Parser) javaParser).compilationUnit();
+        cCharStream = getCharStream(cTestFile);
+        cppCharStream = getCharStream(cppTestFile);
+        javaCharStream = getCharStream(javaTestFile);
+
+        // Lexers
+        CLexer cLexer = new CLexer(cCharStream);
+        CPP14Lexer cppLexer = new CPP14Lexer(cppCharStream);
+        Java8Lexer javaLexer = new Java8Lexer(javaCharStream);
+
+        // Tokens
+        CommonTokenStream cTokens, cppTokens, javaTokens;
+
+        cTokens = new CommonTokenStream(cLexer);
+        cppTokens = new CommonTokenStream(cppLexer);
+        javaTokens = new CommonTokenStream(javaLexer);
+
+        // Parser
+        CParser cParser = new CParser(cTokens);
+        CPP14Parser cppParser = new CPP14Parser(cppTokens);
+        Java8Parser javaParser = new Java8Parser(javaTokens);
+
+        // Parse Trees
+        ParseTree cParseTree, cppParseTree, javaParseTree;
+
+        cParseTree = cParser.translationUnit();
+        cppParseTree = cppParser.translationunit();
+        javaParseTree = javaParser.compilationUnit();
 
         displayTree(
                 new String[] {"C", "C++", "Java"},
@@ -41,6 +63,9 @@ public class ParserTest {
 
 
         // TODO - Generate ASTs
+
+
+
         // TODO - Generate Function Graphs
 
     }
@@ -95,6 +120,15 @@ public class ParserTest {
             case Java8: return new Java8Lexer(input);
             default:    return null; // TODO - create UnsupportedGrammarException
         }
+    }
+
+    public CharStream getCharStream(File file) {
+        try {
+            return CharStreams.fromPath(file.toPath());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public static void main(String ... args) {

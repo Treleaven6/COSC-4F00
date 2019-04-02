@@ -1,4 +1,4 @@
-// Generated from CPP14.g4 by ANTLR 4.7.1
+// Generated from CPP14.g4 by ANTLR 4.7.2
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
@@ -10,7 +10,7 @@ import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class CPP14Lexer extends Lexer {
-	static { RuntimeMetaData.checkVersion("4.7.1", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.7.2", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -49,82 +49,93 @@ public class CPP14Lexer extends Lexer {
 		"DEFAULT_MODE"
 	};
 
-	public static final String[] ruleNames = {
-		"MultiLineMacro", "Directive", "Alignas", "Alignof", "Asm", "Auto", "Bool", 
-		"Break", "Case", "Catch", "Char", "Char16", "Char32", "Class", "Const", 
-		"Constexpr", "Const_cast", "Continue", "Decltype", "Default", "Delete", 
-		"Do", "Double", "Dynamic_cast", "Else", "Enum", "Explicit", "Export", 
-		"Extern", "False", "Final", "Float", "For", "Friend", "Goto", "If", "Inline", 
-		"Int", "Long", "Mutable", "Namespace", "New", "Noexcept", "Nullptr", "Operator", 
-		"Override", "Private", "Protected", "Public", "Register", "Reinterpret_cast", 
-		"Return", "Short", "Signed", "Sizeof", "Static", "Static_assert", "Static_cast", 
-		"Struct", "Switch", "Template", "This", "Thread_local", "Throw", "True", 
-		"Try", "Typedef", "Typeid_", "Typename_", "Union", "Unsigned", "Using", 
-		"Virtual", "Void", "Volatile", "Wchar", "While", "LeftParen", "RightParen", 
-		"LeftBracket", "RightBracket", "LeftBrace", "RightBrace", "Plus", "Minus", 
-		"Star", "Div", "Mod", "Caret", "And", "Or", "Tilde", "Not", "Assign", 
-		"Less", "Greater", "PlusAssign", "MinusAssign", "StarAssign", "DivAssign", 
-		"ModAssign", "XorAssign", "AndAssign", "OrAssign", "LeftShift", "RightShift", 
-		"LeftShiftAssign", "RightShiftAssign", "Equal", "NotEqual", "LessEqual", 
-		"GreaterEqual", "AndAnd", "OrOr", "PlusPlus", "MinusMinus", "Comma", "ArrowStar", 
-		"Arrow", "Question", "Colon", "Doublecolon", "Semi", "Dot", "DotStar", 
-		"Ellipsis", "Hexquad", "Universalcharactername", "Identifier", "Identifiernondigit", 
-		"NONDIGIT", "DIGIT", "Integerliteral", "Decimalliteral", "Octalliteral", 
-		"Hexadecimalliteral", "Binaryliteral", "NONZERODIGIT", "OCTALDIGIT", "HEXADECIMALDIGIT", 
-		"BINARYDIGIT", "Integersuffix", "Unsignedsuffix", "Longsuffix", "Longlongsuffix", 
-		"Characterliteral", "Cchar", "Escapesequence", "Simpleescapesequence", 
-		"Octalescapesequence", "Hexadecimalescapesequence", "Floatingliteral", 
-		"Fractionalconstant", "Exponentpart", "SIGN", "Digitsequence", "Floatingsuffix", 
-		"Stringliteral", "Encodingprefix", "Schar", "Rawstring", "Userdefinedintegerliteral", 
-		"Userdefinedfloatingliteral", "Userdefinedstringliteral", "Userdefinedcharacterliteral", 
-		"Udsuffix", "Whitespace", "Newline", "BlockComment", "LineComment"
-	};
+	private static String[] makeRuleNames() {
+		return new String[] {
+			"MultiLineMacro", "Directive", "Alignas", "Alignof", "Asm", "Auto", "Bool", 
+			"Break", "Case", "Catch", "Char", "Char16", "Char32", "Class", "Const", 
+			"Constexpr", "Const_cast", "Continue", "Decltype", "Default", "Delete", 
+			"Do", "Double", "Dynamic_cast", "Else", "Enum", "Explicit", "Export", 
+			"Extern", "False", "Final", "Float", "For", "Friend", "Goto", "If", "Inline", 
+			"Int", "Long", "Mutable", "Namespace", "New", "Noexcept", "Nullptr", 
+			"Operator", "Override", "Private", "Protected", "Public", "Register", 
+			"Reinterpret_cast", "Return", "Short", "Signed", "Sizeof", "Static", 
+			"Static_assert", "Static_cast", "Struct", "Switch", "Template", "This", 
+			"Thread_local", "Throw", "True", "Try", "Typedef", "Typeid_", "Typename_", 
+			"Union", "Unsigned", "Using", "Virtual", "Void", "Volatile", "Wchar", 
+			"While", "LeftParen", "RightParen", "LeftBracket", "RightBracket", "LeftBrace", 
+			"RightBrace", "Plus", "Minus", "Star", "Div", "Mod", "Caret", "And", 
+			"Or", "Tilde", "Not", "Assign", "Less", "Greater", "PlusAssign", "MinusAssign", 
+			"StarAssign", "DivAssign", "ModAssign", "XorAssign", "AndAssign", "OrAssign", 
+			"LeftShift", "RightShift", "LeftShiftAssign", "RightShiftAssign", "Equal", 
+			"NotEqual", "LessEqual", "GreaterEqual", "AndAnd", "OrOr", "PlusPlus", 
+			"MinusMinus", "Comma", "ArrowStar", "Arrow", "Question", "Colon", "Doublecolon", 
+			"Semi", "Dot", "DotStar", "Ellipsis", "Hexquad", "Universalcharactername", 
+			"Identifier", "Identifiernondigit", "NONDIGIT", "DIGIT", "Integerliteral", 
+			"Decimalliteral", "Octalliteral", "Hexadecimalliteral", "Binaryliteral", 
+			"NONZERODIGIT", "OCTALDIGIT", "HEXADECIMALDIGIT", "BINARYDIGIT", "Integersuffix", 
+			"Unsignedsuffix", "Longsuffix", "Longlongsuffix", "Characterliteral", 
+			"Cchar", "Escapesequence", "Simpleescapesequence", "Octalescapesequence", 
+			"Hexadecimalescapesequence", "Floatingliteral", "Fractionalconstant", 
+			"Exponentpart", "SIGN", "Digitsequence", "Floatingsuffix", "Stringliteral", 
+			"Encodingprefix", "Schar", "Rawstring", "Userdefinedintegerliteral", 
+			"Userdefinedfloatingliteral", "Userdefinedstringliteral", "Userdefinedcharacterliteral", 
+			"Udsuffix", "Whitespace", "Newline", "BlockComment", "LineComment"
+		};
+	}
+	public static final String[] ruleNames = makeRuleNames();
 
-	private static final String[] _LITERAL_NAMES = {
-		null, null, null, "'alignas'", "'alignof'", "'asm'", "'auto'", "'bool'", 
-		"'break'", "'case'", "'catch'", "'char'", "'char16_t'", "'char32_t'", 
-		"'class'", "'const'", "'constexpr'", "'const_cast'", "'continue'", "'decltype'", 
-		"'default'", "'delete'", "'do'", "'double'", "'dynamic_cast'", "'else'", 
-		"'enum'", "'explicit'", "'export'", "'extern'", "'false'", "'final'", 
-		"'float'", "'for'", "'friend'", "'goto'", "'if'", "'inline'", "'int'", 
-		"'long'", "'mutable'", "'namespace'", "'new'", "'noexcept'", "'nullptr'", 
-		"'operator'", "'override'", "'private'", "'protected'", "'public'", "'register'", 
-		"'reinterpret_cast'", "'return'", "'short'", "'signed'", "'sizeof'", "'static'", 
-		"'static_assert'", "'static_cast'", "'struct'", "'switch'", "'template'", 
-		"'this'", "'thread_local'", "'throw'", "'true'", "'try'", "'typedef'", 
-		"'typeid'", "'typename'", "'union'", "'unsigned'", "'using'", "'virtual'", 
-		"'void'", "'volatile'", "'wchar_t'", "'while'", "'('", "')'", "'['", "']'", 
-		"'{'", "'}'", "'+'", "'-'", "'*'", "'/'", "'%'", "'^'", "'&'", "'|'", 
-		"'~'", "'!'", "'='", "'<'", "'>'", "'+='", "'-='", "'*='", "'/='", "'%='", 
-		"'^='", "'&='", "'|='", "'<<'", "'>>'", "'<<='", "'>>='", "'=='", "'!='", 
-		"'<='", "'>='", "'&&'", "'||'", "'++'", "'--'", "','", "'->*'", "'->'", 
-		"'?'", "':'", "'::'", "';'", "'.'", "'.*'", "'...'"
-	};
-	private static final String[] _SYMBOLIC_NAMES = {
-		null, "MultiLineMacro", "Directive", "Alignas", "Alignof", "Asm", "Auto", 
-		"Bool", "Break", "Case", "Catch", "Char", "Char16", "Char32", "Class", 
-		"Const", "Constexpr", "Const_cast", "Continue", "Decltype", "Default", 
-		"Delete", "Do", "Double", "Dynamic_cast", "Else", "Enum", "Explicit", 
-		"Export", "Extern", "False", "Final", "Float", "For", "Friend", "Goto", 
-		"If", "Inline", "Int", "Long", "Mutable", "Namespace", "New", "Noexcept", 
-		"Nullptr", "Operator", "Override", "Private", "Protected", "Public", "Register", 
-		"Reinterpret_cast", "Return", "Short", "Signed", "Sizeof", "Static", "Static_assert", 
-		"Static_cast", "Struct", "Switch", "Template", "This", "Thread_local", 
-		"Throw", "True", "Try", "Typedef", "Typeid_", "Typename_", "Union", "Unsigned", 
-		"Using", "Virtual", "Void", "Volatile", "Wchar", "While", "LeftParen", 
-		"RightParen", "LeftBracket", "RightBracket", "LeftBrace", "RightBrace", 
-		"Plus", "Minus", "Star", "Div", "Mod", "Caret", "And", "Or", "Tilde", 
-		"Not", "Assign", "Less", "Greater", "PlusAssign", "MinusAssign", "StarAssign", 
-		"DivAssign", "ModAssign", "XorAssign", "AndAssign", "OrAssign", "LeftShift", 
-		"RightShift", "LeftShiftAssign", "RightShiftAssign", "Equal", "NotEqual", 
-		"LessEqual", "GreaterEqual", "AndAnd", "OrOr", "PlusPlus", "MinusMinus", 
-		"Comma", "ArrowStar", "Arrow", "Question", "Colon", "Doublecolon", "Semi", 
-		"Dot", "DotStar", "Ellipsis", "Identifier", "Integerliteral", "Decimalliteral", 
-		"Octalliteral", "Hexadecimalliteral", "Binaryliteral", "Integersuffix", 
-		"Characterliteral", "Floatingliteral", "Stringliteral", "Userdefinedintegerliteral", 
-		"Userdefinedfloatingliteral", "Userdefinedstringliteral", "Userdefinedcharacterliteral", 
-		"Whitespace", "Newline", "BlockComment", "LineComment"
-	};
+	private static String[] makeLiteralNames() {
+		return new String[] {
+			null, null, null, "'alignas'", "'alignof'", "'asm'", "'auto'", "'bool'", 
+			"'break'", "'case'", "'catch'", "'char'", "'char16_t'", "'char32_t'", 
+			"'class'", "'const'", "'constexpr'", "'const_cast'", "'continue'", "'decltype'", 
+			"'default'", "'delete'", "'do'", "'double'", "'dynamic_cast'", "'else'", 
+			"'enum'", "'explicit'", "'export'", "'extern'", "'false'", "'final'", 
+			"'float'", "'for'", "'friend'", "'goto'", "'if'", "'inline'", "'int'", 
+			"'long'", "'mutable'", "'namespace'", "'new'", "'noexcept'", "'nullptr'", 
+			"'operator'", "'override'", "'private'", "'protected'", "'public'", "'register'", 
+			"'reinterpret_cast'", "'return'", "'short'", "'signed'", "'sizeof'", 
+			"'static'", "'static_assert'", "'static_cast'", "'struct'", "'switch'", 
+			"'template'", "'this'", "'thread_local'", "'throw'", "'true'", "'try'", 
+			"'typedef'", "'typeid'", "'typename'", "'union'", "'unsigned'", "'using'", 
+			"'virtual'", "'void'", "'volatile'", "'wchar_t'", "'while'", "'('", "')'", 
+			"'['", "']'", "'{'", "'}'", "'+'", "'-'", "'*'", "'/'", "'%'", "'^'", 
+			"'&'", "'|'", "'~'", "'!'", "'='", "'<'", "'>'", "'+='", "'-='", "'*='", 
+			"'/='", "'%='", "'^='", "'&='", "'|='", "'<<'", "'>>'", "'<<='", "'>>='", 
+			"'=='", "'!='", "'<='", "'>='", "'&&'", "'||'", "'++'", "'--'", "','", 
+			"'->*'", "'->'", "'?'", "':'", "'::'", "';'", "'.'", "'.*'", "'...'"
+		};
+	}
+	private static final String[] _LITERAL_NAMES = makeLiteralNames();
+	private static String[] makeSymbolicNames() {
+		return new String[] {
+			null, "MultiLineMacro", "Directive", "Alignas", "Alignof", "Asm", "Auto", 
+			"Bool", "Break", "Case", "Catch", "Char", "Char16", "Char32", "Class", 
+			"Const", "Constexpr", "Const_cast", "Continue", "Decltype", "Default", 
+			"Delete", "Do", "Double", "Dynamic_cast", "Else", "Enum", "Explicit", 
+			"Export", "Extern", "False", "Final", "Float", "For", "Friend", "Goto", 
+			"If", "Inline", "Int", "Long", "Mutable", "Namespace", "New", "Noexcept", 
+			"Nullptr", "Operator", "Override", "Private", "Protected", "Public", 
+			"Register", "Reinterpret_cast", "Return", "Short", "Signed", "Sizeof", 
+			"Static", "Static_assert", "Static_cast", "Struct", "Switch", "Template", 
+			"This", "Thread_local", "Throw", "True", "Try", "Typedef", "Typeid_", 
+			"Typename_", "Union", "Unsigned", "Using", "Virtual", "Void", "Volatile", 
+			"Wchar", "While", "LeftParen", "RightParen", "LeftBracket", "RightBracket", 
+			"LeftBrace", "RightBrace", "Plus", "Minus", "Star", "Div", "Mod", "Caret", 
+			"And", "Or", "Tilde", "Not", "Assign", "Less", "Greater", "PlusAssign", 
+			"MinusAssign", "StarAssign", "DivAssign", "ModAssign", "XorAssign", "AndAssign", 
+			"OrAssign", "LeftShift", "RightShift", "LeftShiftAssign", "RightShiftAssign", 
+			"Equal", "NotEqual", "LessEqual", "GreaterEqual", "AndAnd", "OrOr", "PlusPlus", 
+			"MinusMinus", "Comma", "ArrowStar", "Arrow", "Question", "Colon", "Doublecolon", 
+			"Semi", "Dot", "DotStar", "Ellipsis", "Identifier", "Integerliteral", 
+			"Decimalliteral", "Octalliteral", "Hexadecimalliteral", "Binaryliteral", 
+			"Integersuffix", "Characterliteral", "Floatingliteral", "Stringliteral", 
+			"Userdefinedintegerliteral", "Userdefinedfloatingliteral", "Userdefinedstringliteral", 
+			"Userdefinedcharacterliteral", "Whitespace", "Newline", "BlockComment", 
+			"LineComment"
+		};
+	}
+	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
 	/**

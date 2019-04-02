@@ -1,4 +1,4 @@
-// Generated from C.g4 by ANTLR 4.7.1
+// Generated from C.g4 by ANTLR 4.7.2
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
@@ -10,7 +10,7 @@ import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class CLexer extends Lexer {
-	static { RuntimeMetaData.checkVersion("4.7.1", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.7.2", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -43,70 +43,82 @@ public class CLexer extends Lexer {
 		"DEFAULT_MODE"
 	};
 
-	public static final String[] ruleNames = {
-		"T__0", "T__1", "T__2", "T__3", "T__4", "T__5", "T__6", "T__7", "T__8", 
-		"T__9", "T__10", "T__11", "T__12", "T__13", "Auto", "Break", "Case", "Char", 
-		"Const", "Continue", "Default", "Do", "Double", "Else", "Enum", "Extern", 
-		"Float", "For", "Goto", "If", "Inline", "Int", "Long", "Register", "Restrict", 
-		"Return", "Short", "Signed", "Sizeof", "Static", "Struct", "Switch", "Typedef", 
-		"Union", "Unsigned", "Void", "Volatile", "While", "Alignas", "Alignof", 
-		"Atomic", "Bool", "Complex", "Generic", "Imaginary", "Noreturn", "StaticAssert", 
-		"ThreadLocal", "LeftParen", "RightParen", "LeftBracket", "RightBracket", 
-		"LeftBrace", "RightBrace", "Less", "LessEqual", "Greater", "GreaterEqual", 
-		"LeftShift", "RightShift", "Plus", "PlusPlus", "Minus", "MinusMinus", 
-		"Star", "Div", "Mod", "And", "Or", "AndAnd", "OrOr", "Caret", "Not", "Tilde", 
-		"Question", "Colon", "Semi", "Comma", "Assign", "StarAssign", "DivAssign", 
-		"ModAssign", "PlusAssign", "MinusAssign", "LeftShiftAssign", "RightShiftAssign", 
-		"AndAssign", "XorAssign", "OrAssign", "Equal", "NotEqual", "Arrow", "Dot", 
-		"Ellipsis", "Identifier", "IdentifierNondigit", "Nondigit", "Digit", "UniversalCharacterName", 
-		"HexQuad", "Constant", "IntegerConstant", "BinaryConstant", "DecimalConstant", 
-		"OctalConstant", "HexadecimalConstant", "HexadecimalPrefix", "NonzeroDigit", 
-		"OctalDigit", "HexadecimalDigit", "IntegerSuffix", "UnsignedSuffix", "LongSuffix", 
-		"LongLongSuffix", "FloatingConstant", "DecimalFloatingConstant", "HexadecimalFloatingConstant", 
-		"FractionalConstant", "ExponentPart", "Sign", "DigitSequence", "HexadecimalFractionalConstant", 
-		"BinaryExponentPart", "HexadecimalDigitSequence", "FloatingSuffix", "CharacterConstant", 
-		"CCharSequence", "CChar", "EscapeSequence", "SimpleEscapeSequence", "OctalEscapeSequence", 
-		"HexadecimalEscapeSequence", "StringLiteral", "EncodingPrefix", "SCharSequence", 
-		"SChar", "ComplexDefine", "AsmBlock", "LineAfterPreprocessing", "LineDirective", 
-		"PragmaDirective", "Whitespace", "Newline", "BlockComment", "LineComment"
-	};
+	private static String[] makeRuleNames() {
+		return new String[] {
+			"T__0", "T__1", "T__2", "T__3", "T__4", "T__5", "T__6", "T__7", "T__8", 
+			"T__9", "T__10", "T__11", "T__12", "T__13", "Auto", "Break", "Case", 
+			"Char", "Const", "Continue", "Default", "Do", "Double", "Else", "Enum", 
+			"Extern", "Float", "For", "Goto", "If", "Inline", "Int", "Long", "Register", 
+			"Restrict", "Return", "Short", "Signed", "Sizeof", "Static", "Struct", 
+			"Switch", "Typedef", "Union", "Unsigned", "Void", "Volatile", "While", 
+			"Alignas", "Alignof", "Atomic", "Bool", "Complex", "Generic", "Imaginary", 
+			"Noreturn", "StaticAssert", "ThreadLocal", "LeftParen", "RightParen", 
+			"LeftBracket", "RightBracket", "LeftBrace", "RightBrace", "Less", "LessEqual", 
+			"Greater", "GreaterEqual", "LeftShift", "RightShift", "Plus", "PlusPlus", 
+			"Minus", "MinusMinus", "Star", "Div", "Mod", "And", "Or", "AndAnd", "OrOr", 
+			"Caret", "Not", "Tilde", "Question", "Colon", "Semi", "Comma", "Assign", 
+			"StarAssign", "DivAssign", "ModAssign", "PlusAssign", "MinusAssign", 
+			"LeftShiftAssign", "RightShiftAssign", "AndAssign", "XorAssign", "OrAssign", 
+			"Equal", "NotEqual", "Arrow", "Dot", "Ellipsis", "Identifier", "IdentifierNondigit", 
+			"Nondigit", "Digit", "UniversalCharacterName", "HexQuad", "Constant", 
+			"IntegerConstant", "BinaryConstant", "DecimalConstant", "OctalConstant", 
+			"HexadecimalConstant", "HexadecimalPrefix", "NonzeroDigit", "OctalDigit", 
+			"HexadecimalDigit", "IntegerSuffix", "UnsignedSuffix", "LongSuffix", 
+			"LongLongSuffix", "FloatingConstant", "DecimalFloatingConstant", "HexadecimalFloatingConstant", 
+			"FractionalConstant", "ExponentPart", "Sign", "DigitSequence", "HexadecimalFractionalConstant", 
+			"BinaryExponentPart", "HexadecimalDigitSequence", "FloatingSuffix", "CharacterConstant", 
+			"CCharSequence", "CChar", "EscapeSequence", "SimpleEscapeSequence", "OctalEscapeSequence", 
+			"HexadecimalEscapeSequence", "StringLiteral", "EncodingPrefix", "SCharSequence", 
+			"SChar", "ComplexDefine", "AsmBlock", "LineAfterPreprocessing", "LineDirective", 
+			"PragmaDirective", "Whitespace", "Newline", "BlockComment", "LineComment"
+		};
+	}
+	public static final String[] ruleNames = makeRuleNames();
 
-	private static final String[] _LITERAL_NAMES = {
-		null, "'__extension__'", "'__builtin_va_arg'", "'__builtin_offsetof'", 
-		"'__m128'", "'__m128d'", "'__m128i'", "'__typeof__'", "'__inline__'", 
-		"'__stdcall'", "'__declspec'", "'__asm'", "'__attribute__'", "'__asm__'", 
-		"'__volatile__'", "'auto'", "'break'", "'case'", "'char'", "'const'", 
-		"'continue'", "'default'", "'do'", "'double'", "'else'", "'enum'", "'extern'", 
-		"'float'", "'for'", "'goto'", "'if'", "'inline'", "'int'", "'long'", "'register'", 
-		"'restrict'", "'return'", "'short'", "'signed'", "'sizeof'", "'static'", 
-		"'struct'", "'switch'", "'typedef'", "'union'", "'unsigned'", "'void'", 
-		"'volatile'", "'while'", "'_Alignas'", "'_Alignof'", "'_Atomic'", "'_Bool'", 
-		"'_Complex'", "'_Generic'", "'_Imaginary'", "'_Noreturn'", "'_Static_assert'", 
-		"'_Thread_local'", "'('", "')'", "'['", "']'", "'{'", "'}'", "'<'", "'<='", 
-		"'>'", "'>='", "'<<'", "'>>'", "'+'", "'++'", "'-'", "'--'", "'*'", "'/'", 
-		"'%'", "'&'", "'|'", "'&&'", "'||'", "'^'", "'!'", "'~'", "'?'", "':'", 
-		"';'", "','", "'='", "'*='", "'/='", "'%='", "'+='", "'-='", "'<<='", 
-		"'>>='", "'&='", "'^='", "'|='", "'=='", "'!='", "'->'", "'.'", "'...'"
-	};
-	private static final String[] _SYMBOLIC_NAMES = {
-		null, null, null, null, null, null, null, null, null, null, null, null, 
-		null, null, null, "Auto", "Break", "Case", "Char", "Const", "Continue", 
-		"Default", "Do", "Double", "Else", "Enum", "Extern", "Float", "For", "Goto", 
-		"If", "Inline", "Int", "Long", "Register", "Restrict", "Return", "Short", 
-		"Signed", "Sizeof", "Static", "Struct", "Switch", "Typedef", "Union", 
-		"Unsigned", "Void", "Volatile", "While", "Alignas", "Alignof", "Atomic", 
-		"Bool", "Complex", "Generic", "Imaginary", "Noreturn", "StaticAssert", 
-		"ThreadLocal", "LeftParen", "RightParen", "LeftBracket", "RightBracket", 
-		"LeftBrace", "RightBrace", "Less", "LessEqual", "Greater", "GreaterEqual", 
-		"LeftShift", "RightShift", "Plus", "PlusPlus", "Minus", "MinusMinus", 
-		"Star", "Div", "Mod", "And", "Or", "AndAnd", "OrOr", "Caret", "Not", "Tilde", 
-		"Question", "Colon", "Semi", "Comma", "Assign", "StarAssign", "DivAssign", 
-		"ModAssign", "PlusAssign", "MinusAssign", "LeftShiftAssign", "RightShiftAssign", 
-		"AndAssign", "XorAssign", "OrAssign", "Equal", "NotEqual", "Arrow", "Dot", 
-		"Ellipsis", "Identifier", "Constant", "DigitSequence", "StringLiteral", 
-		"ComplexDefine", "AsmBlock", "LineAfterPreprocessing", "LineDirective", 
-		"PragmaDirective", "Whitespace", "Newline", "BlockComment", "LineComment"
-	};
+	private static String[] makeLiteralNames() {
+		return new String[] {
+			null, "'__extension__'", "'__builtin_va_arg'", "'__builtin_offsetof'", 
+			"'__m128'", "'__m128d'", "'__m128i'", "'__typeof__'", "'__inline__'", 
+			"'__stdcall'", "'__declspec'", "'__asm'", "'__attribute__'", "'__asm__'", 
+			"'__volatile__'", "'auto'", "'break'", "'case'", "'char'", "'const'", 
+			"'continue'", "'default'", "'do'", "'double'", "'else'", "'enum'", "'extern'", 
+			"'float'", "'for'", "'goto'", "'if'", "'inline'", "'int'", "'long'", 
+			"'register'", "'restrict'", "'return'", "'short'", "'signed'", "'sizeof'", 
+			"'static'", "'struct'", "'switch'", "'typedef'", "'union'", "'unsigned'", 
+			"'void'", "'volatile'", "'while'", "'_Alignas'", "'_Alignof'", "'_Atomic'", 
+			"'_Bool'", "'_Complex'", "'_Generic'", "'_Imaginary'", "'_Noreturn'", 
+			"'_Static_assert'", "'_Thread_local'", "'('", "')'", "'['", "']'", "'{'", 
+			"'}'", "'<'", "'<='", "'>'", "'>='", "'<<'", "'>>'", "'+'", "'++'", "'-'", 
+			"'--'", "'*'", "'/'", "'%'", "'&'", "'|'", "'&&'", "'||'", "'^'", "'!'", 
+			"'~'", "'?'", "':'", "';'", "','", "'='", "'*='", "'/='", "'%='", "'+='", 
+			"'-='", "'<<='", "'>>='", "'&='", "'^='", "'|='", "'=='", "'!='", "'->'", 
+			"'.'", "'...'"
+		};
+	}
+	private static final String[] _LITERAL_NAMES = makeLiteralNames();
+	private static String[] makeSymbolicNames() {
+		return new String[] {
+			null, null, null, null, null, null, null, null, null, null, null, null, 
+			null, null, null, "Auto", "Break", "Case", "Char", "Const", "Continue", 
+			"Default", "Do", "Double", "Else", "Enum", "Extern", "Float", "For", 
+			"Goto", "If", "Inline", "Int", "Long", "Register", "Restrict", "Return", 
+			"Short", "Signed", "Sizeof", "Static", "Struct", "Switch", "Typedef", 
+			"Union", "Unsigned", "Void", "Volatile", "While", "Alignas", "Alignof", 
+			"Atomic", "Bool", "Complex", "Generic", "Imaginary", "Noreturn", "StaticAssert", 
+			"ThreadLocal", "LeftParen", "RightParen", "LeftBracket", "RightBracket", 
+			"LeftBrace", "RightBrace", "Less", "LessEqual", "Greater", "GreaterEqual", 
+			"LeftShift", "RightShift", "Plus", "PlusPlus", "Minus", "MinusMinus", 
+			"Star", "Div", "Mod", "And", "Or", "AndAnd", "OrOr", "Caret", "Not", 
+			"Tilde", "Question", "Colon", "Semi", "Comma", "Assign", "StarAssign", 
+			"DivAssign", "ModAssign", "PlusAssign", "MinusAssign", "LeftShiftAssign", 
+			"RightShiftAssign", "AndAssign", "XorAssign", "OrAssign", "Equal", "NotEqual", 
+			"Arrow", "Dot", "Ellipsis", "Identifier", "Constant", "DigitSequence", 
+			"StringLiteral", "ComplexDefine", "AsmBlock", "LineAfterPreprocessing", 
+			"LineDirective", "PragmaDirective", "Whitespace", "Newline", "BlockComment", 
+			"LineComment"
+		};
+	}
+	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
 	/**

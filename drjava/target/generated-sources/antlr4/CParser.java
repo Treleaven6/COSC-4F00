@@ -1,4 +1,4 @@
-// Generated from C.g4 by ANTLR 4.7.1
+// Generated from C.g4 by ANTLR 4.7.2
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class CParser extends Parser {
-	static { RuntimeMetaData.checkVersion("4.7.1", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.7.2", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -65,68 +65,79 @@ public class CParser extends Parser {
 		RULE_forCondition = 78, RULE_forDeclaration = 79, RULE_forExpression = 80, 
 		RULE_jumpStatement = 81, RULE_compilationUnit = 82, RULE_translationUnit = 83, 
 		RULE_externalDeclaration = 84, RULE_functionDefinition = 85, RULE_declarationList = 86;
-	public static final String[] ruleNames = {
-		"primaryExpression", "genericSelection", "genericAssocList", "genericAssociation", 
-		"postfixExpression", "argumentExpressionList", "unaryExpression", "unaryOperator", 
-		"castExpression", "multiplicativeExpression", "additiveExpression", "shiftExpression", 
-		"relationalExpression", "equalityExpression", "andExpression", "exclusiveOrExpression", 
-		"inclusiveOrExpression", "logicalAndExpression", "logicalOrExpression", 
-		"conditionalExpression", "assignmentExpression", "assignmentOperator", 
-		"expression", "constantExpression", "declaration", "declarationSpecifiers", 
-		"declarationSpecifiers2", "declarationSpecifier", "initDeclaratorList", 
-		"initDeclarator", "storageClassSpecifier", "typeSpecifier", "structOrUnionSpecifier", 
-		"structOrUnion", "structDeclarationList", "structDeclaration", "specifierQualifierList", 
-		"structDeclaratorList", "structDeclarator", "enumSpecifier", "enumeratorList", 
-		"enumerator", "enumerationConstant", "atomicTypeSpecifier", "typeQualifier", 
-		"functionSpecifier", "alignmentSpecifier", "declarator", "directDeclarator", 
-		"gccDeclaratorExtension", "gccAttributeSpecifier", "gccAttributeList", 
-		"gccAttribute", "nestedParenthesesBlock", "pointer", "typeQualifierList", 
-		"parameterTypeList", "parameterList", "parameterDeclaration", "identifierList", 
-		"typeName", "abstractDeclarator", "directAbstractDeclarator", "typedefName", 
-		"initializer", "initializerList", "designation", "designatorList", "designator", 
-		"staticAssertDeclaration", "statement", "labeledStatement", "compoundStatement", 
-		"blockItemList", "blockItem", "expressionStatement", "selectionStatement", 
-		"iterationStatement", "forCondition", "forDeclaration", "forExpression", 
-		"jumpStatement", "compilationUnit", "translationUnit", "externalDeclaration", 
-		"functionDefinition", "declarationList"
-	};
+	private static String[] makeRuleNames() {
+		return new String[] {
+			"primaryExpression", "genericSelection", "genericAssocList", "genericAssociation", 
+			"postfixExpression", "argumentExpressionList", "unaryExpression", "unaryOperator", 
+			"castExpression", "multiplicativeExpression", "additiveExpression", "shiftExpression", 
+			"relationalExpression", "equalityExpression", "andExpression", "exclusiveOrExpression", 
+			"inclusiveOrExpression", "logicalAndExpression", "logicalOrExpression", 
+			"conditionalExpression", "assignmentExpression", "assignmentOperator", 
+			"expression", "constantExpression", "declaration", "declarationSpecifiers", 
+			"declarationSpecifiers2", "declarationSpecifier", "initDeclaratorList", 
+			"initDeclarator", "storageClassSpecifier", "typeSpecifier", "structOrUnionSpecifier", 
+			"structOrUnion", "structDeclarationList", "structDeclaration", "specifierQualifierList", 
+			"structDeclaratorList", "structDeclarator", "enumSpecifier", "enumeratorList", 
+			"enumerator", "enumerationConstant", "atomicTypeSpecifier", "typeQualifier", 
+			"functionSpecifier", "alignmentSpecifier", "declarator", "directDeclarator", 
+			"gccDeclaratorExtension", "gccAttributeSpecifier", "gccAttributeList", 
+			"gccAttribute", "nestedParenthesesBlock", "pointer", "typeQualifierList", 
+			"parameterTypeList", "parameterList", "parameterDeclaration", "identifierList", 
+			"typeName", "abstractDeclarator", "directAbstractDeclarator", "typedefName", 
+			"initializer", "initializerList", "designation", "designatorList", "designator", 
+			"staticAssertDeclaration", "statement", "labeledStatement", "compoundStatement", 
+			"blockItemList", "blockItem", "expressionStatement", "selectionStatement", 
+			"iterationStatement", "forCondition", "forDeclaration", "forExpression", 
+			"jumpStatement", "compilationUnit", "translationUnit", "externalDeclaration", 
+			"functionDefinition", "declarationList"
+		};
+	}
+	public static final String[] ruleNames = makeRuleNames();
 
-	private static final String[] _LITERAL_NAMES = {
-		null, "'__extension__'", "'__builtin_va_arg'", "'__builtin_offsetof'", 
-		"'__m128'", "'__m128d'", "'__m128i'", "'__typeof__'", "'__inline__'", 
-		"'__stdcall'", "'__declspec'", "'__asm'", "'__attribute__'", "'__asm__'", 
-		"'__volatile__'", "'auto'", "'break'", "'case'", "'char'", "'const'", 
-		"'continue'", "'default'", "'do'", "'double'", "'else'", "'enum'", "'extern'", 
-		"'float'", "'for'", "'goto'", "'if'", "'inline'", "'int'", "'long'", "'register'", 
-		"'restrict'", "'return'", "'short'", "'signed'", "'sizeof'", "'static'", 
-		"'struct'", "'switch'", "'typedef'", "'union'", "'unsigned'", "'void'", 
-		"'volatile'", "'while'", "'_Alignas'", "'_Alignof'", "'_Atomic'", "'_Bool'", 
-		"'_Complex'", "'_Generic'", "'_Imaginary'", "'_Noreturn'", "'_Static_assert'", 
-		"'_Thread_local'", "'('", "')'", "'['", "']'", "'{'", "'}'", "'<'", "'<='", 
-		"'>'", "'>='", "'<<'", "'>>'", "'+'", "'++'", "'-'", "'--'", "'*'", "'/'", 
-		"'%'", "'&'", "'|'", "'&&'", "'||'", "'^'", "'!'", "'~'", "'?'", "':'", 
-		"';'", "','", "'='", "'*='", "'/='", "'%='", "'+='", "'-='", "'<<='", 
-		"'>>='", "'&='", "'^='", "'|='", "'=='", "'!='", "'->'", "'.'", "'...'"
-	};
-	private static final String[] _SYMBOLIC_NAMES = {
-		null, null, null, null, null, null, null, null, null, null, null, null, 
-		null, null, null, "Auto", "Break", "Case", "Char", "Const", "Continue", 
-		"Default", "Do", "Double", "Else", "Enum", "Extern", "Float", "For", "Goto", 
-		"If", "Inline", "Int", "Long", "Register", "Restrict", "Return", "Short", 
-		"Signed", "Sizeof", "Static", "Struct", "Switch", "Typedef", "Union", 
-		"Unsigned", "Void", "Volatile", "While", "Alignas", "Alignof", "Atomic", 
-		"Bool", "Complex", "Generic", "Imaginary", "Noreturn", "StaticAssert", 
-		"ThreadLocal", "LeftParen", "RightParen", "LeftBracket", "RightBracket", 
-		"LeftBrace", "RightBrace", "Less", "LessEqual", "Greater", "GreaterEqual", 
-		"LeftShift", "RightShift", "Plus", "PlusPlus", "Minus", "MinusMinus", 
-		"Star", "Div", "Mod", "And", "Or", "AndAnd", "OrOr", "Caret", "Not", "Tilde", 
-		"Question", "Colon", "Semi", "Comma", "Assign", "StarAssign", "DivAssign", 
-		"ModAssign", "PlusAssign", "MinusAssign", "LeftShiftAssign", "RightShiftAssign", 
-		"AndAssign", "XorAssign", "OrAssign", "Equal", "NotEqual", "Arrow", "Dot", 
-		"Ellipsis", "Identifier", "Constant", "DigitSequence", "StringLiteral", 
-		"ComplexDefine", "AsmBlock", "LineAfterPreprocessing", "LineDirective", 
-		"PragmaDirective", "Whitespace", "Newline", "BlockComment", "LineComment"
-	};
+	private static String[] makeLiteralNames() {
+		return new String[] {
+			null, "'__extension__'", "'__builtin_va_arg'", "'__builtin_offsetof'", 
+			"'__m128'", "'__m128d'", "'__m128i'", "'__typeof__'", "'__inline__'", 
+			"'__stdcall'", "'__declspec'", "'__asm'", "'__attribute__'", "'__asm__'", 
+			"'__volatile__'", "'auto'", "'break'", "'case'", "'char'", "'const'", 
+			"'continue'", "'default'", "'do'", "'double'", "'else'", "'enum'", "'extern'", 
+			"'float'", "'for'", "'goto'", "'if'", "'inline'", "'int'", "'long'", 
+			"'register'", "'restrict'", "'return'", "'short'", "'signed'", "'sizeof'", 
+			"'static'", "'struct'", "'switch'", "'typedef'", "'union'", "'unsigned'", 
+			"'void'", "'volatile'", "'while'", "'_Alignas'", "'_Alignof'", "'_Atomic'", 
+			"'_Bool'", "'_Complex'", "'_Generic'", "'_Imaginary'", "'_Noreturn'", 
+			"'_Static_assert'", "'_Thread_local'", "'('", "')'", "'['", "']'", "'{'", 
+			"'}'", "'<'", "'<='", "'>'", "'>='", "'<<'", "'>>'", "'+'", "'++'", "'-'", 
+			"'--'", "'*'", "'/'", "'%'", "'&'", "'|'", "'&&'", "'||'", "'^'", "'!'", 
+			"'~'", "'?'", "':'", "';'", "','", "'='", "'*='", "'/='", "'%='", "'+='", 
+			"'-='", "'<<='", "'>>='", "'&='", "'^='", "'|='", "'=='", "'!='", "'->'", 
+			"'.'", "'...'"
+		};
+	}
+	private static final String[] _LITERAL_NAMES = makeLiteralNames();
+	private static String[] makeSymbolicNames() {
+		return new String[] {
+			null, null, null, null, null, null, null, null, null, null, null, null, 
+			null, null, null, "Auto", "Break", "Case", "Char", "Const", "Continue", 
+			"Default", "Do", "Double", "Else", "Enum", "Extern", "Float", "For", 
+			"Goto", "If", "Inline", "Int", "Long", "Register", "Restrict", "Return", 
+			"Short", "Signed", "Sizeof", "Static", "Struct", "Switch", "Typedef", 
+			"Union", "Unsigned", "Void", "Volatile", "While", "Alignas", "Alignof", 
+			"Atomic", "Bool", "Complex", "Generic", "Imaginary", "Noreturn", "StaticAssert", 
+			"ThreadLocal", "LeftParen", "RightParen", "LeftBracket", "RightBracket", 
+			"LeftBrace", "RightBrace", "Less", "LessEqual", "Greater", "GreaterEqual", 
+			"LeftShift", "RightShift", "Plus", "PlusPlus", "Minus", "MinusMinus", 
+			"Star", "Div", "Mod", "And", "Or", "AndAnd", "OrOr", "Caret", "Not", 
+			"Tilde", "Question", "Colon", "Semi", "Comma", "Assign", "StarAssign", 
+			"DivAssign", "ModAssign", "PlusAssign", "MinusAssign", "LeftShiftAssign", 
+			"RightShiftAssign", "AndAssign", "XorAssign", "OrAssign", "Equal", "NotEqual", 
+			"Arrow", "Dot", "Ellipsis", "Identifier", "Constant", "DigitSequence", 
+			"StringLiteral", "ComplexDefine", "AsmBlock", "LineAfterPreprocessing", 
+			"LineDirective", "PragmaDirective", "Whitespace", "Newline", "BlockComment", 
+			"LineComment"
+		};
+	}
+	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
 	/**
@@ -176,6 +187,7 @@ public class CParser extends Parser {
 		super(input);
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
+
 	public static class PrimaryExpressionContext extends ParserRuleContext {
 		public TerminalNode Identifier() { return getToken(CParser.Identifier, 0); }
 		public TerminalNode Constant() { return getToken(CParser.Constant, 0); }
@@ -183,9 +195,11 @@ public class CParser extends Parser {
 		public TerminalNode StringLiteral(int i) {
 			return getToken(CParser.StringLiteral, i);
 		}
+		public TerminalNode LeftParen() { return getToken(CParser.LeftParen, 0); }
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
+		public TerminalNode RightParen() { return getToken(CParser.RightParen, 0); }
 		public GenericSelectionContext genericSelection() {
 			return getRuleContext(GenericSelectionContext.class,0);
 		}
@@ -195,6 +209,7 @@ public class CParser extends Parser {
 		public UnaryExpressionContext unaryExpression() {
 			return getRuleContext(UnaryExpressionContext.class,0);
 		}
+		public TerminalNode Comma() { return getToken(CParser.Comma, 0); }
 		public TypeNameContext typeName() {
 			return getRuleContext(TypeNameContext.class,0);
 		}
@@ -347,12 +362,16 @@ public class CParser extends Parser {
 	}
 
 	public static class GenericSelectionContext extends ParserRuleContext {
+		public TerminalNode Generic() { return getToken(CParser.Generic, 0); }
+		public TerminalNode LeftParen() { return getToken(CParser.LeftParen, 0); }
 		public AssignmentExpressionContext assignmentExpression() {
 			return getRuleContext(AssignmentExpressionContext.class,0);
 		}
+		public TerminalNode Comma() { return getToken(CParser.Comma, 0); }
 		public GenericAssocListContext genericAssocList() {
 			return getRuleContext(GenericAssocListContext.class,0);
 		}
+		public TerminalNode RightParen() { return getToken(CParser.RightParen, 0); }
 		public GenericSelectionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -405,6 +424,7 @@ public class CParser extends Parser {
 		public GenericAssocListContext genericAssocList() {
 			return getRuleContext(GenericAssocListContext.class,0);
 		}
+		public TerminalNode Comma() { return getToken(CParser.Comma, 0); }
 		public GenericAssocListContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -480,9 +500,11 @@ public class CParser extends Parser {
 		public TypeNameContext typeName() {
 			return getRuleContext(TypeNameContext.class,0);
 		}
+		public TerminalNode Colon() { return getToken(CParser.Colon, 0); }
 		public AssignmentExpressionContext assignmentExpression() {
 			return getRuleContext(AssignmentExpressionContext.class,0);
 		}
+		public TerminalNode Default() { return getToken(CParser.Default, 0); }
 		public GenericAssociationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -568,22 +590,33 @@ public class CParser extends Parser {
 		public PrimaryExpressionContext primaryExpression() {
 			return getRuleContext(PrimaryExpressionContext.class,0);
 		}
+		public TerminalNode LeftParen() { return getToken(CParser.LeftParen, 0); }
 		public TypeNameContext typeName() {
 			return getRuleContext(TypeNameContext.class,0);
 		}
+		public TerminalNode RightParen() { return getToken(CParser.RightParen, 0); }
+		public TerminalNode LeftBrace() { return getToken(CParser.LeftBrace, 0); }
 		public InitializerListContext initializerList() {
 			return getRuleContext(InitializerListContext.class,0);
 		}
+		public TerminalNode RightBrace() { return getToken(CParser.RightBrace, 0); }
+		public TerminalNode Comma() { return getToken(CParser.Comma, 0); }
 		public PostfixExpressionContext postfixExpression() {
 			return getRuleContext(PostfixExpressionContext.class,0);
 		}
+		public TerminalNode LeftBracket() { return getToken(CParser.LeftBracket, 0); }
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
+		public TerminalNode RightBracket() { return getToken(CParser.RightBracket, 0); }
 		public ArgumentExpressionListContext argumentExpressionList() {
 			return getRuleContext(ArgumentExpressionListContext.class,0);
 		}
+		public TerminalNode Dot() { return getToken(CParser.Dot, 0); }
 		public TerminalNode Identifier() { return getToken(CParser.Identifier, 0); }
+		public TerminalNode Arrow() { return getToken(CParser.Arrow, 0); }
+		public TerminalNode PlusPlus() { return getToken(CParser.PlusPlus, 0); }
+		public TerminalNode MinusMinus() { return getToken(CParser.MinusMinus, 0); }
 		public PostfixExpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -815,6 +848,7 @@ public class CParser extends Parser {
 		public ArgumentExpressionListContext argumentExpressionList() {
 			return getRuleContext(ArgumentExpressionListContext.class,0);
 		}
+		public TerminalNode Comma() { return getToken(CParser.Comma, 0); }
 		public ArgumentExpressionListContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -890,18 +924,25 @@ public class CParser extends Parser {
 		public PostfixExpressionContext postfixExpression() {
 			return getRuleContext(PostfixExpressionContext.class,0);
 		}
+		public TerminalNode PlusPlus() { return getToken(CParser.PlusPlus, 0); }
 		public UnaryExpressionContext unaryExpression() {
 			return getRuleContext(UnaryExpressionContext.class,0);
 		}
+		public TerminalNode MinusMinus() { return getToken(CParser.MinusMinus, 0); }
 		public UnaryOperatorContext unaryOperator() {
 			return getRuleContext(UnaryOperatorContext.class,0);
 		}
 		public CastExpressionContext castExpression() {
 			return getRuleContext(CastExpressionContext.class,0);
 		}
+		public TerminalNode Sizeof() { return getToken(CParser.Sizeof, 0); }
+		public TerminalNode LeftParen() { return getToken(CParser.LeftParen, 0); }
 		public TypeNameContext typeName() {
 			return getRuleContext(TypeNameContext.class,0);
 		}
+		public TerminalNode RightParen() { return getToken(CParser.RightParen, 0); }
+		public TerminalNode Alignof() { return getToken(CParser.Alignof, 0); }
+		public TerminalNode AndAnd() { return getToken(CParser.AndAnd, 0); }
 		public TerminalNode Identifier() { return getToken(CParser.Identifier, 0); }
 		public UnaryExpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -1016,6 +1057,12 @@ public class CParser extends Parser {
 	}
 
 	public static class UnaryOperatorContext extends ParserRuleContext {
+		public TerminalNode And() { return getToken(CParser.And, 0); }
+		public TerminalNode Star() { return getToken(CParser.Star, 0); }
+		public TerminalNode Plus() { return getToken(CParser.Plus, 0); }
+		public TerminalNode Minus() { return getToken(CParser.Minus, 0); }
+		public TerminalNode Tilde() { return getToken(CParser.Tilde, 0); }
+		public TerminalNode Not() { return getToken(CParser.Not, 0); }
 		public UnaryOperatorContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1061,9 +1108,11 @@ public class CParser extends Parser {
 	}
 
 	public static class CastExpressionContext extends ParserRuleContext {
+		public TerminalNode LeftParen() { return getToken(CParser.LeftParen, 0); }
 		public TypeNameContext typeName() {
 			return getRuleContext(TypeNameContext.class,0);
 		}
+		public TerminalNode RightParen() { return getToken(CParser.RightParen, 0); }
 		public CastExpressionContext castExpression() {
 			return getRuleContext(CastExpressionContext.class,0);
 		}
@@ -1154,6 +1203,9 @@ public class CParser extends Parser {
 		public MultiplicativeExpressionContext multiplicativeExpression() {
 			return getRuleContext(MultiplicativeExpressionContext.class,0);
 		}
+		public TerminalNode Star() { return getToken(CParser.Star, 0); }
+		public TerminalNode Div() { return getToken(CParser.Div, 0); }
+		public TerminalNode Mod() { return getToken(CParser.Mod, 0); }
 		public MultiplicativeExpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1262,6 +1314,8 @@ public class CParser extends Parser {
 		public AdditiveExpressionContext additiveExpression() {
 			return getRuleContext(AdditiveExpressionContext.class,0);
 		}
+		public TerminalNode Plus() { return getToken(CParser.Plus, 0); }
+		public TerminalNode Minus() { return getToken(CParser.Minus, 0); }
 		public AdditiveExpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1358,6 +1412,8 @@ public class CParser extends Parser {
 		public ShiftExpressionContext shiftExpression() {
 			return getRuleContext(ShiftExpressionContext.class,0);
 		}
+		public TerminalNode LeftShift() { return getToken(CParser.LeftShift, 0); }
+		public TerminalNode RightShift() { return getToken(CParser.RightShift, 0); }
 		public ShiftExpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1454,6 +1510,10 @@ public class CParser extends Parser {
 		public RelationalExpressionContext relationalExpression() {
 			return getRuleContext(RelationalExpressionContext.class,0);
 		}
+		public TerminalNode Less() { return getToken(CParser.Less, 0); }
+		public TerminalNode Greater() { return getToken(CParser.Greater, 0); }
+		public TerminalNode LessEqual() { return getToken(CParser.LessEqual, 0); }
+		public TerminalNode GreaterEqual() { return getToken(CParser.GreaterEqual, 0); }
 		public RelationalExpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1574,6 +1634,8 @@ public class CParser extends Parser {
 		public EqualityExpressionContext equalityExpression() {
 			return getRuleContext(EqualityExpressionContext.class,0);
 		}
+		public TerminalNode Equal() { return getToken(CParser.Equal, 0); }
+		public TerminalNode NotEqual() { return getToken(CParser.NotEqual, 0); }
 		public EqualityExpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1670,6 +1732,7 @@ public class CParser extends Parser {
 		public AndExpressionContext andExpression() {
 			return getRuleContext(AndExpressionContext.class,0);
 		}
+		public TerminalNode And() { return getToken(CParser.And, 0); }
 		public AndExpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1748,6 +1811,7 @@ public class CParser extends Parser {
 		public ExclusiveOrExpressionContext exclusiveOrExpression() {
 			return getRuleContext(ExclusiveOrExpressionContext.class,0);
 		}
+		public TerminalNode Caret() { return getToken(CParser.Caret, 0); }
 		public ExclusiveOrExpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1826,6 +1890,7 @@ public class CParser extends Parser {
 		public InclusiveOrExpressionContext inclusiveOrExpression() {
 			return getRuleContext(InclusiveOrExpressionContext.class,0);
 		}
+		public TerminalNode Or() { return getToken(CParser.Or, 0); }
 		public InclusiveOrExpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1904,6 +1969,7 @@ public class CParser extends Parser {
 		public LogicalAndExpressionContext logicalAndExpression() {
 			return getRuleContext(LogicalAndExpressionContext.class,0);
 		}
+		public TerminalNode AndAnd() { return getToken(CParser.AndAnd, 0); }
 		public LogicalAndExpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1982,6 +2048,7 @@ public class CParser extends Parser {
 		public LogicalOrExpressionContext logicalOrExpression() {
 			return getRuleContext(LogicalOrExpressionContext.class,0);
 		}
+		public TerminalNode OrOr() { return getToken(CParser.OrOr, 0); }
 		public LogicalOrExpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -2057,9 +2124,11 @@ public class CParser extends Parser {
 		public LogicalOrExpressionContext logicalOrExpression() {
 			return getRuleContext(LogicalOrExpressionContext.class,0);
 		}
+		public TerminalNode Question() { return getToken(CParser.Question, 0); }
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
+		public TerminalNode Colon() { return getToken(CParser.Colon, 0); }
 		public ConditionalExpressionContext conditionalExpression() {
 			return getRuleContext(ConditionalExpressionContext.class,0);
 		}
@@ -2188,6 +2257,17 @@ public class CParser extends Parser {
 	}
 
 	public static class AssignmentOperatorContext extends ParserRuleContext {
+		public TerminalNode Assign() { return getToken(CParser.Assign, 0); }
+		public TerminalNode StarAssign() { return getToken(CParser.StarAssign, 0); }
+		public TerminalNode DivAssign() { return getToken(CParser.DivAssign, 0); }
+		public TerminalNode ModAssign() { return getToken(CParser.ModAssign, 0); }
+		public TerminalNode PlusAssign() { return getToken(CParser.PlusAssign, 0); }
+		public TerminalNode MinusAssign() { return getToken(CParser.MinusAssign, 0); }
+		public TerminalNode LeftShiftAssign() { return getToken(CParser.LeftShiftAssign, 0); }
+		public TerminalNode RightShiftAssign() { return getToken(CParser.RightShiftAssign, 0); }
+		public TerminalNode AndAssign() { return getToken(CParser.AndAssign, 0); }
+		public TerminalNode XorAssign() { return getToken(CParser.XorAssign, 0); }
+		public TerminalNode OrAssign() { return getToken(CParser.OrAssign, 0); }
 		public AssignmentOperatorContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -2239,6 +2319,7 @@ public class CParser extends Parser {
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
+		public TerminalNode Comma() { return getToken(CParser.Comma, 0); }
 		public ExpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -2356,6 +2437,7 @@ public class CParser extends Parser {
 		public InitDeclaratorListContext initDeclaratorList() {
 			return getRuleContext(InitDeclaratorListContext.class,0);
 		}
+		public TerminalNode Semi() { return getToken(CParser.Semi, 0); }
 		public StaticAssertDeclarationContext staticAssertDeclaration() {
 			return getRuleContext(StaticAssertDeclarationContext.class,0);
 		}
@@ -2634,6 +2716,7 @@ public class CParser extends Parser {
 		public InitDeclaratorListContext initDeclaratorList() {
 			return getRuleContext(InitDeclaratorListContext.class,0);
 		}
+		public TerminalNode Comma() { return getToken(CParser.Comma, 0); }
 		public InitDeclaratorListContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -2709,6 +2792,7 @@ public class CParser extends Parser {
 		public DeclaratorContext declarator() {
 			return getRuleContext(DeclaratorContext.class,0);
 		}
+		public TerminalNode Assign() { return getToken(CParser.Assign, 0); }
 		public InitializerContext initializer() {
 			return getRuleContext(InitializerContext.class,0);
 		}
@@ -2765,6 +2849,12 @@ public class CParser extends Parser {
 	}
 
 	public static class StorageClassSpecifierContext extends ParserRuleContext {
+		public TerminalNode Typedef() { return getToken(CParser.Typedef, 0); }
+		public TerminalNode Extern() { return getToken(CParser.Extern, 0); }
+		public TerminalNode Static() { return getToken(CParser.Static, 0); }
+		public TerminalNode ThreadLocal() { return getToken(CParser.ThreadLocal, 0); }
+		public TerminalNode Auto() { return getToken(CParser.Auto, 0); }
+		public TerminalNode Register() { return getToken(CParser.Register, 0); }
 		public StorageClassSpecifierContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -2810,6 +2900,19 @@ public class CParser extends Parser {
 	}
 
 	public static class TypeSpecifierContext extends ParserRuleContext {
+		public TerminalNode Void() { return getToken(CParser.Void, 0); }
+		public TerminalNode Char() { return getToken(CParser.Char, 0); }
+		public TerminalNode Short() { return getToken(CParser.Short, 0); }
+		public TerminalNode Int() { return getToken(CParser.Int, 0); }
+		public TerminalNode Long() { return getToken(CParser.Long, 0); }
+		public TerminalNode Float() { return getToken(CParser.Float, 0); }
+		public TerminalNode Double() { return getToken(CParser.Double, 0); }
+		public TerminalNode Signed() { return getToken(CParser.Signed, 0); }
+		public TerminalNode Unsigned() { return getToken(CParser.Unsigned, 0); }
+		public TerminalNode Bool() { return getToken(CParser.Bool, 0); }
+		public TerminalNode Complex() { return getToken(CParser.Complex, 0); }
+		public TerminalNode LeftParen() { return getToken(CParser.LeftParen, 0); }
+		public TerminalNode RightParen() { return getToken(CParser.RightParen, 0); }
 		public AtomicTypeSpecifierContext atomicTypeSpecifier() {
 			return getRuleContext(AtomicTypeSpecifierContext.class,0);
 		}
@@ -2991,9 +3094,11 @@ public class CParser extends Parser {
 		public StructOrUnionContext structOrUnion() {
 			return getRuleContext(StructOrUnionContext.class,0);
 		}
+		public TerminalNode LeftBrace() { return getToken(CParser.LeftBrace, 0); }
 		public StructDeclarationListContext structDeclarationList() {
 			return getRuleContext(StructDeclarationListContext.class,0);
 		}
+		public TerminalNode RightBrace() { return getToken(CParser.RightBrace, 0); }
 		public TerminalNode Identifier() { return getToken(CParser.Identifier, 0); }
 		public StructOrUnionSpecifierContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -3063,6 +3168,8 @@ public class CParser extends Parser {
 	}
 
 	public static class StructOrUnionContext extends ParserRuleContext {
+		public TerminalNode Struct() { return getToken(CParser.Struct, 0); }
+		public TerminalNode Union() { return getToken(CParser.Union, 0); }
 		public StructOrUnionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -3187,6 +3294,7 @@ public class CParser extends Parser {
 		public SpecifierQualifierListContext specifierQualifierList() {
 			return getRuleContext(SpecifierQualifierListContext.class,0);
 		}
+		public TerminalNode Semi() { return getToken(CParser.Semi, 0); }
 		public StructDeclaratorListContext structDeclaratorList() {
 			return getRuleContext(StructDeclaratorListContext.class,0);
 		}
@@ -3364,6 +3472,7 @@ public class CParser extends Parser {
 		public StructDeclaratorListContext structDeclaratorList() {
 			return getRuleContext(StructDeclaratorListContext.class,0);
 		}
+		public TerminalNode Comma() { return getToken(CParser.Comma, 0); }
 		public StructDeclaratorListContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -3439,6 +3548,7 @@ public class CParser extends Parser {
 		public DeclaratorContext declarator() {
 			return getRuleContext(DeclaratorContext.class,0);
 		}
+		public TerminalNode Colon() { return getToken(CParser.Colon, 0); }
 		public ConstantExpressionContext constantExpression() {
 			return getRuleContext(ConstantExpressionContext.class,0);
 		}
@@ -3504,10 +3614,14 @@ public class CParser extends Parser {
 	}
 
 	public static class EnumSpecifierContext extends ParserRuleContext {
+		public TerminalNode Enum() { return getToken(CParser.Enum, 0); }
+		public TerminalNode LeftBrace() { return getToken(CParser.LeftBrace, 0); }
 		public EnumeratorListContext enumeratorList() {
 			return getRuleContext(EnumeratorListContext.class,0);
 		}
+		public TerminalNode RightBrace() { return getToken(CParser.RightBrace, 0); }
 		public TerminalNode Identifier() { return getToken(CParser.Identifier, 0); }
+		public TerminalNode Comma() { return getToken(CParser.Comma, 0); }
 		public EnumSpecifierContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -3607,6 +3721,7 @@ public class CParser extends Parser {
 		public EnumeratorListContext enumeratorList() {
 			return getRuleContext(EnumeratorListContext.class,0);
 		}
+		public TerminalNode Comma() { return getToken(CParser.Comma, 0); }
 		public EnumeratorListContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -3682,6 +3797,7 @@ public class CParser extends Parser {
 		public EnumerationConstantContext enumerationConstant() {
 			return getRuleContext(EnumerationConstantContext.class,0);
 		}
+		public TerminalNode Assign() { return getToken(CParser.Assign, 0); }
 		public ConstantExpressionContext constantExpression() {
 			return getRuleContext(ConstantExpressionContext.class,0);
 		}
@@ -3775,9 +3891,12 @@ public class CParser extends Parser {
 	}
 
 	public static class AtomicTypeSpecifierContext extends ParserRuleContext {
+		public TerminalNode Atomic() { return getToken(CParser.Atomic, 0); }
+		public TerminalNode LeftParen() { return getToken(CParser.LeftParen, 0); }
 		public TypeNameContext typeName() {
 			return getRuleContext(TypeNameContext.class,0);
 		}
+		public TerminalNode RightParen() { return getToken(CParser.RightParen, 0); }
 		public AtomicTypeSpecifierContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -3820,6 +3939,10 @@ public class CParser extends Parser {
 	}
 
 	public static class TypeQualifierContext extends ParserRuleContext {
+		public TerminalNode Const() { return getToken(CParser.Const, 0); }
+		public TerminalNode Restrict() { return getToken(CParser.Restrict, 0); }
+		public TerminalNode Volatile() { return getToken(CParser.Volatile, 0); }
+		public TerminalNode Atomic() { return getToken(CParser.Atomic, 0); }
 		public TypeQualifierContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -3865,10 +3988,14 @@ public class CParser extends Parser {
 	}
 
 	public static class FunctionSpecifierContext extends ParserRuleContext {
+		public TerminalNode Inline() { return getToken(CParser.Inline, 0); }
+		public TerminalNode Noreturn() { return getToken(CParser.Noreturn, 0); }
 		public GccAttributeSpecifierContext gccAttributeSpecifier() {
 			return getRuleContext(GccAttributeSpecifierContext.class,0);
 		}
+		public TerminalNode LeftParen() { return getToken(CParser.LeftParen, 0); }
 		public TerminalNode Identifier() { return getToken(CParser.Identifier, 0); }
+		public TerminalNode RightParen() { return getToken(CParser.RightParen, 0); }
 		public FunctionSpecifierContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -3945,9 +4072,12 @@ public class CParser extends Parser {
 	}
 
 	public static class AlignmentSpecifierContext extends ParserRuleContext {
+		public TerminalNode Alignas() { return getToken(CParser.Alignas, 0); }
+		public TerminalNode LeftParen() { return getToken(CParser.LeftParen, 0); }
 		public TypeNameContext typeName() {
 			return getRuleContext(TypeNameContext.class,0);
 		}
+		public TerminalNode RightParen() { return getToken(CParser.RightParen, 0); }
 		public ConstantExpressionContext constantExpression() {
 			return getRuleContext(ConstantExpressionContext.class,0);
 		}
@@ -4089,9 +4219,12 @@ public class CParser extends Parser {
 
 	public static class DirectDeclaratorContext extends ParserRuleContext {
 		public TerminalNode Identifier() { return getToken(CParser.Identifier, 0); }
+		public TerminalNode LeftParen() { return getToken(CParser.LeftParen, 0); }
 		public DeclaratorContext declarator() {
 			return getRuleContext(DeclaratorContext.class,0);
 		}
+		public TerminalNode RightParen() { return getToken(CParser.RightParen, 0); }
+		public TerminalNode Colon() { return getToken(CParser.Colon, 0); }
 		public TerminalNode DigitSequence() { return getToken(CParser.DigitSequence, 0); }
 		public PointerContext pointer() {
 			return getRuleContext(PointerContext.class,0);
@@ -4102,12 +4235,16 @@ public class CParser extends Parser {
 		public TypeSpecifierContext typeSpecifier() {
 			return getRuleContext(TypeSpecifierContext.class,0);
 		}
+		public TerminalNode LeftBracket() { return getToken(CParser.LeftBracket, 0); }
+		public TerminalNode RightBracket() { return getToken(CParser.RightBracket, 0); }
 		public TypeQualifierListContext typeQualifierList() {
 			return getRuleContext(TypeQualifierListContext.class,0);
 		}
 		public AssignmentExpressionContext assignmentExpression() {
 			return getRuleContext(AssignmentExpressionContext.class,0);
 		}
+		public TerminalNode Static() { return getToken(CParser.Static, 0); }
+		public TerminalNode Star() { return getToken(CParser.Star, 0); }
 		public ParameterTypeListContext parameterTypeList() {
 			return getRuleContext(ParameterTypeListContext.class,0);
 		}
@@ -4365,6 +4502,8 @@ public class CParser extends Parser {
 	}
 
 	public static class GccDeclaratorExtensionContext extends ParserRuleContext {
+		public TerminalNode LeftParen() { return getToken(CParser.LeftParen, 0); }
+		public TerminalNode RightParen() { return getToken(CParser.RightParen, 0); }
 		public List<TerminalNode> StringLiteral() { return getTokens(CParser.StringLiteral); }
 		public TerminalNode StringLiteral(int i) {
 			return getToken(CParser.StringLiteral, i);
@@ -4442,8 +4581,16 @@ public class CParser extends Parser {
 	}
 
 	public static class GccAttributeSpecifierContext extends ParserRuleContext {
+		public List<TerminalNode> LeftParen() { return getTokens(CParser.LeftParen); }
+		public TerminalNode LeftParen(int i) {
+			return getToken(CParser.LeftParen, i);
+		}
 		public GccAttributeListContext gccAttributeList() {
 			return getRuleContext(GccAttributeListContext.class,0);
+		}
+		public List<TerminalNode> RightParen() { return getTokens(CParser.RightParen); }
+		public TerminalNode RightParen(int i) {
+			return getToken(CParser.RightParen, i);
 		}
 		public GccAttributeSpecifierContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -4496,6 +4643,10 @@ public class CParser extends Parser {
 		}
 		public GccAttributeContext gccAttribute(int i) {
 			return getRuleContext(GccAttributeContext.class,i);
+		}
+		public List<TerminalNode> Comma() { return getTokens(CParser.Comma); }
+		public TerminalNode Comma(int i) {
+			return getToken(CParser.Comma, i);
 		}
 		public GccAttributeListContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -4561,6 +4712,15 @@ public class CParser extends Parser {
 	}
 
 	public static class GccAttributeContext extends ParserRuleContext {
+		public TerminalNode Comma() { return getToken(CParser.Comma, 0); }
+		public List<TerminalNode> LeftParen() { return getTokens(CParser.LeftParen); }
+		public TerminalNode LeftParen(int i) {
+			return getToken(CParser.LeftParen, i);
+		}
+		public List<TerminalNode> RightParen() { return getTokens(CParser.RightParen); }
+		public TerminalNode RightParen(int i) {
+			return getToken(CParser.RightParen, i);
+		}
 		public ArgumentExpressionListContext argumentExpressionList() {
 			return getRuleContext(ArgumentExpressionListContext.class,0);
 		}
@@ -4758,11 +4918,19 @@ public class CParser extends Parser {
 	}
 
 	public static class NestedParenthesesBlockContext extends ParserRuleContext {
+		public List<TerminalNode> LeftParen() { return getTokens(CParser.LeftParen); }
+		public TerminalNode LeftParen(int i) {
+			return getToken(CParser.LeftParen, i);
+		}
 		public List<NestedParenthesesBlockContext> nestedParenthesesBlock() {
 			return getRuleContexts(NestedParenthesesBlockContext.class);
 		}
 		public NestedParenthesesBlockContext nestedParenthesesBlock(int i) {
 			return getRuleContext(NestedParenthesesBlockContext.class,i);
+		}
+		public List<TerminalNode> RightParen() { return getTokens(CParser.RightParen); }
+		public TerminalNode RightParen(int i) {
+			return getToken(CParser.RightParen, i);
 		}
 		public NestedParenthesesBlockContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -4953,12 +5121,14 @@ public class CParser extends Parser {
 	}
 
 	public static class PointerContext extends ParserRuleContext {
+		public TerminalNode Star() { return getToken(CParser.Star, 0); }
 		public TypeQualifierListContext typeQualifierList() {
 			return getRuleContext(TypeQualifierListContext.class,0);
 		}
 		public PointerContext pointer() {
 			return getRuleContext(PointerContext.class,0);
 		}
+		public TerminalNode Caret() { return getToken(CParser.Caret, 0); }
 		public PointerContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -5146,6 +5316,8 @@ public class CParser extends Parser {
 		public ParameterListContext parameterList() {
 			return getRuleContext(ParameterListContext.class,0);
 		}
+		public TerminalNode Comma() { return getToken(CParser.Comma, 0); }
+		public TerminalNode Ellipsis() { return getToken(CParser.Ellipsis, 0); }
 		public ParameterTypeListContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -5205,6 +5377,7 @@ public class CParser extends Parser {
 		public ParameterListContext parameterList() {
 			return getRuleContext(ParameterListContext.class,0);
 		}
+		public TerminalNode Comma() { return getToken(CParser.Comma, 0); }
 		public ParameterListContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -5354,6 +5527,7 @@ public class CParser extends Parser {
 		public IdentifierListContext identifierList() {
 			return getRuleContext(IdentifierListContext.class,0);
 		}
+		public TerminalNode Comma() { return getToken(CParser.Comma, 0); }
 		public IdentifierListContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -5568,21 +5742,27 @@ public class CParser extends Parser {
 	}
 
 	public static class DirectAbstractDeclaratorContext extends ParserRuleContext {
+		public TerminalNode LeftParen() { return getToken(CParser.LeftParen, 0); }
 		public AbstractDeclaratorContext abstractDeclarator() {
 			return getRuleContext(AbstractDeclaratorContext.class,0);
 		}
+		public TerminalNode RightParen() { return getToken(CParser.RightParen, 0); }
 		public List<GccDeclaratorExtensionContext> gccDeclaratorExtension() {
 			return getRuleContexts(GccDeclaratorExtensionContext.class);
 		}
 		public GccDeclaratorExtensionContext gccDeclaratorExtension(int i) {
 			return getRuleContext(GccDeclaratorExtensionContext.class,i);
 		}
+		public TerminalNode LeftBracket() { return getToken(CParser.LeftBracket, 0); }
+		public TerminalNode RightBracket() { return getToken(CParser.RightBracket, 0); }
 		public TypeQualifierListContext typeQualifierList() {
 			return getRuleContext(TypeQualifierListContext.class,0);
 		}
 		public AssignmentExpressionContext assignmentExpression() {
 			return getRuleContext(AssignmentExpressionContext.class,0);
 		}
+		public TerminalNode Static() { return getToken(CParser.Static, 0); }
+		public TerminalNode Star() { return getToken(CParser.Star, 0); }
 		public ParameterTypeListContext parameterTypeList() {
 			return getRuleContext(ParameterTypeListContext.class,0);
 		}
@@ -5958,9 +6138,12 @@ public class CParser extends Parser {
 		public AssignmentExpressionContext assignmentExpression() {
 			return getRuleContext(AssignmentExpressionContext.class,0);
 		}
+		public TerminalNode LeftBrace() { return getToken(CParser.LeftBrace, 0); }
 		public InitializerListContext initializerList() {
 			return getRuleContext(InitializerListContext.class,0);
 		}
+		public TerminalNode RightBrace() { return getToken(CParser.RightBrace, 0); }
+		public TerminalNode Comma() { return getToken(CParser.Comma, 0); }
 		public InitializerContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -6036,6 +6219,7 @@ public class CParser extends Parser {
 		public InitializerListContext initializerList() {
 			return getRuleContext(InitializerListContext.class,0);
 		}
+		public TerminalNode Comma() { return getToken(CParser.Comma, 0); }
 		public InitializerListContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -6132,6 +6316,7 @@ public class CParser extends Parser {
 		public DesignatorListContext designatorList() {
 			return getRuleContext(DesignatorListContext.class,0);
 		}
+		public TerminalNode Assign() { return getToken(CParser.Assign, 0); }
 		public DesignationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -6246,9 +6431,12 @@ public class CParser extends Parser {
 	}
 
 	public static class DesignatorContext extends ParserRuleContext {
+		public TerminalNode LeftBracket() { return getToken(CParser.LeftBracket, 0); }
 		public ConstantExpressionContext constantExpression() {
 			return getRuleContext(ConstantExpressionContext.class,0);
 		}
+		public TerminalNode RightBracket() { return getToken(CParser.RightBracket, 0); }
+		public TerminalNode Dot() { return getToken(CParser.Dot, 0); }
 		public TerminalNode Identifier() { return getToken(CParser.Identifier, 0); }
 		public DesignatorContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -6307,9 +6495,14 @@ public class CParser extends Parser {
 	}
 
 	public static class StaticAssertDeclarationContext extends ParserRuleContext {
+		public TerminalNode StaticAssert() { return getToken(CParser.StaticAssert, 0); }
+		public TerminalNode LeftParen() { return getToken(CParser.LeftParen, 0); }
 		public ConstantExpressionContext constantExpression() {
 			return getRuleContext(ConstantExpressionContext.class,0);
 		}
+		public TerminalNode Comma() { return getToken(CParser.Comma, 0); }
+		public TerminalNode RightParen() { return getToken(CParser.RightParen, 0); }
+		public TerminalNode Semi() { return getToken(CParser.Semi, 0); }
 		public List<TerminalNode> StringLiteral() { return getTokens(CParser.StringLiteral); }
 		public TerminalNode StringLiteral(int i) {
 			return getToken(CParser.StringLiteral, i);
@@ -6393,11 +6586,23 @@ public class CParser extends Parser {
 		public JumpStatementContext jumpStatement() {
 			return getRuleContext(JumpStatementContext.class,0);
 		}
+		public TerminalNode LeftParen() { return getToken(CParser.LeftParen, 0); }
+		public TerminalNode RightParen() { return getToken(CParser.RightParen, 0); }
+		public TerminalNode Semi() { return getToken(CParser.Semi, 0); }
+		public TerminalNode Volatile() { return getToken(CParser.Volatile, 0); }
 		public List<LogicalOrExpressionContext> logicalOrExpression() {
 			return getRuleContexts(LogicalOrExpressionContext.class);
 		}
 		public LogicalOrExpressionContext logicalOrExpression(int i) {
 			return getRuleContext(LogicalOrExpressionContext.class,i);
+		}
+		public List<TerminalNode> Colon() { return getTokens(CParser.Colon); }
+		public TerminalNode Colon(int i) {
+			return getToken(CParser.Colon, i);
+		}
+		public List<TerminalNode> Comma() { return getTokens(CParser.Comma); }
+		public TerminalNode Comma(int i) {
+			return getToken(CParser.Comma, i);
 		}
 		public StatementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -6575,12 +6780,15 @@ public class CParser extends Parser {
 
 	public static class LabeledStatementContext extends ParserRuleContext {
 		public TerminalNode Identifier() { return getToken(CParser.Identifier, 0); }
+		public TerminalNode Colon() { return getToken(CParser.Colon, 0); }
 		public StatementContext statement() {
 			return getRuleContext(StatementContext.class,0);
 		}
+		public TerminalNode Case() { return getToken(CParser.Case, 0); }
 		public ConstantExpressionContext constantExpression() {
 			return getRuleContext(ConstantExpressionContext.class,0);
 		}
+		public TerminalNode Default() { return getToken(CParser.Default, 0); }
 		public LabeledStatementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -6653,6 +6861,8 @@ public class CParser extends Parser {
 	}
 
 	public static class CompoundStatementContext extends ParserRuleContext {
+		public TerminalNode LeftBrace() { return getToken(CParser.LeftBrace, 0); }
+		public TerminalNode RightBrace() { return getToken(CParser.RightBrace, 0); }
 		public BlockItemListContext blockItemList() {
 			return getRuleContext(BlockItemListContext.class,0);
 		}
@@ -6836,6 +7046,7 @@ public class CParser extends Parser {
 	}
 
 	public static class ExpressionStatementContext extends ParserRuleContext {
+		public TerminalNode Semi() { return getToken(CParser.Semi, 0); }
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
@@ -6886,15 +7097,20 @@ public class CParser extends Parser {
 	}
 
 	public static class SelectionStatementContext extends ParserRuleContext {
+		public TerminalNode If() { return getToken(CParser.If, 0); }
+		public TerminalNode LeftParen() { return getToken(CParser.LeftParen, 0); }
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
+		public TerminalNode RightParen() { return getToken(CParser.RightParen, 0); }
 		public List<StatementContext> statement() {
 			return getRuleContexts(StatementContext.class);
 		}
 		public StatementContext statement(int i) {
 			return getRuleContext(StatementContext.class,i);
 		}
+		public TerminalNode Else() { return getToken(CParser.Else, 0); }
+		public TerminalNode Switch() { return getToken(CParser.Switch, 0); }
 		public SelectionStatementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -6975,13 +7191,16 @@ public class CParser extends Parser {
 
 	public static class IterationStatementContext extends ParserRuleContext {
 		public TerminalNode While() { return getToken(CParser.While, 0); }
+		public TerminalNode LeftParen() { return getToken(CParser.LeftParen, 0); }
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
+		public TerminalNode RightParen() { return getToken(CParser.RightParen, 0); }
 		public StatementContext statement() {
 			return getRuleContext(StatementContext.class,0);
 		}
 		public TerminalNode Do() { return getToken(CParser.Do, 0); }
+		public TerminalNode Semi() { return getToken(CParser.Semi, 0); }
 		public TerminalNode For() { return getToken(CParser.For, 0); }
 		public ForConditionContext forCondition() {
 			return getRuleContext(ForConditionContext.class,0);
@@ -7074,6 +7293,10 @@ public class CParser extends Parser {
 	public static class ForConditionContext extends ParserRuleContext {
 		public ForDeclarationContext forDeclaration() {
 			return getRuleContext(ForDeclarationContext.class,0);
+		}
+		public List<TerminalNode> Semi() { return getTokens(CParser.Semi); }
+		public TerminalNode Semi(int i) {
+			return getToken(CParser.Semi, i);
 		}
 		public List<ForExpressionContext> forExpression() {
 			return getRuleContexts(ForExpressionContext.class);
@@ -7253,6 +7476,7 @@ public class CParser extends Parser {
 		public ForExpressionContext forExpression() {
 			return getRuleContext(ForExpressionContext.class,0);
 		}
+		public TerminalNode Comma() { return getToken(CParser.Comma, 0); }
 		public ForExpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -7325,7 +7549,12 @@ public class CParser extends Parser {
 	}
 
 	public static class JumpStatementContext extends ParserRuleContext {
+		public TerminalNode Goto() { return getToken(CParser.Goto, 0); }
 		public TerminalNode Identifier() { return getToken(CParser.Identifier, 0); }
+		public TerminalNode Semi() { return getToken(CParser.Semi, 0); }
+		public TerminalNode Continue() { return getToken(CParser.Continue, 0); }
+		public TerminalNode Break() { return getToken(CParser.Break, 0); }
+		public TerminalNode Return() { return getToken(CParser.Return, 0); }
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
@@ -7560,6 +7789,7 @@ public class CParser extends Parser {
 		public DeclarationContext declaration() {
 			return getRuleContext(DeclarationContext.class,0);
 		}
+		public TerminalNode Semi() { return getToken(CParser.Semi, 0); }
 		public ExternalDeclarationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
