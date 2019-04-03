@@ -5,7 +5,9 @@
   - [Specification - Rough Draft](https://docs.google.com/document/d/1_Ttea0a2wcxuSylJji-r-oEF-sLirkif9crcvvojsXg/edit?fbclid=IwAR1zTzqX2cMkm0sNaFJT_DC6EyD97vERKlqAUhh3xYyUykdpAiD5oGdicjw)
   - [Specification - v1](https://docs.google.com/document/d/1ujDCscHSd17lsZqvm-oPjsvqeL2inoXJ7QJL83MC6PM/edit?usp=sharing)
   - [Specification - v2](https://docs.google.com/document/d/1tXpi7lFy8mva30LZAWzVqnsOvs2AnumBCDiAAoQRrog/edit?usp=sharing)
+  - [Specification - v3](https://docs.google.com/document/d/1RvVG0oUGgTLb5v6CeimSSv8FHN4KSbLYVbGs9MIdE-g/edit?usp=sharing)
   - [Information - README](https://github.com/Treleaven6/COSC-4F00/tree/master/information#information)
+  - [MOCD - PowerPoint](https://1drv.ms/p/s!AlsDff6pgUdpm80g6c8LtVLnojuFVg)
 
 ### Server
  - [Server - README](https://github.com/Treleaven6/COSC-4F00/tree/master/server#server)
