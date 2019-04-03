@@ -14,11 +14,13 @@
 ## React / Babel / php / py
 - in the React folder, run "sudo npm i" to install all the dependencies that React and Babel need
 - run "sudo npx babel --watch src --out-dir . --presets react --plugins transform-async-to-generator"
-	-  this can be left running or stopped (ctrl-c) and started as needed
+	- this can be left running or stopped (ctrl-c) and started as needed
 	- all the React code is written in the "src" folder, Babel compiles it 
 	- have to refresh page everytime React code is recompiled
 - in another terminal, run "php -S localhost:8081"
 	- go to localhost:8081 to interact with the website, otherwise you'll get cross origin errors
+
+__Modify the files in the `src` folder, and they will get "compiled" to the top level.__
 
 # Updates
 - Uploads are anonymized
