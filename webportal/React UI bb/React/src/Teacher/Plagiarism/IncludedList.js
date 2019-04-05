@@ -30,7 +30,7 @@ export default class IncludedList extends React.Component {
   }
 
   render() {
-    let included_blurb = "No files to include";
+    let included_blurb = "Nothing to include";
     let included = this.state.included;
     let jsx = "";
     if (included) {
@@ -41,7 +41,7 @@ export default class IncludedList extends React.Component {
           included.push(this.props.addFile);
         }
       }
-      included_blurb = included.length + " included files";
+      included_blurb = included.length + (included.length == 1 ? " included directory" : " included directories");
       jsx = included.map(n => <li key={n}>{n}</li>);
     }
 

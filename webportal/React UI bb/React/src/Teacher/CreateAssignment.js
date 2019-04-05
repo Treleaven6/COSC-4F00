@@ -28,7 +28,7 @@ export default class CreateAssignment extends React.Component {
         "/" +
         encodeURIComponent(this.state.name) +
         "/";
-      axios.put(path).then(res => {
+      axios.post(path).then(res => {
         this.props.refreshList();
         this.props.goBack();
       });
@@ -41,7 +41,7 @@ export default class CreateAssignment extends React.Component {
         encodeURIComponent(this.state.name) +
         "/" +
         encodeURIComponent(this.state.datetime);
-      axios.put(path).then(res => {
+      axios.post(path).then(res => {
         this.props.refreshList();
         this.props.goBack();
       });

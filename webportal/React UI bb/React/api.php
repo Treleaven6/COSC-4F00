@@ -1,45 +1,38 @@
-
 <?php
 // look at the mail() function for password changes
-
 // put #!/usr/bin/php-cgi at top (very top, before opening <?php) before uploading to Sandcastle
-// can start server locally by running "php -S localhost:8081"
-// have to visit the website through this address!!!
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $out = shell_exec('python get.py ' . $_SERVER['REQUEST_URI']);
     echo $out;
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	// debugging
-    //echo (json_encode($_POST));
-    
-	// the file gets passed as a key for some reason
-	$base64 = array_keys($_POST);
-	$base64 = $base64[0];
+    //echo(json_encode($_POST));
 
-	// automagically URI decoded?
+    $base64 = urldecode(file_get_contents("php://input"));
 
 	// remove the leading "data:text/rtf;base64," etc.
 	if (strpos($base64, ',') !== false) {
 		$base64 = explode(',', $base64 );
 		$base64 = $base64[1];
 	}
+	
+	$params = explode('api.php', $_SERVER['REQUEST_URI']);
+	$params = $params[1];
+	$params = explode('/', $params);
 
-	// THIS NEEDS TO CHANGE!
-	// teachers need to be able to upload files to exclude and include
-	// 
-	
-    $params = explode('/', $_SERVER['REQUEST_URI']);
-	
-	if ($params[2] === "upload") {
+	if ($params[1] === "upload") {
 		// params[0] = ""
-		// params[1] = "api.php"
-		// params[2] = "upload"
-		// params[3] = cid (course id)
-		// params[4] = aid (assignment id)
-		// params[5] = sid (student id)
-		
+		// params[1] = "upload"
+		// params[2] = cid (course id)
+		// params[3] = aid (assignment id)
+		// params[4] = sid (student id)
+				
+		// lookup or create fake student id
+		$fake = shell_exec('python swapID.py ' . $_SERVER['REQUEST_URI']);
+		$fake = trim($fake) . 'c' . $params[2] . 'a' . $params[3];
+
 		// build path 
-	    $path = 'uploads/'.$params[3].'/'.$params[4].'/'.$params[5];
+	    $path = 'uploads/'.$params[2].'/'.$params[3].'/target/'.$fake;
 
 	    // ensure directory structure exists
 		if (!file_exists($path)) {
@@ -53,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 		// and only then delete old directory
 
 		// open/create a file for writing binary
-		$ifp = fopen($path."/".$params[5].'.zip', 'wb' ); 
+		$ifp = fopen($path."/".$fake.'.zip', 'wb' ); 
 
 	    // write bytes to file
 	    fwrite( $ifp, base64_decode( $base64 ) );
@@ -62,33 +55,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 	    fclose( $ifp ); 
 
 	    // call a python script to handle updating mysql
-	    shell_exec('python post.py ' . $_SERVER['REQUEST_URI']);
+	    //shell_exec('python post.py ' . $_SERVER['REQUEST_URI']);
 
 	    // call a python script to anonymize the files
-	    shell_exec('python strip_files.py ' . $_SERVER['REQUEST_URI']);
+	    //shell_exec('python strip_files.py ' . $_SERVER['REQUEST_URI']);
+	    
+	    shell_exec('python handle_upload.py ' . $_SERVER['REQUEST_URI'] . ' ' . $fake);
 
 	    // return to React
 	    echo(true);
-	} else if ($params[2] === "include") {
+	} else if ($params[1] === "include") {
 		// params[0] = ""
-		// params[1] = "api.php"
-		// params[2] = "exclude"
-		// params[3] = cid (course id)
-		// params[4] = aid (assignment id)
-		// params[5] = file name
+		// params[1] = "exclude"
+		// params[2] = cid (course id)
+		// params[3] = aid (assignment id)
+		// params[4] = file name
 		
 		// build path
-		$path = 'uploads/'.$params[3].'/'.$params[4].'/include';
+		$path = 'uploads/'.$params[2].'/'.$params[3].'/repository/singletons';
 
 		// ensure directory structure exists
 		if (!file_exists($path)) {
 			mkdir($path, 0777, true);
 		}
 
-		// how to handle old contents?
-
 		// open/create a file for writing binary
-		$ifp = fopen($path."/".$params[5], 'wb' ); 
+		$ifp = fopen($path."/".$params[4], 'wb' ); 
 
 	    // write bytes to file
 	    fwrite( $ifp, base64_decode( $base64 ) );
@@ -97,16 +89,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 	    fclose( $ifp ); 
 	    
 		echo(false);
-	} else if ($params[2] === "exclude") {
-		// params[0] = ""
-		// params[1] = "api.php"
-		// params[2] = "exclude"
-		// params[3] = cid (course id)
-		// params[4] = aid (assignment id)
-		// params[5] = file name
-		
-		// build path
-		$path = 'uploads/'.$params[3].'/'.$params[4].'/exclude';
+	} else if ($params[1] === "includezip") {
+		$path = 'uploads/'.$params[2].'/'.$params[3].'/repository';
 
 		// ensure directory structure exists
 		if (!file_exists($path)) {
@@ -114,7 +98,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 		}
 
 		// open/create a file for writing binary
-		$ifp = fopen($path."/".$params[5], 'wb' ); 
+		$ifp = fopen($path."/".$params[4], 'wb' ); 
+
+	    // write bytes to file
+	    fwrite( $ifp, base64_decode( $base64 ) );
+
+	    // clean up the file resource
+	    fclose( $ifp ); 
+
+	    echo(shell_exec('python post.py ' . $_SERVER['REQUEST_URI']));
+	    
+		//echo(false);
+	} else if ($params[1] === "exclude") {
+		// params[0] = ""
+		// params[1] = "exclude"
+		// params[2] = cid (course id)
+		// params[3] = aid (assignment id)
+		// params[4] = file name
+		
+		// build path
+		$path = 'uploads/'.$params[2].'/'.$params[3].'/ignore';
+
+		// ensure directory structure exists
+		if (!file_exists($path)) {
+			mkdir($path, 0777, true);
+		}
+
+		// open/create a file for writing binary
+		$ifp = fopen($path."/".$params[4], 'wb' ); 
 
 	    // write bytes to file
 	    fwrite( $ifp, base64_decode( $base64 ) );
@@ -123,49 +134,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 	    fclose( $ifp ); 
 	    
 		echo(true);
-	} else if ($params[2] === "send") {
-		$path = './uploads/zips/';
+	} else if ($params[1] === "send") {
+		$path = './requests/';
+
 		// ensure directory structure exists
 		if (!file_exists($path)) {
 			mkdir($path, 0777, true);
 		}
 
-		shell_exec('python post.py ' . $_SERVER['REQUEST_URI']);
-		echo(true);
+		echo(shell_exec('python post.py ' . $_SERVER['REQUEST_URI']));
+	} else if ($params[1] === "rminclude") {
+		$path = 'uploads/'.$params[2].'/'.$params[3].'/repository';
+		if (strpos($path, '.') !== false || strpos($path, '~') !== false) {
+			// someone is trying something sneaky
+			echo(false);
+		} else if (file_exists($path)) {
+			shell_exec("rm -R ".$path);
+			echo(true);
+		}
+		echo(false);
+	} else if ($params[1] === "rmexclude") {
+		$path = 'uploads/'.$params[2].'/'.$params[3].'/ignore';
+		if (strpos($path, '.') !== false || strpos($path, '~') !== false) {
+			// someone is trying something sneaky
+			echo(false);
+		} else if (file_exists($path)) {
+			shell_exec("rm -R ".$path);
+			echo(true);
+		}
+		echo(false);
 	} else {
 		echo(shell_exec('python post.py ' . $_SERVER['REQUEST_URI']));
 	}    
-} else if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
-	// params[0] = ""
-	// params[1] = "api.php"
-	// params[2] = "rminclude" or "rmexclude"
-	// params[3] = cid (course id)
-	// params[4] = aid (assignment id)
-	$params = explode('/', $_SERVER['REQUEST_URI']);
-
-	if ($params[2] === "rminclude") {
-		$path = 'uploads/'.$params[3].'/'.$params[4].'/include';
-		if (strpos($path, '.') !== false || strpos($path, '~') !== false) {
-			// someone is trying something sneaky
-			echo(false);
-		} else if (file_exists($path)) {
-			shell_exec("rm -R ".$path);
-			echo(true);
-		}
-		echo(false);
-	} else if ($params[2] === "rmexclude") {
-		$path = 'uploads/'.$params[3].'/'.$params[4].'/exclude';
-		if (strpos($path, '.') !== false || strpos($path, '~') !== false) {
-			// someone is trying something sneaky
-			echo(false);
-		} else if (file_exists($path)) {
-			shell_exec("rm -R ".$path);
-			echo(true);
-		}
-		echo(false);
-	}
-} else if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
-	$out = shell_exec('python put.py ' . $_SERVER['REQUEST_URI']);
-    echo $out;
 }
 ?>

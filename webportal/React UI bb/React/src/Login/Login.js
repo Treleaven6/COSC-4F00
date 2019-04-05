@@ -1,22 +1,27 @@
 "use strict";
 
-import CreateAccount from "./CreateAccount.js";
 import ForgotPassword from "./ForgotPassword.js";
+import Results from "../ResultsTesting/Results.js";
+//import styles_CSSINJS from '../js/CSS_IN_JS_EXAMPLE.js';
 
 // the Login screen
 export default class Login extends React.Component {
   constructor(props) {
     super(props);
     this.onBack = this.onBack.bind(this);
+    this.handleFileSelect = this.handleFileSelect.bind(this);
+    this.handleUpload = this.handleUpload.bind(this);
     this.setWarning = this.setWarning.bind(this);
     this.state = {
       username: "",
       password: "",
+      file: null,
+      rid: null,
       isVisible: {
         warn: false,
         login: true,
         forgotPassword: false,
-        createAccount: false
+        testresults: false,
       },
       warning: ""
     };
@@ -78,7 +83,7 @@ export default class Login extends React.Component {
         warn: false,
         login: true,
         forgotPassword: false,
-        createAccount: false
+        testresults: false,
       }
     });
   }
@@ -90,7 +95,7 @@ export default class Login extends React.Component {
         warn: false,
         login: false,
         forgotPassword: true,
-        createAccount: false
+        testresults: false,
       }
     });
   }
@@ -101,16 +106,54 @@ export default class Login extends React.Component {
     });
   }
 
-  onCreateAccount(e) {
+  handleFileSelect(e) {
     e.preventDefault();
-    this.setState({
-      isVisible: {
-        warn: false,
-        login: false,
-        forgotPassword: false,
-        createAccount: true
-      }
+    let file = e.target.files;
+
+    if (file) {
+      this.setState({
+        file: file
+      });
+    } else {
+      console.log("no file");
+    }
+  }
+
+  handleUpload(e) {
+    e.preventDefault();
+    if (this.state.file === null) {
+      return;
+    }
+
+    const path1 = "./api.php/upload/4/6/000000";
+    this.getBase64(this.state.file[0], result => {
+      axios.post(path1, encodeURIComponent(result)).then(res1 => {
+        const path2 = "./api.php/send/4/6";
+        axios.post(path2).then(res2 => {
+          this.setState({
+            rid: res2.data.rid,
+            isVisible: {
+              warn: false,
+              login: false,
+              forgotPassword: false,
+              testresults: true,
+            }
+          });
+          //console.log(res2.data);
+        });
+      });
     });
+  }
+
+  getBase64(file, cb) {
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function() {
+      cb(reader.result);
+    };
+    reader.onerror = function(error) {
+      console.log("Error: ", error);
+    };
   }
 
   render() {
@@ -118,8 +161,6 @@ export default class Login extends React.Component {
 
     if (this.state.isVisible["forgotPassword"]) {
       display = <ForgotPassword goBack={this.onBack} />;
-    } else if (this.state.isVisible["createAccount"]) {
-      display = <CreateAccount goBack={this.onBack} />;
     } else {
       display = (
         <form>
@@ -143,19 +184,28 @@ export default class Login extends React.Component {
             value="Forgot Password"
             onClick={e => this.onForgotPassword(e)}
           />
-          <input
-            type="button"
-            value="Create Account"
-            onClick={e => this.onCreateAccount(e)}
-          />
         </form>
       );
     }
 
+    let testresults = null;
+    if (this.state.isVisible["testresults"]) {
+      testresults = <Results rid={this.state.rid}/>;
+    }
+
+    // <div style={styles_CSSINJS.CSSDemo_CSSInJS}>
     return (
       <div>
         <h1>MOCD</h1>
         {display}
+        <div>
+          <h3>TESTING</h3>
+          <form>
+          <input type="file" onChange={this.handleFileSelect} accept=".zip" />
+          <input type="button" value="Upload" onClick={e => this.handleUpload(e)} />
+          </form>
+          {testresults}
+        </div>
       </div>
     );
   }

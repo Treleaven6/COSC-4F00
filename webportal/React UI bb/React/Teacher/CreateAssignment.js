@@ -23,14 +23,14 @@ export default class CreateAssignment extends React.Component {
       return;
     } else if (dt === "") {
       let path = "./api.php/newass/" + this.props.cid + "/" + encodeURIComponent(this.state.name) + "/";
-      axios.put(path).then(res => {
+      axios.post(path).then(res => {
         this.props.refreshList();
         this.props.goBack();
       });
     } else if (/\d\d\d\d-\d\d-\d\d \d\d:\d\d$/.test(dt)) {
       dt = dt + ":00";
       let path = "./api.php/newass/" + this.props.cid + "/" + encodeURIComponent(this.state.name) + "/" + encodeURIComponent(this.state.datetime);
-      axios.put(path).then(res => {
+      axios.post(path).then(res => {
         this.props.refreshList();
         this.props.goBack();
       });

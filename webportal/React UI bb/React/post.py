@@ -8,10 +8,7 @@ import urllib
 import psycopg2
 import datetime
 import db
-
-#import mysql.connector
-#from mysql.connector import errorcode
-#from mysql.connector import FieldType
+import traceback
 
 cmd = sys.argv
 if len(cmd) < 2:
@@ -26,46 +23,27 @@ if not len(cmd) == 2:
 cmd = urllib.unquote(cmd[1])
 cmd = cmd.split("/");
 
-cnx = None
-try:
-  #cnx = mysql.connector.connect(user='root', password='BoatsnHoes', host='localhost', database='University')
-  cnx = psycopg2.connect(host="localhost", database="c4f00g03", user="c4f00g03", password="j4g6x7b3")
-except psycopg2.OperationalError as err:
-  print(json.dumps("check DB connection"))
-  if cnx is not None:
-    cnx.close()
-  quit() 
-
 cnx = db.get_connection()
 cursor = cnx.cursor()
 
+# https://stackoverflow.com/questions/1855095/how-to-create-a-zip-archive-of-a-directory
+def zipdir(path, ziph):
+	# ziph is zipfile handle
+	for root, dirs, files in os.walk(path):
+		for file in files:
+			absname = os.path.join(root, file)
+			# adjust arcname if want a containing folder
+			arcname = absname[len(path):]
+			ziph.write(absname, arcname)
+
 query = False
-if cmd[0] == 'upload':
-	# "./api.php/upload/<course id>/<assignment id>/<account id>;
-	zip_file = "a path" # or path??
-	now = time.strftime('%Y-%m-%d %H:%M:%S')
-	query = ("INSERT INTO Submission (id, course, assignment, zip, submit_time) " +
-		    "VALUES (" +
-		    "'" + cmd[3] + "', " +
-		    cmd[1] + ", " +
-		    cmd[2] + ", " +
-		    "'" + zip_file + "', " +
-		    "'" + now + "'" +
-		    ") " +
-		    "ON CONFLICT (id, course, assignment) DO UPDATE SET " +
-		    "zip = '" + zip_file + "', " +
-		    "submit_time = '" + now + "'")
-elif cmd[0] == 'send':
-	# "./api.php/send/<course id>/<assignment id>;
-	# zip everything up
-	name = "./uploads/zips/c" + cmd[1] + "a" + cmd[2]
-	path = "./uploads/" + cmd[1] + "/" + cmd[2] + "/"
-	shutil.make_archive(name, 'zip', path)
-	# log it in the database
-	query = ("INSERT INTO ReportRequest (course, assignment) " +
-		    "VALUES (" +
-		    "'" + cmd[1] + "', " +
-		    "'" + cmd[2] + "')")
+if cmd[0] == 'newass':
+	if (cmd[3] == ""):
+		query = ("INSERT INTO Assignment (course, name) " +
+    		 "VALUES (" + cmd[1] + ", '" + cmd[2] + "')")
+	else:
+		query = ("INSERT INTO Assignment (course, name, closing) " +
+    		 "VALUES (" + cmd[1] + ", '" + cmd[2] + "', '" + cmd[3] + "')")
 elif cmd[0] == 'upass':
 	# api.php/upass/<assignment id>/<updated assignment name>/<updated assignment closing date>
 	# updates an assignment name and / or closing date
@@ -83,23 +61,52 @@ elif cmd[0] == 'password':
 	query = ("UPDATE Account SET password = '" + cmd[2] + "' WHERE id = '" + cmd[1] + "'")
 	
 if query:
-	print(json.dumps(db.exec_and_parse(cursor, cnx, query)))
-cnx.close()
+	success, records = db.exec_and_parse(cursor, cnx, query)
+	print(json.dumps(records))
 
-if cmd[0] == 'upload':
-	folder = "./uploads/" + cmd[1] + "/" + cmd[2] + "/" + cmd[3]
-	print(folder);
-	# https://stackoverflow.com/questions/3451111/unzipping-files-in-python
-	zip_ref = zipfile.ZipFile(folder + "/" + cmd[3] + ".zip", 'r')
-	zip_ref.extractall(folder)
-	zip_ref.close()
+if cmd[0] == 'send':
+	# "./api.php/send/<course id>/<assignment id>;
+	# zip everything up
+	name = "./requests/c" + cmd[1] + "a" + cmd[2] + ".zip"
+	path = "./uploads/" + cmd[1] + "/" + cmd[2] + "/"
+	zipf = zipfile.ZipFile(name, 'w', zipfile.ZIP_DEFLATED)
+	zipdir(path, zipf)
+	zipf.close()
+	# log it in the database
+	query = ("INSERT INTO ReportRequest (course, assignment) " +
+		    "VALUES (" +
+		    "'" + cmd[1] + "', " +
+		    "'" + cmd[2] + "')")
+	success, records = db.exec_and_parse(cursor, cnx, query)
+	query = "SELECT currval('reportrequest_id_seq')"
+	success, records = db.exec_and_parse(cursor, cnx, query)
+	rid = records[0]['currval']
+	print(json.dumps({'rid':rid}));
+	# send to the algo server
+	pass
+elif cmd[0] == 'exportass':
+	src = "./uploads/" + cmd[1] + "/" + cmd[2] + "/target/"
+	if not os.path.isdir(src):
+		print(json.dumps("nothing to export"))
+		quit()
+	zip_name = "./exports/" + "c" + cmd[1] + "a" + cmd[2] + ".zip"
+	zipf = zipfile.ZipFile(zip_name, 'w', zipfile.ZIP_DEFLATED)
+	zipdir(src, zipf)
+	zipf.close()
+	print(json.dumps(zip_name))
+elif cmd[0] == 'includezip':
+	zip_path = os.path.join(".", "uploads", cmd[1], cmd[2], "repository")
+	try:
+		zip_ref = zipfile.ZipFile(zip_path + "/" + cmd[3], 'r')
+		zip_ref.extractall(zip_path)
+		zip_ref.close()
+	except:
+		print(json.dumps(traceback.format_exc()))
+		quit()
 	# remove original zip file
-	os.remove(folder + "/" + cmd[3] + ".zip")
-	# remove pesky macos folders
-	if os.path.isdir(folder + "/" + "__MACOSX"):
-		shutil.rmtree(folder + "/" + "__MACOSX")
-elif cmd[0] == 'send':
-	# send zip to algo server
-	fake = 1
+	os.remove(zip_path + "/" + cmd[3])	
+	# DELETE ALL FILES IN THE ZIP PATH
+	# JUST IN CASE THEY UPLOADED A BAD ZIP?
+	print(json.dumps(True))
 
-
+cnx.close()

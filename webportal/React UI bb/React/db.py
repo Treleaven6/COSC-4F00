@@ -14,11 +14,18 @@ def get_connection():
 
 # execute query, format response into an array of dictionaries
 def exec_and_parse(cursor, cnx, query):
-	cursor.execute(query)
-	cnx.commit()
 	out = []
+	try:
+		cursor.execute(query)
+		cnx.commit()
+	except psycopg2.Error as err:
+		print(err)
+		return(False, out)
 	if not cursor.description:
-		return(out)
+		if cursor.rowcount > 0:
+			return(True, out)
+		else:
+			return(False, out)
 	while True:
 		row = cursor.fetchone()
 		if not row:
@@ -29,5 +36,5 @@ def exec_and_parse(cursor, cnx, query):
 				val = str(val)
 			tmp[desc[0]] = val
 		out.append(tmp)
-	return(out)
+	return(True, out)
 

@@ -1,20 +1,22 @@
-# anonymize 
 import sys
 import json
-import os
-import db
-import psycopg2
-import re
+import time 
+import zipfile  
+import os 
 import shutil
 import urllib
+import psycopg2
+import datetime
+import db
 import traceback
-
+import re
 
 cmd = sys.argv
 if len(cmd) < 2:
 	print("Error: no argument")
 	quit()
 
+fake = cmd[2]
 cmd = cmd[1].split(".php/")
 if not len(cmd) == 2:
 	print("Error: URI is too short or does not call .php") 
@@ -23,24 +25,44 @@ if not len(cmd) == 2:
 cmd = urllib.unquote(cmd[1])
 cmd = cmd.split("/");
 
-course_id = cmd[1]
-assignment_id = cmd[2]
-account_id = cmd[3]
+cnx = db.get_connection()
+cursor = cnx.cursor()
 
-base_dir = os.path.dirname(os.path.realpath(__file__))
-base_dir = os.path.join(base_dir, "uploads", course_id, assignment_id, "target", account_id)
+# to nuke files already uploaded
+# https://stackoverflow.com/questions/13118029/deleting-folders-in-python-recursively
+def deltree(target):
+	for d in os.listdir(target):
+		path = os.path.join(target, d)
+		if os.path.isdir(path):
+			deltree(path)
+			# OSError: [Errno 13] Permission denied
+			#os.rmdir(path)
+		elif not path.endswith(".zip"):
+			os.remove(path)
 
-# THIS DOES NOT WORK -> Errno 13, permission denied
-# remove pesky macOS folder
-#try:
-#	if os.path.isdir(folder + "/__MACOSX"):
-#		shutil.rmtree(folder + "/" + "__MACOSX")
-#except:
-#	print(traceback.format_exc())
-
-if not os.path.isdir(base_dir):
-	print(json.dumps("bad directory"))
-	quit()
+# "./api.php/upload/<course id>/<assignment id>/<account id>;
+now = time.strftime('%Y-%m-%d %H:%M:%S')
+query = ("UPDATE Submission " +
+		 "SET submit_time = '" + now + "' WHERE id = '" + cmd[3] + "' AND course = " + cmd[1] + " AND assignment = " + cmd[2])
+success, _ = db.exec_and_parse(cursor, cnx, query)
+if not success:
+	query = ("INSERT INTO Submission (id, course, assignment, submit_time) " +
+		     "VALUES (" +
+		     "'" + cmd[3] + "', " +
+		     cmd[1] + ", " +
+		     cmd[2] + ", " +
+		     "'" + now + "'" +
+		     ")")
+	success, _ = db.exec_and_parse(cursor, cnx, query)
+print(json.dumps(success))
+folder = "./uploads/" + cmd[1] + "/" + cmd[2] + "/target/" + fake
+deltree(folder)
+# https://stackoverflow.com/questions/3451111/unzipping-files-in-python
+zip_ref = zipfile.ZipFile(folder + "/" + fake + ".zip", 'r')
+zip_ref.extractall(folder)
+zip_ref.close()
+# remove original zip file
+os.remove(folder + "/" + fake + ".zip")	
 
 def get_accounts():
 	cnx = db.get_connection()
@@ -95,4 +117,8 @@ def recur(base):
 		elif not n.endswith('.tmp'):
 			strip_file(base, n)
 
+base_dir = os.path.dirname(os.path.realpath(__file__))
+base_dir = os.path.join(base_dir, "uploads", cmd[1], cmd[2], "target", fake)
 recur(base_dir)
+
+cnx.close()

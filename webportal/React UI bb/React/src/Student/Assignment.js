@@ -120,7 +120,6 @@ export default class Assignment extends React.Component {
     */
 
     // assuming a single, zipped file was selected
-    // sanitize / use "accept" to make sure .zip extension?
     this.getBase64(this.state.file[0], result => {
       axios.post(path, encodeURIComponent(result)).then(res => {
         console.log(res.data);

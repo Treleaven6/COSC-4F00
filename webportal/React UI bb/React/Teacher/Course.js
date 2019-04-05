@@ -2,8 +2,6 @@
 
 import CreateAssignment from "./CreateAssignment.js";
 import EditCourseInfo from "./EditCourseInfo.js";
-import EnrollStudents from "./EnrollStudents.js";
-import DeleteCourse from "./DeleteCourse.js";
 import EnrolledList from "./EnrolledList.js";
 
 export default class Course extends React.Component {
@@ -14,9 +12,7 @@ export default class Course extends React.Component {
       isVisible: {
         default: true,
         createAssignment: false,
-        editInfo: false,
-        deleteCourse: false,
-        enrollStudents: false
+        editInfo: false
       }
     };
     this.props.setReset(this.resetVisible);
@@ -27,9 +23,7 @@ export default class Course extends React.Component {
       isVisible: {
         default: true,
         createAssignment: false,
-        editInfo: false,
-        deleteCourse: false,
-        enrollStudents: false
+        editInfo: false
       }
     });
   }
@@ -39,21 +33,7 @@ export default class Course extends React.Component {
       isVisible: {
         default: false,
         createAssignment: false,
-        editInfo: true,
-        deleteCourse: false,
-        enrollStudents: false
-      }
-    });
-  }
-
-  onEnrollStudents(e) {
-    this.setState({
-      isVisible: {
-        default: false,
-        createAssignment: false,
-        editInfo: false,
-        deleteCourse: false,
-        enrollStudents: true
+        editInfo: true
       }
     });
   }
@@ -63,27 +43,13 @@ export default class Course extends React.Component {
       isVisible: {
         default: false,
         createAssignment: true,
-        editInfo: false,
-        deleteCourse: false,
-        enrollStudents: false
+        editInfo: false
       }
     });
   }
 
   onReviewPlagiarism(e) {
     console.log("review plagiarism");
-  }
-
-  onDeleteCourse(e) {
-    this.setState({
-      isVisible: {
-        default: false,
-        createAssignment: false,
-        editInfo: false,
-        deleteCourse: true,
-        enrollStudents: false
-      }
-    });
   }
 
   render() {
@@ -111,11 +77,6 @@ export default class Course extends React.Component {
         ),
         React.createElement(
           "button",
-          { onClick: e => this.onEnrollStudents(e) },
-          "Enroll Students"
-        ),
-        React.createElement(
-          "button",
           { onClick: e => this.onCreateNewAssignment(e) },
           "Create new assignment"
         ),
@@ -123,11 +84,6 @@ export default class Course extends React.Component {
           "button",
           { onClick: e => this.onReviewPlagiarism(e) },
           "Review plagiarism reports (for the entire course)"
-        ),
-        React.createElement(
-          "button",
-          { onClick: e => this.onDeleteCourse(e) },
-          "Delete course"
         ),
         React.createElement(
           "p",
@@ -176,11 +132,8 @@ export default class Course extends React.Component {
       });
     } else if (this.state.isVisible["editInfo"]) {
       display = React.createElement(EditCourseInfo, { goBack: this.resetVisible });
-    } else if (this.state.isVisible["deleteCourse"]) {
-      display = React.createElement(DeleteCourse, { goBack: this.resetVisible });
-    } else if (this.state.isVisible["enrollStudents"]) {
-      display = React.createElement(EnrollStudents, { goBack: this.resetVisible });
     }
+
     return React.createElement(
       "div",
       null,

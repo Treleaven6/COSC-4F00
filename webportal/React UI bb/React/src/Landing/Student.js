@@ -117,10 +117,6 @@ export default class Student extends React.Component {
     });
   }
 
-  onEnroll(e) {
-    console.log("enroll in a course");
-  }
-
   onChangePassword(e) {
     this.setState({
       isVisible: {
@@ -168,7 +164,6 @@ export default class Student extends React.Component {
     return (
       <div>
         <p>a Student account</p>
-        <button onClick={e => this.onEnroll(e)}>enroll in a course</button>
         <button onClick={e => this.onChangePassword(e)}>change password</button>
         <button onClick={e => this.onLogout(e)}>Logout</button>
         <ListSchedule

@@ -14,9 +14,11 @@ export default class DetectAssignment extends React.Component {
       showDeleteExcludeModal: false,
       showDeleteIncludeModal: false,
       includeFile: null,
+      includeZipFile: null,
       excludeFile: null,
       addExcluded: null,
       addIncluded: null,
+      addIncludedZip: null,
       deleteAllExcluded: false,
       deleteAllIncluded: false
     };
@@ -34,15 +36,23 @@ export default class DetectAssignment extends React.Component {
   yesImSure(e) {
     // do some database stuff
     const path = "./api.php/send/" + this.props.course.id + "/" + this.props.assignment.id;
-    axios.post(path);
+    axios.post(path).then(res => {
+      console.log(res);
+    });
     this.props.goBack();
   }
 
   handleExcludeSelected(event) {
+    this.setState({
+      showSubmitModal: false,
+      showDeleteExcludeModal: false,
+      showDeleteIncludeModal: false
+    });
     let file = event.target.files[0];
     if (file) {
       this.setState({
         excludeFile: file
+
       });
     } else {
       console.log("no file");
@@ -50,7 +60,13 @@ export default class DetectAssignment extends React.Component {
   }
 
   onExclude(e) {
+    this.setState({
+      showSubmitModal: false,
+      showDeleteExcludeModal: false,
+      showDeleteIncludeModal: false
+    });
     if (this.state.excludeFile === null) {
+      console.log("no file specified");
       return;
     }
     const path = "./api.php/exclude/" + this.props.course.id + "/" + this.props.assignment.id + "/" + this.state.excludeFile.name;
@@ -77,6 +93,11 @@ export default class DetectAssignment extends React.Component {
   }
 
   handleIncludeSelected(event) {
+    this.setState({
+      showSubmitModal: false,
+      showDeleteExcludeModal: false,
+      showDeleteIncludeModal: false
+    });
     let file = event.target.files[0];
     if (file) {
       this.setState({
@@ -88,16 +109,58 @@ export default class DetectAssignment extends React.Component {
   }
 
   onInclude(e) {
+    this.setState({
+      showSubmitModal: false,
+      showDeleteExcludeModal: false,
+      showDeleteIncludeModal: false
+    });
     if (this.state.includeFile === null) {
+      console.log("no file specified");
       return;
     }
     const path = "./api.php/include/" + this.props.course.id + "/" + this.props.assignment.id + "/" + this.state.includeFile.name;
     this.getBase64(this.state.includeFile, result => {
       axios.post(path, encodeURIComponent(result)).then(res => {
+        /*
         this.setState({
           addIncluded: this.state.includeFile.name,
           deleteAllIncluded: false
         });
+        */
+        console.log(res.data);
+      });
+    });
+  }
+
+  handleIncludeZipSelected(event) {
+    this.setState({
+      showSubmitModal: false,
+      showDeleteExcludeModal: false,
+      showDeleteIncludeModal: false
+    });
+    let file = event.target.files[0];
+    if (file) {
+      this.setState({
+        includeZipFile: file
+      });
+    } else {
+      console.log("no file");
+    }
+  }
+
+  onIncludeZip(e) {
+    this.setState({
+      showSubmitModal: false,
+      showDeleteExcludeModal: false,
+      showDeleteIncludeModal: false
+    });
+    if (this.state.includeZipFile === null) {
+      console.log("no file specified");
+      return;
+    }
+    const path = "./api.php/includezip/" + this.props.course.id + "/" + this.props.assignment.id + "/" + this.state.includeZipFile.name;
+    this.getBase64(this.state.includeZipFile, result => {
+      axios.post(path, encodeURIComponent(result)).then(res => {
         console.log(res.data);
       });
     });
@@ -117,7 +180,7 @@ export default class DetectAssignment extends React.Component {
 
   reallyDeleteExclude(e) {
     const path = "./api.php/rmexclude/" + this.props.course.id + "/" + this.props.assignment.id;
-    axios.delete(path).then(res => {
+    axios.post(path).then(res => {
       console.log(res.data);
       this.setState({
         showDeleteExcludeModal: false,
@@ -128,7 +191,7 @@ export default class DetectAssignment extends React.Component {
 
   reallyDeleteInclude(e) {
     const path = "./api.php/rminclude/" + this.props.course.id + "/" + this.props.assignment.id;
-    axios.delete(path).then(res => {
+    axios.post(path).then(res => {
       console.log(res.data);
       this.setState({
         showDeleteIncludeModal: false,
@@ -165,6 +228,15 @@ export default class DetectAssignment extends React.Component {
       );
     }
 
+    /*
+    <IncludedList
+            cid={this.props.course.id}
+            aid={this.props.assignment.id}
+            addFile={this.state.addIncluded}
+            deleteAll={this.state.deleteAllIncluded}
+          />
+    */
+
     return React.createElement(
       "div",
       null,
@@ -192,7 +264,7 @@ export default class DetectAssignment extends React.Component {
       ),
       React.createElement(
         "div",
-        null,
+        { style: { border: '1px solid black' } },
         React.createElement(
           "p",
           null,
@@ -223,7 +295,7 @@ export default class DetectAssignment extends React.Component {
       ),
       React.createElement(
         "div",
-        null,
+        { style: { border: '1px solid black' } },
         React.createElement(
           "p",
           null,
@@ -232,9 +304,29 @@ export default class DetectAssignment extends React.Component {
         React.createElement(
           "button",
           { onClick: e => this.onDeleteInclude(e) },
-          "Delete All Old files"
+          "Delete All Old"
         ),
         deleteIncludeModal,
+        React.createElement(
+          "p",
+          null,
+          "Include an exported assignment"
+        ),
+        React.createElement("input", {
+          type: "file",
+          onChange: e => this.handleIncludeZipSelected(e),
+          accept: ".zip"
+        }),
+        React.createElement(
+          "button",
+          { onClick: e => this.onIncludeZip(e) },
+          "Upload"
+        ),
+        React.createElement(
+          "p",
+          null,
+          "Include a file"
+        ),
         React.createElement("input", {
           type: "file",
           onChange: e => this.handleIncludeSelected(e),
@@ -244,13 +336,7 @@ export default class DetectAssignment extends React.Component {
           "button",
           { onClick: e => this.onInclude(e) },
           "Upload"
-        ),
-        React.createElement(IncludedList, {
-          cid: this.props.course.id,
-          aid: this.props.assignment.id,
-          addFile: this.state.addIncluded,
-          deleteAll: this.state.deleteAllIncluded
-        })
+        )
       ),
       React.createElement(SubmittedList, {
         cid: this.props.course.id,

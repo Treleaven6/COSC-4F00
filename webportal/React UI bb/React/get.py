@@ -121,11 +121,8 @@ elif cmd[0] == 'submitted' and cmd[1] == 'assignment':
     		 "FROM Submission S, Account A " +
     		 "WHERE S.assignment = '" + cmd[2] + "' AND S.id = A.id")
 elif cmd[0] == 'excluded':
-	#out = ["made it"]
-	#print(json.dumps(out))
-	#print(os.listdir(os.path.dirname(os.path.realpath(__file__))))
 	cwd = os.path.dirname(os.path.realpath(__file__))
-	exclude_path = os.path.join(cwd, "uploads", cmd[1], cmd[2], "exclude")
+	exclude_path = os.path.join(cwd, "uploads", cmd[1], cmd[2], "ignore")
 	if (os.path.isdir(exclude_path)):
 		print(json.dumps(os.listdir(exclude_path)))
 	else:
@@ -133,15 +130,18 @@ elif cmd[0] == 'excluded':
 	quit()
 elif cmd[0] == 'included':
 	cwd = os.path.dirname(os.path.realpath(__file__))
-	include_path = os.path.join(cwd, "uploads", cmd[1], cmd[2], "include")
+	include_path = os.path.join(cwd, "uploads", cmd[1], cmd[2], "repository")
 	if (os.path.isdir(include_path)):
 		print(json.dumps(os.listdir(include_path)))
 	else:
 		print("[]")
 	quit()
+elif cmd[0] == 'reportready':
+	query = ("SELECT * FROM ReportReturn WHERE rid = " + cmd[1])
 
 if query:
-	print(json.dumps(db.exec_and_parse(cursor, cnx, query)))
+	success, records = db.exec_and_parse(cursor, cnx, query)
+	print(json.dumps(records))
 cnx.close()
 
 

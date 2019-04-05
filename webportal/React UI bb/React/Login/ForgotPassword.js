@@ -62,6 +62,11 @@ export default class ForgotPassword extends React.Component {
       "div",
       null,
       React.createElement(
+        "p",
+        null,
+        "COMING SOON"
+      ),
+      React.createElement(
         "form",
         null,
         "Email:",

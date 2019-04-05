@@ -3,7 +3,6 @@
 import ListSchedule from "./ListSchedule.js";
 import Course from "../Teacher/Course.js";
 import Assignment from "../Teacher/Assignment.js";
-import CreateCourse from "../Teacher/CreateCourse.js";
 import ChangePassword from "../Teacher/ChangePassword.js";
 
 // What a teacher will see when they first sign in
@@ -32,7 +31,6 @@ export default class Teacher extends React.Component {
         default: true,
         course: false,
         assignment: false,
-        create_new_course: false,
         change_password: false
       }
     };
@@ -52,7 +50,6 @@ export default class Teacher extends React.Component {
           default: true,
           course: false,
           assignment: false,
-          create_new_course: false,
           change_password: false
         }
       });
@@ -96,18 +93,6 @@ export default class Teacher extends React.Component {
     });
   }
 
-  onCreateNewCourse(evt) {
-    this.setState({
-      isVisible: {
-        default: false,
-        course: false,
-        assignment: false,
-        create_new_course: true,
-        change_password: false
-      }
-    });
-  }
-
   onLogout(evt) {
     this.props.handleLogout();
   }
@@ -124,7 +109,6 @@ export default class Teacher extends React.Component {
         default: true,
         course: false,
         assignment: false,
-        create_new_course: false,
         change_password: false
       }
     });
@@ -136,7 +120,6 @@ export default class Teacher extends React.Component {
         default: true,
         course: false,
         assignment: false,
-        create_new_course: false,
         change_password: true
       }
     });
@@ -157,7 +140,6 @@ export default class Teacher extends React.Component {
           default: false,
           course: true,
           assignment: false,
-          create_new_course: false
         }
       });
     } else if (type === "assignment") {
@@ -172,7 +154,6 @@ export default class Teacher extends React.Component {
           default: false,
           course: false,
           assignment: true,
-          create_new_course: false
         }
       });
     }
@@ -189,13 +170,6 @@ export default class Teacher extends React.Component {
       this.state.aid === "" || this.state.aid === 0
         ? null
         : course.assignments.filter(a => a.id === this.state.aid)[0];
-
-    /*        
-        let enrolledList =
-        course !== null && "enrolled" in course
-        ? course["enrolled"]
-        : null
-    */
 
     let mainPage = null;
     if (this.state.isVisible["course"]) {
@@ -218,8 +192,6 @@ export default class Teacher extends React.Component {
           updateEnrolled={this.updateEnrolled}
         />
       );
-    } else if (this.state.isVisible["create_new_course"]) {
-      mainPage = <CreateCourse onCancel={this.handleCancelCreateCourse} />;
     } else if (this.state.isVisible["change_password"]) {
       mainPage = (
         <ChangePassword
@@ -235,9 +207,6 @@ export default class Teacher extends React.Component {
     return (
       <div>
         <p>a Teacher account</p>
-        <button onClick={e => this.onCreateNewCourse(e)}>
-          Create new course
-        </button>
         <button onClick={e => this.onChangePassword(e)}>change password</button>
         <button onClick={e => this.onLogout(e)}>Logout</button>
         <ListSchedule

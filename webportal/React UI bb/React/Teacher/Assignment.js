@@ -8,30 +8,19 @@ export default class Assignment extends React.Component {
   constructor(props) {
     super(props);
     this.onBack = this.onBack.bind(this);
-    this.resetVisible = this.resetVisible.bind(this);
     this.state = {
       aid: this.props.assignment.id,
+      download_file: null,
       isVisible: {
         default: true,
         editInfo: false,
         delete: false,
         detect: false,
-        review: false
+        review: false,
+        download: false
       }
     };
-    this.props.setReset(this.resetVisible);
-  }
-
-  resetVisible() {
-    this.setState({
-      isVisible: {
-        default: true,
-        editInfo: false,
-        delete: false,
-        detect: false,
-        review: false
-      }
-    });
+    this.props.setReset(this.onBack);
   }
 
   onBack() {
@@ -41,7 +30,8 @@ export default class Assignment extends React.Component {
         editInfo: false,
         delete: false,
         detect: false,
-        review: false
+        review: false,
+        download: false
       }
     });
   }
@@ -54,7 +44,8 @@ export default class Assignment extends React.Component {
         editInfo: true,
         delete: false,
         detect: false,
-        review: false
+        review: false,
+        download: false
       }
     });
   }
@@ -66,7 +57,8 @@ export default class Assignment extends React.Component {
         editInfo: false,
         delete: true,
         detect: false,
-        review: false
+        review: false,
+        download: false
       }
     });
   }
@@ -78,7 +70,8 @@ export default class Assignment extends React.Component {
         editInfo: false,
         delete: false,
         detect: true,
-        review: false
+        review: false,
+        download: false
       }
     });
   }
@@ -86,6 +79,28 @@ export default class Assignment extends React.Component {
   onReviewPlagiarism(e) {
     // another component, have to search database, display results
     console.log("review plagiarism");
+  }
+
+  onExport(e) {
+    //console.log("requested export");
+    const path = "./api.php/exportass/" + this.props.assignment.course + "/" + this.props.assignment.id;
+    axios.post(path).then(res => {
+      if (res.data == "nothing to export") {
+        console.log("nothing to export");
+      } else {
+        this.setState({
+          download_file: res.data,
+          isVisible: {
+            default: false,
+            editInfo: false,
+            delete: false,
+            detect: false,
+            review: false,
+            download: true
+          }
+        });
+      }
+    });
   }
 
   render() {
@@ -119,6 +134,11 @@ export default class Assignment extends React.Component {
           "button",
           { onClick: e => this.onReviewPlagiarism(e) },
           "Review plagiarism reports (for just this assignment)"
+        ),
+        React.createElement(
+          "button",
+          { onClick: e => this.onExport(e) },
+          "Export"
         ),
         React.createElement(
           "p",
@@ -193,6 +213,21 @@ export default class Assignment extends React.Component {
         assignment: this.props.assignment,
         updateEnrolled: this.props.updateEnrolled
       });
+    } else if (this.state.isVisible["download"]) {
+      display = React.createElement(
+        "div",
+        null,
+        React.createElement(
+          "a",
+          { href: this.state.download_file, download: "files.zip" },
+          "Download"
+        ),
+        React.createElement(
+          "button",
+          { onClick: e => this.onBack(e) },
+          "Cancel"
+        )
+      );
     }
 
     return React.createElement(

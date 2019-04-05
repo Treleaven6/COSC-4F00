@@ -1,5 +1,8 @@
 # Setup
 
+username: c4f00g03
+password: j4g6x7b3
+
 ## Software
 - Python 2.7
 - PHP 7

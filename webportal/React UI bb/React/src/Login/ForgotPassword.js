@@ -59,6 +59,7 @@ export default class ForgotPassword extends React.Component {
   render() {
     return (
       <div>
+        <p>COMING SOON</p>
         <form>
           Email:{" "}
           <input

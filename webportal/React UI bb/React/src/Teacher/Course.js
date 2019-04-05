@@ -2,8 +2,6 @@
 
 import CreateAssignment from "./CreateAssignment.js";
 import EditCourseInfo from "./EditCourseInfo.js";
-import EnrollStudents from "./EnrollStudents.js";
-import DeleteCourse from "./DeleteCourse.js";
 import EnrolledList from "./EnrolledList.js";
 
 export default class Course extends React.Component {
@@ -15,8 +13,6 @@ export default class Course extends React.Component {
         default: true,
         createAssignment: false,
         editInfo: false,
-        deleteCourse: false,
-        enrollStudents: false
       }
     };
     this.props.setReset(this.resetVisible);
@@ -28,8 +24,6 @@ export default class Course extends React.Component {
         default: true,
         createAssignment: false,
         editInfo: false,
-        deleteCourse: false,
-        enrollStudents: false
       }
     });
   }
@@ -40,20 +34,6 @@ export default class Course extends React.Component {
         default: false,
         createAssignment: false,
         editInfo: true,
-        deleteCourse: false,
-        enrollStudents: false
-      }
-    });
-  }
-
-  onEnrollStudents(e) {
-    this.setState({
-      isVisible: {
-        default: false,
-        createAssignment: false,
-        editInfo: false,
-        deleteCourse: false,
-        enrollStudents: true
       }
     });
   }
@@ -64,26 +44,12 @@ export default class Course extends React.Component {
         default: false,
         createAssignment: true,
         editInfo: false,
-        deleteCourse: false,
-        enrollStudents: false
       }
     });
   }
 
   onReviewPlagiarism(e) {
     console.log("review plagiarism");
-  }
-
-  onDeleteCourse(e) {
-    this.setState({
-      isVisible: {
-        default: false,
-        createAssignment: false,
-        editInfo: false,
-        deleteCourse: true,
-        enrollStudents: false
-      }
-    });
   }
 
   render() {
@@ -100,16 +66,12 @@ export default class Course extends React.Component {
       display = (
         <div>
           <button onClick={e => this.onEditInfo(e)}>Edit info</button>
-          <button onClick={e => this.onEnrollStudents(e)}>
-            Enroll Students
-          </button>
           <button onClick={e => this.onCreateNewAssignment(e)}>
             Create new assignment
           </button>
           <button onClick={e => this.onReviewPlagiarism(e)}>
             Review plagiarism reports (for the entire course)
           </button>
-          <button onClick={e => this.onDeleteCourse(e)}>Delete course</button>
           <p>id: {this.props.course.id}</p>
           <p>description: {this.props.course.description}</p>
           <p>year: {this.props.course.year}</p>
@@ -132,11 +94,8 @@ export default class Course extends React.Component {
       );
     } else if (this.state.isVisible["editInfo"]) {
       display = <EditCourseInfo goBack={this.resetVisible} />;
-    } else if (this.state.isVisible["deleteCourse"]) {
-      display = <DeleteCourse goBack={this.resetVisible} />;
-    } else if (this.state.isVisible["enrollStudents"]) {
-      display = <EnrollStudents goBack={this.resetVisible} />;
     }
+
     return (
       <div>
         <h3>a Course</h3>
