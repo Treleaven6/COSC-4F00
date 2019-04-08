@@ -9,6 +9,7 @@ import psycopg2
 import datetime
 import db
 import traceback
+import socket
 
 cmd = sys.argv
 if len(cmd) < 2:
@@ -66,12 +67,7 @@ if query:
 
 if cmd[0] == 'send':
 	# "./api.php/send/<course id>/<assignment id>;
-	# zip everything up
-	name = "./requests/c" + cmd[1] + "a" + cmd[2] + ".zip"
-	path = "./uploads/" + cmd[1] + "/" + cmd[2] + "/"
-	zipf = zipfile.ZipFile(name, 'w', zipfile.ZIP_DEFLATED)
-	zipdir(path, zipf)
-	zipf.close()
+	
 	# log it in the database
 	query = ("INSERT INTO ReportRequest (course, assignment) " +
 		    "VALUES (" +
@@ -81,9 +77,28 @@ if cmd[0] == 'send':
 	query = "SELECT currval('reportrequest_id_seq')"
 	success, records = db.exec_and_parse(cursor, cnx, query)
 	rid = records[0]['currval']
-	print(json.dumps({'rid':rid}));
+	# zip everything up
+	zip_name = "c" + cmd[1] + "a" + cmd[2] + "r" + str(rid) + ".zip"
+	dest_path = "./requests/" + zip_name
+	src_path = "./uploads/" + cmd[1] + "/" + cmd[2] + "/"
+	zipf = zipfile.ZipFile(dest_path, 'w', zipfile.ZIP_DEFLATED)
+	zipdir(src_path, zipf)
+	zipf.close()
 	# send to the algo server
-	pass
+	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	try:
+		s.connect(('localhost', 1234)) # the same port as used by the server
+		msg = bytes(dest_path)
+		size = ("0000" + str(len(msg)))[-4:]
+		s.sendall(size)
+		s.sendall(msg)
+		#s.settimeout(2)
+		#data = s.recv(1024)
+		#print('Received', repr(data))
+	except:
+		print(json.dumps(traceback.format_exc()))
+	finally:
+		s.close()
 elif cmd[0] == 'exportass':
 	src = "./uploads/" + cmd[1] + "/" + cmd[2] + "/target/"
 	if not os.path.isdir(src):
@@ -110,3 +125,4 @@ elif cmd[0] == 'includezip':
 	print(json.dumps(True))
 
 cnx.close()
+

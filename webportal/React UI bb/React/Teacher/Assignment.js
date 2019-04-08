@@ -225,7 +225,7 @@ export default class Assignment extends React.Component {
         React.createElement(
           "button",
           { onClick: e => this.onBack(e) },
-          "Cancel"
+          "Go Back"
         )
       );
     }
