@@ -10,6 +10,7 @@ import datetime
 import db
 import traceback
 import socket
+import base64
 
 cmd = sys.argv
 if len(cmd) < 2:
@@ -67,7 +68,6 @@ if query:
 
 if cmd[0] == 'send':
 	# "./api.php/send/<course id>/<assignment id>;
-	
 	# log it in the database
 	query = ("INSERT INTO ReportRequest (course, assignment) " +
 		    "VALUES (" +
@@ -92,6 +92,14 @@ if cmd[0] == 'send':
 		size = ("0000" + str(len(msg)))[-4:]
 		s.sendall(size)
 		s.sendall(msg)
+		f = open(dest_path, "rb")
+		msg = urllib.quote(base64.b64encode(f.read()))
+		# can only handle up to a trillion bytes, but thats ~ 1 gb
+		size = ("000000000000" + str(len(msg)))[-12:]
+		f.close()
+		s.sendall(size)
+		s.sendall(msg)
+
 		#s.settimeout(2)
 		#data = s.recv(1024)
 		#print('Received', repr(data))

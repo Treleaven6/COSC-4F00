@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-//package listenclient;
+// corresponding Python send code starts around line 90 in post.py
 
 import java.io.*;
 import java.net.*;
@@ -35,44 +30,65 @@ public class ListenServer extends Thread {
         }
     }
 
+    private void readBytesFromBuffer(BufferedInputStream bis, byte[] out) {
+        int totalBytesRead = 0;
+        int bytesRead = 0;
+        while (true) {
+            try {
+                bytesRead = bis.read(out, totalBytesRead, out.length);
+            } catch (java.io.IOException ioe) {
+                System.out.println(ioe);
+                break;
+            }
+            if (bytesRead < 0) break;
+            totalBytesRead += bytesRead;
+            if (totalBytesRead >= out.length) break;
+        }
+    }
+
     private void saveFile(Socket socket) throws Exception {
         BufferedInputStream bis = new BufferedInputStream(socket.getInputStream());
 
         // adapted from
         // https://stackoverflow.com/questions/5713857/bufferedinputstream-to-string-conversion
 
-        String size = "";
-        byte[] prefix = new byte[4];
-        int totalBytesRead = 0;
-        int bytesRead = 0;
-
-        while (true) {
-            bytesRead = bis.read(prefix);
-            if (bytesRead < 0) break;
-            size += new String(prefix, 0, bytesRead); 
-            totalBytesRead += bytesRead;
-            if (totalBytesRead >= 4) break;
-        }
+        // get path length
+        byte[] path_length_bytes = new byte[4];
+        readBytesFromBuffer(bis, path_length_bytes);
+        String path_length = new String(path_length_bytes, 0, path_length_bytes.length); 
         
-        String strFilePath = "";
-        byte[] contents = new byte[Integer.parseInt(size)];
-        totalBytesRead = 0;
-        bytesRead = 0;
+        // get original path (can get name from this, which the frontend will need on the way back)
+        byte[] zip_path_bytes = new byte[Integer.parseInt(path_length)];
+        readBytesFromBuffer(bis, zip_path_bytes);
+        String zip_path = new String(zip_path_bytes, 0, zip_path_bytes.length); 
+        
+        // get length of the rest of the message
+        byte[] file_length_bytes = new byte[12];
+        readBytesFromBuffer(bis, file_length_bytes);
+        String file_length = new String(file_length_bytes, 0, file_length_bytes.length); 
 
-        while (true) {
-            bytesRead = bis.read(contents);
-            if (bytesRead < 0) break;
-            strFilePath += new String(contents, 0, bytesRead); 
-            totalBytesRead += bytesRead;
-            if (totalBytesRead >= 4) break;
+        // get file contents, which have first been base64 encoded and then URL encoded
+        byte[] file_bytes = new byte[Integer.parseInt(file_length)];
+        readBytesFromBuffer(bis, file_bytes);
+        String file = new String(file_bytes, 0, file_bytes.length); 
+        String new_path = "./new.zip";
+        try {
+            String result = java.net.URLDecoder.decode(file, java.nio.charset.StandardCharsets.UTF_8.name());
+            try (FileOutputStream fos = new FileOutputStream(new_path)) {
+               fos.write(java.util.Base64.getDecoder().decode(result));
+            }
+        } catch (UnsupportedEncodingException e) {
+
         }
 
-        //System.out.println(strFilePath);
+        /*
         try {
-            extractFolder(strFilePath);
+            extractFolder(new_path);
         } catch (java.io.FileNotFoundException fnfe) {
             System.out.println(fnfe);
         }
+        */
+        
         
         //DataOutputStream bos = new DataOutputStream(socket.getOutputStream());
         //bos.writeBytes("Got it");
