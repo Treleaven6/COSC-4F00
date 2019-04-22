@@ -5,6 +5,7 @@
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 export default class ForgotPassword extends React.Component {
+  // constructor
   constructor(props) {
     super(props);
     this.state = {
@@ -13,12 +14,14 @@ export default class ForgotPassword extends React.Component {
     };
   }
 
+  // this is how React handles input fields
   updateEmail(e) {
     this.setState({
       email: e.target.value
     });
   }
 
+  // call the API to update the email, display warning with results
   onRequest(e) {
     e.preventDefault();
 
@@ -42,6 +45,7 @@ export default class ForgotPassword extends React.Component {
     }).catch(err => console.log(err));
   }
 
+  // call API
   callApi(email) {
     return _asyncToGenerator(function* () {
       const response = yield fetch("./api.php/email/" + email);
@@ -52,11 +56,13 @@ export default class ForgotPassword extends React.Component {
     })();
   }
 
+  // tell parent (Login) to display default
   onBack(e) {
     e.preventDefault();
     this.props.goBack();
   }
 
+  // display
   render() {
     return React.createElement(
       "div",

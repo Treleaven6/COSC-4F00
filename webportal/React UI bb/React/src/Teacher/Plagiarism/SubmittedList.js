@@ -1,6 +1,10 @@
 "use strict";
 
+// Display a list of who has submitted files to the assignment
+// and who is enrolled but has not
+
 export default class SubmittedList extends React.Component {
+  // constructor
   constructor(props) {
     super(props);
     this.state = {
@@ -9,6 +13,7 @@ export default class SubmittedList extends React.Component {
     };
   }
 
+  // query backend only on component mount
   componentDidMount() {
     this.getUploaded()
       .then(res => {
@@ -28,6 +33,7 @@ export default class SubmittedList extends React.Component {
     }
   }
 
+  // get a list of all enrolled
   async callEnrolledApi() {
     const response = await fetch("./api.php/enrolled/" + this.props.course.id);
     const body = await response.json();
@@ -35,6 +41,7 @@ export default class SubmittedList extends React.Component {
     return body;
   }
 
+  // get a list of uploaded
   async getUploaded() {
     const response = await fetch(
       "./api.php/submitted/assignment/" + this.props.aid
@@ -46,6 +53,7 @@ export default class SubmittedList extends React.Component {
     return body;
   }
 
+  // display
   render() {
     let display_blurb = "0 people have submitted files";
     let display = "";

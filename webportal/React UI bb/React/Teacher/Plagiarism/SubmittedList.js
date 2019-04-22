@@ -1,8 +1,12 @@
 "use strict";
 
+// Display a list of who has submitted files to the assignment
+// and who is enrolled but has not
+
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 export default class SubmittedList extends React.Component {
+  // constructor
   constructor(props) {
     super(props);
     this.state = {
@@ -11,6 +15,7 @@ export default class SubmittedList extends React.Component {
     };
   }
 
+  // query backend only on component mount
   componentDidMount() {
     this.getUploaded().then(res => {
       this.setState({
@@ -26,6 +31,7 @@ export default class SubmittedList extends React.Component {
     }
   }
 
+  // get a list of all enrolled
   callEnrolledApi() {
     var _this = this;
 
@@ -37,6 +43,7 @@ export default class SubmittedList extends React.Component {
     })();
   }
 
+  // get a list of uploaded
   getUploaded() {
     var _this2 = this;
 
@@ -49,6 +56,7 @@ export default class SubmittedList extends React.Component {
     })();
   }
 
+  // display
   render() {
     let display_blurb = "0 people have submitted files";
     let display = "";

@@ -1,6 +1,9 @@
 "use strict";
 
+// Display a list of students enrolled in a course
+
 export default class EnrolledList extends React.Component {
+  // wait to call the backend until component is loaded
   componentDidUpdate() {
     if (!("enrolledList" in this.props.course)) {
       this.callEnrolledApi()
@@ -12,6 +15,7 @@ export default class EnrolledList extends React.Component {
     }
   }
 
+  // call the backend
   async callEnrolledApi() {
     const response = await fetch("./api.php/enrolled/" + this.props.course.id);
     const body = await response.json();
@@ -19,6 +23,7 @@ export default class EnrolledList extends React.Component {
     return body;
   }
 
+  // display
   render() {
     let enrolledList = null;
     if ("enrolledList" in this.props.course) {

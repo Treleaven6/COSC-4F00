@@ -1,6 +1,9 @@
 "use strict";
 
+// Allow a teacher to edit an assignment name and due date
+
 export default class EditAssignmentInfo extends React.Component {
+  // constructor
   constructor(props) {
     super(props);
     this.onBack = this.onBack.bind(this);
@@ -13,23 +16,27 @@ export default class EditAssignmentInfo extends React.Component {
     };
   }
 
+  // tell parent (Assignment) to go back
   onBack(e) {
     e.preventDefault();
     this.props.goBack();
   }
 
+  // this is how React handles input fields
   updateName(e) {
     this.setState({
       name: e.target.value
     });
   }
 
+  // this is how React handles input fields
   updateDateTime(e) {
     this.setState({
       datetime: e.target.value
     });
   }
 
+  // call the backend to update the record
   handleUpdate(e) {
     e.preventDefault();
     let dt = this.state.datetime.trim();
@@ -66,6 +73,7 @@ export default class EditAssignmentInfo extends React.Component {
     }
   }
 
+  // display
   render() {
     return (
       <div>

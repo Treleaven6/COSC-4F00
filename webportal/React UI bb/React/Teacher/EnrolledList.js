@@ -1,8 +1,11 @@
 "use strict";
 
+// Display a list of students enrolled in a course
+
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 export default class EnrolledList extends React.Component {
+  // wait to call the backend until component is loaded
   componentDidUpdate() {
     if (!("enrolledList" in this.props.course)) {
       this.callEnrolledApi().then(res => {
@@ -12,6 +15,7 @@ export default class EnrolledList extends React.Component {
     }
   }
 
+  // call the backend
   callEnrolledApi() {
     var _this = this;
 
@@ -23,6 +27,7 @@ export default class EnrolledList extends React.Component {
     })();
   }
 
+  // display
   render() {
     let enrolledList = null;
     if ("enrolledList" in this.props.course) {

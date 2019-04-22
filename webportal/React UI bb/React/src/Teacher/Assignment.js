@@ -4,7 +4,11 @@ import DetectAssignment from "./Plagiarism/DetectAssignment.js";
 import EditAssignmentInfo from "./EditAssignmentInfo.js";
 import DeleteAssignment from "./DeleteAssignment.js";
 
+// Display information about an assignments and options 
+// to change it
+
 export default class Assignment extends React.Component {
+  // constructor
   constructor(props) {
     super(props);
     this.onBack = this.onBack.bind(this);
@@ -23,6 +27,7 @@ export default class Assignment extends React.Component {
     this.props.setReset(this.onBack);
   }
 
+  // reset display to default
   onBack() {
     this.setState({
       isVisible: {
@@ -36,8 +41,8 @@ export default class Assignment extends React.Component {
     });
   }
 
+  // display the EditAssignmentInfo component
   onEditInfo(e) {
-    // another component, with fields for every value
     this.setState({
       isVisible: {
         default: false,
@@ -50,6 +55,7 @@ export default class Assignment extends React.Component {
     });
   }
 
+  // display the DeleteAssignment component
   onDeleteAssignment(e) {
     this.setState({
       isVisible: {
@@ -63,6 +69,7 @@ export default class Assignment extends React.Component {
     });
   }
 
+  // display the DetectAssignment component
   onDetectPlagiarism(e) {
     this.setState({
       isVisible: {
@@ -76,13 +83,14 @@ export default class Assignment extends React.Component {
     });
   }
 
+  // TODO
   onReviewPlagiarism(e) {
     // another component, have to search database, display results
     console.log("review plagiarism");
   }
 
+  // call the backend, allow user to download a zip of all current submissions
   onExport(e) {
-    //console.log("requested export");
     const path = "./api.php/exportass/" + this.props.assignment.course + "/" + this.props.assignment.id;
     axios.post(path).then(res => {
       if (res.data == "nothing to export") {
@@ -103,6 +111,7 @@ export default class Assignment extends React.Component {
     });
   }
 
+  // display
   render() {
     let display;
 

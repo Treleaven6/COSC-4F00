@@ -6,6 +6,7 @@ import SubListSchedule from "./SubListSchedule.js";
 // in each course. This is the main navigational method from a
 // landing page
 export default class ListSchedule extends React.Component {
+  // constructor
   constructor(props) {
     super(props);
     // anti-pattern? just use props throughout?
@@ -19,6 +20,8 @@ export default class ListSchedule extends React.Component {
     this.props.setRefresh(this.classesDidMount);
   }
 
+  // wait for component to mount, then get info on courses and 
+  // assignments
   componentDidMount() {
     this.callClassApi()
       .then(res => {
@@ -35,6 +38,7 @@ export default class ListSchedule extends React.Component {
       .catch(err => console.log(err));
   }
 
+  // get info on assignments
   classesDidMount() {
     for (let i = 0; i < this.state.courses.length; ++i) {
       let course = this.state.courses[i];
@@ -52,6 +56,7 @@ export default class ListSchedule extends React.Component {
     }
   }
 
+  // get info on a course
   async callClassApi() {
     const response = await fetch(
       "./api.php/" +
@@ -64,6 +69,7 @@ export default class ListSchedule extends React.Component {
     return body;
   }
 
+  // get all the assignments for a course
   async callAssApi(cid) {
     const response = await fetch("./api.php/assigned/" + cid);
     const body = await response.json();
@@ -71,6 +77,7 @@ export default class ListSchedule extends React.Component {
     return body;
   }
 
+  // display
   render() {
     let courseList = null;
     if (this.state.courses !== "") {

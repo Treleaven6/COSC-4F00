@@ -1,12 +1,16 @@
 import psycopg2
 import json
 import datetime
+import traceback
 
+# Used to handle database communication
+
+# open a connection
 def get_connection():
   try:
     cnx = psycopg2.connect(host="localhost", database="c4f00g03", user="c4f00g03", password="j4g6x7b3")
     return cnx
-  except psycopg2.OperationalError as err:
+  except:
     print(json.dumps("check DB connection"))
     if cnx is not None:
       cnx.close()
@@ -18,8 +22,7 @@ def exec_and_parse(cursor, cnx, query):
 	try:
 		cursor.execute(query)
 		cnx.commit()
-	except psycopg2.Error as err:
-		print(err)
+	except:
 		return(False, out)
 	if not cursor.description:
 		if cursor.rowcount > 0:

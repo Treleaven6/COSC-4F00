@@ -8,6 +8,7 @@ import Student from "./Landing/Student.js";
 // display the login page, a teacher account, or 
 // a student account
 class App extends React.Component {
+  // constructor
   constructor(props) {
     super(props);
     this.loginHandler = this.loginHandler.bind(this);
@@ -25,6 +26,7 @@ class App extends React.Component {
     };
   }
 
+  // change to a student or teacher account
   loginHandler(id, firstname, email, title) {
     this.setState({
       id: id,
@@ -51,6 +53,7 @@ class App extends React.Component {
     }
   }
 
+  // return to login page
   logoutHandler() {
     console.log("logged out");
     this.setState({
@@ -62,6 +65,7 @@ class App extends React.Component {
     });
   }
 
+  // display
   render() {
     let display;
     if (this.state.isVisible["student"]) {
@@ -91,5 +95,6 @@ class App extends React.Component {
 
 }
 
+// magic
 let domContainer = document.querySelector('#react_goes_here');
 ReactDOM.render(React.createElement(App, null), domContainer);

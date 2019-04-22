@@ -1,17 +1,22 @@
 "use strict";
 
+// Allow a teacher to delete an assignment
+
 export default class DeleteAssignment extends React.Component {
+  // constructor
   constructor(props) {
     super(props);
     this.onBack = this.onBack.bind(this);
     this.onConfirm = this.onConfirm.bind(this);
   }
 
+  // tell parent (Assignment) to go back
   onBack(e) {
     e.preventDefault();
     this.props.goBack();
   }
 
+  // call backend, tell parent (Assignment)
   onConfirm(e) {
     e.preventDefault();
     let path = "./api.php/delass/" + this.props.id;
@@ -20,6 +25,7 @@ export default class DeleteAssignment extends React.Component {
     });
   }
 
+  // display
   render() {
     return React.createElement(
       "div",

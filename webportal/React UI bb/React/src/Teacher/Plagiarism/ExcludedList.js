@@ -1,6 +1,9 @@
 "use strict";
 
+// Display a list of files to exclude / ignore from plagiarism detection
+
 export default class ExcludedList extends React.Component {
+  // constructor
   constructor(props) {
     super(props);
     this.state = {
@@ -8,6 +11,7 @@ export default class ExcludedList extends React.Component {
     };
   }
 
+  // get list of files only after component mount
   componentDidMount() {
     this.getCluded()
       .then(res => {
@@ -19,8 +23,8 @@ export default class ExcludedList extends React.Component {
       .catch(err => console.log(err));
   }
 
+  // call the backend
   async getCluded() {
-    //console.log("get cluded");
     const response = await fetch(
       "./api.php/excluded/" + this.props.cid + "/" + this.props.aid
     );
@@ -30,6 +34,7 @@ export default class ExcludedList extends React.Component {
     return body;
   }
 
+  // display
   render() {
     let excluded_blurb = "No files to exclude";
     let excluded = this.state.excluded;

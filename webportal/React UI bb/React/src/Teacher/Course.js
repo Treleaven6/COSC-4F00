@@ -4,7 +4,10 @@ import CreateAssignment from "./CreateAssignment.js";
 import EditCourseInfo from "./EditCourseInfo.js";
 import EnrolledList from "./EnrolledList.js";
 
+// Display information about a course, allow some modifications to it
+
 export default class Course extends React.Component {
+  // constructor
   constructor(props) {
     super(props);
     this.resetVisible = this.resetVisible.bind(this);
@@ -18,6 +21,7 @@ export default class Course extends React.Component {
     this.props.setReset(this.resetVisible);
   }
 
+  // display default
   resetVisible() {
     this.setState({
       isVisible: {
@@ -28,6 +32,7 @@ export default class Course extends React.Component {
     });
   }
 
+  // show EditCourseInfo component
   onEditInfo(e) {
     this.setState({
       isVisible: {
@@ -38,6 +43,7 @@ export default class Course extends React.Component {
     });
   }
 
+  // show CreateAssignment component
   onCreateNewAssignment(e) {
     this.setState({
       isVisible: {
@@ -48,10 +54,12 @@ export default class Course extends React.Component {
     });
   }
 
+  // TODO
   onReviewPlagiarism(e) {
     console.log("review plagiarism");
   }
 
+  // display
   render() {
     // need to know:
     // what plagiarism reports are available

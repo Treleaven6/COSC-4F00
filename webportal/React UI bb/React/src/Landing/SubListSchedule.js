@@ -2,6 +2,7 @@
 
 // Called for each course, returns a list of assignments
 export default class SubListSchedule extends React.Component {
+  // display
   render() {
     let assList = null;
     if (typeof this.props.course["assignments"] !== "undefined") {

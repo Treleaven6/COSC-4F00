@@ -3,6 +3,7 @@
 // Allow user to update their password
 
 export default class ChangePassword extends React.Component {
+  // constructor
   constructor(props) {
     super(props);
     this.state = {
@@ -12,6 +13,7 @@ export default class ChangePassword extends React.Component {
     };
   }
 
+  // this is how React does input fields
   updateNewPassword(e) {
     e.preventDefault();
     let newPassword = e.target.value;
@@ -25,6 +27,7 @@ export default class ChangePassword extends React.Component {
     });
   }
 
+  // this is how React does input fields
   updateConfirmPassword(e) {
     e.preventDefault();
     let confirmPassword = e.target.value;
@@ -38,6 +41,7 @@ export default class ChangePassword extends React.Component {
     });
   }
 
+  // call the backend with the new password
   onRequest(e) {
     e.preventDefault();
 
@@ -59,11 +63,13 @@ export default class ChangePassword extends React.Component {
     });
   }
 
+  // notify the parent (Teacher) to go back
   onBack(e) {
     e.preventDefault();
     this.props.goBack();
   }
 
+  // display
   render() {
     return React.createElement(
       "div",

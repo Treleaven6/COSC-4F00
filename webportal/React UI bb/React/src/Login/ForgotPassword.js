@@ -2,6 +2,7 @@
 
 // Allow user to recover their password
 export default class ForgotPassword extends React.Component {
+  // constructor
   constructor(props) {
     super(props);
     this.state = {
@@ -10,12 +11,14 @@ export default class ForgotPassword extends React.Component {
     };
   }
 
+  // this is how React handles input fields
   updateEmail(e) {
     this.setState({
       email: e.target.value
     });
   }
 
+  // call the API to update the email, display warning with results
   onRequest(e) {
     e.preventDefault();
 
@@ -41,6 +44,7 @@ export default class ForgotPassword extends React.Component {
       .catch(err => console.log(err));
   }
 
+  // call API
   async callApi(email) {
     const response = await fetch("./api.php/email/" + email);
     if (response.status !== 200)
@@ -51,11 +55,13 @@ export default class ForgotPassword extends React.Component {
     return body;
   }
 
+  // tell parent (Login) to display default
   onBack(e) {
     e.preventDefault();
     this.props.goBack();
   }
 
+  // display
   render() {
     return (
       <div>

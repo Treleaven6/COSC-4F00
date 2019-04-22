@@ -1,6 +1,9 @@
 "use strict";
 
+// Display information about a course
+
 export default class Course extends React.Component {
+  // call the backend
   async callPersonApi() {
     const response = await fetch(
       "./api.php/person/" + this.props.course.instructor
@@ -10,6 +13,7 @@ export default class Course extends React.Component {
     return body;
   }
 
+  // display
   render() {
     if (
       typeof this.props.course["firstname"] === "undefined" &&

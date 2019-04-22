@@ -1,16 +1,22 @@
 "use strict";
 
+// Allow a teacher to edit course information
+// Currently non-functional
+
 export default class EditCourseInfo extends React.Component {
+  // constructor
   constructor(props) {
     super(props);
     this.onBack = this.onBack.bind(this);
   }
 
+  // tell parent (Course) to go back
   onBack(e) {
     e.preventDefault();
     this.props.goBack();
   }
 
+  // display
   render() {
     return (
       <div>

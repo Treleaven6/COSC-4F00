@@ -7,5 +7,8 @@ Prerequisites
 Installation
 - in PostgreSQL, run the script "create-tables.sql"
 - unzip Archive.zip in the directory that will host the landing page
-- create user accounts via the _ script
-- enter your email address somewhere?
+- copy MOCD.jar to the root directory
+- change instances of "localhost" or "139.57.100.6" to your IP address
+- change instances of "@brocku.ca" to an admin email
+- create user accounts via the python script
+- run the server with "java -jar MOCD.jar"

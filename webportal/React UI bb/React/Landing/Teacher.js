@@ -7,6 +7,7 @@ import ChangePassword from "../Teacher/ChangePassword.js";
 
 // What a teacher will see when they first sign in
 export default class Teacher extends React.Component {
+  // constructor
   constructor(props) {
     super(props);
     this.courseHandler = this.courseHandler.bind(this);
@@ -19,29 +20,30 @@ export default class Teacher extends React.Component {
     this.updateAssignmentList = this.updateAssignmentList.bind(this);
     this.updateEnrolled = this.updateEnrolled.bind(this);
     this.state = {
-      courses: "",
-      cid: "",
-      aid: "",
-      sublist: true,
-      resetCourses: null,
-      resetAssignments: null,
-      resetListSchedule: null,
-      visibleOverride: false,
+      courses: "", // object holding courses currently teaching or having taught in the past
+      cid: "", // selected course id
+      aid: "", // selected assignment id
+      resetCourses: null, // method to call when courses get reset
+      resetAssignments: null, // method to call when assignments get reset
+      resetListSchedule: null, // method to call when schedule gets reset
+      visibleOverride: false, // hack for when information gets deleted
       isVisible: {
-        default: true,
-        course: false,
-        assignment: false,
-        change_password: false
+        default: true, // default
+        course: false, // information about a course
+        assignment: false, // information about an assignment
+        change_password: false // change password page
       }
     };
   }
 
+  // hook for children to register a reset method
   setResetListSchedule(f) {
     this.setState({
       resetListSchedule: f
     });
   }
 
+  // refresh the assignment list (on delete or create)
   updateAssignmentList() {
     this.state.resetListSchedule();
     if (!this.state.visibleOverride && this.state.isVisible["assignment"]) {
@@ -60,11 +62,13 @@ export default class Teacher extends React.Component {
     }
   }
 
+  // for when that information becomes available
   updateEnrolled(enrolledList) {
     let course = this.state.courses.filter(c => c.id === this.state.cid)[0];
     course["enrolledList"] = enrolledList;
   }
 
+  // for when that information becomes available
   updateAssignmentInfo(name, closing) {
     let course = this.state.cid === "" || this.state.cid === 0 ? null : this.state.courses.filter(c => c.id === this.state.cid)[0];
     let assignment = this.state.aid === "" || this.state.aid === 0 ? null : course.assignments.filter(a => a.id === this.state.aid)[0];
@@ -75,28 +79,33 @@ export default class Teacher extends React.Component {
     });
   }
 
+  // hook for children to register a course refresh method
   setResetCourses(f) {
     this.setState({
       resetCourses: f
     });
   }
 
+  // hook for children to register an assignment refresh method
   setResetAssignments(f) {
     this.setState({
       resetAssignments: f
     });
   }
 
+  // inform parent (App) of logout
   onLogout(evt) {
     this.props.handleLogout();
   }
 
+  // update state 
   courseHandler(obj) {
     this.setState({
       courses: obj
     });
   }
 
+  // make sure we return to default display
   handleCancelCreateCourse() {
     this.setState({
       isVisible: {
@@ -108,6 +117,7 @@ export default class Teacher extends React.Component {
     });
   }
 
+  // display password change fields
   onChangePassword(e) {
     this.setState({
       isVisible: {
@@ -119,6 +129,7 @@ export default class Teacher extends React.Component {
     });
   }
 
+  // display info on a course or assignment
   handleClick(type, cid, aid) {
     this.setState({
       cid: cid,
@@ -152,6 +163,7 @@ export default class Teacher extends React.Component {
     //console.log(type + ", " + cid + ", " + aid);
   }
 
+  // display
   render() {
     let course = this.state.cid === "" || this.state.cid === 0 ? null : this.state.courses.filter(c => c.id === this.state.cid)[0];
     let assignment = this.state.aid === "" || this.state.aid === 0 ? null : course.assignments.filter(a => a.id === this.state.aid)[0];

@@ -1,6 +1,9 @@
 "use strict";
 
+// Allow a teacher to create a new assignment in a course
+
 export default class CreateAssignment extends React.Component {
+  // constructor
   constructor(props) {
     super(props);
     this.onBack = this.onBack.bind(this);
@@ -10,11 +13,13 @@ export default class CreateAssignment extends React.Component {
     };
   }
 
+  // tell parent (Course) to go back
   onBack(e) {
     e.preventDefault();
     this.props.goBack();
   }
 
+  // call the backend
   onCreate(e) {
     e.preventDefault();
     let dt = this.state.datetime.trim();
@@ -39,18 +44,21 @@ export default class CreateAssignment extends React.Component {
     }
   }
 
+  // this is how React does input fields
   updateName(e) {
     this.setState({
       name: e.target.value
     });
   }
 
+  // this is how React does input fields
   updateDateTime(e) {
     this.setState({
       datetime: e.target.value
     });
   }
 
+  // display
   render() {
     return React.createElement(
       "div",

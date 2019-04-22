@@ -1,11 +1,13 @@
 "use strict";
 
+
 import ForgotPassword from "./ForgotPassword.js";
-import Results from "../ResultsTesting/Results.js";
-//import styles_CSSINJS from '../js/CSS_IN_JS_EXAMPLE.js';
+import ResultsLanding from "../ResultsTesting/ResultsLanding.js";
+//import sty from "../js/LoginStyle.js";
 
 // the Login screen
 export default class Login extends React.Component {
+  // constructor
   constructor(props) {
     super(props);
     this.onBack = this.onBack.bind(this);
@@ -16,29 +18,34 @@ export default class Login extends React.Component {
       username: "",
       password: "",
       file: null,
-      rid: null,
+      rid: false,
+      testResults: null,
       isVisible: {
         warn: false,
         login: true,
         forgotPassword: false,
-        testresults: false,
+        testresults: false
       },
       warning: ""
     };
   }
 
+  // this is how React does input fields
   updateUsername(e) {
     this.setState({
       username: e.target.value
     });
   }
 
+  // this is how React does input fields
   updatePassword(e) {
     this.setState({
       password: e.target.value
     });
   }
 
+  // call the api to determine if allowed,
+  // inform parent (App) if so
   onLogin(e) {
     e.preventDefault();
     if (this.state.username === "" || this.state.password === "") {
@@ -66,6 +73,7 @@ export default class Login extends React.Component {
       .catch(err => console.log(err));
   }
 
+  // call the api to see if account exists
   async callApi(username, password) {
     const response = await fetch(
       "./api.php/login/" + username + "/" + password
@@ -77,17 +85,19 @@ export default class Login extends React.Component {
     return body;
   }
 
+  // return to the default login screen
   onBack() {
     this.setState({
       isVisible: {
         warn: false,
         login: true,
         forgotPassword: false,
-        testresults: false,
+        testresults: false
       }
     });
   }
 
+  // show the forgot password component
   onForgotPassword(e) {
     e.preventDefault();
     this.setState({
@@ -95,17 +105,19 @@ export default class Login extends React.Component {
         warn: false,
         login: false,
         forgotPassword: true,
-        testresults: false,
+        testresults: false
       }
     });
   }
 
+  // set the warning string
   setWarning(str) {
     this.setState({
       warning: str
     });
   }
 
+  // update state, used for testing
   handleFileSelect(e) {
     e.preventDefault();
     let file = e.target.files;
@@ -119,32 +131,39 @@ export default class Login extends React.Component {
     }
   }
 
-  handleUpload(e) {
+  // upload a zip for testing
+  async handleUpload(e) {
     e.preventDefault();
     if (this.state.file === null) {
       return;
     }
-
-    const path1 = "./api.php/upload/4/6/000000";
+    
+    const path1 = "./api.php/uploadtest/4/6/" + encodeURIComponent(this.state.file[0].name.split(".")[0]);
     this.getBase64(this.state.file[0], result => {
       axios.post(path1, encodeURIComponent(result)).then(res1 => {
+        //console.log(res1.data)
+        this.setState({
+          isVisible: {
+            warn: false,
+            login: false,
+            forgotPassword: false,
+            testresults: true,
+          }
+        });
         const path2 = "./api.php/send/4/6";
         axios.post(path2).then(res2 => {
+          console.log(res2.data);
+          //res2.data.rid,
           this.setState({
-            rid: res2.data.rid,
-            isVisible: {
-              warn: false,
-              login: false,
-              forgotPassword: false,
-              testresults: true,
-            }
+            rid: true,
+            testResults: res2.data
           });
-          //console.log(res2.data);
         });
       });
-    });
+    }); 
   }
 
+  // convert data to base64
   getBase64(file, cb) {
     let reader = new FileReader();
     reader.readAsDataURL(file);
@@ -156,6 +175,7 @@ export default class Login extends React.Component {
     };
   }
 
+  // display
   render() {
     let display;
 
@@ -190,20 +210,33 @@ export default class Login extends React.Component {
 
     let testresults = null;
     if (this.state.isVisible["testresults"]) {
-      testresults = <Results rid={this.state.rid}/>;
+      testresults = (
+        <ResultsLanding
+          rid={this.state.rid}
+          testResults={this.state.testResults}
+        />
+      );
+    } else {
+      testresults=(
+          <form>
+            <input type="file" onChange={this.handleFileSelect} accept=".zip" />
+            <input
+              type="button"
+              value="Upload"
+              onClick={e => this.handleUpload(e)}
+            />
+          </form>
+      );
     }
 
-    // <div style={styles_CSSINJS.CSSDemo_CSSInJS}>
+    // <div style={sty.testing}>
     return (
       <div>
         <h1>MOCD</h1>
         {display}
         <div>
           <h3>TESTING</h3>
-          <form>
-          <input type="file" onChange={this.handleFileSelect} accept=".zip" />
-          <input type="button" value="Upload" onClick={e => this.handleUpload(e)} />
-          </form>
+          
           {testresults}
         </div>
       </div>

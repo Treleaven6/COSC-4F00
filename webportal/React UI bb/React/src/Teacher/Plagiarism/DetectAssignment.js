@@ -2,11 +2,13 @@
 
 import SubmittedList from "./SubmittedList.js";
 import ExcludedList from "./ExcludedList.js";
-import IncludedList from "./IncludedList.js";
+
+// Main parent for the plagiarism report request page
 
 export default class DetectAssignment extends React.Component {
-  // figure out if already submitted
+  // figure out if already submitted?
 
+  // constructor
   constructor(props) {
     super(props);
     this.state = {
@@ -24,17 +26,18 @@ export default class DetectAssignment extends React.Component {
     };
   }
 
+  // tell parent (Teacher) to go back
   onCancel(e) {
     this.props.goBack();
   }
 
+  // toggle the confirmation button
   onSubmit(e) {
-    // modal asking if sure, and then some database stuff
-    this.setState({ showSubmitModal: !this.state.showSubmitModal });
+    //this.setState({ showSubmitModal: !this.state.showSubmitModal });
   }
 
+  // yes request a plagiarism report, call the back end
   yesImSure(e) {
-    // do some database stuff
     const path =
       "./api.php/send/" + this.props.course.id + "/" + this.props.assignment.id;
     axios.post(path).then(res => {
@@ -43,6 +46,7 @@ export default class DetectAssignment extends React.Component {
     this.props.goBack();
   }
 
+  // update state with a file
   handleExcludeSelected(event) {
     this.setState({
       showSubmitModal: false,
@@ -52,14 +56,14 @@ export default class DetectAssignment extends React.Component {
     let file = event.target.files[0];
     if (file) {
       this.setState({
-        excludeFile: file,
-
+        excludeFile: file
       });
     } else {
       console.log("no file");
     }
   }
 
+  // pass a file to the back end, update frontend list
   onExclude(e) {
     this.setState({
       showSubmitModal: false,
@@ -88,6 +92,7 @@ export default class DetectAssignment extends React.Component {
     });
   }
 
+  // encode base64
   getBase64(file, cb) {
     let reader = new FileReader();
     reader.readAsDataURL(file);
@@ -99,6 +104,7 @@ export default class DetectAssignment extends React.Component {
     };
   }
 
+  // update state with file selected
   handleIncludeSelected(event) {
     this.setState({
       showSubmitModal: false,
@@ -108,13 +114,14 @@ export default class DetectAssignment extends React.Component {
     let file = event.target.files[0];
     if (file) {
       this.setState({
-        includeFile: file,
+        includeFile: file
       });
     } else {
       console.log("no file");
     }
   }
 
+  // pass file to the backend
   onInclude(e) {
     this.setState({
       showSubmitModal: false,
@@ -145,6 +152,7 @@ export default class DetectAssignment extends React.Component {
     });
   }
 
+  // update state with file selected
   handleIncludeZipSelected(event) {
     this.setState({
       showSubmitModal: false,
@@ -154,13 +162,14 @@ export default class DetectAssignment extends React.Component {
     let file = event.target.files[0];
     if (file) {
       this.setState({
-        includeZipFile: file,
+        includeZipFile: file
       });
     } else {
       console.log("no file");
     }
   }
 
+  // pass zip to the backend
   onIncludeZip(e) {
     this.setState({
       showSubmitModal: false,
@@ -185,18 +194,21 @@ export default class DetectAssignment extends React.Component {
     });
   }
 
+  // toggle confirmation button
   onDeleteExclude(e) {
     this.setState({
       showDeleteExcludeModal: !this.state.showDeleteExcludeModal
     });
   }
 
+  // toggle confirmation button
   onDeleteInclude(e) {
     this.setState({
       showDeleteIncludeModal: !this.state.showDeleteIncludeModal
     });
   }
 
+  // call backend to delete excluded files, update list
   reallyDeleteExclude(e) {
     const path =
       "./api.php/rmexclude/" +
@@ -212,6 +224,7 @@ export default class DetectAssignment extends React.Component {
     });
   }
 
+  // call backed to delete included files
   reallyDeleteInclude(e) {
     const path =
       "./api.php/rminclude/" +
@@ -227,6 +240,7 @@ export default class DetectAssignment extends React.Component {
     });
   }
 
+  // display
   render() {
     let submitModal = null;
     if (this.state.showSubmitModal) {
@@ -253,15 +267,6 @@ export default class DetectAssignment extends React.Component {
       );
     }
 
-    /*
-    <IncludedList
-            cid={this.props.course.id}
-            aid={this.props.assignment.id}
-            addFile={this.state.addIncluded}
-            deleteAll={this.state.deleteAllIncluded}
-          />
-    */
-    
     return (
       <div>
         <p>Package and Submit all Files for an Assignment</p>
@@ -269,7 +274,7 @@ export default class DetectAssignment extends React.Component {
         <button onClick={e => this.onSubmit(e)}>Submit</button>
         {submitModal}
         <button onClick={e => this.onCancel(e)}>Cancel</button>
-        <div style={{border:'1px solid black'}}>
+        <div style={{ border: "1px solid black", margin: "2px" }}>
           <p>Exclude</p>
           <button onClick={e => this.onDeleteExclude(e)}>
             Delete All Old files
@@ -288,11 +293,9 @@ export default class DetectAssignment extends React.Component {
             deleteAll={this.state.deleteAllExcluded}
           />
         </div>
-        <div style={{border:'1px solid black'}}>
+        <div style={{ border: "1px solid black", margin: "2px" }}>
           <p>Include</p>
-          <button onClick={e => this.onDeleteInclude(e)}>
-            Delete All Old
-          </button>
+          <button onClick={e => this.onDeleteInclude(e)}>Delete All Old</button>
           {deleteIncludeModal}
           <p>Include an exported assignment</p>
           <input

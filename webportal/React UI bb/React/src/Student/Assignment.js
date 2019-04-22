@@ -1,6 +1,9 @@
 "use strict";
 
+// Show details about a current assignment, allow assignment submission
+
 export default class Assignment extends React.Component {
+  // constructor
   constructor(props) {
     super(props);
     this.handleFileSelect = this.handleFileSelect.bind(this);
@@ -15,6 +18,7 @@ export default class Assignment extends React.Component {
     this.props.setReset(this.resetVisible);
   }
 
+  // display default
   resetVisible() {
     this.setState({
       default: true,
@@ -22,6 +26,7 @@ export default class Assignment extends React.Component {
     });
   }
 
+  // get information about an assignment
   async callSingleAssignmentApi() {
     const response = await fetch(
       "./api.php/submitted/student/" +
@@ -34,6 +39,7 @@ export default class Assignment extends React.Component {
     return body;
   }
 
+  // show submitting inputs
   handleSubmit(e) {
     this.setState({
       default: false,
@@ -41,6 +47,7 @@ export default class Assignment extends React.Component {
     });
   }
 
+  // set state
   handleFileSelect(event) {
     let file = event.target.files;
 
@@ -53,7 +60,7 @@ export default class Assignment extends React.Component {
     }
   }
 
-  // this entire function is sketchy AF and could explode at any minute
+  // post to the backend
   handleUpload(e) {
     if (this.state.file === null) {
       return;
@@ -66,58 +73,6 @@ export default class Assignment extends React.Component {
       this.props.assignment.id +
       "/" +
       this.props.sid;
-    //let zip = new JSZip();
-
-    // convert to drag-and-drop?!
-    // https://codepen.io/joezimjs/pen/yPWQbd
-
-    /*
-    // select multiple files, will zip it
-    // have to add "multiple" to the end of the html input tag
-    let readers = [];
-    let file = this.state.file;
-    for (let i = 0; i < file.length; i++) {
-      const f = file[i];
-      // https://stackoverflow.com/questions/34495796/javascript-promises-with-filereader
-      readers.push(new Promise((resolve, reject) => {
-        let fr = new FileReader();  
-        fr.readAsText(f);
-        fr.onload = function (evt) {
-          zip.file(f.name, evt.target.result); // fr.result
-          resolve(true);
-        };
-      }));
-    }
-
-    Promise.all(readers).then(function(values) {
-      zip.generateAsync({type:"base64"}).then(function (base64) {
-        axios.post(path, encodeURIComponent(base64)).then(res => {
-          //console.log(res);
-          console.log(res.data);
-        });
-      });
-    });
-    */
-
-    /*
-    // select one file, will zip it
-    // check encodeURIcomponent
-    let file = this.state.file[0];
-    let reader = new FileReader();
-    reader.readAsText(file);
-    reader.onload = function (evt) {
-        zip.file(file.name, evt.target.result);
-        zip.generateAsync({type:"base64"}).then(function (base64) {
-          axios.post(path, base64).then(res => {
-            //console.log(res);
-            console.log(res.data);
-          });
-        });
-    }
-    reader.onerror = function (evt) {
-        console.log(err);
-    }
-    */
 
     // assuming a single, zipped file was selected
     this.getBase64(this.state.file[0], result => {
@@ -138,6 +93,7 @@ export default class Assignment extends React.Component {
     });
   }
 
+  // get the date in a format that Postgres will like
   getDate() {
     let date = new Date();
     let month = date.getMonth() + 1;
@@ -165,6 +121,7 @@ export default class Assignment extends React.Component {
     return strtime;
   }
 
+  // convert info to base 64
   getBase64(file, cb) {
     let reader = new FileReader();
     reader.readAsDataURL(file);
@@ -176,6 +133,7 @@ export default class Assignment extends React.Component {
     };
   }
 
+  // go back to default
   handleCancelSubmit(e) {
     this.setState({
       default: true,
@@ -183,6 +141,7 @@ export default class Assignment extends React.Component {
     });
   }
 
+  // display
   render() {
     if (typeof this.props.assignment["submit_time"] === "undefined") {
       this.callSingleAssignmentApi()

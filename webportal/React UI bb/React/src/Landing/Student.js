@@ -7,6 +7,7 @@ import ChangePassword from "../Student/ChangePassword.js";
 
 // What a student will see when they first sign in
 export default class Student extends React.Component {
+  // constructor
   constructor(props) {
     super(props);
     this.courseHandler = this.courseHandler.bind(this);
@@ -29,22 +30,26 @@ export default class Student extends React.Component {
     };
   }
 
+  // hook for children to register an update method
   setResetAssignments(f) {
     this.setState({
       resetAssignments: f
     });
   }
 
+  // inform parent (App) of logout 
   onLogout(evt) {
     this.props.handleLogout();
   }
 
+  // set course
   courseHandler(obj) {
     this.setState({
       courses: obj
     });
   }
 
+  // display default Student
   handleBack() {
     this.setState({
       isVisible: {
@@ -56,6 +61,7 @@ export default class Student extends React.Component {
     });
   }
 
+  // display a course or an assignment
   handleClick(type, cid, aid) {
     this.setState({
       cid: cid,
@@ -86,6 +92,8 @@ export default class Student extends React.Component {
     }
   }
 
+  // called from a child when info about the 
+  // instructor becomes available
   handleInstructor(course) {
     let courses = this.state.courses;
     let i = 0;
@@ -99,6 +107,8 @@ export default class Student extends React.Component {
     });
   }
 
+  // called from a child when info
+  // about an assignment becomes available
   handleSubmitTime(submit_time, aid, cid) {
     let courses = this.state.courses;
     let c = 0;
@@ -117,6 +127,7 @@ export default class Student extends React.Component {
     });
   }
 
+  // show password change page
   onChangePassword(e) {
     this.setState({
       isVisible: {
@@ -128,6 +139,7 @@ export default class Student extends React.Component {
     });
   }
 
+  // display
   render() {
     let course =
       this.state.cid === "" || this.state.cid === 0

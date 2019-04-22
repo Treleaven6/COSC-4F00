@@ -6,33 +6,9 @@ import datetime
 import psycopg2
 import db
 
-# TODO: scripts for creating accounts, creating courses, and enrolling
+# handles get requests aka queries the db
 
-# psql
-
-# this is pretty awful, as there is no caching and it
-# opens a new connection to the database on every api
-# call, but it's what we got
-
-# run "mkdir bin"
-# 
-# add below to .bashrc
-# PYTHONPATH=$PYTHONPATH:$HOME/bin
-# export PYTHONPATH
-# 
-# log out then back in
-# 
-# sftp the mysql-conn...tar.gz into bin
-# 
-# run "tar -xvzf mysql-conn...tar.gz"
-# 
-# cd into the new directory
-# 
-# run "python setup.py install --user"
-#
-# visit below for some example python code:
-# https://dev.mysql.com/doc/connector-python/en/connector-python-examples.html
-
+# validate URL params
 cmd = sys.argv
 if len(cmd) < 2:
 	print(json.dumps("no argument"))
@@ -46,6 +22,7 @@ if not len(cmd) == 2:
 cmd = urllib.unquote(cmd[1])
 cmd = cmd.split("/")
 
+# get db connection
 cnx = db.get_connection()
 cursor = cnx.cursor()
 
@@ -121,6 +98,10 @@ elif cmd[0] == 'submitted' and cmd[1] == 'assignment':
     		 "FROM Submission S, Account A " +
     		 "WHERE S.assignment = '" + cmd[2] + "' AND S.id = A.id")
 elif cmd[0] == 'excluded':
+	# api.php/excluded/<course id>/<assignment id>
+	# check if any files are being excluded from comparison
+	# used just before a teacher requests plagiarism report
+	# queries the file system directly
 	cwd = os.path.dirname(os.path.realpath(__file__))
 	exclude_path = os.path.join(cwd, "uploads", cmd[1], cmd[2], "ignore")
 	if (os.path.isdir(exclude_path)):
@@ -129,6 +110,10 @@ elif cmd[0] == 'excluded':
 		print("[]")
 	quit()
 elif cmd[0] == 'included':
+	# api.php/included/<course id>/<assignment id>
+	# check if any files are being included in the comparison (apparent from student submitted)
+	# used just before a teacher requests plagiarism report
+	# queries the file system directly
 	cwd = os.path.dirname(os.path.realpath(__file__))
 	include_path = os.path.join(cwd, "uploads", cmd[1], cmd[2], "repository")
 	if (os.path.isdir(include_path)):
@@ -136,9 +121,8 @@ elif cmd[0] == 'included':
 	else:
 		print("[]")
 	quit()
-elif cmd[0] == 'reportready':
-	query = ("SELECT * FROM ReportReturn WHERE rid = " + cmd[1])
 
+# perform the query, return a JSON of the results
 if query:
 	success, records = db.exec_and_parse(cursor, cnx, query)
 	print(json.dumps(records))
