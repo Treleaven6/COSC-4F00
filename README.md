@@ -9,6 +9,7 @@
   - [Specification - v4](https://docs.google.com/document/d/1OBLLRCE-10HPfNVnPFmFbYXvzFH0QOG8CGsJH9lMXxA/edit?usp=sharing)
   - [Information - README](https://github.com/Treleaven6/COSC-4F00/tree/master/information#information)
   - [MOCD - PowerPoint](https://1drv.ms/p/s!AlsDff6pgUdpm80g6c8LtVLnojuFVg)
+  - [MOCD - PowerPoint NOTES](https://docs.google.com/document/d/1NxbFPPHZ7AVZ2bbG1PzyfnYJhkOdnpmvLGZ23GXuKyI/edit?usp=sharing)
 
 ### Server
  - [Server - README](https://github.com/Treleaven6/COSC-4F00/tree/master/server#server)
